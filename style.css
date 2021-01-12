@@ -36,7 +36,7 @@
 }
 @font-face {
   font-family: "Museo Sans";
-  src: url('./assets/museo-sans-webfont/Museo Sans Family/exljbris\ -\ MuseoSans-300Italic.otf') format("truetype");
+  src: url("./assets/museo-sans-webfont/Museo Sans Family/exljbris\ -\ MuseoSans-300Italic.otf") format("truetype");
   font-weight: 300;
   font-style: italic;
 }
@@ -78,15 +78,15 @@
 }
 
 :root {
-  primary-blue: rgb(42, 127, 140);
-  secondary-blk: rgb(41, 40, 41);
-  secondary-white: rgb(245, 245, 245);
-  accent-blue: rgb(0, 173, 174);
-  accent-red: rgb(233, 115, 85);
-  accent-green: rgb(177, 198, 118);
-  accent-darkgray: rgb(109, 110, 113);
-  accent-gray: rgb(167, 169, 172);
-  accent-lightgray: rgb(230, 231, 232);
+  --primary-blue: rgb(42, 127, 140);
+  --secondary-blk: rgb(41, 40, 41);
+  --secondary-white: rgb(245, 245, 245);
+  --accent-blue: rgb(0, 173, 174);
+  --accent-red: rgb(233, 115, 85);
+  --accent-green: rgb(177, 198, 118);
+  --accent-darkgray: rgb(109, 110, 113);
+  --accent-gray: rgb(167, 169, 172);
+  --accent-lightgray: rgb(230, 231, 232);
 }
 
 * {
@@ -117,7 +117,7 @@ body {
   font-family: "Museo Sans", Helvetica, Arial, sans-serif;
   font-size: 16px;
   background-color: #000;
-  color: #fff;
+  color: var(--secondary-white);
 }
 
 a,
