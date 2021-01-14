@@ -84,12 +84,7 @@ var APP_DATA = {
           "title": "small square",
           "text": "Text"
         },
-        {
-          "yaw": 0.9926161406403882,
-          "pitch": 0.24708123080548816,
-          "title": "insulated serving bowl",
-          "text": "Text"
-        }
+       
       ]
     },
     {
