@@ -34,7 +34,8 @@ var APP_DATA = {
 					yaw: -0.4252217215869756,
 					pitch: 0.534560200015882,
 					title: '12" STAINLESS STEEL NONSTICK SKILLET',
-					text: "Text",
+					text:
+						"This innovative pan combines the best features of stainless steel and nonstick cookware. The nonstick mesh coating provides the perfect sear (without the mess) and leaves fond for pan sauces and gravy. The size is perfect for one-pot meals.",
 				},
 				{
 					yaw: 0.18578207954119463,
@@ -46,18 +47,20 @@ var APP_DATA = {
 					yaw: 0.5233019513478805,
 					pitch: 0.5346585714994525,
 					title: '12" CAST IRON SKILLET',
-					text: "Text",
+					text:
+						"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum",
 				},
 				{
 					yaw: 0.7828439501751578,
 					pitch: 0.3000919208252064,
 					title: "DELUXE AIR FRYER",
-					text: "Text",
+					text:
+						"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum",
 				},
 				{
 					yaw: -2.724540658980688,
 					pitch: 0.5924236607609039,
-					title: "Pizza Peel",
+					title: "WOOD PIZZA PEEL",
 					subtitle: "PIZZA PADDLE",
 					text:
 						"A pizza peel is a tool every pizza lover needs. It helps you get a pizza on and off a preheated pizza stone safely and with less mess.This peel is made of durable acacia wood and has a tapered edge to help it slide easily under food. The hole at the end of the handle lets you hang it up for easy storage.",
@@ -66,25 +69,29 @@ var APP_DATA = {
 					yaw: 2.20558290427587,
 					pitch: 0.41308350229582835,
 					title: "WOOD SALAD BOWL & SERVERS SET",
-					text: "Text",
+					text:
+						"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum",
 				},
 				{
 					yaw: 2.824589139508083,
 					pitch: 0.5197358315170817,
 					title: "PREMIUM CHARCUTERIE & CHEESE BOARD SET",
-					text: "Text",
+					text:
+						"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum",
 				},
 				{
 					yaw: 3.0210249388923707,
 					pitch: 0.6610016937252077,
-					title: "Manual Food Processor",
-					text: "Text",
+					title: "MANUAL FOOD PROCESSOR",
+					text:
+						"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum",
 				},
 				{
 					yaw: 2.4655333888327764,
 					pitch: 0.5663247914573244,
 					title: "SMALL SQUARE COOL & SERVE",
-					text: "Text",
+					text:
+						"The fun-sized Small Square Cool & Serve is perfect for parties, picnics, snacks, lunch on the go, and road trips. The exclusive gel insert (which features a handy finger slot for easy removal) keeps veggies, fruit, cheese, deli meat, dip, and other snacks cool for 4–6 hours—even outdoors! It comes with a clear insert divided into two compartments with a 1-cup dip well in the center, and has solid walls that keep food from mixing. The lid snaps onto the base so it’s easy to transport, and it even fits neatly underneath while in use.",
 				},
 			],
 		},
@@ -121,55 +128,62 @@ var APP_DATA = {
 				{
 					yaw: -2.2741263168624304,
 					pitch: 0.5519410325766607,
-					title: "pizza peel",
+					title: "WOOD PIZZA PEEL",
 					text: "Text",
 				},
 				{
 					yaw: -1.4724006416181243,
 					pitch: 0.650736876317616,
-					title: "charcuterie",
+					title: "PREMIUM CHARCUTERIE & CHEESE BOARD SET",
+
 					text: "Text",
 				},
 				{
 					yaw: -0.8870758070501026,
 					pitch: 0.5350841529736705,
-					title: "food processor",
+					title: "MANUAL FOOD PROCESSOR",
+
 					text: "Text",
 				},
 				{
 					yaw: -0.2521911697484196,
 					pitch: 0.5683008435471066,
-					title: "nonstick",
+					title: '12" STAINLESS STEEL NONSTICK SKILLET',
+
 					text: "Text",
 				},
 				{
 					yaw: 0.5386061207202886,
 					pitch: 0.4536125956700072,
-					title: "dutch oven",
+					title: "6-QT. ENAMELED DUTCH OVEN",
+
 					text: "Text",
 				},
 				{
 					yaw: 1.068091802238964,
 					pitch: 0.4347360382781833,
-					title: "cool n serve",
+					title: "SMALL SQUARE COOL & SERVE",
 					text: "Text",
 				},
 				{
 					yaw: 1.6045386506152992,
 					pitch: 0.2434178822133557,
-					title: "airfryer",
+					title: "DELUXE AIR FRYER",
+
 					text: "Text",
 				},
 				{
 					yaw: 2.3545964848335714,
 					pitch: 0.4513371953140872,
-					title: "salad bowl",
+					title: "WOOD SALAD BOWL & SERVERS SET",
+
 					text: "Text",
 				},
 				{
 					yaw: -3.093563192650258,
 					pitch: 0.5994963555682666,
-					title: "cast iron",
+					title: '12" CAST IRON SKILLET',
+
 					text: "Text",
 				},
 			],
