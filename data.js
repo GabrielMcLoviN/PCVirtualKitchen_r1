@@ -44,7 +44,9 @@ var APP_DATA = {
 					title: '12" STAINLESS STEEL NONSTICK SKILLET',
 					images: [
 						"./products/skillet/skillet.jpg",
-						"./products/skillet/skillet.jpg",
+						"./products/skillet/skillet2.jpg",
+						"./products/skillet/skillet3.jpg",
+						"./products/skillet/skillet4.jpg",
 					],
 					text:
 						"This innovative pan combines the best features of stainless steel and nonstick cookware. The nonstick mesh coating provides the perfect sear (without the mess) and leaves fond for pan sauces and gravy. The size is perfect for one-pot meals.",

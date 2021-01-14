@@ -1,21 +1,28 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<title>Pampered Chef - Virtual Host</title>
-<meta charset="utf-8">
-<meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, minimal-ui" />
-<link rel="icon" type="image/png" href="./assets/PC+Seal-Solid_whiteCircle-reverseLogo.png">
-<style> @-ms-viewport { width: device-width; } </style>
-<link rel="stylesheet" href="vendor/reset.min.css">
-<link rel="stylesheet" href="style.css">
-<link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+  <title>Pampered Chef - Virtual Host</title>
+  <meta charset="utf-8">
+  <meta name="viewport"
+    content="target-densitydpi=device-dpi, width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, minimal-ui" />
+  <link rel="icon" type="image/png" href="./assets/PC+Seal-Solid_whiteCircle-reverseLogo.png">
+  <style>
+    @-ms-viewport {
+      width: device-width;
+    }
+  </style>
+  <link rel="stylesheet" href="vendor/reset.min.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
 </head>
+
 <body class="multiple-scenes view-control-buttons">
 
-<div id="pano"></div>
+  <div id="pano"></div>
 
-<div id="sceneList">
-  <ul class="scenes">
+  <div id="sceneList">
+    <ul class="scenes">
 
       <a href="javascript:void(0)" class="scene" data-id="0-kitchen_01">
         <li class="text">Kitchen_01</li>
@@ -25,31 +32,32 @@
         <li class="text">Kitchen_02</li>
       </a>
 
-  </ul>
-</div>
-
-<div id="titleBar">
-  <a href="javascript:void(0)" id="sceneListToggle">
-    <img class="icon off" src="img/expand.png">
-    <img class="icon on" src="img/collapse.png">
-  </a>
-  <div class="logoWrapper">
-    <img class="sceneName" src="./assets/PC+Logo_black_Registered.png" alt="PC Logo">
+    </ul>
   </div>
-  <a href="javascript:void(0)" id="fullscreenToggle">
-    <img class="icon off" src="img/fullscreen.png">
-    <img class="icon on" src="img/windowed.png">
-  </a>
-</div>
 
-<script src="vendor/screenfull.min.js" ></script>
-<script src="vendor/bowser.min.js" ></script>
-<script src="vendor/marzipano.js" ></script>
+  <div id="titleBar">
+    <a href="javascript:void(0)" id="sceneListToggle">
+      <img class="icon off" src="img/expand.png">
+      <img class="icon on" src="img/collapse.png">
+    </a>
+    <div class="logoWrapper">
+      <img class="sceneName" src="./assets/PC+Logo_black_Registered.png" alt="PC Logo">
+    </div>
+    <a href="javascript:void(0)" id="fullscreenToggle">
+      <img class="icon off" src="img/fullscreen.png">
+      <img class="icon on" src="img/windowed.png">
+    </a>
+  </div>
 
-<script src="data.js"></script>
-<script src="index.js"></script>
+  <script src="vendor/screenfull.min.js"></script>
+  <script src="vendor/bowser.min.js"></script>
+  <script src="vendor/marzipano.js"></script>
 
-<script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+  <script src="data.js"></script>
+  <script src="index.js"></script>
+
+  <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
 
 </body>
+
 </html>
