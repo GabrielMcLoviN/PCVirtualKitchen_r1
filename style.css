@@ -619,7 +619,7 @@ body.single-scene #sceneListToggle {
   margin: 15%;
 }
 
-.info-hotspot .info-hotspot-text {
+.info-hotspot .info-hotspot-content {
   position: absolute;
   width: 300px;
   height: auto;
@@ -648,7 +648,7 @@ body.single-scene #sceneListToggle {
   user-select: text;
 }
 
-.desktop .info-hotspot.visible .info-hotspot-text {
+.desktop .info-hotspot.visible .info-hotspot-content {
   visibility: visible;
   -ms-transform: perspective(200px) rotateX(0deg);
   -webkit-transform: perspective(200px) rotateX(0deg);
@@ -705,11 +705,6 @@ body.single-scene #sceneListToggle {
   transition: opacity 0.3s ease-in-out 0.2s;
 }
 
-.info-hotspot-modal .info-hotspot-icon-wrapper {
-  width: 50px;
-  height: 50px;
-}
-
 .info-hotspot-modal .info-hotspot-icon {
   display: none;
 }
@@ -717,6 +712,7 @@ body.single-scene #sceneListToggle {
 .info-hotspot-modal .info-hotspot-title-wrapper {
   display: flex;
   align-items: center;
+  justify-content: center;
   position: absolute;
   top: 0;
   left: 10px;
@@ -737,7 +733,7 @@ body.single-scene #sceneListToggle {
   display: inline-block;
   vertical-align: middle;
   font-family: "Antonio";
-  font-size: 40px;
+  font-size: 52px;
   -moz-user-select: text;
   -webkit-user-select: text;
   -ms-user-select: text;
@@ -759,13 +755,17 @@ body.single-scene #sceneListToggle {
   margin: 15%;
 }
 
-.info-hotspot-modal .info-hotspot-text {
+.info-hotspot-modal .info-hotspot-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-direction: row;
   position: absolute;
   top: 150px;
   bottom: 50px;
   left: 50px;
   right: 50px;
-  padding: 10px;
+  padding: 2rem;
   background-color: var(--secondary-white);
   color: var(--secondary-blk);
   overflow-y: auto;
@@ -779,11 +779,37 @@ body.single-scene #sceneListToggle {
   user-select: text;
 }
 
-.info-hotspot-modal.visible .info-hotspot-text {
+.info-hotspot-modal.visible .info-hotspot-content {
   opacity: 1;
   -webkit-transition: opacity 0.3s ease-in-out 0.4s;
   transition: opacity 0.3s ease-in-out 0.4s;
 }
+
+.info-hotspot-content .product-img-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  border: 1px solid black;
+  height: auto;
+}
+
+.info-hotspot-content .product-txt-wrapper {
+  margin: 2rem;
+  align-self: flex-start;
+  padding-top: 6rem;
+}
+
+.info-hotspot-content .product-txt-wrapper .product-txt-subhead {
+  font-weight: 500;
+  font-size: 2rem;
+  line-height: 2rem;
+  border-bottom: 1px solid var(--accent-red);
+  margin-bottom: 1rem;
+  padding-bottom: 10px;
+  width: 400px;
+}
+
 
 /* View control buttons */
 
