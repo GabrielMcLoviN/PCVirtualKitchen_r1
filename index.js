@@ -110,12 +110,15 @@
 				);
 		});
 
+
 		return {
 			data: data,
 			scene: scene,
 			view: view,
 		};
 	});
+
+
 
 	// Set up fullscreen mode, if supported.
 	if (screenfull.enabled && data.settings.fullscreenButton) {
@@ -296,12 +299,12 @@
 
 		var textWrapper = document.createElement("div");
 		textWrapper.classList.add("product-txt-wrapper");
-    var subhead = document.createElement("h2");
-    subhead.classList.add('product-txt-subhead')
+		var subhead = document.createElement("h2");
+		subhead.classList.add("product-txt-subhead");
 		subhead.innerHTML = hotspot.subhead;
 		var text = document.createElement("p");
-    text.innerHTML = hotspot.text;
-    text.classList.add('product-txt')
+		text.innerHTML = hotspot.text;
+		text.classList.add("product-txt");
 
 		textWrapper.appendChild(subhead);
 		textWrapper.appendChild(text);
@@ -310,9 +313,12 @@
 		//Create product images element
 		var productImageWrapper = document.createElement("div");
 		productImageWrapper.classList.add("product-img-wrapper");
-		var productImage = document.createElement("img");
-		productImage.src = hotspot.images;
-		productImageWrapper.appendChild(productImage);
+
+		for (let i = 0, j = hotspot.images.length; i < j; i++) {
+			var productImage = document.createElement("img");
+			productImage.src = hotspot.images[i];
+			productImageWrapper.appendChild(productImage);
+		}
 
 		content.appendChild(productImageWrapper);
 
@@ -339,27 +345,27 @@
 
 		// Prevent touch and scroll events from reaching the parent element.
 		// This prevents the view control logic from interfering with the hotspot.
-		stopTouchAndScrollEventPropagation(wrapper);
+		// stopTouchAndScrollEventPropagation(wrapper);
 
 		return wrapper;
 	}
 
 	// Prevent touch and scroll events from reaching the parent element.
-	function stopTouchAndScrollEventPropagation(element, eventList) {
-		var eventList = [
-			"touchstart",
-			"touchmove",
-			"touchend",
-			"touchcancel",
-			"wheel",
-			"mousewheel",
-		];
-		for (var i = 0; i < eventList.length; i++) {
-			element.addEventListener(eventList[i], function (event) {
-				event.stopPropagation();
-			});
-		}
-	}
+	// function stopTouchAndScrollEventPropagation(element, eventList) {
+	// 	var eventList = [
+	// 		"touchstart",
+	// 		"touchmove",
+	// 		"touchend",
+	// 		"touchcancel",
+	// 		"wheel",
+	// 		"mousewheel",
+	// 	];
+	// 	for (var i = 0; i < eventList.length; i++) {
+	// 		element.addEventListener(eventList[i], function (event) {
+	// 			event.stopPropagation();
+	// 		});
+	// 	}
+	// }
 
 	function findSceneById(id) {
 		for (var i = 0; i < scenes.length; i++) {
