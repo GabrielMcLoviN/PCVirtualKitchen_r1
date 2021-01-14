@@ -88,15 +88,16 @@
     });
 
     // Create link hotspots.
-    data.linkHotspots.forEach(function(hotspot) {
-      var element = createLinkHotspotElement(hotspot);
-      scene.hotspotContainer().createHotspot(element, { yaw: hotspot.yaw, pitch: hotspot.pitch });
-    });
+    // data.linkHotspots.forEach(function(hotspot) {
+    //   var element = createLinkHotspotElement(hotspot);
+    //   scene.hotspotContainer().createHotspot(element, { yaw: hotspot.yaw, pitch: hotspot.pitch });
+    // });
 
     // Create info hotspots.
     data.infoHotspots.forEach(function(hotspot) {
       var element = createInfoHotspotElement(hotspot);
-      scene.hotspotContainer().createHotspot(element, { yaw: hotspot.yaw, pitch: hotspot.pitch });
+      scene.hotspotContainer().createHotspot(element, { yaw: hotspot.yaw, pitch: hotspot.pitch },
+      {perspective: {radius: 600, extraTransforms: "translateY(-10px)"}});
     });
 
     return {
@@ -105,8 +106,6 @@
       view: view
     };
   });
-
-  // Set up autorotate, if enabled.
 
 
   // Set up fullscreen mode, if supported.
@@ -130,9 +129,9 @@
   sceneListToggleElement.addEventListener('click', toggleSceneList);
 
   // Start with the scene list open on desktop.
-  if (!document.body.classList.contains('mobile')) {
-    showSceneList();
-  }
+  // if (!document.body.classList.contains('mobile')) {
+  //   showSceneList();
+  // }
 
   // Set handler for scene switch.
   scenes.forEach(function(scene) {
@@ -147,35 +146,33 @@
   });
 
   // DOM elements for view controls.
-  var viewUpElement = document.querySelector('#viewUp');
-  var viewDownElement = document.querySelector('#viewDown');
-  var viewLeftElement = document.querySelector('#viewLeft');
-  var viewRightElement = document.querySelector('#viewRight');
-  var viewInElement = document.querySelector('#viewIn');
-  var viewOutElement = document.querySelector('#viewOut');
+  // var viewUpElement = document.querySelector('#viewUp');
+  // var viewDownElement = document.querySelector('#viewDown');
+  // var viewLeftElement = document.querySelector('#viewLeft');
+  // var viewRightElement = document.querySelector('#viewRight');
+  // var viewInElement = document.querySelector('#viewIn');
+  // var viewOutElement = document.querySelector('#viewOut');
 
   // Dynamic parameters for controls.
-  var velocity = 0.7;
-  var friction = 3;
+  // var velocity = 0.7;
+  // var friction = 3;
 
-  // Associate view controls with elements.
-  var controls = viewer.controls();
-  controls.registerMethod('upElement',    new Marzipano.ElementPressControlMethod(viewUpElement,     'y', -velocity, friction), true);
-  controls.registerMethod('downElement',  new Marzipano.ElementPressControlMethod(viewDownElement,   'y',  velocity, friction), true);
-  controls.registerMethod('leftElement',  new Marzipano.ElementPressControlMethod(viewLeftElement,   'x', -velocity, friction), true);
-  controls.registerMethod('rightElement', new Marzipano.ElementPressControlMethod(viewRightElement,  'x',  velocity, friction), true);
-  controls.registerMethod('inElement',    new Marzipano.ElementPressControlMethod(viewInElement,  'zoom', -velocity, friction), true);
-  controls.registerMethod('outElement',   new Marzipano.ElementPressControlMethod(viewOutElement, 'zoom',  velocity, friction), true);
+  // // Associate view controls with elements.
+  // var controls = viewer.controls();
+  // controls.registerMethod('upElement',    new Marzipano.ElementPressControlMethod(viewUpElement,     'y', -velocity, friction), true);
+  // controls.registerMethod('downElement',  new Marzipano.ElementPressControlMethod(viewDownElement,   'y',  velocity, friction), true);
+  // controls.registerMethod('leftElement',  new Marzipano.ElementPressControlMethod(viewLeftElement,   'x', -velocity, friction), true);
+  // controls.registerMethod('rightElement', new Marzipano.ElementPressControlMethod(viewRightElement,  'x',  velocity, friction), true);
+  // controls.registerMethod('inElement',    new Marzipano.ElementPressControlMethod(viewInElement,  'zoom', -velocity, friction), true);
+  // controls.registerMethod('outElement',   new Marzipano.ElementPressControlMethod(viewOutElement, 'zoom',  velocity, friction), true);
 
   function sanitize(s) {
     return s.replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;');
   }
 
   function switchScene(scene) {
-    stopAutorotate();
     scene.view.setParameters(scene.data.initialViewParameters);
     scene.scene.switchTo();
-    startAutorotate();
     updateSceneName(scene);
     updateSceneList(scene);
   }
@@ -195,10 +192,6 @@
     }
   }
 
-  function showSceneList() {
-    sceneListElement.classList.add('enabled');
-    sceneListToggleElement.classList.add('enabled');
-  }
 
   function hideSceneList() {
     sceneListElement.classList.remove('enabled');
@@ -210,68 +203,47 @@
     sceneListToggleElement.classList.toggle('enabled');
   }
 
-  function startAutorotate() {
-    if (!autorotateToggleElement.classList.contains('enabled')) {
-      return;
-    }
-    viewer.startMovement(autorotate);
-    viewer.setIdleMovement(3000, autorotate);
-  }
 
-  function stopAutorotate() {
-    viewer.stopMovement();
-    viewer.setIdleMovement(Infinity);
-  }
 
-  function toggleAutorotate() {
-    if (autorotateToggleElement.classList.contains('enabled')) {
-      autorotateToggleElement.classList.remove('enabled');
-      stopAutorotate();
-    } else {
-      autorotateToggleElement.classList.add('enabled');
-      startAutorotate();
-    }
-  }
+  // function createLinkHotspotElement(hotspot) {
 
-  function createLinkHotspotElement(hotspot) {
+  //   // Create wrapper element to hold icon and tooltip.
+  //   var wrapper = document.createElement('div');
+  //   wrapper.classList.add('hotspot');
+  //   wrapper.classList.add('link-hotspot');
 
-    // Create wrapper element to hold icon and tooltip.
-    var wrapper = document.createElement('div');
-    wrapper.classList.add('hotspot');
-    wrapper.classList.add('link-hotspot');
+  //   // Create image element.
+  //   var icon = document.createElement('img');
+  //   icon.src = 'img/link.png';
+  //   icon.classList.add('link-hotspot-icon');
 
-    // Create image element.
-    var icon = document.createElement('img');
-    icon.src = 'img/link.png';
-    icon.classList.add('link-hotspot-icon');
+  //   // Set rotation transform.
+  //   var transformProperties = [ '-ms-transform', '-webkit-transform', 'transform' ];
+  //   for (var i = 0; i < transformProperties.length; i++) {
+  //     var property = transformProperties[i];
+  //     icon.style[property] = 'rotate(' + hotspot.rotation + 'rad)';
+  //   }
 
-    // Set rotation transform.
-    var transformProperties = [ '-ms-transform', '-webkit-transform', 'transform' ];
-    for (var i = 0; i < transformProperties.length; i++) {
-      var property = transformProperties[i];
-      icon.style[property] = 'rotate(' + hotspot.rotation + 'rad)';
-    }
+  //   // Add click event handler.
+  //   wrapper.addEventListener('click', function() {
+  //     switchScene(findSceneById(hotspot.target));
+  //   });
 
-    // Add click event handler.
-    wrapper.addEventListener('click', function() {
-      switchScene(findSceneById(hotspot.target));
-    });
+  //   // Prevent touch and scroll events from reaching the parent element.
+  //   // This prevents the view control logic from interfering with the hotspot.
+  //   stopTouchAndScrollEventPropagation(wrapper);
 
-    // Prevent touch and scroll events from reaching the parent element.
-    // This prevents the view control logic from interfering with the hotspot.
-    stopTouchAndScrollEventPropagation(wrapper);
+  //   // Create tooltip element.
+  //   var tooltip = document.createElement('div');
+  //   tooltip.classList.add('hotspot-tooltip');
+  //   tooltip.classList.add('link-hotspot-tooltip');
+  //   tooltip.innerHTML = findSceneDataById(hotspot.target).name;
 
-    // Create tooltip element.
-    var tooltip = document.createElement('div');
-    tooltip.classList.add('hotspot-tooltip');
-    tooltip.classList.add('link-hotspot-tooltip');
-    tooltip.innerHTML = findSceneDataById(hotspot.target).name;
+  //   wrapper.appendChild(icon);
+  //   wrapper.appendChild(tooltip);
 
-    wrapper.appendChild(icon);
-    wrapper.appendChild(tooltip);
-
-    return wrapper;
-  }
+  //   return wrapper;
+  // }
 
   function createInfoHotspotElement(hotspot) {
 
@@ -329,7 +301,7 @@
     document.body.appendChild(modal);
 
     var toggle = function() {
-      wrapper.classList.toggle('visible');
+      // wrapper.classList.toggle('visible');
       modal.classList.toggle('visible');
     };
 
