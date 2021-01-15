@@ -754,17 +754,19 @@ body.single-scene #sceneListToggle {
   margin: 15%;
 }
 
+
 .info-hotspot-modal .info-hotspot-content {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
   flex-direction: row;
+  max-width: 100%;
   position: absolute;
   top: 150px;
   bottom: 50px;
   left: 50px;
   right: 50px;
-  padding: 4rem;
+  padding: 2rem;
   background-color: var(--secondary-white);
   color: var(--secondary-blk);
   overflow-y: auto;
@@ -785,9 +787,7 @@ body.single-scene #sceneListToggle {
 }
 
 .info-hotspot-content .product-txt-wrapper {
-  margin: 2rem;
   align-self: flex-start;
-  padding-top: 6rem;
 }
 
 .info-hotspot-content .product-txt-wrapper .product-txt-subhead {
@@ -800,13 +800,39 @@ body.single-scene #sceneListToggle {
   width: 400px;
 }
 
+.modal-col {
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.modal-col .rightcol {
+  border: 1px solid black;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+}
+
+.modal-col .leftcol {
+  border: 1px solid black;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+}
+
 .carousel {
   display: flex;
   align-items: center;
   overflow: hidden;
   position: relative;
   max-width: 500px;
-  height: 100%;
   border: 1px solid black;
 }
 
@@ -817,13 +843,13 @@ body.single-scene #sceneListToggle {
 }
 
 .carousel-nav {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
+  border: 1px solid black;
+  width: 500px;
   height: 50px;
   display: flex;
-  align-items: center;
+  justify-content: space-between;
+  position: absolute;
+
 }
 
 .carousel-nav .carousel-button {
@@ -836,17 +862,16 @@ body.single-scene #sceneListToggle {
   font-weight: bold;
   height: 3rem;
   opacity: 0.25;
-  position: absolute;
   transition: opacity 0.25s;
   width: 3rem;
   z-index: 1;
 }
 
-.carousel .carousel-button.prev {
+.carousel-button .prev {
   left: 5px;
 }
 
-.carousel .carousel-button.next {
+.carousel-button .next {
   right: 5px;
 }
 

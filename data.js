@@ -1,9 +1,3 @@
-const getImages = require => require.keys().reduce((acc, key) => {
-	acc.push({
-		src: require(key),
-	});
-	return acc;
-}, []);
 
 
 var APP_DATA = {
@@ -56,7 +50,12 @@ var APP_DATA = {
 					yaw: 0.18578207954119463,
 					pitch: 0.44039175033335454,
 					title: "6-QT. ENAMELED DUTCH OVEN",
-					images: ["https://placehold.it/500x500?text=placeholder"],
+					images: [
+						"./products/cast-iron.jpg",
+						"./products/dutchoven.jpg",
+						"./products/dutchoven.jpg",
+						"./products/dutchoven.jpg",
+					],
 					text:
 						"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum",
 					subhead: "Subheading",
