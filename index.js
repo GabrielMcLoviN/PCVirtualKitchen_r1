@@ -406,6 +406,8 @@ function createInfoHotspotElement(hotspot) {
 	return wrapper;
 }
 
+
+
 function findSceneById(id) {
 	for (const i = 0; i < scenes.length; i++) {
 		if (scenes[i].data.id === id) {
