@@ -18,7 +18,6 @@ const Marzipano = window.Marzipano;
 const bowser = window.bowser;
 const screenfull = window.screenfull;
 const data = window.APP_DATA;
-const infoHotspotData = Object.values(data.scenes[0].infoHotspots);
 
 // Grab elements from DOM.
 const panoElement = document.querySelector("#pano");
@@ -101,15 +100,15 @@ const scenes = data.scenes.map(function (data) {
 	data.infoHotspots.forEach(function (hotspot) {
 		const element = createInfoHotspotElement(hotspot);
 		scene
-			.hotspotContainer()
-			.createHotspot(
-				element,
-				{ yaw: hotspot.yaw, pitch: hotspot.pitch },
-				{ perspective: { radius: 600, extraTransforms: "translateY(-10px)" } }
+		.hotspotContainer()
+		.createHotspot(
+			element,
+			{ yaw: hotspot.yaw, pitch: hotspot.pitch },
+			{ perspective: { radius: 600, extraTransforms: "translateY(-10px)" } }
 			);
-	});
+		});
 
-	return {
+		return {
 		data: data,
 		scene: scene,
 		view: view,
@@ -151,6 +150,7 @@ scenes.forEach(function (scene) {
 		}
 	});
 });
+
 
 // DOM elements for view controls.
 // const viewUpElement = document.querySelector('#viewUp');
@@ -341,21 +341,17 @@ function createInfoHotspotElement(hotspot) {
 	carouselPrev.classList.add("previous");
 	carouselPrev.setAttribute("id", "previous");
 
-	console.log(hotspot.images.length);
-
 	for (let i = 0; i < hotspot.images.length; i++) {
 		const productImage = document.createElement("img");
 		productImage.src = hotspot.images[i];
-		console.log(productImage);
 		productImage.classList.add("product-image");
 		carouselImages.appendChild(productImage);
-		console.log(carousel);
 	}
 
 	carouselNav.appendChild(carouselNext);
+	carousel.appendChild(carouselImages);
 	carouselNav.appendChild(carouselPrev);
 	carousel.appendChild(carouselNav);
-	carousel.appendChild(carouselImages);
 
 	modalRight.appendChild(carousel);
 
@@ -365,25 +361,25 @@ function createInfoHotspotElement(hotspot) {
 	// Place header and text into wrapper element.
 	wrapper.appendChild(header);
 	wrapper.appendChild(content);
-
 	// Create a modal for the hotspot content to appear on mobile mode.
 	const modal = document.createElement("div");
 	modal.innerHTML = wrapper.innerHTML;
 	modal.classList.add("info-hotspot-modal");
 	document.body.appendChild(modal);
-
 	const toggle = function () {
 		modal.classList.toggle("visible");
 	};
+	// Show content when hotspot is clicked.
+	wrapper.querySelector(".info-hotspot-header").addEventListener("click", toggle);
+	// Hide content when close icon is clicked.
+	modal.querySelector(".info-hotspot-close-wrapper").addEventListener("click", toggle);
 
-	const carouselImgs = document.querySelector(".carousel-images");
-	console.log(carouselImgs.length);
-	const carouselButtons = document.querySelectorAll(".carousel-button");
-	const numberOfImages = document.querySelectorAll(".carousel-images img").length;
+	const carouselImgs = modal.querySelector(".carousel-images");
+	const carouselButtons = modal.querySelectorAll(".carousel-nav .carousel-button");
+	const numberOfImages = modal.querySelectorAll(".carousel-images img").length;
+	console.log(numberOfImages)
 	let imageIndex = 1;
 	let translateX = 0;
-
-	console.log(carouselImages)
 
 	carouselButtons.forEach((button) => {
 		button.addEventListener("click", (event) => {
@@ -403,35 +399,12 @@ function createInfoHotspotElement(hotspot) {
 		});
 	});
 
-	// Show content when hotspot is clicked.
-	wrapper.querySelector(".info-hotspot-header").addEventListener("click", toggle);
-
-	// Hide content when close icon is clicked.
-	modal.querySelector(".info-hotspot-close-wrapper").addEventListener("click", toggle);
-
 	// Prevent touch and scroll events from reaching the parent element.
 	// This prevents the view control logic from interfering with the hotspot.
 	// stopTouchAndScrollEventPropagation(wrapper);
 
 	return wrapper;
 }
-
-// Prevent touch and scroll events from reaching the parent element.
-// function stopTouchAndScrollEventPropagation(element, eventList) {
-// 	const eventList = [
-// 		"touchstart",
-// 		"touchmove",
-// 		"touchend",
-// 		"touchcancel",
-// 		"wheel",
-// 		"mousewheel",
-// 	];
-// 	for (const i = 0; i < eventList.length; i++) {
-// 		element.addEventListener(eventList[i], function (event) {
-// 			event.stopPropagation();
-// 		});
-// 	}
-// }
 
 function findSceneById(id) {
 	for (const i = 0; i < scenes.length; i++) {
