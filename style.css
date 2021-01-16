@@ -173,9 +173,8 @@ body.multiple-scenes #titleBar {
 
 body.multiple-scenes.mobile #titleBar {
   left: 0px;
-} */
-
-#titleBar .logoWrapper {
+}
+*/ #titleBar .logoWrapper {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -653,6 +652,9 @@ body.single-scene #sceneListToggle {
 }
 
 .info-hotspot-modal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   top: 0;
   left: 0;
   position: absolute;
@@ -729,6 +731,11 @@ body.single-scene #sceneListToggle {
   user-select: text;
 }
 
+.mobile .info-hotspot-modal .info-hotspot-title {
+  font-size: 32px;
+  line-height: 2.4rem;
+}
+
 .info-hotspot-modal .info-hotspot-close-wrapper {
   position: absolute;
   top: 0;
@@ -744,19 +751,18 @@ body.single-scene #sceneListToggle {
   margin: 15%;
 }
 
-
 .info-hotspot-modal .info-hotspot-content {
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: center;
   flex-direction: row;
-  max-width: 100%;
   position: absolute;
+  max-width: 100%;
   top: 150px;
   bottom: 50px;
   left: 50px;
   right: 50px;
-  padding: 2rem;
+  padding: 2rem 10rem;
   background-color: var(--secondary-white);
   color: var(--secondary-blk);
   overflow-y: auto;
@@ -771,13 +777,14 @@ body.single-scene #sceneListToggle {
 }
 
 .info-hotspot-modal.visible .info-hotspot-content {
+  overflow: hidden;
   opacity: 1;
   -webkit-transition: opacity 0.3s ease-in-out 0.4s;
   transition: opacity 0.3s ease-in-out 0.4s;
 }
 
-.info-hotspot-content .product-txt-wrapper {
-  align-self: flex-start;
+.mobile .info-hotspot-content {
+  flex-direction: column-reverse;
 }
 
 .info-hotspot-content .product-txt-wrapper .product-txt-subhead {
@@ -791,30 +798,11 @@ body.single-scene #sceneListToggle {
 }
 
 .modal-col {
-  border: 1px solid black;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-}
-
-.modal-col .rightcol {
+  margin: 2rem;
+  height: 500px;
   border: 1px solid black;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  height: 100%;
-}
-
-.modal-col .leftcol {
-  border: 1px solid black;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  height: 100%;
 }
 
 .carousel {
@@ -823,7 +811,7 @@ body.single-scene #sceneListToggle {
   overflow: hidden;
   position: relative;
   max-width: 500px;
-  border: 1px solid black;
+  height: auto;
 }
 
 .carousel .carousel-images {
@@ -832,14 +820,18 @@ body.single-scene #sceneListToggle {
   transition: transform 0.25s;
 }
 
+.mobile .carousel .carousel-images {
+  width: 100%;
+}
+
+
 .carousel-nav {
-  border: 1px solid black;
   width: 500px;
   height: 50px;
   display: flex;
   justify-content: space-between;
+  padding: 0 10px;
   position: absolute;
-
 }
 
 .carousel-nav .carousel-button {
@@ -858,11 +850,11 @@ body.single-scene #sceneListToggle {
 }
 
 .carousel-button .prev {
-  left: 5px;
+  left: 50px;
 }
 
 .carousel-button .next {
-  right: 5px;
+  right: 50px;
 }
 
 /* View control buttons */
