@@ -87,12 +87,23 @@ var APP_DATA = {
 					yaw: -2.724540658980688,
 					pitch: 0.5924236607609039,
 					title: "PIZZA PEEL",
-					images: ["https://placehold.it/500x500?text=placeholder"],
-
-					subtitle: "PIZZA PADDLE",
+					images: ["./products/pizzapeel_01.jpg"],
+					subtitle: "PIZZA PEEL",
+					subhead: "Pizza Peel",
 					text:
-						"A pizza peel is a tool every pizza lover needs. It helps you get a pizza on and off a preheated pizza stone safely and with less mess.This peel is made of durable acacia wood and has a tapered edge to help it slide easily under food. The hole at the end of the handle lets you hang it up for easy storage.",
-					subhead: "Subheading",
+						"<p>A pizza peel is a tool every pizza lover needs. It helps you get a pizza on and off a preheated pizza stone safely and with less mess. </p><br>This peel is made of durable acacia wood and has a tapered edge to help it slide easily under food. The hole at the end of the handle lets you hang it up for easy storage.</p>",
+					recipes: [
+						{
+							id: "Homemade Pizza Dough",
+							preview_image: "./recipes/recipe_imageLinks/pizza-dough.jpg",
+							link: "./recipes/post-recipe-homemade-pizza-dough-steps.pdf",
+						},
+						{
+							id: "Homemade Pizza Dough",
+							preview_image: "./recipes/recipe_imageLinks/pizza-dough.jpg",
+							link: "./recipes/post-recipe-homemade-pizza-dough-steps.pdf",
+						},
+					],
 				},
 				{
 					yaw: 2.20558290427587,
@@ -127,7 +138,7 @@ var APP_DATA = {
 				{
 					yaw: 2.4655333888327764,
 					pitch: 0.5663247914573244,
-					title: "SMALL SQUARE COOL & SERVE",
+					title: "INSULATED SERVING BOWL SET",
 					images: ["https://placehold.it/500x500?text=placeholder"],
 
 					text:
@@ -170,7 +181,7 @@ var APP_DATA = {
 					yaw: -2.2741263168624304,
 					pitch: 0.5519410325766607,
 					images: ["https://placehold.it/500x500?text=placeholder"],
-					title: "WOOD PIZZA PEEL",
+					title: "PIZZA PEEL",
 					text:
 						"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum",
 					subhead: "Subheading",
