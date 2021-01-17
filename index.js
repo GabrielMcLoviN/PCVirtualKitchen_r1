@@ -100,15 +100,15 @@ const scenes = data.scenes.map(function (data) {
 	data.infoHotspots.forEach(function (hotspot) {
 		const element = createInfoHotspotElement(hotspot);
 		scene
-		.hotspotContainer()
-		.createHotspot(
-			element,
-			{ yaw: hotspot.yaw, pitch: hotspot.pitch },
-			{ perspective: { radius: 600, extraTransforms: "translateY(-10px)" } }
+			.hotspotContainer()
+			.createHotspot(
+				element,
+				{ yaw: hotspot.yaw, pitch: hotspot.pitch },
+				{ perspective: { radius: 600, extraTransforms: "translateY(-10px)" } }
 			);
-		});
+	});
 
-		return {
+	return {
 		data: data,
 		scene: scene,
 		view: view,
@@ -150,7 +150,6 @@ scenes.forEach(function (scene) {
 		}
 	});
 });
-
 
 // DOM elements for view controls.
 // const viewUpElement = document.querySelector('#viewUp');
@@ -309,15 +308,56 @@ function createInfoHotspotElement(hotspot) {
 
 	const textWrapper = document.createElement("div");
 	textWrapper.classList.add("product-txt-wrapper");
+
 	const subhead = document.createElement("h2");
 	subhead.classList.add("product-txt-subhead");
 	subhead.innerHTML = hotspot.subhead;
-	const text = document.createElement("p");
+
+	const text = document.createElement("div");
 	text.innerHTML = hotspot.text;
 	text.classList.add("product-txt");
 
+	const recipes = document.createElement("div");
+	recipes.classList.add('recipes')
+
+	const recipesHeader = document.createElement("h2");
+	recipesHeader.classList.add("recipes-header");
+	recipesHeader.textContent = "Recipes to Try";
+	recipes.appendChild(recipesHeader)
+
+	const recipesList = document.createElement("ul")
+	recipesList.classList.add("recipes-list")
+
+
+	if (hotspot.recipes != undefined) {
+		for (let i = 0; i < hotspot.recipes.length; i++) {
+			const recipe_el = document.createElement("li");
+			const recipe_clickwrap = document.createElement("a");
+			recipe_clickwrap.href = hotspot.recipes[i].link;
+
+			const recipe_title = document.createElement("p");
+			recipe_title.innerHTML = hotspot.recipes[i].id;
+
+			const recipe_preview_img = document.createElement("img")
+			recipe_preview_img.src = hotspot.recipes[i].preview_image;
+
+			const recipe_link = document.createElement('a');
+			recipe_link.href = hotspot.recipes[i].link;
+			recipe_link.textContent = "Get Recipe";
+
+			recipe_clickwrap.appendChild(recipe_preview_img);
+			recipe_clickwrap.appendChild(recipe_title);
+			recipe_clickwrap.appendChild(recipe_link);
+
+			recipe_el.appendChild(recipe_clickwrap);
+			recipesList.appendChild(recipe_el);
+		}
+	}
+
+	recipes.appendChild(recipesList)
 	textWrapper.appendChild(subhead);
 	textWrapper.appendChild(text);
+	textWrapper.appendChild(recipes);
 
 	modalLeft.appendChild(textWrapper);
 
@@ -377,7 +417,6 @@ function createInfoHotspotElement(hotspot) {
 	const carouselImgs = modal.querySelector(".carousel-images");
 	const carouselButtons = modal.querySelectorAll(".carousel-nav .carousel-button");
 	const numberOfImages = modal.querySelectorAll(".carousel-images img").length;
-	console.log(numberOfImages)
 	let imageIndex = 1;
 	let translateX = 0;
 
@@ -405,8 +444,6 @@ function createInfoHotspotElement(hotspot) {
 
 	return wrapper;
 }
-
-
 
 function findSceneById(id) {
 	for (const i = 0; i < scenes.length; i++) {
