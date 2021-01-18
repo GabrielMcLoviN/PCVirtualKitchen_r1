@@ -298,12 +298,15 @@ function createInfoHotspotElement(hotspot) {
 	const content = document.createElement("div");
 	content.classList.add("info-hotspot-content");
 
+	const contentColWrapper = document.createElement("div")
+	contentColWrapper.classList.add("col-wrap")
+
 	const modalLeft = document.createElement("div");
 	modalLeft.classList.add("modal-col");
 	modalLeft.classList.add("leftcol");
 
 	const modalRight = document.createElement("div");
-	modalLeft.classList.add("modal-col");
+	modalRight.classList.add("modal-col");
 	modalRight.classList.add("rightcol");
 
 	const textWrapper = document.createElement("div");
@@ -318,43 +321,43 @@ function createInfoHotspotElement(hotspot) {
 	text.classList.add("product-txt");
 
 	const recipes = document.createElement("div");
-	recipes.classList.add('recipes')
+	recipes.classList.add("recipes");
 
 	const recipesHeader = document.createElement("h2");
 	recipesHeader.classList.add("recipes-header");
-	recipesHeader.textContent = "Recipes to Try";
-	recipes.appendChild(recipesHeader)
+	recipesHeader.textContent = "Recipes to Try:";
+	recipes.appendChild(recipesHeader);
 
-	const recipesList = document.createElement("ul")
-	recipesList.classList.add("recipes-list")
-
+	const recipesList = document.createElement("ul");
+	recipesList.classList.add("recipes-list");
 
 	if (hotspot.recipes != undefined) {
 		for (let i = 0; i < hotspot.recipes.length; i++) {
 			const recipe_el = document.createElement("li");
-			const recipe_clickwrap = document.createElement("a");
-			recipe_clickwrap.href = hotspot.recipes[i].link;
 
-			const recipe_title = document.createElement("p");
+			const recipe_preview_img_wrap = document.createElement("div");
+			const recipe_preview_img = document.createElement("img");
+			recipe_preview_img_wrap.classList.add("recipe-preview-img-wrap");
+			recipe_preview_img.src = hotspot.recipes[i].preview_image;
+			recipe_preview_img.classList.add("recipe-preview-img");
+			recipe_preview_img_wrap.appendChild(recipe_preview_img);
+
+			const recipe_title = document.createElement("a");
 			recipe_title.innerHTML = hotspot.recipes[i].id;
 
-			const recipe_preview_img = document.createElement("img")
-			recipe_preview_img.src = hotspot.recipes[i].preview_image;
+			recipe_el.appendChild(recipe_preview_img_wrap);
+			recipe_el.appendChild(recipe_title);
+			recipe_el.setAttribute("onclick", `location.href='${hotspot.recipes[i].link}'`)
 
-			const recipe_link = document.createElement('a');
-			recipe_link.href = hotspot.recipes[i].link;
-			recipe_link.textContent = "Get Recipe";
-
-			recipe_clickwrap.appendChild(recipe_preview_img);
-			recipe_clickwrap.appendChild(recipe_title);
-			recipe_clickwrap.appendChild(recipe_link);
-
-			recipe_el.appendChild(recipe_clickwrap);
 			recipesList.appendChild(recipe_el);
 		}
+	} else if (hotspot.related_content != undefined) {
+		recipesHeader.textContent = "Related Content:";
+	} else {
+		recipesHeader.textContent = "";
 	}
 
-	recipes.appendChild(recipesList)
+	recipes.appendChild(recipesList);
 	textWrapper.appendChild(subhead);
 	textWrapper.appendChild(text);
 	textWrapper.appendChild(recipes);
@@ -372,11 +375,13 @@ function createInfoHotspotElement(hotspot) {
 	carouselNav.classList.add("carousel-nav");
 
 	//CarouselNav Buttons
-	const carouselNext = document.createElement("button");
+	const carouselNext = document.createElement("img");
+	carouselNext.src = "./assets/1x/ic_chevron_right_48px.png"
 	carouselNext.classList.add("carousel-button");
 	carouselNext.classList.add("next");
 	carouselNext.setAttribute("id", "next");
-	const carouselPrev = document.createElement("button");
+	const carouselPrev = document.createElement("img");
+	carouselPrev.src = "./assets/1x/ic_chevron_left_48px-2.png"
 	carouselPrev.classList.add("carousel-button");
 	carouselPrev.classList.add("previous");
 	carouselPrev.setAttribute("id", "previous");
@@ -395,9 +400,9 @@ function createInfoHotspotElement(hotspot) {
 
 	modalRight.appendChild(carousel);
 
-	content.appendChild(modalLeft);
-	content.appendChild(modalRight);
-
+	contentColWrapper.appendChild(modalLeft);
+	contentColWrapper.appendChild(modalRight);
+	content.appendChild(contentColWrapper);
 	// Place header and text into wrapper element.
 	wrapper.appendChild(header);
 	wrapper.appendChild(content);
@@ -422,15 +427,15 @@ function createInfoHotspotElement(hotspot) {
 
 	carouselButtons.forEach((button) => {
 		button.addEventListener("click", (event) => {
-			if (event.target.id === "next") {
+			if (event.target.id !== "next") {
 				if (imageIndex !== 1) {
 					imageIndex--;
-					translateX += 500;
+					translateX += 550;
 				}
 			} else {
 				if (imageIndex !== numberOfImages) {
 					imageIndex++;
-					translateX -= 500;
+					translateX -= 550;
 				}
 			}
 
