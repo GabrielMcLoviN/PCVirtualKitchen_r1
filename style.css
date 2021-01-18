@@ -810,8 +810,9 @@ body.single-scene #sceneListToggle {
   align-items: center;
   overflow: hidden;
   position: relative;
-  max-width: 500px;
-  height: auto;
+  width: 500px;
+  height: 500px;
+  object-fit: cover;
 }
 
 .carousel .carousel-images {
@@ -819,6 +820,12 @@ body.single-scene #sceneListToggle {
   transform: translateX(0);
   transition: transform 0.25s;
 }
+
+.carousel .carousel-images .product-image {
+  width: 500px;
+  height: auto;
+}
+
 
 .mobile .carousel .carousel-images {
   width: 100%;
