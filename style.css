@@ -216,9 +216,9 @@ body.fullscreen-enabled #fullscreenToggle {
   position: absolute;
   top: 5px;
   right: 5px;
-  width: 40px;
-  height: 40px;
-  filter: invert(0.8);
+  width: 45px;
+  height: 45px;
+  filter: invert(1);
   margin: 2px;
 }
 
@@ -246,7 +246,7 @@ body.fullscreen-enabled #fullscreenToggle {
 #sceneListToggle {
   position: absolute;
   top: 0;
-  left: 5px;
+  left: 0;
   width: 60px;
   height: 60px;
   padding: 5px;
@@ -267,13 +267,17 @@ body.fullscreen-enabled #fullscreenToggle {
 }
 
 #sceneListToggle .icon {
-  margin: 2px;
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 2.5px;
+  left: 5px;
   width: 50px;
   height: 50px;
-  filter: invert(0.85);
+  filter: invert(1);
+}
+
+.mobile #sceneListToggle .icon {
+  top: 10px;
+  left: 10px;
 }
 
 #sceneListToggle .icon.on {
@@ -724,7 +728,7 @@ body.single-scene #sceneListToggle {
   display: inline-block;
   vertical-align: middle;
   font-family: "Antonio";
-  font-size: 52px;
+  font-size: 64px;
   -moz-user-select: text;
   -webkit-user-select: text;
   -ms-user-select: text;
@@ -757,12 +761,10 @@ body.single-scene #sceneListToggle {
   justify-content: center;
   flex-direction: row;
   position: absolute;
-  max-width: 100%;
   top: 150px;
   bottom: 50px;
   left: 50px;
   right: 50px;
-  padding: 2rem 10rem;
   background-color: var(--secondary-white);
   color: var(--secondary-blk);
   overflow-y: auto;
@@ -787,22 +789,109 @@ body.single-scene #sceneListToggle {
   flex-direction: column-reverse;
 }
 
-.info-hotspot-content .product-txt-wrapper .product-txt-subhead {
+.col-wrap {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  max-width: 70vw;
+}
+
+.product-txt-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  margin: 0 4rem 0 0;
+}
+
+.product-txt-wrapper .product-txt-subhead {
+  justify-self: flex-end;
   font-weight: 500;
-  font-size: 2rem;
+  font-size: 1.5rem;
+  width: 100%;
   line-height: 2rem;
   border-bottom: 1px solid var(--accent-red);
   margin-bottom: 1rem;
-  padding-bottom: 10px;
-  width: 400px;
+  padding-bottom: 8px;
 }
 
-.modal-col {
+.product-txt {
+  font-weight: 300;
+}
+
+.recipes {
   display: flex;
   flex-direction: column;
-  margin: 2rem;
-  height: 500px;
-  border: 1px solid black;
+  padding-top: 1rem;
+}
+
+.recipes-header {
+  font-style: italic;
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+  display: inline-block;
+}
+
+.recipes-list {
+  display: flex;
+  height: 100%;
+  flex-direction: row;
+}
+
+.recipes-list ul {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  flex-direction: row;
+}
+
+.recipes-list li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 0 2rem 0 1rem;
+  width: 100%;
+  height: 100%;
+  transition: all 0.25s ease;
+}
+
+.recipes-list li:hover {
+  transform: scale(1.04);
+  cursor: pointer;
+}
+
+.recipe-preview-img-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding-bottom: .4rem;
+}
+
+.recipe-preview-img {
+  width: 140px;
+  height: auto;
+  transition: all 0.25s ease;
+}
+
+.recipes-list li:hover .recipe-preview-img {
+  -webkit-box-shadow: -5px 5px 6px -1px rgba(0, 0, 0, 0.4);
+  box-shadow: -5px 5px 6px -1px rgba(0, 0, 0, 0.4);
+}
+
+.recipes-list li:hover a {
+  transform: scale(1.04);
+  font-weight: bold;
+}
+
+.recipes-list li a {
+  font-size: .7rem;
+  font-weight: 300;
+  font-style: italic;
+  line-height: 1rem;
+  width: 100px;
+  transition: all 0.25s ease;
 }
 
 .carousel {
@@ -810,9 +899,11 @@ body.single-scene #sceneListToggle {
   align-items: center;
   overflow: hidden;
   position: relative;
-  width: 500px;
-  height: 500px;
+  width: 550px;
+  height: 550px;
   object-fit: cover;
+  -webkit-box-shadow: -5px 5px 6px -1px rgba(0, 0, 0, 0.4);
+  box-shadow: -5px 5px 6px -1px rgba(0, 0, 0, 0.4);
 }
 
 .carousel .carousel-images {
@@ -822,47 +913,51 @@ body.single-scene #sceneListToggle {
 }
 
 .carousel .carousel-images .product-image {
-  width: 500px;
+  width: 550px;
   height: auto;
 }
-
 
 .mobile .carousel .carousel-images {
   width: 100%;
 }
 
-
 .carousel-nav {
-  width: 500px;
-  height: 50px;
+  width: 100%;
   display: flex;
+  flex-direction: row-reverse;
   justify-content: space-between;
   padding: 0 10px;
   position: absolute;
 }
 
 .carousel-nav .carousel-button {
-  background: var(--accent-blue);
-  border: 0;
+  background-color: var(--accent-gray);
   border-radius: 50%;
-  color: white;
   cursor: pointer;
   font-size: 1.5rem;
   font-weight: bold;
   height: 3rem;
-  opacity: 0.25;
-  transition: opacity 0.25s;
+  opacity: .75;
+  transition: all 0.25s;
   width: 3rem;
   z-index: 1;
 }
 
-.carousel-button .prev {
-  left: 50px;
+.carousel-nav .carousel-button:hover {
+  opacity: 1;
 }
 
-.carousel-button .next {
-  right: 50px;
-}
+/* #footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100vw;
+  font-size: 2rem;
+  padding: 1rem 2rem;
+} */
 
 /* View control buttons */
 

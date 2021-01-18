@@ -280,20 +280,20 @@ var APP_DATA = {
 					text:
 						"<p>The fun-sized Small Square Cool & Serve is perfect for parties, picnics, snacks, lunch on the go, and road trips. The exclusive gel insert (which features a handy finger slot for easy removal) keeps veggies, fruit, cheese, deli meat, dip, and other snacks cool for 4–6 hours—even outdoors!</p><br><p>It comes with a clear insert divided into two compartments with a 1-cup dip well in the center and has solid walls that keep food from mixing. The lid snaps onto the base so it’s easy to transport, and it even fits neatly underneath while in use.</p>",
 				},
-				{
-					yaw: 2.4655333888327764,
-					pitch: 0.5663247914573244,
-					title: "INSULATED SERVING BOWL SET",
-					images: [
-						"./products/insulated_01.jpg",
-						"./products/insulated_02.jpg",
-						"./products/insulated_03.jpg",
-						"./products/insulated_04-@lazynolaketo.jpg",
-					],
-					subhead: "Insulated Serving Bowl Set",
-					text:
-						"<p>For holidays, potlucks, or any big meal, it can feel nearly impossible to keep everything warm. With this insulated serving bowl set, you can keep foods warm up to 2 hours.</p><br><p>The bowls’ double-walled vacuum insulation keeps food hot, prevents sweating, and has a stay-cool exterior. Works with cold foods, too!</p><br><p>Each bowl comes with a clear plastic lid that’s double-walled and lets you see what's inside. The lid also hooks onto the side of the bowl, making it easier to dish out and serve food.</p>",
-				},
+				// {
+				// 	yaw: 2.4655333888327764,
+				// 	pitch: 0.5663247914573244,
+				// 	title: "INSULATED SERVING BOWL SET",
+				// 	images: [
+				// 		"./products/insulated_01.jpg",
+				// 		"./products/insulated_02.jpg",
+				// 		"./products/insulated_03.jpg",
+				// 		"./products/insulated_04-@lazynolaketo.jpg",
+				// 	],
+				// 	subhead: "Insulated Serving Bowl Set",
+				// 	text:
+				// 		"<p>For holidays, potlucks, or any big meal, it can feel nearly impossible to keep everything warm. With this insulated serving bowl set, you can keep foods warm up to 2 hours.</p><br><p>The bowls’ double-walled vacuum insulation keeps food hot, prevents sweating, and has a stay-cool exterior. Works with cold foods, too!</p><br><p>Each bowl comes with a clear plastic lid that’s double-walled and lets you see what's inside. The lid also hooks onto the side of the bowl, making it easier to dish out and serve food.</p>",
+				// },
 			],
 		},
 		{
