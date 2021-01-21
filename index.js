@@ -302,11 +302,9 @@ function createInfoHotspotElement(hotspot) {
 	contentColWrapper.classList.add("col-wrap")
 
 	const modalLeft = document.createElement("div");
-	modalLeft.classList.add("modal-col");
 	modalLeft.classList.add("leftcol");
 
 	const modalRight = document.createElement("div");
-	modalRight.classList.add("modal-col");
 	modalRight.classList.add("rightcol");
 
 	const textWrapper = document.createElement("div");
@@ -423,6 +421,7 @@ function createInfoHotspotElement(hotspot) {
 	const carouselButtons = modal.querySelectorAll(".carousel-nav .carousel-button");
 	const numberOfImages = modal.querySelectorAll(".carousel-images img").length;
 	let imageIndex = 1;
+	let percentage = 100 / numberOfImages;
 	let translateX = 0;
 
 	carouselButtons.forEach((button) => {
@@ -430,16 +429,16 @@ function createInfoHotspotElement(hotspot) {
 			if (event.target.id !== "next") {
 				if (imageIndex !== 1) {
 					imageIndex--;
-					translateX += 550;
+					translateX += percentage;
 				}
 			} else {
 				if (imageIndex !== numberOfImages) {
 					imageIndex++;
-					translateX -= 550;
+					translateX -= percentage;
 				}
 			}
 
-			carouselImgs.style.transform = `translateX(${translateX}px)`;
+			carouselImgs.style.transform = `translateX(${translateX}%)`;
 		});
 	});
 
