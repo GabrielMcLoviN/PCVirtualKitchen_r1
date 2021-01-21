@@ -732,6 +732,11 @@ body.single-scene #sceneListToggle {
   user-select: text;
 }
 
+.mobile .info-hotspot-modal .info-hotspot-title {
+  font-size: 32px;
+  line-height: 2.4rem;
+}
+
 .info-hotspot-modal .info-hotspot-close-wrapper {
   position: absolute;
   top: 0;
