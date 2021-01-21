@@ -35,12 +35,18 @@ var APP_DATA = {
 					pitch: 0.534560200015882,
 					title: '12" STAINLESS STEEL NONSTICK SKILLET',
 					images: [
-						"./products/nonstick_01.jpg",
-						"./products/nonstick_02.jpg",
-						"./products/nonstick_03.jpg",
-						"./products/nonstick_04-@prettyfocusedcourse.jpg",
-						"./products/nonstick_05-@jessywhitenton.jpg",
-						"./products/nonstick_06-@whatslindacooking.jpg",
+						"./modals/nonstick/01.jpg",
+						"./modals/nonstick/02.jpg",
+						"./modals/nonstick/03.jpg",
+						"./modals/nonstick/04.jpg",
+						"./modals/nonstick/05.jpg",
+						"./modals/nonstick/06.jpg",
+						"./modals/nonstick/07.jpg",
+						"./modals/nonstick/10.jpg",
+						"./modals/nonstick/08.jpg",
+						"./modals/nonstick/09.jpg",
+						"./modals/nonstick/11.jpg",
+						"./modals/nonstick/12.jpg",
 					],
 					subhead: '12" Stainless Steel Nonstick Skillet',
 					text:
@@ -48,18 +54,24 @@ var APP_DATA = {
 					recipes: [
 						{
 							id: "Chicken Sausage & Spinach Ravioli",
-							preview_image: "./recipes/recipe_imageLinks/pizza-dough.jpg",
-							link: "",
+							preview_image:
+								"./modals/nonstick/Recipes/post-recipe-chicken-sausage-spinach-ravioli-usca.jpg",
+							link:
+								"./modals/nonstick/Recipes/post-recipe-chicken-sausage-spinach-ravioli-steps.pdf",
 						},
 						{
 							id: "Egg Roll in a Bowl",
-							preview_image: "./recipes/recipe_imageLinks/pizza-dough.jpg",
-							link: "",
+							preview_image:
+								"./modals/nonstick/Recipes/post-recipe-egg-roll-in-a-bowl.jpg",
+							link:
+								"./modals/nonstick/Recipes/post-recipe-egg-roll-in-a-bowl-steps-usca.pdf",
 						},
 						{
 							id: "Roasted Chicken & Asparagus",
-							preview_image: "./recipes/recipe_imageLinks/pizza-dough.jpg",
-							link: "",
+							preview_image:
+								"./modals/nonstick/Recipes/post-recipe-roasted-chicken-asparagus-usca.jpg",
+							link:
+								"./modals/nonstick/Recipes/post-recipe-roasted-chicken-asparagus-steps-usca.pdf",
 						},
 					],
 				},
@@ -68,31 +80,32 @@ var APP_DATA = {
 					pitch: 0.44039175033335454,
 					title: "6-QT. ENAMELED DUTCH OVEN",
 					images: [
-						"./products/dutchoven_01.jpg",
-						"./products/dutchoven_02.jpg",
-						"./products/dutchoven_03-@muffinsandmugs.jpg",
-						"./products/dutchoven_04.jpg",
-						"./products/dutchoven_05.jpg",
-						"./products/dutchoven_06.jpg",
+						"./modals/dutch_oven/dutchoven-01.jpg",
+						"./modals/dutch_oven/dutchoven-02.jpg",
+						"./modals/dutch_oven/dutchoven-03.jpg",
+						"./modals/dutch_oven/dutchoven-04.jpg",
+						"./modals/dutch_oven/05.jpg",
+						"./modals/dutch_oven/06.jpg",
+						"./modals/dutch_oven/07.jpg",
 					],
 					subhead: "6-qt. Enameled Dutch Oven",
 					text:
 						"<p>Enameled cast iron is the kind of cookware that will become a fixture at every special meal you make—and that includes weeknight meals. This Dutch oven is beautiful so it’s ready to go directly from your stove (including induction) or oven to your table. You’ll reach for it again and again because it’s low maintenance and versatile.</p><br><p>The 6-qt. (5.7-L) Dutch oven has a light-colored enameled interior, which means you can start using it right away—no seasoning required—and it lets you easily see food browning so you can avoid scorching it. Cast iron’s excellent heat retention means that food stays hot and delicious even if not everyone makes it to the table as soon as dinner’s ready.</p><br><p>The inside of the lid is covered with bumps that redirect the condensation in the pot to drip back onto the food, making it a self-basting pot. This makes your food juicy, tender, and more flavorful.</p>",
 					recipes: [
 						{
-							id: "01",
-							preview_image: "./recipes/recipe_imageLinks/pizza-dough.jpg",
-							link: "",
+							id: "Baked Orzo",
+							preview_image: "./modals/dutch_oven/Recipes/post-recipe-baked-orzo.jpg",
+							link: "./modals/dutch_oven/Recipes/post-recipe-baked-orzo-steps.pdf",
 						},
 						{
-							id: "02",
-							preview_image: "./recipes/recipe_imageLinks/pizza-dough.jpg",
-							link: "",
+							id: "Baked Ziti with Sausage",
+							preview_image: "./modals/dutch_oven/Recipes/post-recipe-baked-ziti-with-sausage.jpg",
+							link: "./modals/dutch_oven/Recipes/post-recipe-baked-ziti-with-sausage-steps.pdf",
 						},
 						{
-							id: "03",
-							preview_image: "./recipes/recipe_imageLinks/pizza-dough.jpg",
-							link: "",
+							id: "Dutch Oven Bread",
+							preview_image: "./modals/dutch_oven/Recipes/post-recipe-dutch-oven-bread.jpg",
+							link: "./modals/dutch_oven/Recipes/post-recipe-dutch-oven-bread-steps.pdf",
 						},
 					],
 				},
@@ -101,10 +114,11 @@ var APP_DATA = {
 					pitch: 0.5346585714994525,
 					title: '12" CAST IRON SKILLET',
 					images: [
-						"./products/castiron_01.jpg",
-						"./products/castiron_02.jpg",
-						"./products/castiron_03.jpg",
-						"./products/castiron_04-@makeandheart.jpg",
+						"./modals/cast_iron/01.jpg",
+						"./modals/cast_iron/02.jpg",
+						"./modals/cast_iron/03.jpg",
+						"./modals/cast_iron/04.jpg",
+						"./modals/cast_iron/05.jpg",
 					],
 					subhead: '12" Cast Iron Skillet',
 					text:
@@ -112,18 +126,18 @@ var APP_DATA = {
 					recipes: [
 						{
 							id: "Stovetop Mac & Cheese",
-							preview_image: "./recipes/recipe_imageLinks/pizza-dough.jpg",
-							link: "./recipes/post-recipe-homemade-pizza-dough-steps.pdf",
+							preview_image: "./modals/cast_iron/Recipes/post-recipe-mac-n-cheese-usca.jpg",
+							link: "./modals/cast_iron/Recipes/post-recipe-mac-n-cheese-steps-usca.pdf",
 						},
 						{
 							id: "Chili Lime Pork",
-							preview_image: "./recipes/recipe_imageLinks/pizza-dough.jpg",
-							link: "./recipes/post-recipe-homemade-pizza-dough-steps.pdf",
+							preview_image: "./modals/cast_iron/Recipes/post-recipe-chili-lime-pork-usca.jpg",
+							link: "./modals/cast_iron/Recipes/post-recipe-chili-lime-pork-steps-usca.pdf",
 						},
 						{
 							id: "Blackened Chicken",
-							preview_image: "./recipes/recipe_imageLinks/pizza-dough.jpg",
-							link: "./recipes/post-recipe-homemade-pizza-dough-steps.pdf",
+							preview_image: "./modals/cast_iron/Recipes/post-recipe-blackened-chicken.jpg",
+							link: "./modals/cast_iron/Recipes/post-recipe-blackened-chicken-steps.pdf",
 						},
 					],
 				},
@@ -132,12 +146,14 @@ var APP_DATA = {
 					pitch: 0.3000919208252064,
 					title: "DELUXE AIR FRYER",
 					images: [
-						"./products/fryer_01.jpg",
-						"./products/fryer_02-@jennlott.jpg",
-						"./products/fryer_03-@lazynolaketo.jpg",
-						"./products/fryer_04.jpg",
-						"./products/fryer_05.jpg",
-						"./products/fryer_06.jpg",
+						"./modals/fryer/01.jpg",
+						"./modals/fryer/02.jpg",
+						"./modals/fryer/03.jpg",
+						"./modals/fryer/04.jpg",
+						"./modals/fryer/05.jpg",
+						"./modals/fryer/06.jpg",
+						"./modals/fryer/07.jpg",
+						"./modals/fryer/08.jpg",
 					],
 					subhead: "Deluxe Air Fryer",
 					text:
@@ -145,18 +161,18 @@ var APP_DATA = {
 					recipes: [
 						{
 							id: "Homemade Beef Jerky",
-							preview_image: "./recipes/recipe_imageLinks/pizza-dough.jpg",
-							link: "./recipes/post-recipe-homemade-pizza-dough-steps.pdf",
+							preview_image: "./modals/fryer/Recipes/post-recipe-homemade-beef-jerky-usca.jpg",
+							link: "./modals/fryer/Recipes/post-recipe-homemade-beef-jerky-steps-usca.pdf",
 						},
 						{
 							id: "Kebab Combinations",
-							preview_image: "./recipes/recipe_imageLinks/pizza-dough.jpg",
-							link: "./recipes/post-recipe-homemade-pizza-dough-steps.pdf",
+							preview_image: "./modals/fryer/Recipes/post-recipe-kebab-combinations.jpg",
+							link: "./modals/fryer/Recipes/post-recipe-kebab-combinations-steps.pdf",
 						},
 						{
 							id: "Potato Tacos",
-							preview_image: "./recipes/recipe_imageLinks/pizza-dough.jpg",
-							link: "./recipes/post-recipe-homemade-pizza-dough-steps.pdf",
+							preview_image: "./modals/fryer/Recipes/post-recipe-potato-tacos.jpg",
+							link: "./modals/fryer/Recipes/post-recipe-potato-tacos-steps.pdf",
 						},
 					],
 				},
@@ -165,9 +181,13 @@ var APP_DATA = {
 					pitch: 0.5924236607609039,
 					title: "PIZZA PEEL",
 					images: [
-						"./products/pizzapeel_01.jpg",
-						"./products/pizzapeel_02-@tictacseaux_in_the_kitchen.jpg",
-						"./products/pizzapeel_03-@MidwestLifeandStyle.jpg",
+						"./modals/pizza/01.jpg",
+						"./modals/pizza/02.jpg",
+						"./modals/pizza/03.jpg",
+						"./modals/pizza/04.jpg",
+						"./modals/pizza/05.jpg",
+						"./modals/pizza/06.jpg",
+						"./modals/pizza/07.jpg",
 					],
 					subtitle: "PIZZA PEEL",
 					subhead: "Pizza Peel",
@@ -176,13 +196,8 @@ var APP_DATA = {
 					recipes: [
 						{
 							id: "Homemade Pizza Dough",
-							preview_image: "./recipes/recipe_imageLinks/pizza-dough.jpg",
-							link: "./recipes/post-recipe-homemade-pizza-dough-steps.pdf",
-						},
-						{
-							id: "Homemade Pizza Dough",
-							preview_image: "./recipes/recipe_imageLinks/pizza-dough.jpg",
-							link: "./recipes/post-recipe-homemade-pizza-dough-steps.pdf",
+							preview_image: "./modals/pizza/Recipes/post-recipe-homemade-pizza-dough.jpg",
+							link: "./modals/pizza/Recipes/post-recipe-homemade-pizza-dough-steps.pdf",
 						},
 					],
 				},
@@ -191,10 +206,10 @@ var APP_DATA = {
 					pitch: 0.41308350229582835,
 					title: "WOOD SALAD BOWL & SERVERS SET",
 					images: [
-						"./products/salad_01.jpg",
-						"./products/salad_02.jpg",
-						"./products/salad_03-@thecraftofcooking.jpg",
-						"./products/salad_04-@theparsleypotato.jpg",
+						"./modals/salad/01.jpg",
+						"./modals/salad/02.jpg",
+						"./modals/salad/03.jpg",
+						"./modals/salad/04.jpg",
 					],
 					subhead: "Wood Salad Bowl & Servers Set",
 					text:
@@ -202,18 +217,18 @@ var APP_DATA = {
 					recipes: [
 						{
 							id: "Classic Cobb Salad",
-							preview_image: "./recipes/recipe_imageLinks/pizza-dough.jpg",
-							link: "",
+							preview_image: "./modals/salad/Recipes/post-recipe-classic-cobb-salad.jpg",
+							link: "./modals/salad/Recipes/flyer-recipe-classic-cobb-salad-02-usca.pdf",
 						},
 						{
 							id: "Superfood Salad",
-							preview_image: "./recipes/recipe_imageLinks/pizza-dough.jpg",
-							link: "",
+							preview_image: "./modals/salad/Recipes/post-recipe-superfood-salad-usca.jpg",
+							link: "./modals/salad/Recipes/flyer-recipe-superfood-salad-usca.pdf",
 						},
 						{
 							id: "Southwestern Salad",
-							preview_image: "./recipes/recipe_imageLinks/pizza-dough.jpg",
-							link: "",
+							preview_image: "./modals/salad/Recipes/post-recipe-southwestern-salad-usca.jpg",
+							link: "./modals/salad/Recipes/post-recipe-southwestern-salad-steps-usca.pdf",
 						},
 					],
 				},
@@ -222,9 +237,10 @@ var APP_DATA = {
 					pitch: 0.5197358315170817,
 					title: "PREMIUM CHARCUTERIE & CHEESE BOARD SET",
 					images: [
-						"./products/charc_01.jpg",
-						"./products/charc_02.jpg",
-						"./products/charc_03.jpg",
+						"./modals/charc/01.jpg",
+						"./modals/charc/02.jpg",
+						"./modals/charc/03.jpg",
+						"./modals/charc/04.jpg",
 					],
 					subhead: "Premium Charcuterie & Cheese Board Set",
 					text:
@@ -232,7 +248,7 @@ var APP_DATA = {
 					related_content: [
 						{
 							id: "How to Build a Charcuterie Board",
-							preview_image: "./recipes/recipe_imageLinks/pizza-dough.jpg",
+							preview_image: "",
 							link: "",
 						},
 					],
@@ -242,9 +258,11 @@ var APP_DATA = {
 					pitch: 0.6610016937252077,
 					title: "MANUAL FOOD PROCESSOR",
 					images: [
-						"./products/foodprocessor_01.jpg",
-						"./products/foodprocessor_02.jpg",
-						"./products/foodprocessor_03-@erica-ekman.jpg",
+						"./modals/foodprocessor/01.jpg",
+						"./modals/foodprocessor/02.jpg",
+						"./modals/foodprocessor/03.jpg",
+						"./modals/foodprocessor/04.jpg",
+						"./modals/foodprocessor/05.jpg",
 					],
 					subhead: "Manual Food Processor",
 					text:
@@ -252,18 +270,18 @@ var APP_DATA = {
 					recipes: [
 						{
 							id: "Pico De Gallo",
-							preview_image: "./recipes/recipe_imageLinks/pizza-dough.jpg",
-							link: "",
+							preview_image: "./modals/foodprocessor/RECIPES/post-recipe-pico-de-gallo-usca.jpg",
+							link: "./modals/foodprocessor/RECIPES/post-recipe-pico-de-gallo-steps-usca.pdf",
 						},
 						{
 							id: "Cucumber-Dill Guacamole",
-							preview_image: "./recipes/recipe_imageLinks/pizza-dough.jpg",
-							link: "",
+							preview_image: "./modals/foodprocessor/RECIPES/post-recipe-cucumber-dill-guacamole-usca.jpg",
+							link: "./modals/foodprocessor/RECIPES/post-recipe-cucumber-dill-guacamole-steps-usca.pdf",
 						},
 						{
 							id: "Cranberry Salsa",
-							preview_image: "./recipes/recipe_imageLinks/pizza-dough.jpg",
-							link: "",
+							preview_image: "./modals/foodprocessor/RECIPES/post-recipe-cranberry-salsa-usca.jpg",
+							link: "./modals/foodprocessor/RECIPES/post-recipe-cranberry-salsa-steps-usca.pdf",
 						},
 					],
 				},
@@ -272,9 +290,11 @@ var APP_DATA = {
 					pitch: 0.5663247914573244,
 					title: "SMALL SQUARE COOL & SERVE",
 					images: [
-						"./products/serve_01.jpg",
-						"./products/serve_02.jpg",
-						"./products/serve_03-@_laura_prietto_.jpg",
+						"./modals/square/01.jpg",
+						"./modals/square/02.jpg",
+						"./modals/square/03.jpg",
+						"./modals/square/04.jpg",
+						"./modals/square/05.jpg",
 					],
 					subhead: "Small Square Cool & Serve",
 					text:
