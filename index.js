@@ -91,10 +91,10 @@ const scenes = data.scenes.map(function (data) {
 	});
 
 	// Create link hotspots.
-	// data.linkHotspots.forEach(function(hotspot) {
-	//   const element = createLinkHotspotElement(hotspot);
-	//   scene.hotspotContainer().createHotspot(element, { yaw: hotspot.yaw, pitch: hotspot.pitch });
-	// });
+	data.linkHotspots.forEach(function(hotspot) {
+	  const element = createLinkHotspotElement(hotspot);
+	  scene.hotspotContainer().createHotspot(element, { yaw: hotspot.yaw, pitch: hotspot.pitch });
+	});
 
 	// Create info hotspots.
 	data.infoHotspots.forEach(function (hotspot) {
@@ -104,7 +104,7 @@ const scenes = data.scenes.map(function (data) {
 			.createHotspot(
 				element,
 				{ yaw: hotspot.yaw, pitch: hotspot.pitch },
-				{ perspective: { radius: 600, extraTransforms: "translateY(-10px)" } }
+				{ perspective: { radius: 500, extraTransforms: "translateY(-10px)" } }
 			);
 	});
 
@@ -140,16 +140,16 @@ sceneListToggleElement.addEventListener("click", toggleSceneList);
 // }
 
 // Set handler for scene switch.
-scenes.forEach(function (scene) {
-	const el = document.querySelector('#sceneList .scene[data-id="' + scene.data.id + '"]');
-	el.addEventListener("click", function () {
-		switchScene(scene);
-		// On mobile, hide scene list after selecting a scene.
-		if (document.body.classList.contains("mobile")) {
-			hideSceneList();
-		}
-	});
-});
+// scenes.forEach(function (scene) {
+// 	const el = document.querySelector('#sceneList .scene[data-id="' + scene.data.id + '"]');
+// 	el.addEventListener("click", function () {
+// 		switchScene(scene);
+// 		// On mobile, hide scene list after selecting a scene.
+// 		if (document.body.classList.contains("mobile")) {
+// 			hideSceneList();
+// 		}
+// 	});
+// });
 
 // DOM elements for view controls.
 // const viewUpElement = document.querySelector('#viewUp');
@@ -208,45 +208,45 @@ function toggleSceneList() {
 	sceneListToggleElement.classList.toggle("enabled");
 }
 
-// function createLinkHotspotElement(hotspot) {
+function createLinkHotspotElement(hotspot) {
 
-//   // Create wrapper element to hold icon and tooltip.
-//   const wrapper = document.createElement('div');
-//   wrapper.classList.add('hotspot');
-//   wrapper.classList.add('link-hotspot');
+  // Create wrapper element to hold icon and tooltip.
+  const wrapper = document.createElement('div');
+  wrapper.classList.add('hotspot');
+  wrapper.classList.add('link-hotspot');
 
-//   // Create image element.
-//   const icon = document.createElement('img');
-//   icon.src = 'img/link.png';
-//   icon.classList.add('link-hotspot-icon');
+  // Create image element.
+  const icon = document.createElement('img');
+  icon.src = 'img/link.png';
+  icon.classList.add('link-hotspot-icon');
 
-//   // Set rotation transform.
-//   const transformProperties = [ '-ms-transform', '-webkit-transform', 'transform' ];
-//   for (const i = 0; i < transformProperties.length; i++) {
-//     const property = transformProperties[i];
-//     icon.style[property] = 'rotate(' + hotspot.rotation + 'rad)';
-//   }
+  // Set rotation transform.
+  const transformProperties = [ '-ms-transform', '-webkit-transform', 'transform' ];
+  for (let i = 0; i < transformProperties.length; i++) {
+    const property = transformProperties[i];
+    icon.style[property] = 'rotate(' + hotspot.rotation + 'rad)';
+  }
 
-//   // Add click event handler.
-//   wrapper.addEventListener('click', function() {
-//     switchScene(findSceneById(hotspot.target));
-//   });
+  // Add click event handler.
+  wrapper.addEventListener('click', function() {
+    switchScene(findSceneById(hotspot.target));
+  });
 
-//   // Prevent touch and scroll events from reaching the parent element.
-//   // This prevents the view control logic from interfering with the hotspot.
-//   stopTouchAndScrollEventPropagation(wrapper);
+  // Prevent touch and scroll events from reaching the parent element.
+  // This prevents the view control logic from interfering with the hotspot.
+  // stopTouchAndScrollEventPropagation(wrapper);
 
-//   // Create tooltip element.
-//   const tooltip = document.createElement('div');
-//   tooltip.classList.add('hotspot-tooltip');
-//   tooltip.classList.add('link-hotspot-tooltip');
-//   tooltip.innerHTML = findSceneDataById(hotspot.target).name;
+  // Create tooltip element.
+  const tooltip = document.createElement('div');
+  tooltip.classList.add('hotspot-tooltip');
+  tooltip.classList.add('link-hotspot-tooltip');
+  tooltip.innerHTML = findSceneDataById(hotspot.target).name;
 
-//   wrapper.appendChild(icon);
-//   wrapper.appendChild(tooltip);
+  wrapper.appendChild(icon);
+  wrapper.appendChild(tooltip);
 
-//   return wrapper;
-// }
+  return wrapper;
+}
 
 // data.scenes.forEach(sceneVal => {
 // 	console.log(Object.values(sceneVal.infoHotspots.forEach(section => {
@@ -450,7 +450,7 @@ function createInfoHotspotElement(hotspot) {
 }
 
 function findSceneById(id) {
-	for (const i = 0; i < scenes.length; i++) {
+	for (let i = 0; i < scenes.length; i++) {
 		if (scenes[i].data.id === id) {
 			return scenes[i];
 		}
@@ -459,7 +459,7 @@ function findSceneById(id) {
 }
 
 function findSceneDataById(id) {
-	for (const i = 0; i < data.scenes.length; i++) {
+	for (let i = 0; i < data.scenes.length; i++) {
 		if (data.scenes[i].id === id) {
 			return data.scenes[i];
 		}
