@@ -486,8 +486,8 @@ var APP_DATA = {
 					],
 				},
 				{
-					yaw: 0.47680002139396116,
-					pitch: 0.3976681843137335,
+					yaw: 0.57680002139396116,
+					pitch: 0.2976681843137335,
 					title: "SMALL SQUARE COOL & SERVE",
 					images: [
 						"./modals/square/01.jpg",
