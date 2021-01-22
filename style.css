@@ -79,6 +79,7 @@
 
 :root {
   --primary-blue: rgb(42, 127, 140);
+  --primary-blue-opaque: rgb(42, 127, 140, 0.5);
   --secondary-blk: rgb(41, 40, 41);
   --secondary-blk-opaque: rgba(41, 40, 41, 0.5);
   --secondary-white: rgb(245, 245, 245);
@@ -86,7 +87,9 @@
   --accent-blue: rgb(0, 173, 174);
   --accent-blue-opaque: rgba(0, 173, 174, 0.5);
   --accent-red: rgb(233, 115, 85);
+  --accent-red-opaque: rgb(233, 115, 85, 0.85);
   --accent-green: rgb(177, 198, 118);
+  --accent-green-opaque: rgb(177, 198, 118, 0.8);
   --accent-darkgray: rgb(109, 110, 113);
   --accent-darkgray-opaque: rgba(109, 110, 113, 0.5);
   --accent-gray: rgb(167, 169, 172);
@@ -422,10 +425,10 @@ body.single-scene #sceneListToggle {
 
   border-radius: 5px;
 
-  background-color: var(--secondary-white);
-  background-color: var(--secondary-white-opaque);
+  background-color: var(--accent-red);
+  background-color: var(--accent-red-opaque);
 
-  color: #fff;
+  color: var(--secondary-white);
 
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -493,8 +496,8 @@ body.single-scene #sceneListToggle {
   width: 40px;
   height: 40px;
   border-radius: 20px;
-  background-color: var(--accent-blue);
-  background-color: var(--accent-blue-opaque);
+  background-color: var(--accent-green);
+  background-color: var(--accent-green-opaque);
   cursor: pointer;
   -webkit-transition: width 0.3s ease-in-out 0.5s, border-radius 0.3s ease-in-out 0.5s;
   transition: width 0.3s ease-in-out 0.5s, border-radius 0.3s ease-in-out 0.5s;
@@ -685,7 +688,7 @@ body.single-scene #sceneListToggle {
   right: 50px;
   width: auto;
   height: 90%;
-  background-color: var(--accent-blue);
+  background-color: var(--accent-green);
   opacity: 0;
   -webkit-transition: opacity 0.3s ease-in-out 0.2s;
   transition: opacity 0.3s ease-in-out 0.2s;
@@ -762,7 +765,7 @@ body.single-scene #sceneListToggle {
   max-width: 100%;
   height: auto;
   top: 150px;
-  bottom: 40px;
+  bottom: 100px;
   left: 50px;
   right: 50px;
   background-color: var(--secondary-white);
@@ -873,7 +876,7 @@ body.single-scene #sceneListToggle {
 }
 
 .carousel-nav .carousel-button {
-  background-color: var(--accent-gray);
+  background-color: var(--accent-darkgray);
   border-radius: 50%;
   cursor: pointer;
   font-size: 1.5rem;
