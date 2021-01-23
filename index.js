@@ -421,7 +421,7 @@ function createInfoHotspotElement(hotspot) {
 	const carouselButtons = modal.querySelectorAll(".carousel-nav .carousel-button");
 	const numberOfImages = modal.querySelectorAll(".carousel-images img").length;
 	let imageIndex = 1;
-	let percentage = 100 / numberOfImages;
+	let percentage = 100;
 	let translateX = 0;
 
 	carouselButtons.forEach((button) => {

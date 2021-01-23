@@ -833,9 +833,10 @@ body.single-scene #sceneListToggle {
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 50%;
   height: 100%;
   overflow: hidden;
-  max-width: 100%;
+  object-fit: cover;
 }
 
 @media (max-width: 1364px) {
@@ -849,8 +850,9 @@ body.single-scene #sceneListToggle {
   align-items: center;
   overflow: hidden;
   position: relative;
-  max-width: 1000px;
-  height: 1000px;
+  max-width: 1080px;
+  height: 1080px;
+  object-fit: cover;
 }
 
 .carousel .carousel-images {
@@ -859,10 +861,11 @@ body.single-scene #sceneListToggle {
   transition: transform 0.25s;
 }
 
-.carousel .carousel-images .product-image {
-  width: 1000px;
+.carousel-images .product-image {
+  max-width: 100%;
   height: auto;
 }
+
 
 .carousel-nav {
   width: 100%;
