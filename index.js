@@ -91,9 +91,9 @@ const scenes = data.scenes.map(function (data) {
 	});
 
 	// Create link hotspots.
-	data.linkHotspots.forEach(function(hotspot) {
-	  const element = createLinkHotspotElement(hotspot);
-	  scene.hotspotContainer().createHotspot(element, { yaw: hotspot.yaw, pitch: hotspot.pitch });
+	data.linkHotspots.forEach(function (hotspot) {
+		const element = createLinkHotspotElement(hotspot);
+		scene.hotspotContainer().createHotspot(element, { yaw: hotspot.yaw, pitch: hotspot.pitch });
 	});
 
 	// Create info hotspots.
@@ -209,43 +209,42 @@ function toggleSceneList() {
 }
 
 function createLinkHotspotElement(hotspot) {
+	// Create wrapper element to hold icon and tooltip.
+	const wrapper = document.createElement("div");
+	wrapper.classList.add("hotspot");
+	wrapper.classList.add("link-hotspot");
 
-  // Create wrapper element to hold icon and tooltip.
-  const wrapper = document.createElement('div');
-  wrapper.classList.add('hotspot');
-  wrapper.classList.add('link-hotspot');
+	// Create image element.
+	const icon = document.createElement("img");
+	icon.src = "./SVG/arrow-up-circle-fill.svg";
+	icon.classList.add("link-hotspot-icon");
 
-  // Create image element.
-  const icon = document.createElement('img');
-  icon.src = './SVG/arrow-up-circle-fill.svg';
-  icon.classList.add('link-hotspot-icon');
+	// Set rotation transform.
+	const transformProperties = ["-ms-transform", "-webkit-transform", "transform"];
+	for (let i = 0; i < transformProperties.length; i++) {
+		const property = transformProperties[i];
+		icon.style[property] = "rotate(" + hotspot.rotation + "rad)";
+	}
 
-  // Set rotation transform.
-  const transformProperties = [ '-ms-transform', '-webkit-transform', 'transform' ];
-  for (let i = 0; i < transformProperties.length; i++) {
-    const property = transformProperties[i];
-    icon.style[property] = 'rotate(' + hotspot.rotation + 'rad)';
-  }
+	// Add click event handler.
+	wrapper.addEventListener("click", function () {
+		switchScene(findSceneById(hotspot.target));
+	});
 
-  // Add click event handler.
-  wrapper.addEventListener('click', function() {
-    switchScene(findSceneById(hotspot.target));
-  });
+	// Prevent touch and scroll events from reaching the parent element.
+	// This prevents the view control logic from interfering with the hotspot.
+	// stopTouchAndScrollEventPropagation(wrapper);
 
-  // Prevent touch and scroll events from reaching the parent element.
-  // This prevents the view control logic from interfering with the hotspot.
-  // stopTouchAndScrollEventPropagation(wrapper);
+	// Create tooltip element.
+	const tooltip = document.createElement("div");
+	tooltip.classList.add("hotspot-tooltip");
+	tooltip.classList.add("link-hotspot-tooltip");
+	tooltip.innerHTML = findSceneDataById(hotspot.target).name;
 
-  // Create tooltip element.
-  const tooltip = document.createElement('div');
-  tooltip.classList.add('hotspot-tooltip');
-  tooltip.classList.add('link-hotspot-tooltip');
-  tooltip.innerHTML = findSceneDataById(hotspot.target).name;
+	wrapper.appendChild(icon);
+	wrapper.appendChild(tooltip);
 
-  wrapper.appendChild(icon);
-  wrapper.appendChild(tooltip);
-
-  return wrapper;
+	return wrapper;
 }
 
 // data.scenes.forEach(sceneVal => {
@@ -298,8 +297,8 @@ function createInfoHotspotElement(hotspot) {
 	const content = document.createElement("div");
 	content.classList.add("info-hotspot-content");
 
-	const contentColWrapper = document.createElement("div")
-	contentColWrapper.classList.add("col-wrap")
+	const contentColWrapper = document.createElement("div");
+	contentColWrapper.classList.add("col-wrap");
 
 	const modalLeft = document.createElement("div");
 	modalLeft.classList.add("leftcol");
@@ -345,7 +344,7 @@ function createInfoHotspotElement(hotspot) {
 
 			recipe_el.appendChild(recipe_preview_img_wrap);
 			recipe_el.appendChild(recipe_title);
-			recipe_el.setAttribute("onclick", `location.href='${hotspot.recipes[i].link}'`)
+			recipe_el.setAttribute("onclick", `location.href='${hotspot.recipes[i].link}'`);
 
 			recipesList.appendChild(recipe_el);
 		}
@@ -374,21 +373,27 @@ function createInfoHotspotElement(hotspot) {
 
 	//CarouselNav Buttons
 	const carouselNext = document.createElement("img");
-	carouselNext.src = "./assets/1x/ic_chevron_right_48px.png"
+	carouselNext.src = "./assets/1x/ic_chevron_right_48px.png";
 	carouselNext.classList.add("carousel-button");
 	carouselNext.classList.add("next");
 	carouselNext.setAttribute("id", "next");
 	const carouselPrev = document.createElement("img");
-	carouselPrev.src = "./assets/1x/ic_chevron_left_48px-2.png"
+	carouselPrev.src = "./assets/1x/ic_chevron_left_48px-2.png";
 	carouselPrev.classList.add("carousel-button");
 	carouselPrev.classList.add("previous");
 	carouselPrev.setAttribute("id", "previous");
+	const carousel_pagination = document.createElement("ul");
+	carousel_pagination.classList.add("carousel-pagination");
 
 	for (let i = 0; i < hotspot.images.length; i++) {
+		const carousel_bullet = document.createElement("li");
+		carousel_bullet.classList.add("carousel-bullet");
 		const productImage = document.createElement("img");
 		productImage.src = hotspot.images[i];
 		productImage.classList.add("product-image");
 		carouselImages.appendChild(productImage);
+		carousel_pagination.appendChild(carousel_bullet);
+		carousel.appendChild(carousel_pagination);
 	}
 
 	carouselNav.appendChild(carouselNext);
@@ -418,29 +423,66 @@ function createInfoHotspotElement(hotspot) {
 	modal.querySelector(".info-hotspot-close-wrapper").addEventListener("click", toggle);
 
 	const carouselImgs = modal.querySelector(".carousel-images");
-	const carouselButtons = modal.querySelectorAll(".carousel-nav .carousel-button");
+	const nextBtn = modal.querySelector("#next");
+	const prevBtn = modal.querySelector("#previous");
 	const numberOfImages = modal.querySelectorAll(".carousel-images img").length;
-	let imageIndex = 1;
+	const pagination = modal.querySelector(".carousel-pagination");
+	var bullets = [].slice.call(modal.querySelectorAll(".carousel-bullet"));
+	let currentIndex = 0;
 	let percentage = 100;
-	let translateX = 0;
 
-	carouselButtons.forEach((button) => {
-		button.addEventListener("click", (event) => {
-			if (event.target.id !== "next") {
-				if (imageIndex !== 1) {
-					imageIndex--;
-					translateX += percentage;
-				}
-			} else {
-				if (imageIndex !== numberOfImages) {
-					imageIndex++;
-					translateX -= percentage;
-				}
-			}
+	let touchstartX = 0;
+	let touchendX = 0;
 
-			carouselImgs.style.transform = `translateX(${translateX}%)`;
-		});
+	function handleGesture() {
+		if (touchendX < touchstartX && currentIndex !== numberOfImages - 1) {
+			nextBtn.click();
+		};
+		if (touchendX > touchstartX && currentIndex !== 0) {
+			prevBtn.click();
+		};
+	}
+
+	carouselImgs.addEventListener("touchstart", (e) => {
+		touchstartX = e.changedTouches[0].pageX;
 	});
+
+	carouselImgs.addEventListener("touchend", (e) => {
+		touchendX = e.changedTouches[0].pageX;
+		handleGesture();
+	});
+
+	function next() {
+		slideTo(currentIndex + 1);
+	}
+
+	function prev() {
+		slideTo(currentIndex - 1);
+	}
+
+	function slideTo(index) {
+		index = index < 0 ? numberOfImages - 1 : index >= numberOfImages ? 0 : index;
+		carouselImgs.style.WebkitTransform = carouselImgs.style.transform =
+			"translate(-" + index * percentage + "%, 0)";
+		bullets[currentIndex].classList.remove("active-bullet");
+		bullets[index].classList.add("active-bullet");
+		currentIndex = index;
+	}
+
+	bullets[currentIndex].classList.add("active-bullet");
+	prevBtn.addEventListener("click", prev, false);
+	nextBtn.addEventListener("click", next, false);
+
+	pagination.addEventListener(
+		"click",
+		function (e) {
+			var index = bullets.indexOf(e.target);
+			if (index !== -1 && index !== currentIndex) {
+				slideTo(index);
+			}
+		},
+		false
+	);
 
 	// Prevent touch and scroll events from reaching the parent element.
 	// This prevents the view control logic from interfering with the hotspot.
