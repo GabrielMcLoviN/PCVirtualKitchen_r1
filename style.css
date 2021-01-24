@@ -936,7 +936,7 @@ body.single-scene #sceneListToggle {
 .carousel-pagination {
   list-style: none;
   position: absolute;
-  bottom: 250px;
+  bottom: 200px;
   left: 0;
   right: 0;
   padding: 0;
@@ -1096,6 +1096,7 @@ body.single-scene #sceneListToggle {
   .carousel-pagination {
     bottom: 10px;
   }
+
   .recipes-list {
     margin-bottom: 2rem;
   }
@@ -1189,9 +1190,12 @@ body.single-scene #sceneListToggle {
   }
 }
 
-@media (max-height: 800px) {
+@media (max-height: 800px) and (min-width: 1028px) {
   .product-txt-wrapper {
     font-size: 0.75rem;
+  }
+  .carousel-pagination {
+    bottom: 260px;
   }
 }
 
