@@ -209,6 +209,7 @@ body.multiple-scenes.mobile #titleBar {
 .mobile #fullscreenToggle {
   width: 50px;
   height: 50px;
+  padding: 0;
 }
 
 body.fullscreen-enabled #fullscreenToggle {
@@ -226,6 +227,8 @@ body.fullscreen-enabled #fullscreenToggle {
 }
 
 .mobile #fullscreenToggle .icon {
+  width: 35px;
+  height: 35px;
   top: 10px;
   right: 10px;
 }
@@ -255,11 +258,6 @@ body.fullscreen-enabled #fullscreenToggle {
   padding: 5px;
 }
 
-.mobile #sceneListToggle {
-  width: 50px;
-  height: 50px;
-}
-
 #sceneListToggle .text {
   position: absolute;
   right: 5px;
@@ -279,6 +277,8 @@ body.fullscreen-enabled #fullscreenToggle {
 }
 
 .mobile #sceneListToggle .icon {
+  width: 40px;
+  height: 40px;
   top: 10px;
   left: 10px;
 }
@@ -400,8 +400,8 @@ body.single-scene #sceneListToggle {
 }
 
 .mobile .link-hotspot {
-  width: 70px;
-  height: 70px;
+  width: 50px;
+  height: 50px;
 }
 
 .link-hotspot-icon {
@@ -532,13 +532,19 @@ body.single-scene #sceneListToggle {
 }
 
 .mobile .info-hotspot .info-hotspot-icon-wrapper {
-  width: 50px;
-  height: 50px;
+  width: 43px;
+  height: 43px;
 }
 
 .info-hotspot .info-hotspot-icon {
   width: 85%;
   height: 85%;
+}
+
+.mobile .info-hotspot .info-hotspot-icon {
+  width: 100%;
+  height: 100%;
+  margin: 0.5px;
 }
 
 .info-hotspot .info-hotspot-title-wrapper {
@@ -726,16 +732,12 @@ body.single-scene #sceneListToggle {
   display: inline-block;
   vertical-align: middle;
   font-family: "Antonio";
-  font-size: 64px;
+  font-size: clamp(2rem, -0.875rem + 8.333333vw, 3.2rem);
+  line-height: 2.8rem;
   -moz-user-select: text;
   -webkit-user-select: text;
   -ms-user-select: text;
   user-select: text;
-}
-
-.mobile .info-hotspot-modal .info-hotspot-title {
-  font-size: 32px;
-  line-height: 2.4rem;
 }
 
 .info-hotspot-modal .info-hotspot-close-wrapper {
@@ -761,9 +763,10 @@ body.single-scene #sceneListToggle {
   justify-content: center;
   position: absolute;
   max-width: 100%;
-  height: auto;
+  max-height: 100%;
+  height: 75%;
   top: 150px;
-  bottom: 100px;
+  bottom: 50px;
   left: 50px;
   right: 50px;
   background-color: var(--secondary-white);
@@ -818,40 +821,40 @@ body.single-scene #sceneListToggle {
   align-items: flex-start;
   justify-content: flex-start;
   width: 100%;
+  max-height: 100%;
   height: 100%;
   flex-wrap: wrap;
 }
 
 .leftcol {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   height: 100%;
-  flex: 1 1 50%;
+  flex: 1 1 300px;
   padding: auto 2rem;
 }
 
 .rightcol {
-  flex: 1 1 50%;
+  flex: 1 1 300px;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 50%;
-  height: 100%;
+  width: 100%;
+  max-height: 100%;
   overflow: hidden;
   object-fit: cover;
-}
-
-@media (max-width: 1364px) {
-  .rightcol {
-    order: -1;
-  }
 }
 
 .carousel {
   display: flex;
   align-items: center;
+  justify-content: center;
   overflow: hidden;
   position: relative;
-  max-width: 1080px;
+  width: 1080px;
   height: 1080px;
+  max-height: 100%;
   object-fit: cover;
 }
 
@@ -866,6 +869,42 @@ body.single-scene #sceneListToggle {
   height: auto;
 }
 
+.carousel-images .video-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 50rem;
+  min-width: 100%;
+  width: 100%;
+  background: var(--secondary-white);
+}
+
+.playbtn_wrap {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  z-index: 13330000 !important;
+  background-repeat: no-repeat;
+}
+
+.playbtn_wrap:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.mobile .playbtn_wrap {
+  visibility: hidden;
+}
+
+.carousel-images video {
+  max-width: 50rem;
+  min-width: 100%;
+  width: 100%;
+  max-height: 30.875rem;
+  height: 100%;
+  margin: 1.5rem auto;
+}
+
 .carousel-nav {
   width: 100%;
   display: flex;
@@ -873,6 +912,7 @@ body.single-scene #sceneListToggle {
   justify-content: space-between;
   padding: 0 10px;
   position: absolute;
+  pointer-events: none;
 }
 
 .carousel-nav .carousel-button {
@@ -886,6 +926,7 @@ body.single-scene #sceneListToggle {
   transition: all 0.25s;
   width: 2.5rem;
   z-index: 1;
+  pointer-events: all;
 }
 
 .carousel-nav .carousel-button:hover {
@@ -895,14 +936,13 @@ body.single-scene #sceneListToggle {
 .carousel-pagination {
   list-style: none;
   position: absolute;
-  bottom: 22.5%;
+  bottom: 250px;
   left: 0;
   right: 0;
-  width: 100%;
   padding: 0;
   margin: 0 auto;
   text-align: center;
-  z-index: 10;
+  z-index: 20;
 }
 
 .carousel-bullet {
@@ -937,15 +977,15 @@ body.single-scene #sceneListToggle {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  justify-content: center;
-  padding: 0 4rem;
+  justify-content: space-evenly;
+  padding: 4rem;
   height: 100%;
 }
 
 .product-txt-wrapper .product-txt-subhead {
   justify-self: flex-end;
   font-weight: 500;
-  font-size: 1.5rem;
+  font-size: clamp(1rem, -0.875rem + 8.333333vw, 2rem);
   width: 80%;
   line-height: 2rem;
   border-bottom: 1px solid var(--accent-red);
@@ -999,6 +1039,13 @@ body.single-scene #sceneListToggle {
   cursor: pointer;
 }
 
+.recipes-link {
+  display: flex;
+  height: auto;
+  width: 100%;
+  text-align: center;
+}
+
 .recipe-preview-img-wrap {
   display: flex;
   align-items: center;
@@ -1022,13 +1069,130 @@ body.single-scene #sceneListToggle {
   font-weight: bold;
 }
 
-.recipes-list li a {
+.recipes-list li .recipe-title {
   font-size: 0.7rem;
   font-weight: 300;
   font-style: italic;
-  line-height: 1rem;
+  line-height: 0.8rem;
   width: 100px;
   transition: all 0.25s ease;
+  padding-top: 0.5rem;
+}
+
+@media (max-width: 1030px) {
+  .rightcol {
+    order: -1;
+    height: 50%;
+  }
+  .leftcol {
+    height: 50%;
+  }
+
+  .product-txt-wrapper {
+    max-height: 100%;
+    justify-content: start;
+  }
+
+  .carousel-pagination {
+    bottom: 10px;
+  }
+  .recipes-list {
+    margin-bottom: 2rem;
+  }
+}
+
+@media (max-width: 800px) {
+  body {
+    font-size: 0.8rem;
+  }
+
+  .product-txt-wrapper {
+    padding: 0;
+    max-width: 400px;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    align-items: start;
+    justify-content: start;
+  }
+
+  .recipe-preview-img {
+    max-width: 100px;
+  }
+  .recipes-list li {
+    padding-left: 0;
+    align-items: start;
+  }
+}
+
+@media (max-width: 425px) {
+  .carousel-nav .carousel-button {
+    width: 1rem;
+    height: 1rem;
+  }
+  .carousel-bullet {
+    width: 6px;
+    height: 6px;
+    margin: 0 2px;
+  }
+
+  .info-hotspot-modal .info-hotspot-title {
+    line-height: 2rem;
+  }
+
+  .product-txt-wrapper {
+    max-width: 250px;
+    padding-top: 1rem;
+  }
+
+  .product-txt-wrapper .product-txt-subhead {
+    width: 60%;
+    line-height: 1.2rem;
+    border-bottom: 1px solid var(--accent-red);
+    margin-bottom: 0.5rem;
+    padding-bottom: 8px;
+  }
+
+  .recipes-list {
+    flex-wrap: wrap;
+    padding: 0;
+    max-height: 35%;
+  }
+
+  .recipes-list li {
+    padding: 0;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    text-align: left;
+  }
+
+  .recipe-title {
+    padding-left: 1rem;
+  }
+}
+
+@media (max-width: 320px) {
+  .rightcol {
+    height: 45%;
+  }
+  .leftcol {
+    height: 45%;
+  }
+
+  .product-txt-wrapper {
+    padding-top: 0;
+  }
+
+  .info-hotspot-title-wrapper {
+    left: -10px;
+    padding: 0;
+  }
+}
+
+@media (max-height: 800px) {
+  .product-txt-wrapper {
+    font-size: 0.75rem;
+  }
 }
 
 /* @media (max-width: 1300px) {

@@ -331,8 +331,12 @@ function createInfoHotspotElement(hotspot) {
 	if (hotspot.recipes != undefined) {
 		for (let i = 0; i < hotspot.recipes.length; i++) {
 			const recipe_el = document.createElement("li");
-
+			const recipe_link = document.createElement("a")
+			recipe_link.classList.add("recipe-link")
+			recipe_link.href = hotspot.recipes[i].link;
+			recipe_link.setAttribute("target", "_blank");
 			const recipe_preview_img_wrap = document.createElement("div");
+			recipe_link.appendChild(recipe_preview_img_wrap);
 			const recipe_preview_img = document.createElement("img");
 			recipe_preview_img_wrap.classList.add("recipe-preview-img-wrap");
 			recipe_preview_img.src = hotspot.recipes[i].preview_image;
@@ -340,11 +344,12 @@ function createInfoHotspotElement(hotspot) {
 			recipe_preview_img_wrap.appendChild(recipe_preview_img);
 
 			const recipe_title = document.createElement("a");
+			recipe_title.classList.add("recipe-title")
 			recipe_title.innerHTML = hotspot.recipes[i].id;
-
-			recipe_el.appendChild(recipe_preview_img_wrap);
+			recipe_title.href = hotspot.recipes[i].link;
+			recipe_title.setAttribute("target", "_blank");
+			recipe_el.appendChild(recipe_link);
 			recipe_el.appendChild(recipe_title);
-			recipe_el.setAttribute("onclick", `location.href='${hotspot.recipes[i].link}'`);
 
 			recipesList.appendChild(recipe_el);
 		}
@@ -396,6 +401,30 @@ function createInfoHotspotElement(hotspot) {
 		carousel.appendChild(carousel_pagination);
 	}
 
+	if (hotspot.videos != undefined) {
+		for (let i = 0; i < hotspot.videos.length; i++) {
+			const carousel_bullet = document.createElement("li");
+			carousel_bullet.classList.add("carousel-bullet");
+			const video_wrapper = document.createElement("div");
+			video_wrapper.classList.add("video-wrapper");
+			const product_video = document.createElement("video");
+			product_video.controls = true;
+			product_video.setAttribute("preload", "auto");
+			product_video.classList.add("product-video");
+			const source = document.createElement("source");
+			source.setAttribute("src", hotspot.videos[i]);
+			source.setAttribute("type", "video/mp4");
+			const playbtn_wrap = document.createElement("div");
+			playbtn_wrap.classList.add("playbtn_wrap");
+			playbtn_wrap.style.background = "url(./SVG/playbtn.svg)";
+			product_video.appendChild(source);
+			video_wrapper.appendChild(playbtn_wrap);
+			video_wrapper.appendChild(product_video);
+			carousel_pagination.appendChild(carousel_bullet);
+			carouselImages.appendChild(video_wrapper);
+		}
+	}
+
 	carouselNav.appendChild(carouselNext);
 	carousel.appendChild(carouselImages);
 	carouselNav.appendChild(carouselPrev);
@@ -422,10 +451,44 @@ function createInfoHotspotElement(hotspot) {
 	// Hide content when close icon is clicked.
 	modal.querySelector(".info-hotspot-close-wrapper").addEventListener("click", toggle);
 
-	const carouselImgs = modal.querySelector(".carousel-images");
+	const video_parent = modal.querySelectorAll(".video-wrapper");
 	const nextBtn = modal.querySelector("#next");
 	const prevBtn = modal.querySelector("#previous");
-	const numberOfImages = modal.querySelectorAll(".carousel-images img").length;
+
+	video_parent.forEach((video) => {
+		let pairs = [];
+		const playbtn = video.querySelector(".playbtn_wrap");
+		const video_tag = video.querySelector(".product-video");
+		pairs.push([playbtn, video_tag]);
+		pairs.forEach((pair) => {
+			pair[0].addEventListener("click", function () {
+				if (pair[1].paused) {
+					pair[1].play();
+					pair[0].style.backgroundImage = "url(./SVG/pause.svg)";
+				} else {
+					pair[1].pause();
+					pair[0].style.backgroundImage = "url(./SVG/playbtn.svg)";
+				}
+				pair[1].addEventListener("mouseover", function () {
+					pair[0].style.opacity = 1;
+				});
+				pair[0].addEventListener("mouseover", function () {
+					pair[0].style.opacity = 1;
+				});
+				pair[1].addEventListener("mouseleave", function () {
+					if (!pair[1].paused) {
+						pair[0].style.opacity = 0;
+					} else {
+						pair[0].style.opacity = 1;
+					}
+				});
+			});
+		});
+	});
+
+	const carouselImgs = modal.querySelector(".carousel-images");
+
+	const numberOfImages = modal.querySelectorAll(".carousel-images > *").length;
 	const pagination = modal.querySelector(".carousel-pagination");
 	var bullets = [].slice.call(modal.querySelectorAll(".carousel-bullet"));
 	let currentIndex = 0;
@@ -437,10 +500,10 @@ function createInfoHotspotElement(hotspot) {
 	function handleGesture() {
 		if (touchendX < touchstartX && currentIndex !== numberOfImages - 1) {
 			nextBtn.click();
-		};
+		}
 		if (touchendX > touchstartX && currentIndex !== 0) {
 			prevBtn.click();
-		};
+		}
 	}
 
 	carouselImgs.addEventListener("touchstart", (e) => {

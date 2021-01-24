@@ -72,20 +72,20 @@
 // 	],
 // };
 
-	// {
-				// 	yaw: 2.4655333888327764,
-				// 	pitch: 0.5663247914573244,
-				// 	title: "INSULATED SERVING BOWL SET",
-				// 	images: [
-				// 		"./products/insulated_01.jpg",
-				// 		"./products/insulated_02.jpg",
-				// 		"./products/insulated_03.jpg",
-				// 		"./products/insulated_04-@lazynolaketo.jpg",
-				// 	],
-				// 	subhead: "Insulated Serving Bowl Set",
-				// 	text:
-				// 		"<p>For holidays, potlucks, or any big meal, it can feel nearly impossible to keep everything warm. With this insulated serving bowl set, you can keep foods warm up to 2 hours.</p><br><p>The bowls’ double-walled vacuum insulation keeps food hot, prevents sweating, and has a stay-cool exterior. Works with cold foods, too!</p><br><p>Each bowl comes with a clear plastic lid that’s double-walled and lets you see what's inside. The lid also hooks onto the side of the bowl, making it easier to dish out and serve food.</p>",
-				// },
+// {
+// 	yaw: 2.4655333888327764,
+// 	pitch: 0.5663247914573244,
+// 	title: "INSULATED SERVING BOWL SET",
+// 	images: [
+// 		"./products/insulated_01.jpg",
+// 		"./products/insulated_02.jpg",
+// 		"./products/insulated_03.jpg",
+// 		"./products/insulated_04-@lazynolaketo.jpg",
+// 	],
+// 	subhead: "Insulated Serving Bowl Set",
+// 	text:
+// 		"<p>For holidays, potlucks, or any big meal, it can feel nearly impossible to keep everything warm. With this insulated serving bowl set, you can keep foods warm up to 2 hours.</p><br><p>The bowls’ double-walled vacuum insulation keeps food hot, prevents sweating, and has a stay-cool exterior. Works with cold foods, too!</p><br><p>Each bowl comes with a clear plastic lid that’s double-walled and lets you see what's inside. The lid also hooks onto the side of the bowl, making it easier to dish out and serve food.</p>",
+// },
 
 var APP_DATA = {
 	scenes: [
@@ -225,6 +225,7 @@ var APP_DATA = {
 					yaw: 0.7556613557671596,
 					pitch: 0.09736674992180383,
 					title: '12" CAST IRON SKILLET',
+					videos: ["./videos/cast-iron.mp4", "./videos/cast-iron2.mp4"],
 					images: [
 						"./1080x1080/cast_iron/01.jpg",
 						"./1080x1080/cast_iron/02.jpg",
@@ -314,6 +315,9 @@ var APP_DATA = {
 					yaw: -0.6228858722092987,
 					pitch: 0.05244390800955401,
 					title: "MANUAL FOOD PROCESSOR",
+					videos: [
+						"./videos/manualfoodprocessor.mp4",
+					],
 					images: [
 						"./1080x1080/food_processor/01.jpg",
 						"./1080x1080/food_processor/02.jpg",
@@ -352,6 +356,7 @@ var APP_DATA = {
 					yaw: -0.16844668950375663,
 					pitch: 0.3269584847212421,
 					title: "PIZZA PEEL",
+					videos: ["./videos/pizza-peel.mp4"],
 					images: [
 						"./1080x1080/pizza/01.jpg",
 						"./1080x1080/pizza/02.jpg",
@@ -468,6 +473,9 @@ var APP_DATA = {
 					yaw: -0.5655719823993159,
 					pitch: 0.31854015457002127,
 					title: "PREMIUM CHARCUTERIE & CHEESE BOARD SET",
+					videos: [
+						'./videos/charcuterie.mp4',
+					],
 					images: [
 						"./1080x1080/charc/01.jpg",
 						"./1080x1080/charc/02.jpg",
@@ -480,7 +488,7 @@ var APP_DATA = {
 					related_content: [
 						{
 							id: "How to Build a Charcuterie Board",
-							preview_image: "",
+							preview_image: "./videos/charc_video_preview_img.jpg",
 							link: "",
 						},
 					],
@@ -489,12 +497,15 @@ var APP_DATA = {
 					yaw: 0.57680002139396116,
 					pitch: 0.2976681843137335,
 					title: "SMALL SQUARE COOL & SERVE",
+					videos: [
+						"./videos/cool_and_serve.mp4",
+					],
 					images: [
-						"./1080x1080/square/01.jpg",
-						"./1080x1080/square/02.jpg",
-						"./1080x1080/square/03.jpg",
-						"./1080x1080/square/04.jpg",
-						"./1080x1080/square/05.jpg",
+						"./1080x1080/cool_serve/01.jpg",
+						"./1080x1080/cool_serve/02.jpg",
+						"./1080x1080/cool_serve/03.jpg",
+						"./1080x1080/cool_serve/04.jpg",
+						"./1080x1080/cool_serve/05.jpg",
 					],
 					subhead: "Small Square Cool & Serve",
 					text:
