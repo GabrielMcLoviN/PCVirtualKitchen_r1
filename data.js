@@ -187,6 +187,7 @@ var APP_DATA = {
 					yaw: 0.2539686048844878,
 					pitch: -0.05808075038937588,
 					title: "6-QT. ENAMELED DUTCH OVEN",
+					videos: ["./videos/dutchoven.mp4"],
 					images: [
 						"./1080x1080/dutch_oven/01.jpg",
 						"./1080x1080/dutch_oven/02.jpg",
@@ -225,7 +226,7 @@ var APP_DATA = {
 					yaw: 0.7556613557671596,
 					pitch: 0.09736674992180383,
 					title: '12" CAST IRON SKILLET',
-					videos: ["./videos/cast-iron.mp4", "./videos/cast-iron2.mp4"],
+					videos: ["./videos/cast-iron2.mp4"],
 					images: [
 						"./1080x1080/cast_iron/01.jpg",
 						"./1080x1080/cast_iron/02.jpg",
@@ -315,9 +316,7 @@ var APP_DATA = {
 					yaw: -0.6228858722092987,
 					pitch: 0.05244390800955401,
 					title: "MANUAL FOOD PROCESSOR",
-					videos: [
-						"./videos/manualfoodprocessor.mp4",
-					],
+					videos: ["./videos/manualfoodprocessor.mp4"],
 					images: [
 						"./1080x1080/food_processor/01.jpg",
 						"./1080x1080/food_processor/02.jpg",
@@ -473,9 +472,7 @@ var APP_DATA = {
 					yaw: -0.5655719823993159,
 					pitch: 0.31854015457002127,
 					title: "PREMIUM CHARCUTERIE & CHEESE BOARD SET",
-					videos: [
-						'./videos/charcuterie.mp4',
-					],
+					videos: ["./videos/charcuterie.mp4"],
 					images: [
 						"./1080x1080/charc/01.jpg",
 						"./1080x1080/charc/02.jpg",
@@ -497,9 +494,7 @@ var APP_DATA = {
 					yaw: 0.57680002139396116,
 					pitch: 0.2976681843137335,
 					title: "SMALL SQUARE COOL & SERVE",
-					videos: [
-						"./videos/cool_and_serve.mp4",
-					],
+					videos: ["./videos/cool_and_serve.mp4"],
 					images: [
 						"./1080x1080/cool_serve/01.jpg",
 						"./1080x1080/cool_serve/02.jpg",

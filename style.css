@@ -892,7 +892,7 @@ body.single-scene #sceneListToggle {
   opacity: 0.8;
 }
 
-.mobile .playbtn_wrap {
+.mobile .playbtn_wrap, .touch .playbtn_wrap {
   visibility: hidden;
 }
 
@@ -1190,12 +1190,12 @@ body.single-scene #sceneListToggle {
   }
 }
 
-@media (max-height: 800px) and (min-width: 1028px) {
+@media (max-height: 900px) and (min-width: 1028px) {
   .product-txt-wrapper {
     font-size: 0.75rem;
   }
   .carousel-pagination {
-    bottom: 260px;
+    bottom: 230px;
   }
 }
 
