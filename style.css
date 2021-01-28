@@ -96,6 +96,7 @@
   --accent-gray-opaque: rgba(167, 169, 172, 0.5);
   --accent-lightgray: rgb(230, 231, 232);
   --accent-lightgray-opaque: rgba(230, 231, 232, 0.5);
+  --blue-added: #1A5962;
 }
 
 * {
@@ -692,7 +693,7 @@ body.single-scene #sceneListToggle {
   right: 50px;
   width: auto;
   height: 90%;
-  background-color: var(--accent-green);
+  background-color: var(--blue-added);
   opacity: 0;
   -webkit-transition: opacity 0.3s ease-in-out 0.2s;
   transition: opacity 0.3s ease-in-out 0.2s;
@@ -856,6 +857,7 @@ body.single-scene #sceneListToggle {
   height: 1080px;
   max-height: 100%;
   object-fit: cover;
+  z-index: ;
 }
 
 .carousel .carousel-images {
