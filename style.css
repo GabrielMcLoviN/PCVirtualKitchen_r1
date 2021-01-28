@@ -157,20 +157,10 @@ a:visited {
   left: 0;
   text-align: center;
   width: 100%;
-  height: 60px;
+  height: 50px;
   background-color: var(--secondary-white-opaque);
 }
 
-/* If there is a fullscreen button the title bar must make space for it */
-/* body.fullscreen-enabled #titleBar {
-  right: 80px;
-}
-
-body.fullscreen-enabled.mobile #titleBar {
-  right: 100px;
-}
-
-/* If there are multiple scenes the title bar must make space for the scene list toggle */
 body.multiple-scenes #titleBar {
   left: 0px;
 }
@@ -190,7 +180,7 @@ body.multiple-scenes.mobile #titleBar {
 }
 
 #titleBar .sceneName {
-  width: 200px;
+  width: 150px;
 }
 
 .mobile #titleBar .sceneName {
@@ -219,17 +209,16 @@ body.fullscreen-enabled #fullscreenToggle {
 
 #fullscreenToggle .icon {
   position: absolute;
-  top: 5px;
-  right: 5px;
-  width: 45px;
-  height: 45px;
+  top: 10px;
+  right: 10px;
+  width: 30px;
+  height: 30px;
   filter: invert(1);
-  margin: 2px;
 }
 
 .mobile #fullscreenToggle .icon {
-  width: 35px;
-  height: 35px;
+  width: 30px;
+  height: 30px;
   top: 10px;
   right: 10px;
 }
@@ -250,139 +239,6 @@ body.fullscreen-enabled #fullscreenToggle {
   display: none;
 }
 
-#sceneListToggle {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 60px;
-  height: 60px;
-  padding: 5px;
-}
-
-#sceneListToggle .text {
-  position: absolute;
-  right: 5px;
-  top: 5px;
-  left: 15px;
-  width: 100%;
-  line-height: 30px;
-}
-
-#sceneListToggle .icon {
-  position: absolute;
-  top: 2.5px;
-  left: 5px;
-  width: 50px;
-  height: 50px;
-  filter: invert(1);
-}
-
-.mobile #sceneListToggle .icon {
-  width: 40px;
-  height: 40px;
-  top: 10px;
-  left: 10px;
-}
-
-#sceneListToggle .icon.on {
-  display: none;
-}
-
-#sceneListToggle .icon.off {
-  display: block;
-}
-
-#sceneListToggle.enabled .icon.on {
-  display: block;
-}
-
-#sceneListToggle.enabled .icon.off {
-  display: none;
-}
-
-#sceneList {
-  position: absolute;
-  top: 0;
-  left: -220px;
-  padding-top: 60px;
-  width: 220px;
-  max-height: 100%;
-  overflow-x: hidden;
-  overflow-y: auto;
-  margin-left: 0;
-  -webkit-transition: margin-left 0.5s ease-in-out;
-  transition: margin-left 0.5s ease-in-out;
-  color: var(--secondary-blk);
-}
-
-.mobile #sceneList {
-  padding-top: 60px;
-}
-
-#sceneList .scenes {
-  width: 100%;
-}
-
-.mobile #sceneList {
-  width: 100%;
-  height: 100%;
-  left: -100%;
-}
-
-.mobile #sceneList.enabled {
-  margin-left: 100%;
-}
-
-.mobile #sceneList .scenes {
-  height: 100%;
-}
-
-#sceneList.enabled {
-  margin-left: 220px;
-}
-
-#sceneList .scene {
-  display: block;
-  width: 100%;
-  height: 30px;
-}
-
-.mobile #sceneList .scene {
-  height: 40px;
-}
-
-#sceneList .scene .text {
-  width: 100%;
-  height: 100%;
-  padding: 0 15px;
-  line-height: 30px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  background-color: var(--secondary-white-opaque);
-  font-weight: 700;
-  color: bl;
-}
-
-.mobile #sceneList .scene .text {
-  line-height: 40px;
-}
-
-.no-touch #sceneList .scene:hover {
-  background-color: var(--accent-darkgray);
-  background-color: var(--accent-darkgray-opaque);
-}
-
-#sceneList .scene.current {
-  background-color: var(--accent-darkgray);
-  background-color: var(--accent-darkgray-opaque);
-}
-
-/* Hide scene list when only a single scene exists */
-body.single-scene #sceneList,
-body.single-scene #sceneListToggle {
-  display: none;
-}
 
 /* Link hotspot */
 

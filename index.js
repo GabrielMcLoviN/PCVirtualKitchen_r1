@@ -132,13 +132,6 @@ if (screenfull.enabled && data.settings.fullscreenButton) {
 	document.body.classList.add("fullscreen-disabled");
 }
 
-// Set handler for scene list toggle.
-sceneListToggleElement.addEventListener("click", toggleSceneList);
-// Start with the scene list open on desktop.
-// if (!document.body.classList.contains('mobile')) {
-//   showSceneList();
-// }
-
 // Set handler for scene switch.
 // scenes.forEach(function (scene) {
 // 	const el = document.querySelector('#sceneList .scene[data-id="' + scene.data.id + '"]');
