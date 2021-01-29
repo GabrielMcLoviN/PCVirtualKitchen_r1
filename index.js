@@ -104,7 +104,7 @@ const scenes = data.scenes.map(function (data) {
 			.createHotspot(
 				element,
 				{ yaw: hotspot.yaw, pitch: hotspot.pitch },
-				{ perspective: { radius: 500, extraTransforms: "translateY(-10px)" } }
+				{ perspective: { radius: 475 } }
 			);
 	});
 
@@ -261,7 +261,7 @@ function createInfoHotspotElement(hotspot) {
 	const iconWrapper = document.createElement("div");
 	iconWrapper.classList.add("info-hotspot-icon-wrapper");
 	const icon = document.createElement("img");
-	icon.src = "./SVG/information-line.svg";
+	icon.src = "./assets/PC-Seal_Solid-white-95black_Registered.png";
 	icon.classList.add("info-hotspot-icon");
 	iconWrapper.appendChild(icon);
 

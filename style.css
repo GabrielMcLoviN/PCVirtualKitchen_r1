@@ -96,7 +96,7 @@
   --accent-gray-opaque: rgba(167, 169, 172, 0.5);
   --accent-lightgray: rgb(230, 231, 232);
   --accent-lightgray-opaque: rgba(230, 231, 232, 0.5);
-  --blue-added: #1A5962;
+  --blue-added: #1a5962;
 }
 
 * {
@@ -239,7 +239,6 @@ body.fullscreen-enabled #fullscreenToggle {
   display: none;
 }
 
-
 /* Link hotspot */
 
 .link-hotspot {
@@ -353,7 +352,7 @@ body.fullscreen-enabled #fullscreenToggle {
   width: 40px;
   height: 40px;
   border-radius: 20px;
-  border: 3px solid var(--accent-green-opaque);
+  border: 2px solid var(--accent-green-opaque);
   cursor: pointer;
   -webkit-transition: width 0.3s ease-in-out 0.5s, border-radius 0.3s ease-in-out 0.5s;
   transition: width 0.3s ease-in-out 0.5s, border-radius 0.3s ease-in-out 0.5s;
@@ -394,8 +393,9 @@ body.fullscreen-enabled #fullscreenToggle {
 }
 
 .info-hotspot .info-hotspot-icon {
-  width: 85%;
-  height: 85%;
+  width: 80%;
+  height: 80%;
+  margin: 1.5px;
 }
 
 .mobile .info-hotspot .info-hotspot-icon {
@@ -443,7 +443,7 @@ body.fullscreen-enabled #fullscreenToggle {
 
 .info-hotspot .info-hotspot-close-wrapper {
   position: absolute;
-  left: 260px;
+  left: 200px;
   top: 0;
   height: 40px;
   width: 40px;
@@ -549,7 +549,6 @@ body.fullscreen-enabled #fullscreenToggle {
   right: 50px;
   width: auto;
   height: 90%;
-  background-color: var(--blue-added);
   opacity: 0;
   -webkit-transition: opacity 0.3s ease-in-out 0.2s;
   transition: opacity 0.3s ease-in-out 0.2s;
@@ -575,7 +574,7 @@ body.fullscreen-enabled #fullscreenToggle {
   right: 50px;
   width: auto;
   height: 100px;
-  padding: 0 10px;
+  padding: 0 2px;
 }
 
 .info-hotspot-modal .info-hotspot-title-wrapper:before {
@@ -589,8 +588,8 @@ body.fullscreen-enabled #fullscreenToggle {
   display: inline-block;
   vertical-align: middle;
   font-family: "Antonio";
-  font-size: clamp(2rem, -0.875rem + 8.333333vw, 3.2rem);
-  line-height: 2.8rem;
+  font-size: clamp(1.5rem, -0.875rem + 8.333333vw, 3.2rem);
+  line-height: 3rem;
   -moz-user-select: text;
   -webkit-user-select: text;
   -ms-user-select: text;
@@ -599,8 +598,8 @@ body.fullscreen-enabled #fullscreenToggle {
 
 .info-hotspot-modal .info-hotspot-close-wrapper {
   position: absolute;
-  top: 0;
-  right: 0;
+  top: 32px;
+  right: -20px;
   width: 50px;
   height: 50px;
   cursor: pointer;
@@ -609,7 +608,6 @@ body.fullscreen-enabled #fullscreenToggle {
 .info-hotspot-modal .info-hotspot-close-icon {
   width: 70%;
   height: 70%;
-  margin: 15%;
 }
 
 .info-hotspot-modal .info-hotspot-content {
@@ -621,7 +619,7 @@ body.fullscreen-enabled #fullscreenToggle {
   position: absolute;
   max-width: 100%;
   max-height: 100%;
-  height: 75%;
+  height: 80%;
   top: 150px;
   bottom: 50px;
   left: 50px;
@@ -711,9 +709,11 @@ body.fullscreen-enabled #fullscreenToggle {
   position: relative;
   width: 1080px;
   height: 1080px;
+  max-width: 100%;
   max-height: 100%;
   object-fit: cover;
-  z-index: ;
+  padding: 0;
+  margin: 0;
 }
 
 .carousel .carousel-images {
@@ -750,7 +750,8 @@ body.fullscreen-enabled #fullscreenToggle {
   opacity: 0.8;
 }
 
-.mobile .playbtn_wrap, .touch .playbtn_wrap {
+.mobile .playbtn_wrap,
+.touch .playbtn_wrap {
   visibility: hidden;
 }
 
@@ -766,6 +767,7 @@ body.fullscreen-enabled #fullscreenToggle {
 .carousel-nav {
   width: 100%;
   display: flex;
+  align-self: center;
   flex-direction: row-reverse;
   justify-content: space-between;
   padding: 0 10px;
@@ -794,7 +796,7 @@ body.fullscreen-enabled #fullscreenToggle {
 .carousel-pagination {
   list-style: none;
   position: absolute;
-  bottom: 200px;
+  bottom: 220px;
   left: 0;
   right: 0;
   padding: 0;
@@ -846,7 +848,7 @@ body.fullscreen-enabled #fullscreenToggle {
   font-size: clamp(1rem, -0.875rem + 8.333333vw, 2rem);
   width: 80%;
   line-height: 2rem;
-  border-bottom: 1px solid var(--accent-red);
+  border-bottom: 4px solid var(--blue-added);
   margin-bottom: 1rem;
   padding-bottom: 8px;
 }
@@ -942,9 +944,17 @@ body.fullscreen-enabled #fullscreenToggle {
     order: -1;
     height: 50%;
   }
+
   .leftcol {
     height: 50%;
   }
+
+  /*
+   .carousel-images .video-wrapper {
+    align-items: flex-start;
+    justify-content: flex-start;
+    margin-bottom: 6rem;
+  } */
 
   .product-txt-wrapper {
     max-height: 100%;
@@ -1006,7 +1016,7 @@ body.fullscreen-enabled #fullscreenToggle {
   .product-txt-wrapper .product-txt-subhead {
     width: 60%;
     line-height: 1.2rem;
-    border-bottom: 1px solid var(--accent-red);
+    border-bottom: 1px solid var(--accent-blue);
     margin-bottom: 0.5rem;
     padding-bottom: 8px;
   }
