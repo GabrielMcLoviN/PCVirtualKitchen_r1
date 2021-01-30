@@ -489,7 +489,7 @@ function createInfoHotspotElement(hotspot) {
 	const pagination = modal.querySelector(".carousel-pagination");
 	var bullets = [].slice.call(modal.querySelectorAll(".carousel-bullet"));
 	let currentIndex = 0;
-	let percentage = 100;
+	let percentage = 110;
 
 	let touchstartX = 0;
 	let touchendX = 0;
