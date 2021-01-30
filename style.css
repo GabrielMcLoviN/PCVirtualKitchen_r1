@@ -545,11 +545,14 @@ body.fullscreen-enabled #fullscreenToggle {
 
 .info-hotspot-modal .info-hotspot-header {
   position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   top: 35px;
   left: 50px;
   right: 50px;
   width: auto;
-  height: 90%;
+  height: 100px;
   opacity: 0;
   -webkit-transition: opacity 0.3s ease-in-out 0.2s;
   transition: opacity 0.3s ease-in-out 0.2s;
@@ -569,14 +572,9 @@ body.fullscreen-enabled #fullscreenToggle {
   display: flex;
   align-items: center;
   justify-content: center;
-  position: absolute;
-  top: 0;
-  left: 10px;
-  right: 50px;
-  width: auto;
-  height: 100px;
   padding: 0 2px;
 }
+
 
 .info-hotspot-modal .info-hotspot-title-wrapper:before {
   content: "";
@@ -587,7 +585,7 @@ body.fullscreen-enabled #fullscreenToggle {
 }
 
 .info-hotspot-modal .info-hotspot-title {
-  display: inline-block;
+  display: none;
   vertical-align: middle;
   font-family: "Antonio";
   font-size: clamp(1.5rem, -0.875rem + 8.333333vw, 2.5rem);
@@ -598,18 +596,24 @@ body.fullscreen-enabled #fullscreenToggle {
   user-select: text;
 }
 
-.info-hotspot-modal .info-hotspot-close-wrapper {
-  position: absolute;
-  top: 32px;
-  right: -20px;
-  width: 50px;
-  height: 50px;
+.rightcol .info-hotspot-close-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 25px;
+  height: 25px;
   cursor: pointer;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  border-radius: 50%;
+  background-color:var(--accent-darkgray-opaque);
 }
 
 .info-hotspot-modal .info-hotspot-close-icon {
-  width: 70%;
-  height: 70%;
+  opacity: .85;
+  width: 25px;
+  height: 25px;
 }
 
 .info-hotspot-modal .info-hotspot-content {
@@ -618,12 +622,8 @@ body.fullscreen-enabled #fullscreenToggle {
   display: flex;
   align-items: center;
   justify-content: center;
-  position: absolute;
-  max-width: 100%;
-  top: 125px;
-  bottom: 10vh;
-  left: 50px;
-  right: 50px;
+  width: 95vw;
+  height: 85vh;
   background-color: var(--secondary-white);
   color: var(--secondary-blk);
   opacity: 0;
@@ -657,11 +657,11 @@ body.fullscreen-enabled #fullscreenToggle {
 
 .leftcol {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
   flex: 1 1 300px;
-  max-height: 100%;
-  overflow-y: scroll;
+  height: 100%;
+  overflow-y: auto;
 }
 
 .rightcol {
@@ -670,9 +670,10 @@ body.fullscreen-enabled #fullscreenToggle {
   align-items: center;
   justify-content: center;
   width: 100%;
+  height: 100%;
   max-height: 100%;
   overflow: hidden;
-  object-fit: cover;
+  object-fit: fill;
 }
 
 .carousel {
@@ -681,11 +682,9 @@ body.fullscreen-enabled #fullscreenToggle {
   justify-content: center;
   overflow: hidden;
   position: relative;
-  width: 1080px;
-  height: 1080px;
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: cover;
+  width: 100%;
+  height: auto;
+  object-fit: fill;
   padding: 0;
   margin: 0;
 }
@@ -697,8 +696,9 @@ body.fullscreen-enabled #fullscreenToggle {
 }
 
 .carousel-images .product-image {
-  max-width: 100%;
+  width: 100%;
   height: auto;
+
 }
 
 .carousel-images .video-wrapper {
@@ -724,10 +724,10 @@ body.fullscreen-enabled #fullscreenToggle {
   opacity: 0.8;
 }
 
-.mobile .playbtn_wrap,
+/* .mobile .playbtn_wrap,
 .touch .playbtn_wrap {
   visibility: hidden;
-}
+} */
 
 .carousel-images video {
   max-width: 50rem;
@@ -770,13 +770,14 @@ body.fullscreen-enabled #fullscreenToggle {
 .carousel-pagination {
   list-style: none;
   position: absolute;
-  bottom: 220px;
+  bottom: 5vh;
   left: 0;
   right: 0;
   padding: 0;
   margin: 0 auto;
   text-align: center;
-  z-index: 20;
+  width: 100%;
+  z-index: 20 !important;
 }
 
 .carousel-bullet {
@@ -813,23 +814,27 @@ body.fullscreen-enabled #fullscreenToggle {
   align-items: flex-start;
   justify-content: space-evenly;
   height: 100%;
-  padding: 5vh 0 ;
+  padding: 5vh 0;
   width: clamp(20vw, 40vw, 50vw);
+  font-size: clamp(0.5rem, -0.875rem + 8.333333vw, .85rem);
 }
 
 .product-txt-wrapper .product-txt-subhead {
+  font-family: "antonio", sans-serif;
   justify-self: flex-end;
-  font-weight: 500;
-  font-size: clamp(1rem, -0.875rem + 8.333333vw, 2rem);
-  width: 80%;
-  line-height: 2rem;
-  border-bottom: 4px solid var(--blue-added);
+  font-weight: normal;
+  font-size: clamp(1rem, -0.875rem + 8.333333vw, 2.5rem);
+  width: 90%;
+  line-height: 2.65rem;
+  border-bottom: 2px solid var(--blue-added);
   margin-bottom: 1rem;
-  padding-bottom: 8px;
+  padding-bottom: .5rem;
 }
 
 .product-txt {
   font-weight: 300;
+  line-height: 1rem;
+  margin-right: 2rem;
 }
 
 .recipes {
@@ -861,9 +866,9 @@ body.fullscreen-enabled #fullscreenToggle {
 .recipes-list li {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   text-align: center;
-  padding: 0 2rem 0 1rem;
+  padding: 0 2rem 0 0;
   width: 100%;
   height: 100%;
   transition: all 0.25s ease;
@@ -889,7 +894,7 @@ body.fullscreen-enabled #fullscreenToggle {
 }
 
 .recipe-preview-img {
-  width: 120px;
+  width: 100px;
   height: auto;
   transition: all 0.25s ease;
 }
@@ -915,44 +920,36 @@ body.fullscreen-enabled #fullscreenToggle {
 }
 
 @media (max-width: 1030px) {
-  .rightcol {
-    order: -1;
-    height: 50%;
-  }
 
-  .leftcol {
-    height: 50%;
-  }
-
-  /*
-   .carousel-images .video-wrapper {
-    align-items: flex-start;
-    justify-content: flex-start;
-    margin-bottom: 6rem;
-  } */
 
   .product-txt-wrapper {
     max-height: 100%;
     justify-content: start;
   }
 
-  .carousel-pagination {
-    bottom: 10px;
-  }
+
 
   .recipes-list {
     margin-bottom: 2rem;
   }
 }
 
-@media (max-width: 800px) {
+@media (max-width: 630px) {
+  .rightcol {
+    order: -1;
+    height: 60%;
+  }
+  .leftcol {
+    width: 100%;
+    height: 50%;
+  }
+
   body {
     font-size: 0.8rem;
   }
 
   .product-txt-wrapper {
     padding: 0;
-    max-width: 400px;
     padding-top: 2rem;
     padding-bottom: 2rem;
     align-items: start;
@@ -1033,14 +1030,14 @@ body.fullscreen-enabled #fullscreenToggle {
   }
 }
 
-@media (max-height: 900px) and (min-width: 1028px) {
+/* @media (max-height: 900px) and (min-width: 1028px) {
   .product-txt-wrapper {
     font-size: 0.75rem;
   }
   .carousel-pagination {
     bottom: 230px;
   }
-}
+} */
 
 /* @media (max-width: 1300px) {
   .product-txt-wrapper {

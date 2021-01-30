@@ -285,7 +285,6 @@ function createInfoHotspotElement(hotspot) {
 	// Construct header element.
 	header.appendChild(iconWrapper);
 	header.appendChild(titleWrapper);
-	header.appendChild(closeWrapper);
 
 	// Create content element.
 	const content = document.createElement("div");
@@ -417,6 +416,8 @@ function createInfoHotspotElement(hotspot) {
 			carousel_pagination.appendChild(carousel_bullet);
 			carouselImages.appendChild(video_wrapper);
 		}
+	} else {
+		null
 	}
 
 	carouselNav.appendChild(carouselNext);
@@ -425,6 +426,8 @@ function createInfoHotspotElement(hotspot) {
 	carousel.appendChild(carouselNav);
 
 	modalRight.appendChild(carousel);
+	modalRight.appendChild(closeWrapper);
+
 
 	contentColWrapper.appendChild(modalLeft);
 	contentColWrapper.appendChild(modalRight);
