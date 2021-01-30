@@ -61,6 +61,7 @@ if (bowser.msie && parseFloat(bowser.version) < 11) {
 const viewerOpts = {
 	controls: {
 		mouseViewMode: data.settings.mouseViewMode,
+		scrollZoom: false,
 	},
 };
 
