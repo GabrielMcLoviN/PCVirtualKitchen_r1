@@ -1,3 +1,4 @@
+// Dimensions for post block on Table: 355px iphone 6/7/8 90% margin:auto -> mobile width = 750px on desktop desktop is 2/3, 1/3 columns col-md-8 desktop bootstrap panels
 // var APP_DATA = {
 // 	scenes: [
 // 		{

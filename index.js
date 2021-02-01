@@ -285,6 +285,8 @@ function createInfoHotspotElement(hotspot) {
 	// Construct header element.
 	header.appendChild(iconWrapper);
 	header.appendChild(titleWrapper);
+	header.appendChild(closeWrapper);
+
 
 	// Create content element.
 	const content = document.createElement("div");
@@ -426,7 +428,6 @@ function createInfoHotspotElement(hotspot) {
 	carousel.appendChild(carouselNav);
 
 	modalRight.appendChild(carousel);
-	modalRight.appendChild(closeWrapper);
 
 
 	contentColWrapper.appendChild(modalLeft);
@@ -489,7 +490,7 @@ function createInfoHotspotElement(hotspot) {
 	const pagination = modal.querySelector(".carousel-pagination");
 	var bullets = [].slice.call(modal.querySelectorAll(".carousel-bullet"));
 	let currentIndex = 0;
-	let percentage = 110;
+	let percentage = 100;
 
 	let touchstartX = 0;
 	let touchendX = 0;
