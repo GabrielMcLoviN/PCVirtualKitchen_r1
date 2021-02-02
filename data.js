@@ -140,8 +140,8 @@ var APP_DATA = {
 			],
 			infoHotspots: [
 				{
-					yaw: -1.6358973692516976,
-					pitch: 1.05461529780151686,
+					yaw: -1.9958973692516976,
+					pitch: 0.05461529780151686,
 					title: "BE A CONSULTANT",
 					images: [
 						"./1080x1080/be_a_consultant/01.jpg",
@@ -149,7 +149,7 @@ var APP_DATA = {
 					],
 					subhead: "Be a Consultant",
 					text:
-						"<h4>What's in It for You?</h4><p>You mean... besides earning commission on every sale?<br/>Here are more amazing perks:</p><br/><h4 class='consultant_block-header'>Work/Life Balance</h4><p>Make your business work around another job or family commitments-and take it wherever you go with your website and online tools.</p><h4 class='consultant_block-header'>Free Products & Discounts</h4><p>You'll get 20–50% off products right away, and you'll have the chance to earn products or Pampered Chef logo gear every month.</p><h4 class='consultant_block-header'>Fantastic Rewards</h4><p>On top of free products, you can earn cash rewards and even vacations-and you'll earn even more if you promote!</p><h4 class='consultant_block-header'>Purpose & Community</h4><p>You'll be part of a strong community of people who share the same passion for helping others by inspiring mealtime wins.</p><br/><span class='consultant_block-footer'>Contact your consultant to learn more today!</span>",
+						"<h3>What's in It for You?</h3><p>You mean... besides earning commission on every sale?<br/>Here are more amazing perks:</p><br/><h4 class='modal_block-header'>Work/Life Balance</h4><p>Make your business work around another job or family commitments-and take it wherever you go with your website and online tools.</p><h4 class='modal_block-header'>Free Products & Discounts</h4><p>You'll get 20–50% off products right away, and you'll have the chance to earn products or Pampered Chef logo gear every month.</p><h4 class='modal_block-header'>Fantastic Rewards</h4><p>On top of free products, you can earn cash rewards and even vacations-and you'll earn even more if you promote!</p><h4 class='modal_block-header'>Purpose & Community</h4><p>You'll be part of a strong community of people who share the same passion for helping others by inspiring mealtime wins.</p><br/><span class='modal_block-footer'>Contact your consultant to learn more today!</span>",
 					pdf_links: [
 						{
 							id: "New Consultant Kit",
@@ -167,8 +167,8 @@ var APP_DATA = {
 					],
 				},
 				{
-					yaw: -2.6358973692516976,
-					pitch: 2.05461529780151686,
+					yaw: -0.9958973692516976,
+					pitch: 0.05461529780151686,
 					title: "HOST A PARTY",
 					images: [
 						"./1080x1080/host_party/01.jpg",
@@ -178,7 +178,7 @@ var APP_DATA = {
 					],
 					subhead: "Host a Party",
 					text:
-						"",
+						"<h4 class='modal_block-header'>Free Product Rewards</h4><p>The higher your party sales, the more free product value you get to spend on the products you want.</p><h4 class='modal_block-header'>Half-Price Products</h4><p>Get up to five, including exclusive host exclusive combos.</p><h4 class='modal_block-header'>Monthly Host Special</h4><p>Get an exclusive offer just for hosting.</p><h4 class='modal_block-header'>Booking Bonuses</h4><p>Get 40% off one item or set at any party booked from yours - and get $50 in free product rewards when three guests book parties!</p><h4 class='modal_block-header'>Discounted Products</h4><p>Save up to 30% at your party, and 10% for one year.</p><br/><span class='modal_block-footer'>Contact your consultant to learn more today!</span>",
 					pdf_links: [
 						{
 							id: "Host Rewards PDF",
@@ -188,7 +188,6 @@ var APP_DATA = {
 						},
 					],
 				},
-
 				{
 					yaw: -0.6358973692516976,
 					pitch: 0.05461529780151686,
@@ -535,9 +534,9 @@ var APP_DATA = {
 						"<p>The Premium Charcuterie & Cheese Board Set has everything you need to make entertaining a breeze. The set features an Acacia wood Lazy Susan and our Charcuterie & Cheese Board Accessories.</p>",
 					related_content: [
 						{
-							id: "How to Build a Charcuterie Board",
+							id: "How to Build a Charcuterie Board (Video)",
 							preview_image: "./videos/charc_video_preview_img.jpg",
-							link: "",
+							link: "./videos/charcuterie-2.mp4",
 						},
 					],
 				},
