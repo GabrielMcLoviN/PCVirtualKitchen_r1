@@ -140,6 +140,56 @@ var APP_DATA = {
 			],
 			infoHotspots: [
 				{
+					yaw: -1.6358973692516976,
+					pitch: 1.05461529780151686,
+					title: "BE A CONSULTANT",
+					images: [
+						"./1080x1080/be_a_consultant/01.jpg",
+						"./1080x1080/be_a_consultant/02.jpg",
+					],
+					subhead: "Be a Consultant",
+					text:
+						"<h4>What's in It for You?</h4><p>You mean... besides earning commission on every sale?<br/>Here are more amazing perks:</p><br/><h4 class='consultant_block-header'>Work/Life Balance</h4><p>Make your business work around another job or family commitments-and take it wherever you go with your website and online tools.</p><h4 class='consultant_block-header'>Free Products & Discounts</h4><p>You'll get 20–50% off products right away, and you'll have the chance to earn products or Pampered Chef logo gear every month.</p><h4 class='consultant_block-header'>Fantastic Rewards</h4><p>On top of free products, you can earn cash rewards and even vacations-and you'll earn even more if you promote!</p><h4 class='consultant_block-header'>Purpose & Community</h4><p>You'll be part of a strong community of people who share the same passion for helping others by inspiring mealtime wins.</p><br/><span class='consultant_block-footer'>Contact your consultant to learn more today!</span>",
+					pdf_links: [
+						{
+							id: "New Consultant Kit",
+							preview_image:
+								"./modals/be_a_consultant/flyer-new-consultant-kit-us_Page_1 (Small).jpg",
+							link: "./modals/be_a_consultant/flyer-new-consultant-kit-us.pdf",
+						},
+						{
+							id: "Make Your Everyday Better Poster",
+							preview_image:
+								"./modals/be_a_consultant/poster-everyday-better-checklist-20x30-us (Small).jpg",
+							link:
+								"./modals/be_a_consultant/poster-everyday-better-checklist-20x30-us.pdf",
+						},
+					],
+				},
+				{
+					yaw: -2.6358973692516976,
+					pitch: 2.05461529780151686,
+					title: "HOST A PARTY",
+					images: [
+						"./1080x1080/host_party/01.jpg",
+						"./1080x1080/host_party/02.jpg",
+						"./1080x1080/host_party/03.jpg",
+						"./1080x1080/host_party/04.jpg",
+					],
+					subhead: "Host a Party",
+					text:
+						"",
+					pdf_links: [
+						{
+							id: "Host Rewards PDF",
+							preview_image:
+								"./modals/host_party/p28619-092020us-host-rewards (Small).jpg",
+							link: "./modals/host_party/p28619-092020us-host-rewards.pdf",
+						},
+					],
+				},
+
+				{
 					yaw: -0.6358973692516976,
 					pitch: 0.05461529780151686,
 					title: '12" STAINLESS STEEL NONSTICK SKILLET',
@@ -159,7 +209,7 @@ var APP_DATA = {
 					],
 					subhead: '12" Stainless Steel Nonstick Skillet',
 					text:
-						"<p>This innovative pan combines the best features of stainless steel and nonstick cookware. The nonstick mesh coating provides the perfect sear (without the mess) and leaves fond for pan sauces and gravy. The size is perfect for one-pot meals.</p><br><p>Our stainless steel skilletsare a true hybrid: They combine the amazing cooking and heating capabilities of traditional stainless steel with the easy cleanup of nonstick cookware. With these innovative pans, you can get the perfect sear, make professional-grade pan sauces, and look like a pro—without breaking a sweat.</p>",
+						"<p>This innovative pan combines the best features of stainless steel and nonstick cookware. The nonstick mesh coating provides the perfect sear (without the mess) and leaves fond for pan sauces and gravy. The size is perfect for one-pot meals.</p><br><p>Our stainless steel skillets are a true hybrid: They combine the amazing cooking and heating capabilities of traditional stainless steel with the easy cleanup of nonstick cookware. With these innovative pans, you can get the perfect sear, make professional-grade pan sauces, and look like a pro—without breaking a sweat.</p>",
 					recipes: [
 						{
 							id: "Chicken Sausage & Spinach Ravioli",
