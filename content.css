@@ -5,20 +5,16 @@
 }
 
 .info-hotspot-modal {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  position: absolute;
   top: 0;
   left: 0;
-  position: absolute;
   width: 100%;
   height: 100%;
-  overflow: hidden;
+  overflow: auto;
   z-index: 11000 !important;
   background-color: rgba(0, 0, 0, 0.5);
-  line-height: 1.2em;
   opacity: 0;
-  font-size: 14px;
+  font-size: 12px;
   visibility: hidden;
   -webkit-transition: opacity 0.2s ease-in-out 0.5s, visibility 0s 0.7s;
   transition: opacity 0.2s ease-in-out 0.5s, visibility 0s 0.7s;
@@ -33,7 +29,7 @@
 
 .info-hotspot-modal .info-hotspot-header {
   position: absolute;
-  top: 30px;
+  top: 25px;
   left: 50px;
   right: 50px;
   width: auto;
@@ -95,13 +91,13 @@
 }
 
 .info-hotspot-modal .info-hotspot-content {
-  overflow-y: hidden;
-  overflow-x: hidden;
+  display: grid;
+  grid-template-columns: 1fr minmax(326px, 20%);
+  grid-gap: 1rem;
+  overflow: hidden;
   position: absolute;
-  max-width: 100%;
-  max-height: 90%;
-  height: 72.5%;
-  top: 80px;
+  height: 326px;
+  top: 75px;
   bottom: 30px;
   left: 50px;
   right: 50px;
@@ -123,26 +119,24 @@
   transition: opacity 0.3s ease-in-out 0.4s;
 }
 
-.col-wrap {
+.carousel_container {
+  height: 310px;
+  width: 100%;
+  height: 100%;
+  order: 1;
   object-fit: contain;
-  display: grid;
-  grid-template-columns: repeat(2, minmax(200px, 1fr));
-  grid-gap: 1rem;
-}
-
-.rightcol {
-  /* flex: 1 1 300px; */
-  overflow: hidden;
 }
 
 .carousel {
-  display: inline-flex;
+  display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
   position: relative;
   padding: 0;
   margin: 0;
+  width: 100%;
+  max-height: 100%;
 }
 
 .carousel .carousel-images {
@@ -153,7 +147,7 @@
 
 .carousel-images .product-image {
   width: 100%;
-  height: auto;
+  max-height: 100%;
   object-fit: cover;
 }
 
@@ -225,7 +219,7 @@
 .carousel-pagination {
   list-style: none;
   position: absolute;
-  bottom: 10px;
+  bottom: calc(0% + 5px);
   left: 0;
   right: 0;
   padding: 0;
@@ -262,21 +256,11 @@
   cursor: default;
 }
 
-.leftcol {
-  overflow-y: scroll;
-  overflow-x: hidden;
-  height: 100%;
-  max-width: 100%;
-  /* flex: 1 1 50%; */
-}
-
 .product-txt-wrapper {
-  display: flex;
+  margin: 1rem 0.5rem 1rem 1rem;
+  overflow-y: scroll;
   flex-direction: column;
-  align-items: stretch;
-  justify-content: center;
-  padding: 1.5rem;
-  padding-bottom: 2rem;
+  overflow-y: scroll;
 }
 
 .product-txt-wrapper .product-txt-subhead {
@@ -296,40 +280,44 @@
 }
 
 .recipes {
+  width: 100%;
   display: flex;
   flex-direction: column;
   padding-top: 1rem;
 }
 
 .recipes-header {
-  border-bottom: 1px solid var(--blue-added);
-  width: 50%;
-  font-style: italic;
-  margin-bottom: 1rem;
-  font-size: 0.75rem;
   display: inline-block;
+  border-bottom: 1px solid var(--blue-added);
+  font-style: italic;
+  margin-bottom: 0.75rem;
+  padding-bottom: 4px;
+  font-size: 0.75rem;
+  width: 65%;
 }
 
 .recipes-list {
   display: flex;
-  height: 100%;
+  width: fit-content;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding-right: 1rem;
   flex-direction: row;
+  width: 100%;
 }
 
 .recipes-list ul {
+  position: relative;
+  flex: 1;
   display: flex;
-  height: 100%;
+  justify-content: space-between;
   width: 100%;
-  flex-direction: row;
 }
 
 .recipes-list li {
   display: flex;
   flex-direction: column;
-  align-items:inherit;
-  /* padding: 0 2rem 0 1rem; */
-  width: 100%;
-  height: 100%;
+  max-width: 55px;
   transition: all 0.25s ease;
 }
 
@@ -342,7 +330,6 @@
   display: flex;
   height: auto;
   width: 100%;
-  text-align: center;
 }
 
 .recipe-preview-img-wrap {
@@ -353,7 +340,7 @@
 }
 
 .recipe-preview-img {
-  width: 70px;
+  width: 55px;
   height: auto;
   transition: all 0.25s ease;
 }
@@ -369,11 +356,13 @@
 }
 
 .recipes-list li .recipe-title {
-  font-size: 0.5rem;
+  font-size: 1vw;
   font-weight: 300;
   font-style: italic;
   line-height: 0.5rem;
-  width: 100px;
+  text-align: center;
+  width: auto;
+  word-wrap: break-word;
   transition: all 0.25s ease;
 }
 /*

@@ -292,37 +292,23 @@ function createInfoHotspotElement(hotspot) {
 	const content = document.createElement("div");
 	content.classList.add("info-hotspot-content");
 
-	const contentColWrapper = document.createElement("div");
-	contentColWrapper.classList.add("col-wrap");
-
-	const modalLeft = document.createElement("div");
-	modalLeft.classList.add("leftcol");
-
-	const modalRight = document.createElement("div");
-	modalRight.classList.add("rightcol");
-
+	//text element
 	const textWrapper = document.createElement("div");
 	textWrapper.classList.add("product-txt-wrapper");
-
 	const subhead = document.createElement("h2");
 	subhead.classList.add("product-txt-subhead");
 	subhead.innerHTML = hotspot.subhead;
-
 	const text = document.createElement("div");
 	text.innerHTML = hotspot.text;
 	text.classList.add("product-txt");
-
 	const recipes = document.createElement("div");
 	recipes.classList.add("recipes");
-
 	const recipesHeader = document.createElement("h2");
 	recipesHeader.classList.add("recipes-header");
 	recipesHeader.textContent = "Recipes to Try:";
 	recipes.appendChild(recipesHeader);
-
 	const recipesList = document.createElement("ul");
 	recipesList.classList.add("recipes-list");
-
 	if (hotspot.recipes != undefined) {
 		for (let i = 0; i < hotspot.recipes.length; i++) {
 			const recipe_el = document.createElement("li");
@@ -337,7 +323,6 @@ function createInfoHotspotElement(hotspot) {
 			recipe_preview_img.src = hotspot.recipes[i].preview_image;
 			recipe_preview_img.classList.add("recipe-preview-img");
 			recipe_preview_img_wrap.appendChild(recipe_preview_img);
-
 			const recipe_title = document.createElement("a");
 			recipe_title.classList.add("recipe-title")
 			recipe_title.innerHTML = hotspot.recipes[i].id;
@@ -345,7 +330,6 @@ function createInfoHotspotElement(hotspot) {
 			recipe_title.setAttribute("target", "_blank");
 			recipe_el.appendChild(recipe_link);
 			recipe_el.appendChild(recipe_title);
-
 			recipesList.appendChild(recipe_el);
 		}
 	} else if (hotspot.related_content != undefined) {
@@ -353,25 +337,20 @@ function createInfoHotspotElement(hotspot) {
 	} else {
 		recipesHeader.textContent = "";
 	}
-
 	recipes.appendChild(recipesList);
 	textWrapper.appendChild(subhead);
 	textWrapper.appendChild(text);
 	textWrapper.appendChild(recipes);
 
-	modalLeft.appendChild(textWrapper);
-
-	//Create product images element
+	//carousel
+	const carousel_container = document.createElement("div")
+	carousel_container.classList.add("carousel_container")
 	const carousel = document.createElement("div");
 	carousel.classList.add("carousel");
 	const carouselImages = document.createElement("div");
 	carouselImages.classList.add("carousel-images");
-
-	//Create Carousel Nav element
 	const carouselNav = document.createElement("div");
 	carouselNav.classList.add("carousel-nav");
-
-	//CarouselNav Buttons
 	const carouselNext = document.createElement("img");
 	carouselNext.src = "./assets/1x/ic_chevron_right_48px.png";
 	carouselNext.classList.add("carousel-button");
@@ -384,7 +363,6 @@ function createInfoHotspotElement(hotspot) {
 	carouselPrev.setAttribute("id", "previous");
 	const carousel_pagination = document.createElement("ul");
 	carousel_pagination.classList.add("carousel-pagination");
-
 	for (let i = 0; i < hotspot.images.length; i++) {
 		const carousel_bullet = document.createElement("li");
 		carousel_bullet.classList.add("carousel-bullet");
@@ -395,7 +373,6 @@ function createInfoHotspotElement(hotspot) {
 		carousel_pagination.appendChild(carousel_bullet);
 		carousel.appendChild(carousel_pagination);
 	}
-
 	if (hotspot.videos != undefined) {
 		for (let i = 0; i < hotspot.videos.length; i++) {
 			const carousel_bullet = document.createElement("li");
@@ -427,26 +404,25 @@ function createInfoHotspotElement(hotspot) {
 	carouselNav.appendChild(carouselPrev);
 	carousel.appendChild(carouselNav);
 
-	modalRight.appendChild(carousel);
+	carousel_container.appendChild(carousel);
 
+	content.appendChild(textWrapper);
+	content.appendChild(carousel_container);
 
-	contentColWrapper.appendChild(modalLeft);
-	contentColWrapper.appendChild(modalRight);
-	content.appendChild(contentColWrapper);
-	// Place header and text into wrapper element.
 	wrapper.appendChild(header);
 	wrapper.appendChild(content);
-	// Create a modal for the hotspot content to appear on mobile mode.
+
 	const modal = document.createElement("div");
 	modal.innerHTML = wrapper.innerHTML;
 	modal.classList.add("info-hotspot-modal");
+
 	document.body.appendChild(modal);
+
 	const toggle = function () {
 		modal.classList.toggle("visible");
 	};
-	// Show content when hotspot is clicked.
+
 	wrapper.querySelector(".info-hotspot-header").addEventListener("click", toggle);
-	// Hide content when close icon is clicked.
 	modal.querySelector(".info-hotspot-close-wrapper").addEventListener("click", toggle);
 
 	const video_parent = modal.querySelectorAll(".video-wrapper");
