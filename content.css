@@ -261,6 +261,7 @@
   overflow-y: scroll;
   flex-direction: column;
   overflow-y: scroll;
+  max-height: 300px;
 }
 
 .product-txt-wrapper .product-txt-subhead {
@@ -319,6 +320,7 @@
   flex-direction: column;
   max-width: 55px;
   transition: all 0.25s ease;
+  padding-bottom: 4px;
 }
 
 .recipes-list li:hover {
