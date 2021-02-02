@@ -1,9 +1,5 @@
 /* Info hotspot modal */
 
-.desktop .info-hotspot-modal {
-  /* display: none; */
-}
-
 .info-hotspot-modal {
   position: absolute;
   top: 0;
@@ -245,7 +241,10 @@
   cursor: default;
 }
 
+
+/* product-txt */
 .product-txt-wrapper {
+  height: 95%;
   padding: 5%;
   overflow-y: scroll;
   flex-direction: column;
@@ -263,9 +262,28 @@
   padding-bottom: 8px;
 }
 
+
 .product-txt {
   font-size: clamp(0.5rem, -0.875rem + 8.333333vw, 0.75rem);
   font-weight: 300;
+}
+
+.product-txt h3 {
+  font-weight: bold;
+  margin-bottom: .25rem;
+}
+
+.addtl_modal_body p {
+  margin-bottom: 1rem;
+}
+
+.consultant_perks {
+  font-style: italic;
+}
+
+.product-txt .modal_block-header {
+  font-weight: 400;
+  margin-bottom: .25rem;
 }
 
 .recipes {
@@ -287,19 +305,11 @@
 
 .recipes-list {
   display: flex;
-  width: fit-content;
-  justify-content: space-between;
+  justify-content: flex-start;
+  flex: 1;
   flex-wrap: wrap;
   padding-right: 1rem;
   flex-direction: row;
-  width: 100%;
-}
-
-.recipes-list ul {
-  position: relative;
-  flex: 1;
-  display: flex;
-  justify-content: space-between;
   width: 100%;
 }
 
@@ -309,6 +319,7 @@
   max-width: 55px;
   transition: all 0.25s ease;
   padding-bottom: 4px;
+  margin-right: 2rem;
 }
 
 .recipes-list li:hover {
@@ -352,6 +363,5 @@
   line-height: 0.5rem;
   text-align: center;
   width: auto;
-  word-wrap: break-word;
   transition: all 0.25s ease;
 }
