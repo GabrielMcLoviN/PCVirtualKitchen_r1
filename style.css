@@ -246,31 +246,31 @@ body.fullscreen-enabled #fullscreenToggle {
 
 .link-hotspot-icon {
   border: 3px solid var(--accent-blue);
-  width: 90%;
+  width: 75%;
+  height: 75%;
   border-radius: 50%;
-  height: 90%;
   cursor: pointer;
 }
 
 .link-hotspot-tooltip {
   position: absolute;
-  left: 100%;
-  top: 0px; /* ( 60 - (16 + 2*8) ) / 2 */
+  right: -125%;
+  top: 100%; /* ( 60 - (16 + 2*8) ) / 2 */
 
-  margin-left: 3px;
+  /* margin-left: 3px; */
 
   font-size: 16px;
 
   width: 220px;
 
-  padding: 8px 10px;
+  padding: 8px;
 
   border-radius: 5px;
 
   background-color: var(--accent-blue);
 
   color: var(--secondary-white);
-
+  text-align: center;
   white-space: wrap;
   overflow: hidden;
 
@@ -278,9 +278,9 @@ body.fullscreen-enabled #fullscreenToggle {
 
   opacity: 0;
 
-  -ms-transform: translateX(-8px);
-  -webkit-transform: translateX(-8px);
-  transform: translateX(-8px);
+  -ms-transform: translateY(-8px);
+  -webkit-transform: translateY(-8px);
+  transform: translateY(-8px);
 
   -webkit-transition: -ms-transform 0.3s, -webkit-transform 0.3s, transform 0.3s, opacity 0.3s;
   transition: -ms-transform 0.3s, -webkit-transform 0.3s, transform 0.3s, opacity 0.3s;
@@ -292,9 +292,9 @@ body.fullscreen-enabled #fullscreenToggle {
 
 .no-touch .link-hotspot:hover .link-hotspot-tooltip {
   opacity: 1;
-  -ms-transform: translateX(0);
-  -webkit-transform: translateX(0);
-  transform: translateX(0);
+  -ms-transform: translateY(0);
+  -webkit-transform: translateY(0);
+  transform: translateY(0);
 }
 
 /* Prevent tooltip from triggering */
@@ -314,6 +314,10 @@ body.fullscreen-enabled #fullscreenToggle {
 }
 
 /* Info hotspot */
+.info-hotspot .info-hotspot-content,
+.info-hotspot .info-hotspot-close-wrapper {
+  display: none;
+}
 
 .info-hotspot {
   line-height: 1.2em;
@@ -425,7 +429,7 @@ body.fullscreen-enabled #fullscreenToggle {
   user-select: text;
 }
 
-.info-hotspot .info-hotspot-close-wrapper {
+/* .info-hotspot .info-hotspot-close-wrapper {
   position: absolute;
   left: 200px;
   top: 0;
@@ -457,39 +461,13 @@ body.fullscreen-enabled #fullscreenToggle {
   width: 70%;
   height: 70%;
   margin: 15%;
-}
+} */
 
-.info-hotspot .info-hotspot-content {
-  position: absolute;
-  width: 300px;
-  height: auto;
-  top: 40px;
-  left: 0;
-  padding: 10px;
-  background-color: rgb(58, 68, 84);
-  overflow-y: auto;
-  visibility: hidden;
-  /* rotate(90deg) causes transition flicker on Firefox 58 */
-  -ms-transform: perspective(200px) rotateX(-89.999deg);
-  -webkit-transform: perspective(200px) rotateX(-89.999deg);
-  transform: perspective(200px) rotateX(-89.999deg);
-  -ms-transform-origin: 50% 0 0;
-  -webkit-transform-origin: 50% 0 0;
-  transform-origin: 50% 0 0;
-  -webkit-transition: -ms-transform 0.3s, -webkit-transform 0.3s, transform 0.3s, visibility 0s 0.3s;
-  transition: -ms-transform 0.3s, -webkit-transform 0.3s, transform 0.3s, visibility 0s 0.3s;
-
-  -moz-user-select: text;
-  -webkit-user-select: text;
-  -ms-user-select: text;
-  user-select: text;
-}
-
-.desktop .info-hotspot.visible .info-hotspot-content {
+/* .desktop .info-hotspot.visible .info-hotspot-content {
   visibility: visible;
   -ms-transform: perspective(200px) rotateX(0deg);
   -webkit-transform: perspective(200px) rotateX(0deg);
   transform: perspective(200px) rotateX(0deg);
   -webkit-transition: -ms-transform 0.3s 0.3s, -webkit-transform 0.3s 0.3s, transform 0.3s 0.3s, visibility 0s 0s;
   transition: -ms-transform 0.3s 0.3s, -webkit-transform 0.3s 0.3s, transform 0.3s 0.3s, visibility 0s 0s;
-}
+} */

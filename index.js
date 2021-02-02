@@ -442,8 +442,6 @@ function createInfoHotspotElement(hotspot) {
 			carousel_pagination.appendChild(carousel_bullet);
 			carouselImages.appendChild(video_wrapper);
 		}
-	} else {
-		null
 	}
 
 	carouselNav.appendChild(carouselNext);
@@ -574,6 +572,15 @@ function createInfoHotspotElement(hotspot) {
 
 	return wrapper;
 }
+
+// function stopTouchAndScrollEventPropagation(element, eventList) {
+// 	var eventList = ["touchstart", "touchmove", "touchend", "touchcancel", "wheel", "mousewheel"];
+// 	for (var i = 0; i < eventList.length; i++) {
+// 		element.addEventListener(eventList[i], function (event) {
+// 			event.stopPropagation();
+// 		});
+// 	}
+// }
 
 function findSceneById(id) {
 	for (let i = 0; i < scenes.length; i++) {

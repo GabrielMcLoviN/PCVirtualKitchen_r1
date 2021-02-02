@@ -89,7 +89,7 @@
 .info-hotspot-modal .info-hotspot-content {
   display: grid;
   grid-template-columns: 1fr minmax(326px, 20%);
-  grid-gap: 1rem;
+  /* grid-gap: 1rem; */
   overflow: hidden;
   position: absolute;
   top: 75px;
