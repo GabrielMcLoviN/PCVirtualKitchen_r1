@@ -13,6 +13,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
+// TODO
+//* fullscreen + mobile media queries
+//* recipe book modal
+//* cleanup files of unused fonts/images
+//*
+
+
+
 "use strict";
 const Marzipano = window.Marzipano;
 const bowser = window.bowser;
