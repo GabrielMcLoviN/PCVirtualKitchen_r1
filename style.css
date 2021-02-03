@@ -83,7 +83,7 @@
   --secondary-blk: rgb(41, 40, 41);
   --secondary-blk-opaque: rgba(41, 40, 41, 0.5);
   --secondary-white: rgb(245, 245, 245);
-  --secondary-white-opaque: rgba(245, 245, 245, 0.5);
+  --secondary-white-opaque: rgba(245, 245, 245, 0.226);
   --accent-blue: rgb(0, 173, 174);
   --accent-blue-opaque: rgba(0, 173, 174, 0.5);
   --accent-red: rgb(233, 115, 85);
@@ -150,15 +150,14 @@ a:visited {
 
 #titleBar {
   display: flex;
+  justify-content: flex-end;
+  align-items: center;
   position: absolute;
   top: 0;
   left: 0;
-  align-items: center;
-  justify-content: center;
-  padding: 0 1rem 0 0;
   width: 100%;
-  height: 25px;
-  background-color: var(--secondary-white-opaque);
+  height: 20px;
+  /* background-color: var(--secondary-white-opaque); */
 }
 
 body.multiple-scenes #titleBar {
@@ -169,44 +168,45 @@ body.multiple-scenes.mobile #titleBar {
   left: 0px;
 }
 
-#titleBar .logoWrapper {
-  margin: 10px auto;
-  flex: 1;
+.logoWrapper {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
 
-#titleBar .sceneName {
+.sceneName {
   display: block;
-  max-width: 100px;
+  max-width:
+  90px;
   height: auto;
 }
 
 #fullscreenToggle {
-  flex: 0;
   display: flex;
   align-items: center;
+  justify-content: center;
+  padding-top: 5px;
+  margin-right: 10px;
 }
 
-.mobile #fullscreenToggle {
-  padding: 0;
-}
 
 body.fullscreen-enabled #fullscreenToggle {
   display: block;
 }
 
 #fullscreenToggle .icon {
-  width: 20px;
-  height: 20px;
+  width: 16px;
+  height: 16px;
   filter: invert(1);
 }
 
-.mobile #fullscreenToggle .icon {
-  width: 20px;
-  height: 20px;
-}
+
 
 #fullscreenToggle .icon.on {
   display: none;
@@ -392,13 +392,13 @@ body.fullscreen-enabled #fullscreenToggle {
 .mobile .info-hotspot .info-hotspot-header {
   width: 40px;
   height: 40px;
-  border-radius: 25px;
 }
 
 .desktop.no-touch .info-hotspot .info-hotspot-header:hover,
 .mobile.no-touch .info-hotspot .info-hotspot-header:hover {
-  width: 260px;
-  border-radius: 5px;
+  width: 210px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
   -webkit-transition: width 0.3s ease-in-out, border-radius 0.3s ease-in-out;
   transition: width 0.3s ease-in-out, border-radius 0.3s ease-in-out;
 }
@@ -406,11 +406,9 @@ body.fullscreen-enabled #fullscreenToggle {
 .desktop .info-hotspot.visible .info-hotspot-header,
 .desktop.no-touch .info-hotspot.visible .info-hotspot-header:hover,
 .mobile.no-touch .info-hotspot .info-hotspot-header:hover {
-  width: 260px;
-  border-radius: 5px;
+  width: 210px;
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
-  border-bottom-left-radius: 0;
   -webkit-transition: width 0.3s ease-in-out, border-radius 0.3s ease-in-out;
   transition: width 0.3s ease-in-out, border-radius 0.3s ease-in-out;
 }
@@ -420,20 +418,12 @@ body.fullscreen-enabled #fullscreenToggle {
   height: 40px;
 }
 
-.mobile .info-hotspot .info-hotspot-icon-wrapper {
-  width: 43px;
-  height: 43px;
-}
-
 .info-hotspot .info-hotspot-icon {
   width: 80%;
   height: 80%;
   margin: 1.5px;
 }
 
-.mobile .info-hotspot .info-hotspot-icon {
-  margin: 0.5px;
-}
 
 .info-hotspot .info-hotspot-title-wrapper {
   position: absolute;
@@ -450,8 +440,8 @@ body.fullscreen-enabled #fullscreenToggle {
 .desktop .info-hotspot.visible .info-hotspot-title-wrapper,
 .desktop.no-touch .info-hotspot .info-hotspot-header:hover .info-hotspot-title-wrapper,
 .mobile.no-touch .info-hotspot .info-hotspot-header:hover .info-hotspot-title-wrapper {
-  width: 200px;
-  padding: 0 5px;
+  width: 160px;
+  padding: 0 0 0 5px;
   -webkit-transition: width 0s 0.4s, padding 0s 0.4s;
   transition: width 0s 0.4s, padding 0s 0.4s;
 }
@@ -466,6 +456,7 @@ body.fullscreen-enabled #fullscreenToggle {
 .info-hotspot .info-hotspot-title {
   display: inline-block;
   vertical-align: middle;
+  font-size: .8rem;
   line-height: 0.9rem;
   -moz-user-select: text;
   -webkit-user-select: text;
