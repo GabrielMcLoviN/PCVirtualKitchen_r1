@@ -15,10 +15,10 @@
  */
 
 // TODO
+//! on close icon click, scroll to top of modal + reset carousel
 //* fullscreen + mobile media queries
 //* recipe book modal
 //* cleanup files of unused fonts/images
-//*
 
 
 
@@ -47,7 +47,7 @@ if (window.matchMedia) {
 			document.body.classList.add("desktop");
 		}
 	};
-	const mql = matchMedia("(max-width: 500px), (max-height: 500px)");
+	const mql = matchMedia("(max-width: 500px), (max-height: 300px)");
 	setMode();
 	mql.addListener(setMode);
 } else {
@@ -422,12 +422,12 @@ function createInfoHotspotElement(hotspot) {
 	for (let i = 0; i < hotspot.images.length; i++) {
 		const carousel_bullet = document.createElement("li");
 		carousel_bullet.classList.add("carousel-bullet");
-		const productImage = document.createElement("img");
-		productImage.src = hotspot.images[i];
+		const productImage = document.createElement("div");
+		productImage.style.backgroundImage = `url(${hotspot.images[i]})`;
 		productImage.classList.add("product-image");
 		carouselImages.appendChild(productImage);
 		carousel_pagination.appendChild(carousel_bullet);
-		carousel.appendChild(carousel_pagination);
+		carousel_container.appendChild(carousel_pagination);
 	}
 	if (hotspot.videos != undefined) {
 		for (let i = 0; i < hotspot.videos.length; i++) {
@@ -456,7 +456,7 @@ function createInfoHotspotElement(hotspot) {
 	carouselNav.appendChild(carouselNext);
 	carousel.appendChild(carouselImages);
 	carouselNav.appendChild(carouselPrev);
-	carousel.appendChild(carouselNav);
+	carousel_container.appendChild(carouselNav);
 
 	carousel_container.appendChild(carousel);
 
