@@ -47,7 +47,7 @@ if (window.matchMedia) {
 			document.body.classList.add("desktop");
 		}
 	};
-	const mql = matchMedia("(max-width: 500px), (max-height: 300px)");
+	const mql = matchMedia("(max-width: 700px), (max-height: 500px)");
 	setMode();
 	mql.addListener(setMode);
 } else {
@@ -348,19 +348,22 @@ function createInfoHotspotElement(hotspot) {
 		recipe_link.href = hotspot.related_content[i].link;
 		recipe_link.setAttribute("target", "_blank");
 		const recipe_preview_img_wrap = document.createElement("div");
-		recipe_link.appendChild(recipe_preview_img_wrap);
 		recipe_preview_img_wrap.classList.add("recipe-preview-img-wrap");
+		recipe_preview_img_wrap.classList.add("__related-content");
 		recipe_preview_img_wrap.style.backgroundImage = `url(${hotspot.related_content[i].preview_image})`;
-		const recipe_title = document.createElement("a");
+		const recipe_title = document.createElement("p");
 		recipe_title.classList.add("recipe-title");
+		recipe_title.classList.add("__related_");
 		recipe_title.innerHTML = hotspot.related_content[i].id;
 		recipe_title.href = hotspot.related_content[i].link;
 		recipe_title.setAttribute("target", "_blank");
+		recipe_link.appendChild(recipe_preview_img_wrap);
 		recipe_link.appendChild(recipe_title);
 		recipe_el.appendChild(recipe_link);
 		recipesList.appendChild(recipe_el);
 		}
 		recipesHeader.textContent = "Related Content:";
+
 	} else if (hotspot.pdf_links != undefined) {
 		for (let i = 0; i < hotspot.pdf_links.length; i++) {
 		const recipe_el = document.createElement("li");
@@ -372,7 +375,7 @@ function createInfoHotspotElement(hotspot) {
 		recipe_link.appendChild(recipe_preview_img_wrap);
 		recipe_preview_img_wrap.classList.add("recipe-preview-img-wrap");
 		recipe_preview_img_wrap.style.backgroundImage = `url(${hotspot.pdf_links[i].preview_image})`;
-		const recipe_title = document.createElement("a");
+		const recipe_title = document.createElement("p");
 		recipe_title.classList.add("recipe-title");
 		recipe_title.innerHTML = hotspot.pdf_links[i].id;
 		recipe_title.href = hotspot.pdf_links[i].link;
