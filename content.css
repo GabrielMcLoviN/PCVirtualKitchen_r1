@@ -14,6 +14,14 @@
   transition: opacity 0.2s ease-in-out 0.5s, visibility 0s 0.7s;
 }
 
+@media (min-width: 1440px) {
+
+}
+
+@media (min-width: 2560px) {
+
+}
+
 .info-hotspot-modal.visible {
   opacity: 1;
   visibility: visible;
@@ -106,6 +114,12 @@
   -webkit-user-select: text;
   -ms-user-select: text;
   user-select: text;
+}
+
+.mobile .info-hotspot-modal .info-hotspot-content {
+  left: 20px;
+  right: 20px;
+  top: 80px;
 }
 
 .info-hotspot-modal.visible .info-hotspot-content {
@@ -429,4 +443,6 @@
   max-width: 100%;
   height: 100%;
 }
+
+
 
