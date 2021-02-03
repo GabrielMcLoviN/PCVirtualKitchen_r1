@@ -323,72 +323,63 @@ function createInfoHotspotElement(hotspot) {
 	if (hotspot.recipes != undefined) {
 		for (let i = 0; i < hotspot.recipes.length; i++) {
 			const recipe_el = document.createElement("li");
-			const recipe_link = document.createElement("a")
+			const recipe_link = document.createElement("a");
 			recipe_link.classList.add("recipe-link")
 			recipe_link.href = hotspot.recipes[i].link;
 			recipe_link.setAttribute("target", "_blank");
 			const recipe_preview_img_wrap = document.createElement("div");
-			recipe_link.appendChild(recipe_preview_img_wrap);
-			const recipe_preview_img = document.createElement("img");
 			recipe_preview_img_wrap.classList.add("recipe-preview-img-wrap");
-			recipe_preview_img.src = hotspot.recipes[i].preview_image;
-			recipe_preview_img.classList.add("recipe-preview-img");
-			recipe_preview_img_wrap.appendChild(recipe_preview_img);
-			const recipe_title = document.createElement("a");
+			recipe_preview_img_wrap.style.backgroundImage = `url(${hotspot.recipes[i].preview_image})`;
+			const recipe_title = document.createElement("p");
 			recipe_title.classList.add("recipe-title")
 			recipe_title.innerHTML = hotspot.recipes[i].id;
 			recipe_title.href = hotspot.recipes[i].link;
 			recipe_title.setAttribute("target", "_blank");
+			recipe_link.appendChild(recipe_preview_img_wrap);
+			recipe_link.appendChild(recipe_title);
 			recipe_el.appendChild(recipe_link);
-			recipe_el.appendChild(recipe_title);
 			recipesList.appendChild(recipe_el);
 		}
 	} else if (hotspot.related_content != undefined) {
 		for (let i = 0; i < hotspot.related_content.length; i++) {
-			const recipe_el = document.createElement("li");
-			const recipe_link = document.createElement("a");
-			recipe_link.classList.add("recipe-link");
-			recipe_link.href = hotspot.related_content[i].link;
-			recipe_link.setAttribute("target", "_blank");
-			const recipe_preview_img_wrap = document.createElement("div");
-			recipe_link.appendChild(recipe_preview_img_wrap);
-			const recipe_preview_img = document.createElement("img");
-			recipe_preview_img_wrap.classList.add("recipe-preview-img-wrap");
-			recipe_preview_img.src = hotspot.related_content[i].preview_image;
-			recipe_preview_img.classList.add("recipe-preview-img");
-			recipe_preview_img_wrap.appendChild(recipe_preview_img);
-			const recipe_title = document.createElement("a");
-			recipe_title.classList.add("recipe-title");
-			recipe_title.innerHTML = hotspot.related_content[i].id;
-			recipe_title.href = hotspot.related_content[i].link;
-			recipe_title.setAttribute("target", "_blank");
-			recipe_el.appendChild(recipe_link);
-			recipe_el.appendChild(recipe_title);
-			recipesList.appendChild(recipe_el);
+		const recipe_el = document.createElement("li");
+		const recipe_link = document.createElement("a");
+		recipe_link.classList.add("recipe-link");
+		recipe_link.href = hotspot.related_content[i].link;
+		recipe_link.setAttribute("target", "_blank");
+		const recipe_preview_img_wrap = document.createElement("div");
+		recipe_link.appendChild(recipe_preview_img_wrap);
+		recipe_preview_img_wrap.classList.add("recipe-preview-img-wrap");
+		recipe_preview_img_wrap.style.backgroundImage = `url(${hotspot.related_content[i].preview_image})`;
+		const recipe_title = document.createElement("a");
+		recipe_title.classList.add("recipe-title");
+		recipe_title.innerHTML = hotspot.related_content[i].id;
+		recipe_title.href = hotspot.related_content[i].link;
+		recipe_title.setAttribute("target", "_blank");
+		recipe_link.appendChild(recipe_title);
+		recipe_el.appendChild(recipe_link);
+		recipesList.appendChild(recipe_el);
 		}
 		recipesHeader.textContent = "Related Content:";
 	} else if (hotspot.pdf_links != undefined) {
 		for (let i = 0; i < hotspot.pdf_links.length; i++) {
-			const recipe_el = document.createElement("li");
-			const recipe_link = document.createElement("a");
-			recipe_link.classList.add("recipe-link");
-			recipe_link.href = hotspot.pdf_links[i].link;
-			recipe_link.setAttribute("target", "_blank");
-			const recipe_preview_img_wrap = document.createElement("div");
-			recipe_link.appendChild(recipe_preview_img_wrap);
-			const recipe_preview_img = document.createElement("img");
-			recipe_preview_img_wrap.classList.add("recipe-preview-img-wrap");
-			recipe_preview_img.src = hotspot.pdf_links[i].preview_image;
-			recipe_preview_img.classList.add("recipe-preview-img");
-			recipe_preview_img_wrap.appendChild(recipe_preview_img);
-			const recipe_title = document.createElement("a");
-			recipe_title.classList.add("recipe-title");
-			recipe_title.innerHTML = hotspot.pdf_links[i].id;
-			recipe_title.href = hotspot.pdf_links[i].link;
-			recipe_title.setAttribute("target", "_blank");
-			recipe_el.appendChild(recipe_link);
-			recipe_el.appendChild(recipe_title);
-			recipesList.appendChild(recipe_el);
+		const recipe_el = document.createElement("li");
+		const recipe_link = document.createElement("a");
+		recipe_link.classList.add("recipe-link");
+		recipe_link.href = hotspot.pdf_links[i].link;
+		recipe_link.setAttribute("target", "_blank");
+		const recipe_preview_img_wrap = document.createElement("div");
+		recipe_link.appendChild(recipe_preview_img_wrap);
+		recipe_preview_img_wrap.classList.add("recipe-preview-img-wrap");
+		recipe_preview_img_wrap.style.backgroundImage = `url(${hotspot.pdf_links[i].preview_image})`;
+		const recipe_title = document.createElement("a");
+		recipe_title.classList.add("recipe-title");
+		recipe_title.innerHTML = hotspot.pdf_links[i].id;
+		recipe_title.href = hotspot.pdf_links[i].link;
+		recipe_title.setAttribute("target", "_blank");
+		recipe_link.appendChild(recipe_title);
+		recipe_el.appendChild(recipe_link);
+		recipesList.appendChild(recipe_el);
 		}
 		recipesHeader.textContent = "Downloads";
 	}
