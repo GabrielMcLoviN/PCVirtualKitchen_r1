@@ -19,6 +19,9 @@
 // fullscreen + mobile media queries
 //* recipe book modal
 //* cleanup files of unused fonts/images
+//* remove git lfs
+//* add influencer @name
+//* add padding to influencer photos
 
 "use strict";
 const Marzipano = window.Marzipano;
@@ -549,6 +552,16 @@ function createInfoHotspotElement(hotspot) {
 	carouselImgs.addEventListener("touchend", (e) => {
 		touchendX = e.changedTouches[0].pageX;
 		handleGesture();
+	});
+
+	carouselImgs.addEventListener("wheel", (e) => {
+		e.preventDefault();
+		let wheel_direction = e.deltaY * 1;
+		if (Math.sign(wheel_direction) === -1) {
+			prevBtn.click();
+		} else {
+			nextBtn.click();
+		}
 	});
 
 	function next() {
