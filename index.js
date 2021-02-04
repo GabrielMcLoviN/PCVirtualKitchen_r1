@@ -16,7 +16,7 @@
 
 // TODO
 //! on close icon click, scroll to top of modal + reset carousel
-//* fullscreen + mobile media queries
+// fullscreen + mobile media queries
 //* recipe book modal
 //* cleanup files of unused fonts/images
 
@@ -466,14 +466,22 @@ function createInfoHotspotElement(hotspot) {
 
 	document.body.appendChild(modal);
 
+	const reset_scroll = function () {
+		setTimeout(function () {
+			modal.querySelector(".product-txt-container").scrollTo(0, 0);
+		}, 1000);
+	};
+
 	const toggle = function () {
 		modal.classList.toggle("visible");
+		reset_scroll();
 	};
 
 	window.addEventListener("keydown", (evt) => {
 		if (evt.key === "Escape") {
 			modal.classList.remove("visible");
 		}
+		reset_scroll();
 	});
 
 	wrapper.querySelector(".info-hotspot-header").addEventListener("click", toggle);
