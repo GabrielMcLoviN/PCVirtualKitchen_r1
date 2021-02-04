@@ -15,7 +15,7 @@
  */
 
 // TODO
-//! on close icon click, scroll to top of modal + reset carousel
+// on close icon click, scroll to top of modal + reset carousel
 // fullscreen + mobile media queries
 //* recipe book modal
 //* cleanup files of unused fonts/images
