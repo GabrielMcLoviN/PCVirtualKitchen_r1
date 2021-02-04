@@ -392,7 +392,6 @@ function createInfoHotspotElement(hotspot) {
 
 	textContent.appendChild(textWrapper);
 
-
 	//carousel
 	const carousel_container = document.createElement("div");
 	carousel_container.classList.add("carousel_container");
@@ -470,6 +469,12 @@ function createInfoHotspotElement(hotspot) {
 	const toggle = function () {
 		modal.classList.toggle("visible");
 	};
+
+	window.addEventListener("keydown", (evt) => {
+		if (evt.key === "Escape") {
+			modal.classList.remove("visible");
+		}
+	});
 
 	wrapper.querySelector(".info-hotspot-header").addEventListener("click", toggle);
 	modal.querySelector(".info-hotspot-close-wrapper").addEventListener("click", toggle);
