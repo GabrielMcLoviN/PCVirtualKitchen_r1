@@ -411,6 +411,11 @@ body.fullscreen-enabled #fullscreenToggle {
 
 /* media queries */
 @media (min-width: 1440px) {
+  .link-hotspot-tooltip {
+    right: -80%;
+    font-size: 1rem;
+    width: 170px;
+  }
   #fullscreenToggle .icon {
     width: 24px;
     height: 24px;

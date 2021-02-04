@@ -232,7 +232,7 @@
   width: 5px;
   height: 5px;
   background-color: var(--secondary-blk-opaque);
-
+  border: 0.5px solid var(--accent-darkgray);
   cursor: pointer;
   margin: 0 5px;
   border-radius: 50%;
@@ -458,6 +458,16 @@
 }
 
 @media (min-width: 1440px) {
+  .info-hotspot-modal .info-hotspot-header {
+    top: 100px;
+  }
+  .info-hotspot-modal .info-hotspot-content {
+    top: 175px;
+    bottom: 100px;
+  }
+  .product-txt-wrapper {
+    max-width: 92.5%;
+  }
   .info-hotspot-modal .info-hotspot-close-wrapper {
     position: absolute;
     right: 2rem;
@@ -476,7 +486,4 @@
     width: 8px;
     height: 8px;
   }
-}
-
-@media (min-width: 2560px) {
 }
