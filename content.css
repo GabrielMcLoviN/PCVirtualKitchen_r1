@@ -65,7 +65,7 @@
   display: inline-block;
   vertical-align: middle;
   font-family: "Antonio";
-  font-size: clamp(1.75rem, 5vw, 3.75rem);
+  font-size: clamp(1.75rem, 5vw, 3.25rem);
   -moz-user-select: text;
   -webkit-user-select: text;
   -ms-user-select: text;
@@ -92,8 +92,6 @@
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   grid-template-rows: repeat(2, 1fr);
   /* grid-gap: 1rem; */
-  max-width: 90%;
-  max-height: 85%;
   overflow: hidden;
   position: absolute;
   width: auto;
@@ -458,13 +456,7 @@
 }
 
 @media (min-width: 1440px) {
-  .info-hotspot-modal .info-hotspot-header {
-    top: 100px;
-  }
-  .info-hotspot-modal .info-hotspot-content {
-    top: 175px;
-    bottom: 100px;
-  }
+ 
   .product-txt-wrapper {
     max-width: 92.5%;
   }
