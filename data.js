@@ -154,13 +154,13 @@ var APP_DATA = {
 						{
 							id: "New Consultant Kit",
 							preview_image:
-								"./modals/be_a_consultant/flyer-new-consultant-kit-us_Page_1 (Small).jpg",
+								"./modals/be_a_consultant/flyer-new-consultant-kit-us_Page_1.jpg",
 							link: "./modals/be_a_consultant/flyer-new-consultant-kit-us.pdf",
 						},
 						{
 							id: "Make Your Everyday Better Poster",
 							preview_image:
-								"./modals/be_a_consultant/poster-everyday-better-checklist-20x30-us (Small).jpg",
+								"./modals/be_a_consultant/poster-everyday-better-checklist-20x30-us.jpg",
 							link:
 								"./modals/be_a_consultant/poster-everyday-better-checklist-20x30-us.pdf",
 						},
@@ -183,7 +183,7 @@ var APP_DATA = {
 						{
 							id: "Host Rewards PDF",
 							preview_image:
-								"./modals/host_party/p28619-092020us-host-rewards (Small).jpg",
+								"./modals/host_party/p28619-092020us-host-rewards.jpg",
 							link: "./modals/host_party/p28619-092020us-host-rewards.pdf",
 						},
 					],
