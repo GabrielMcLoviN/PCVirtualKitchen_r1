@@ -384,16 +384,10 @@ var APP_DATA = {
 					yaw: 0.9015299537163557,
 					pitch: 0.32768977559304346,
 					title: "Cookbook",
-					images: [
-						"",
-					],
+					images: [""],
 					subhead: "",
 					fullWidth: true,
-					text:
-						"<div>iframe goes here, will be full width and no carousel/links/subhead</div>",
-					pdf_links: [
-
-					],
+					text: "<iframe src='https://pcvirtualparty1.netlify.app/' width='100%' height='100%' fullscreen/>",
 				},
 				{
 					yaw: -0.43194371027012224,

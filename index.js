@@ -537,10 +537,14 @@ function createInfoHotspotElement(hotspot) {
 		false
 	);
 
-	console.log(hotspot.fullWidth);
 	if (hotspot.fullWidth) {
 		let modal_content = modal.querySelector("div.info-hotspot-content");
+		modal_content.classList.add("fullwidth_modal")
 		removeAllChildNodes(modal_content);
+		const iframe_container = document.createElement("div");
+		iframe_container.classList.add("iframe_container");
+		iframe_container.innerHTML = hotspot.text;
+		modal_content.appendChild(iframe_container)
 	}
 
 	function removeAllChildNodes(parent) {
