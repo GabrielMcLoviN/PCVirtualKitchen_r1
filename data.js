@@ -388,6 +388,7 @@ var APP_DATA = {
 						"",
 					],
 					subhead: "",
+					fullWidth: true,
 					text:
 						"<div>iframe goes here, will be full width and no carousel/links/subhead</div>",
 					pdf_links: [
@@ -522,10 +523,11 @@ var APP_DATA = {
 
 					title: "INSULATED SERVING BOWL SET",
 					images: [
-						"./products/insulated_01.jpg",
-						"./products/insulated_02.jpg",
-						"./products/insulated_03.jpg",
-						"./products/insulated_04-@lazynolaketo.jpg",
+						"./1080x1080/insulated_bowl/01.jpg",
+						"./1080x1080/insulated_bowl/02.jpg",
+						"./1080x1080/insulated_bowl/03.jpg",
+						"./1080x1080/insulated_bowl/@lazynolaketo.jpg",
+						"./1080x1080/insulated_bowl/@kristenskitchen.jpg",
 					],
 					subhead: "Insulated Serving Bowl Set",
 					text:

@@ -323,6 +323,8 @@ function createInfoHotspotElement(hotspot) {
 			recipesList.appendChild(recipe_el);
 		}
 		recipesHeader.textContent = "Downloads";
+	} else {
+		recipesHeader.textContent = "";
 	}
 
 	recipes.appendChild(recipesList);
@@ -352,6 +354,7 @@ function createInfoHotspotElement(hotspot) {
 	carouselPrev.classList.add("carousel-button");
 	carouselPrev.classList.add("previous");
 	carouselPrev.setAttribute("id", "previous");
+
 	const carousel_pagination = document.createElement("ul");
 	carousel_pagination.classList.add("carousel-pagination");
 	for (let i = 0; i < hotspot.images.length; i++) {
@@ -451,7 +454,6 @@ function createInfoHotspotElement(hotspot) {
 	});
 
 	const carouselImgs = modal.querySelector(".carousel-images");
-
 	const numberOfImages = modal.querySelectorAll(".carousel-images > *").length;
 	const pagination = modal.querySelector(".carousel-pagination");
 	var bullets = [].slice.call(modal.querySelectorAll(".carousel-bullet"));
@@ -535,9 +537,20 @@ function createInfoHotspotElement(hotspot) {
 		false
 	);
 
+	console.log(hotspot.fullWidth);
+	if (hotspot.fullWidth) {
+		let modal_content = modal.querySelector("div.info-hotspot-content");
+		removeAllChildNodes(modal_content);
+	}
+
+	function removeAllChildNodes(parent) {
+		while (parent.firstChild) {
+			parent.removeChild(parent.firstChild);
+		}
+	}
+
 	return wrapper;
 }
-
 
 function findSceneById(id) {
 	for (let i = 0; i < scenes.length; i++) {
