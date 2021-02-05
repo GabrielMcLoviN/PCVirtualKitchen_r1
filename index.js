@@ -1,19 +1,3 @@
-/*
- * Copyright 2016 Google Inc. All rights reserved.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 // TODO
 // on close icon click, scroll to top of modal + reset carousel
 // fullscreen + mobile media queries
@@ -23,7 +7,6 @@
 //* add influencer @name
 //* add padding to influencer photos
 
-"use strict";
 const Marzipano = window.Marzipano;
 const bowser = window.bowser;
 const screenfull = window.screenfull;
@@ -201,10 +184,6 @@ function createLinkHotspotElement(hotspot) {
 		switchScene(findSceneById(hotspot.target));
 	});
 
-	// Prevent touch and scroll events from reaching the parent element.
-	// This prevents the view control logic from interfering with the hotspot.
-	// stopTouchAndScrollEventPropagation(wrapper);
-
 	// Create tooltip element.
 	const tooltip = document.createElement("div");
 	tooltip.classList.add("hotspot-tooltip");
@@ -216,13 +195,6 @@ function createLinkHotspotElement(hotspot) {
 
 	return wrapper;
 }
-
-// data.scenes.forEach(sceneVal => {
-// 	console.log(Object.values(sceneVal.infoHotspots.forEach(section => {
-// 		console.log(section.title)
-// 		console.log(section.images)
-// 	})))
-// })
 
 function createInfoHotspotElement(hotspot) {
 	// Create wrapper element to hold icon and tooltip.
@@ -435,23 +407,10 @@ function createInfoHotspotElement(hotspot) {
 
 	document.body.appendChild(modal);
 
-	const reset_scroll = function () {
-		setTimeout(function () {
-			modal.querySelector(".product-txt-container").scrollTo(0, 0);
-		}, 1000);
-	};
-
 	const toggle = function () {
 		modal.classList.toggle("visible");
 		reset_scroll();
 	};
-
-	window.addEventListener("keydown", (evt) => {
-		if (evt.key === "Escape") {
-			modal.classList.remove("visible");
-		}
-		reset_scroll();
-	});
 
 	wrapper.querySelector(".info-hotspot-header").addEventListener("click", toggle);
 	modal.querySelector(".info-hotspot-close-wrapper").addEventListener("click", toggle);
@@ -511,6 +470,20 @@ function createInfoHotspotElement(hotspot) {
 		}
 	}
 
+	const reset_scroll = function () {
+		setTimeout(function () {
+			modal.querySelector(".product-txt-container").scrollTo(0, 0);
+			slideTo(0);
+		}, 1000);
+	};
+
+	window.addEventListener("keydown", (evt) => {
+		if (evt.key === "Escape") {
+			modal.classList.remove("visible");
+		}
+		reset_scroll();
+	});
+
 	carouselImgs.addEventListener("touchstart", (e) => {
 		touchstartX = e.changedTouches[0].pageX;
 	});
@@ -524,9 +497,9 @@ function createInfoHotspotElement(hotspot) {
 		e.preventDefault();
 		let wheel_direction = e.deltaY * 1;
 		if (Math.sign(wheel_direction) === -1) {
-			prevBtn.click();
+			if (currentIndex !== 0) prevBtn.click();
 		} else {
-			nextBtn.click();
+			if (currentIndex !== numberOfImages - 1) nextBtn.click();
 		}
 	});
 
@@ -562,21 +535,9 @@ function createInfoHotspotElement(hotspot) {
 		false
 	);
 
-	// Prevent touch and scroll events from reaching the parent element.
-	// This prevents the view control logic from interfering with the hotspot.
-	// stopTouchAndScrollEventPropagation(wrapper);
-
 	return wrapper;
 }
 
-// function stopTouchAndScrollEventPropagation(element, eventList) {
-// 	var eventList = ["touchstart", "touchmove", "touchend", "touchcancel", "wheel", "mousewheel"];
-// 	for (var i = 0; i < eventList.length; i++) {
-// 		element.addEventListener(eventList[i], function (event) {
-// 			event.stopPropagation();
-// 		});
-// 	}
-// }
 
 function findSceneById(id) {
 	for (let i = 0; i < scenes.length; i++) {
