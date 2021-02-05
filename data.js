@@ -383,11 +383,12 @@ var APP_DATA = {
 				{
 					yaw: 0.9015299537163557,
 					pitch: 0.32768977559304346,
-					title: "Cookbook",
+					title: "EAT WELL - RECIPE COOKBOOK (PREVIEW)",
 					images: [""],
 					subhead: "",
 					fullWidth: true,
-					text: "<iframe src='https://pcvirtualparty1.netlify.app/' width='100%' height='100%' fullscreen/>",
+					text:
+						"<iframe allowfullscreen='true' style='border:none;width:100%;height:100%;' src='//e.issuu.com/embed.html?d=p30530-012021usca-eat-well-ebook&hideIssuuLogo=true&hideShareButton=true&u=pamperedchef'></iframe>",
 				},
 				{
 					yaw: -0.43194371027012224,
