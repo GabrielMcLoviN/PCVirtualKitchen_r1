@@ -46,8 +46,6 @@ window.addEventListener("touchstart", function () {
 	document.body.classList.add("touch");
 });
 
-
-
 // Use tooltip fallback mode on IE < 11.
 if (bowser.msie && parseFloat(bowser.version) < 11) {
 	document.body.classList.add("tooltip-fallback");
@@ -365,7 +363,21 @@ function createInfoHotspotElement(hotspot) {
 		const carousel_bullet = document.createElement("li");
 		carousel_bullet.classList.add("carousel-bullet");
 		const productImage = document.createElement("div");
-		productImage.style.backgroundImage = `url(${hotspot.images[i]})`;
+		if (hotspot.images[i].length === 2) {
+			productImage.style.backgroundImage = `url(${hotspot.images[i][1]})`;
+			const influencer_credit_container = document.createElement("div");
+			influencer_credit_container.classList.add("influencer_credit_container");
+			const credit_pointer = document.createElement("div");
+			credit_pointer.classList.add("pointer")
+			influencer_credit_container.appendChild(credit_pointer);
+			const influencer_credit = document.createElement("span");
+			influencer_credit.classList.add("influencer_credit");
+			influencer_credit.innerHTML = "📷: " + hotspot.images[i][0];
+			influencer_credit_container.appendChild(influencer_credit);
+			productImage.appendChild(influencer_credit_container);
+		} else {
+			productImage.style.backgroundImage = `url(${hotspot.images[i]})`;
+		}
 		productImage.classList.add("product-image");
 		if (hotspot.containImages) {
 			productImage.style.backgroundSize = "contain";
@@ -400,8 +412,6 @@ function createInfoHotspotElement(hotspot) {
 			carouselImages.appendChild(video_wrapper);
 		}
 	}
-
-
 
 	carouselNav.appendChild(carouselNext);
 	carousel.appendChild(carouselImages);

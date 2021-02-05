@@ -91,7 +91,7 @@
   --accent-green: rgb(177, 198, 118);
   --accent-green-opaque: rgb(177, 198, 118, 0.8);
   --accent-darkgray: rgb(109, 110, 113);
-  --accent-darkgray-opaque: rgba(109, 110, 113, 0.5);
+  --accent-darkgray-opaque: rgba(109, 110, 113, 0.795);
   --accent-gray: rgb(167, 169, 172);
   --accent-gray-opaque: rgba(167, 169, 172, 0.5);
   --accent-lightgray: rgb(230, 231, 232);
@@ -100,6 +100,8 @@
 }
 
 * {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
