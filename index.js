@@ -128,6 +128,7 @@ if (screenfull.enabled && data.settings.fullscreenButton) {
 } else {
 	document.body.classList.add("fullscreen-disabled");
 }
+
 function sanitize(s) {
 	return s.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;");
 }
@@ -366,6 +367,12 @@ function createInfoHotspotElement(hotspot) {
 		const productImage = document.createElement("div");
 		productImage.style.backgroundImage = `url(${hotspot.images[i]})`;
 		productImage.classList.add("product-image");
+		if (hotspot.containImages) {
+			productImage.style.backgroundSize = "contain";
+			productImage.style.width = "80%";
+			productImage.style.height = "80%";
+			productImage.style.alignSelf = "center";
+		}
 		carouselImages.appendChild(productImage);
 		carousel_pagination.appendChild(carousel_bullet);
 		carousel_container.appendChild(carousel_pagination);
@@ -393,6 +400,8 @@ function createInfoHotspotElement(hotspot) {
 			carouselImages.appendChild(video_wrapper);
 		}
 	}
+
+
 
 	carouselNav.appendChild(carouselNext);
 	carousel.appendChild(carouselImages);

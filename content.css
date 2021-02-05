@@ -325,11 +325,25 @@
 
 .product-txt h3 {
   font-weight: bold;
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.5rem;
 }
 
-.addtl_modal_body p {
+.product-txt h4 {
+  margin-bottom: 0.5rem;
+}
+
+.addtl_modal_body{
   margin-bottom: 1rem;
+}
+
+.addtl_modal_body_1 p:not(:first-of-type){
+  margin-bottom: 1rem;
+  margin-left: 1rem;
+}
+
+.addtl_modal_body_2 p {
+  margin-bottom: 1rem;
+  margin-left: 1rem;
 }
 
 .consultant_perks {
@@ -337,8 +351,13 @@
 }
 
 .product-txt .modal_block-header {
-  font-weight: 400;
+  font-style: italic;
+  font-weight: 300;
   margin-bottom: 0.25rem;
+}
+
+.modal_block-footer {
+  font-style: italic;
 }
 
 .recipes {
@@ -349,6 +368,7 @@
   justify-content: flex-start;
   margin: 0;
   padding-top: 1rem;
+  padding-bottom: 5%;
 }
 
 .recipes-header {
@@ -479,6 +499,9 @@
 }
 
 @media (min-width: 1440px) {
+  .product-txt .modal_block-header {
+    margin-top: 1rem;
+  }
   .product-txt-wrapper {
     max-width: 92.5%;
   }
