@@ -10,7 +10,7 @@
   height: 100%;
   overflow: auto;
   z-index: 11000 !important;
-  background-color: rgba(0, 0, 0, 0.733);
+  background-color: rgba(0, 0, 0, 0.486);
   opacity: 0;
   font-size: 12px;
   visibility: hidden;
@@ -98,6 +98,8 @@
   position: absolute;
   width: auto;
   height: auto;
+  max-width: 90%;
+  max-height: 80%;
   top: 100px;
   bottom: 30px;
   left: 50px;
@@ -113,6 +115,7 @@
   -ms-user-select: text;
   user-select: text;
 }
+
 .info-hotspot-content.fullwidth_modal {
   display: flex;
   align-items: center;
@@ -499,6 +502,15 @@
 }
 
 @media (min-width: 1440px) {
+  .info-hotspot-modal .info-hotspot-header {
+    top: 85px;
+  }
+  .info-hotspot-modal .info-hotspot-content {
+    top: 170px;
+  }
+  .info-hotspot-modal .info-hotspot-header .info-hotspot-title {
+    font-size: 5.5rem;
+  }
   .product-txt .modal_block-header {
     margin-top: 1rem;
   }
