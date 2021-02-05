@@ -1,6 +1,6 @@
-
-
 .info-hotspot-modal {
+  font-family: "museo sans", sans-serif;
+  font-weight: 100;
   display: grid;
   place-items: center;
   position: absolute;
@@ -133,7 +133,6 @@
   font-style: italic;
 }
 
-
 .info-hotspot-modal.visible .info-hotspot-content {
   opacity: 1;
   -webkit-transition: opacity 0.3s ease-in-out 0.4s;
@@ -222,7 +221,6 @@
   background-color: var(--secondary-blk);
   border-radius: 50%;
   cursor: pointer;
-  font-weight: bold;
   height: 20px;
   opacity: 0.5;
   transition: all 0.25s;
@@ -286,7 +284,7 @@
   align-items: center;
   justify-content: space-between;
   overflow-y: scroll;
-  padding: 5%;
+  padding: 5% 10%;
 }
 
 .product-txt-wrapper {
@@ -322,7 +320,7 @@
 
 .product-txt {
   font-size: clamp(0.5rem, -0.875rem + 8.333333vw, 1.35rem);
-  font-weight: 300;
+  font-weight: 100;
 }
 
 .product-txt h3 {
@@ -361,6 +359,7 @@
   margin-bottom: 0.75rem;
   padding-bottom: 4px;
   width: 65%;
+  font-weight: 300;
 }
 
 .recipes-list {
@@ -442,7 +441,8 @@
 
 .recipe-title {
   padding: 0 1px;
-  font-weight: 500;
+
+  font-weight: 300;
   font-style: italic;
   text-align: center;
   transition: all 0.3s ease;
@@ -479,7 +479,6 @@
 }
 
 @media (min-width: 1440px) {
-
   .product-txt-wrapper {
     max-width: 92.5%;
   }

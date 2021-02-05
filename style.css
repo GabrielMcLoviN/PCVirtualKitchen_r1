@@ -52,13 +52,13 @@
   font-weight: 500;
   font-style: italic;
 }
-@font-face {
+/* @font-face {
   font-family: "Museo Sans";
   src: url("./assets/museo-sans-webfont/Museo Sans Family/exljbris\ -\ MuseoSans-700.otf") format("truetype");
   font-weight: 700;
   font-style: normal;
-}
-@font-face {
+} */
+/* @font-face {
   font-family: "Museo Sans";
   src: url("./assets/museo-sans-webfont/Museo Sans Family/exljbris\ -\ MuseoSans-700Italic.otf") format("truetype");
   font-weight: 700;
@@ -75,7 +75,7 @@
   src: url("./assets/museo-sans-webfont/Museo Sans Family/exljbris\ -\ MuseoSans-900Italic.otf") format("truetype");
   font-weight: 900;
   font-style: italic;
-}
+} */
 
 :root {
   --primary-blue: rgb(42, 127, 140);

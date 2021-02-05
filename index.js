@@ -40,10 +40,13 @@ if (window.matchMedia) {
 
 // Detect whether we are on a touch device.
 document.body.classList.add("no-touch");
+
 window.addEventListener("touchstart", function () {
 	document.body.classList.remove("no-touch");
 	document.body.classList.add("touch");
 });
+
+
 
 // Use tooltip fallback mode on IE < 11.
 if (bowser.msie && parseFloat(bowser.version) < 11) {
@@ -410,6 +413,18 @@ function createInfoHotspotElement(hotspot) {
 
 	document.body.appendChild(modal);
 
+	const reset_scroll = function () {
+		setTimeout(function () {
+			modal.querySelector(".product-txt-container").scrollTo(0, 0);
+			slideTo(0);
+		}, 1000);
+	};
+
+	modal.addEventListener("mouseover", function () {
+		document.body.classList.remove("touch");
+		document.body.classList.add("no-touch");
+	});
+
 	const toggle = function () {
 		modal.classList.toggle("visible");
 		reset_scroll();
@@ -472,13 +487,6 @@ function createInfoHotspotElement(hotspot) {
 		}
 	}
 
-	const reset_scroll = function () {
-		setTimeout(function () {
-			modal.querySelector(".product-txt-container").scrollTo(0, 0);
-			slideTo(0);
-		}, 1000);
-	};
-
 	window.addEventListener("keydown", (evt) => {
 		if (evt.key === "Escape") {
 			modal.classList.remove("visible");
@@ -539,12 +547,12 @@ function createInfoHotspotElement(hotspot) {
 
 	if (hotspot.fullWidth) {
 		let modal_content = modal.querySelector("div.info-hotspot-content");
-		modal_content.classList.add("fullwidth_modal")
+		modal_content.classList.add("fullwidth_modal");
 		removeAllChildNodes(modal_content);
 		const iframe_container = document.createElement("div");
 		iframe_container.classList.add("iframe_container");
 		iframe_container.innerHTML = hotspot.text;
-		modal_content.appendChild(iframe_container)
+		modal_content.appendChild(iframe_container);
 	}
 
 	function removeAllChildNodes(parent) {
