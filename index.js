@@ -115,7 +115,7 @@ const scenes = data.scenes.map(function (data) {
 			.createHotspot(
 				element,
 				{ yaw: hotspot.yaw, pitch: hotspot.pitch },
-				{ perspective: { radius: 325 } }
+				{ perspective: { radius: 600 } }
 			);
 	});
 
@@ -142,40 +142,6 @@ if (screenfull.enabled && data.settings.fullscreenButton) {
 } else {
 	document.body.classList.add("fullscreen-disabled");
 }
-
-// Set handler for scene switch.
-// scenes.forEach(function (scene) {
-// 	const el = document.querySelector('#sceneList .scene[data-id="' + scene.data.id + '"]');
-// 	el.addEventListener("click", function () {
-// 		switchScene(scene);
-// 		// On mobile, hide scene list after selecting a scene.
-// 		if (document.body.classList.contains("mobile")) {
-// 			hideSceneList();
-// 		}
-// 	});
-// });
-
-// DOM elements for view controls.
-// const viewUpElement = document.querySelector('#viewUp');
-// const viewDownElement = document.querySelector('#viewDown');
-// const viewLeftElement = document.querySelector('#viewLeft');
-// const viewRightElement = document.querySelector('#viewRight');
-// const viewInElement = document.querySelector('#viewIn');
-// const viewOutElement = document.querySelector('#viewOut');
-
-// Dynamic parameters for controls.
-// const velocity = 0.7;
-// const friction = 3;
-
-// // Associate view controls with elements.
-// const controls = viewer.controls();
-// controls.registerMethod('upElement',    new Marzipano.ElementPressControlMethod(viewUpElement,     'y', -velocity, friction), true);
-// controls.registerMethod('downElement',  new Marzipano.ElementPressControlMethod(viewDownElement,   'y',  velocity, friction), true);
-// controls.registerMethod('leftElement',  new Marzipano.ElementPressControlMethod(viewLeftElement,   'x', -velocity, friction), true);
-// controls.registerMethod('rightElement', new Marzipano.ElementPressControlMethod(viewRightElement,  'x',  velocity, friction), true);
-// controls.registerMethod('inElement',    new Marzipano.ElementPressControlMethod(viewInElement,  'zoom', -velocity, friction), true);
-// controls.registerMethod('outElement',   new Marzipano.ElementPressControlMethod(viewOutElement, 'zoom',  velocity, friction), true);
-
 function sanitize(s) {
 	return s.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;");
 }

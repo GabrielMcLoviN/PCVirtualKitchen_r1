@@ -1,92 +1,3 @@
-// Dimensions for post block on Table: 355px iphone 6/7/8 90% margin:auto -> mobile width = 750px on desktop desktop is 2/3, 1/3 columns col-md-8 desktop bootstrap panels
-// var APP_DATA = {
-// 	scenes: [
-// 		{
-// 			id: "0-kitchen_01",
-// 			name: "Kitchen_01",
-// 			levels: [
-// 				{
-// 					tileSize: 256,
-// 					size: 256,
-// 					fallbackOnly: true,
-// 				},
-// 				{
-// 					tileSize: 512,
-// 					size: 512,
-// 				},
-// 				{
-// 					tileSize: 512,
-// 					size: 1024,
-// 				},
-// 				{
-// 					tileSize: 512,
-// 					size: 2048,
-// 				},
-// 			],
-// 			faceSize: 2048,
-// 			initialViewParameters: {
-// 				yaw: 0.28366228185752895,
-// 				pitch: 0.2409571701441493,
-// 				fov: 1.2739094032009168,
-// 			},
-// 			linkHotspots: [],
-// 			infoHotspots: [
-// 				{
-// 					yaw: -0.4252217215869756,
-// 					pitch: 0.534560200015882,
-// 				},
-// 				{
-// 					yaw: 0.18578207954119463,
-// 					pitch: 0.44039175033335454,
-// 				},
-// 				{
-// 					yaw: 0.5233019513478805,
-// 					pitch: 0.5346585714994525,
-// 				},
-// 				{
-// 					yaw: 0.7828439501751578,
-// 					pitch: 0.3000919208252064,
-// 				},
-// 				{
-// 					yaw: -2.724540658980688,
-// 					pitch: 0.5924236607609039,
-// 				},
-// 				{
-// 					yaw: 2.20558290427587,
-// 					pitch: 0.41308350229582835,
-// 				},
-// 				{
-// 					yaw: 2.824589139508083,
-// 					pitch: 0.5197358315170817,
-// 				},
-// 				{
-// 					yaw: 3.0210249388923707,
-// 					pitch: 0.6610016937252077,
-// 				},
-// 				{
-// 					yaw: 2.4655333888327764,
-// 					pitch: 0.5663247914573244,
-// 				},
-
-// 			],
-// 		},
-// 	],
-// };
-
-// {
-// 	yaw: 2.4655333888327764,
-// 	pitch: 0.5663247914573244,
-// 	title: "INSULATED SERVING BOWL SET",
-// 	images: [
-// 		"./products/insulated_01.jpg",
-// 		"./products/insulated_02.jpg",
-// 		"./products/insulated_03.jpg",
-// 		"./products/insulated_04-@lazynolaketo.jpg",
-// 	],
-// 	subhead: "Insulated Serving Bowl Set",
-// 	text:
-// 		"<p>For holidays, potlucks, or any big meal, it can feel nearly impossible to keep everything warm. With this insulated serving bowl set, you can keep foods warm up to 2 hours.</p><br><p>The bowls’ double-walled vacuum insulation keeps food hot, prevents sweating, and has a stay-cool exterior. Works with cold foods, too!</p><br><p>Each bowl comes with a clear plastic lid that’s double-walled and lets you see what's inside. The lid also hooks onto the side of the bowl, making it easier to dish out and serve food.</p>",
-// },
 
 var APP_DATA = {
 	scenes: [
@@ -120,77 +31,28 @@ var APP_DATA = {
 			},
 			linkHotspots: [
 				{
-					yaw: 1.5461603514557716,
-					pitch: 0.018761437865812525,
-					rotation: 4.71238898038469,
-					target: "1-deluxe-air-fryer-manual-food-processor-and-pizza-peel",
+					yaw: 1.5449373637680806,
+					pitch: 0.4109587577570739,
+					rotation: 17.27875959474387,
+					target: "1-kitchen-counter",
 				},
 				{
-					yaw: 2.121051806590043,
-					pitch: 0.014923280466032196,
-					rotation: 8.63937979737193,
-					target: "2-charcuterie-set--square-cool-and-serve",
+					yaw: 1.9160522942870992,
+					pitch: 0.5363449989914191,
+					rotation: 25.918139392115812,
+					target: "2-kitchen-island",
 				},
 				{
-					yaw: 3.0023698014129936,
-					pitch: -0.02028504740518855,
-					rotation: 21.991148575128566,
-					target: "3-wood-salad-bowl-with-serving-spoons",
+					yaw: -3.1087207124080365,
+					pitch: -0.08803578619563623,
+					rotation: 3.9269908169872414,
+					target: "3-dining-room-table",
 				},
 			],
 			infoHotspots: [
 				{
-					yaw: -1.9958973692516976,
-					pitch: 0.05461529780151686,
-					title: "BE A CONSULTANT",
-					images: [
-						"./1080x1080/be_a_consultant/01.jpg",
-						"./1080x1080/be_a_consultant/02.jpg",
-					],
-					subhead: "Be a Consultant",
-					text:
-						"<span class='addtl_modal_body'><h3>What's in It for You?</h3><p>You mean... besides earning commission on every sale?</p><span class='consultant_perks'>Here are more amazing perks!</span><br/><br/><h4 class='modal_block-header'>Work/Life Balance</h4><p>Make your business work around another job or family commitments-and take it wherever you go with your website and online tools.</p><h4 class='modal_block-header'>Free Products & Discounts</h4><p>You'll get 20–50% off products right away, and you'll have the chance to earn products or Pampered Chef logo gear every month.</p><h4 class='modal_block-header'>Fantastic Rewards</h4><p>On top of free products, you can earn cash rewards and even vacations-and you'll earn even more if you promote!</p><h4 class='modal_block-header'>Purpose & Community</h4><p>You'll be part of a strong community of people who share the same passion for helping others by inspiring mealtime wins.</p><br/><span class='modal_block-footer'>Contact your consultant to learn more today!</span></span>",
-					pdf_links: [
-						{
-							id: "New Consultant Kit",
-							preview_image:
-								"./modals/be_a_consultant/flyer-new-consultant-kit-us_Page_1.jpg",
-							link: "./modals/be_a_consultant/flyer-new-consultant-kit-us.pdf",
-						},
-						{
-							id: "Make Your Everyday Better Poster",
-							preview_image:
-								"./modals/be_a_consultant/poster-everyday-better-checklist-20x30-us.jpg",
-							link:
-								"./modals/be_a_consultant/poster-everyday-better-checklist-20x30-us.pdf",
-						},
-					],
-				},
-				{
-					yaw: -0.9958973692516976,
-					pitch: 0.05461529780151686,
-					title: "HOST A PARTY",
-					images: [
-						"./1080x1080/host_party/01.jpg",
-						"./1080x1080/host_party/02.jpg",
-						"./1080x1080/host_party/03.jpg",
-						"./1080x1080/host_party/04.jpg",
-					],
-					subhead: "Host a Party",
-					text:
-						"<span class='addtl_modal_body'><h4 class='modal_block-header'>Free Product Rewards</h4><p>The higher your party sales, the more free product value you get to spend on the products you want.</p><h4 class='modal_block-header'>Half-Price Products</h4><p>Get up to five, including exclusive host exclusive combos.</p><h4 class='modal_block-header'>Monthly Host Special</h4><p>Get an exclusive offer just for hosting.</p><h4 class='modal_block-header'>Booking Bonuses</h4><p>Get 40% off one item or set at any party booked from yours - and get $50 in free product rewards when three guests book parties!</p><h4 class='modal_block-header'>Discounted Products</h4><p>Save up to 30% at your party, and 10% for one year.</p><br/><span class='modal_block-footer'>Contact your consultant to learn more today!</span></span>",
-					pdf_links: [
-						{
-							id: "Host Rewards PDF",
-							preview_image:
-								"./modals/host_party/p28619-092020us-host-rewards.jpg",
-							link: "./modals/host_party/p28619-092020us-host-rewards.pdf",
-						},
-					],
-				},
-				{
-					yaw: -0.6358973692516976,
-					pitch: 0.05461529780151686,
+					yaw: -0.6277995048457434,
+					pitch: 0.01454565276339892,
 					title: '12" STAINLESS STEEL NONSTICK SKILLET',
 					images: [
 						"./1080x1080/nonstick/01.jpg",
@@ -234,8 +96,8 @@ var APP_DATA = {
 					],
 				},
 				{
-					yaw: 0.2539686048844878,
-					pitch: -0.05808075038937588,
+					yaw: 0.26134111109976566,
+					pitch: -0.08162458274027173,
 					title: "6-QT. ENAMELED DUTCH OVEN",
 					videos: ["./videos/dutchoven.mp4"],
 					images: [
@@ -273,8 +135,8 @@ var APP_DATA = {
 					],
 				},
 				{
-					yaw: 0.7556613557671596,
-					pitch: 0.09736674992180383,
+					yaw: 0.7655768348049499,
+					pitch: 0.1347866895586023,
 					title: '12" CAST IRON SKILLET',
 					videos: ["./videos/cast-iron2.mp4"],
 					images: [
@@ -314,8 +176,8 @@ var APP_DATA = {
 			],
 		},
 		{
-			id: "1-deluxe-air-fryer-manual-food-processor-and-pizza-peel",
-			name: "Deluxe Air Fryer, Manual Food Processor, and Pizza Peel",
+			id: "1-kitchen-counter",
+			name: "Kitchen Counter",
 			levels: [
 				{
 					tileSize: 256,
@@ -337,9 +199,9 @@ var APP_DATA = {
 			],
 			faceSize: 2048,
 			initialViewParameters: {
-				yaw: 0.13342734763589092,
-				pitch: 0.3589074035211599,
-				fov: 1.387279393921156,
+				yaw: 0.11969696688507092,
+				pitch: 0.24441512874785687,
+				fov: 1.3848081938437478,
 			},
 			linkHotspots: [
 				{
@@ -352,19 +214,19 @@ var APP_DATA = {
 					yaw: -2.7825525419776724,
 					pitch: 0.1615900374992858,
 					rotation: 39.269908169872416,
-					target: "2-charcuterie-set--square-cool-and-serve",
+					target: "2-kitchen-island",
 				},
 				{
 					yaw: -2.8021616399606852,
 					pitch: -0.04002319957860756,
 					rotation: 9.42477796076938,
-					target: "3-wood-salad-bowl-with-serving-spoons",
+					target: "3-dining-room-table",
 				},
 			],
 			infoHotspots: [
 				{
-					yaw: -0.6228858722092987,
-					pitch: 0.05244390800955401,
+					yaw: -0.8318352574086134,
+					pitch: 0.04797371035327558,
 					title: "MANUAL FOOD PROCESSOR",
 					videos: ["./videos/manualfoodprocessor.mp4"],
 					images: [
@@ -402,8 +264,8 @@ var APP_DATA = {
 					],
 				},
 				{
-					yaw: -0.16844668950375663,
-					pitch: 0.3269584847212421,
+					yaw: -0.31982165391947603,
+					pitch: 0.38679465667281754,
 					title: "PIZZA PEEL",
 					videos: ["./videos/pizza-peel.mp4"],
 					images: [
@@ -430,8 +292,8 @@ var APP_DATA = {
 					],
 				},
 				{
-					yaw: 0.34665093386096757,
-					pitch: 0.09107716050790415,
+					yaw: 0.9817374487736821,
+					pitch: 0.09279542602147295,
 					title: "DELUXE AIR FRYER",
 					images: [
 						"./1080x1080/air_fryer/01.jpg",
@@ -470,8 +332,8 @@ var APP_DATA = {
 			],
 		},
 		{
-			id: "2-charcuterie-set--square-cool-and-serve",
-			name: "Charcuterie Set & Square Cool and Serve",
+			id: "2-kitchen-island",
+			name: "Kitchen Island",
 			levels: [
 				{
 					tileSize: 256,
@@ -499,28 +361,70 @@ var APP_DATA = {
 			},
 			linkHotspots: [
 				{
-					yaw: -2.551073502766778,
-					pitch: 0.01284503633860723,
-					rotation: 28.27433388230816,
-					target: "1-deluxe-air-fryer-manual-food-processor-and-pizza-peel",
+					yaw: 0.0026866925612605286,
+					pitch: -0.03566401174572498,
+					rotation: 2.356194490192345,
+					target: "3-dining-room-table",
 				},
 				{
-					yaw: 2.21664395009297,
-					pitch: 0.21507878860341378,
-					rotation: 19.63495408493622,
+					yaw: 2.390484499687437,
+					pitch: -0.120268121432062,
+					rotation: 3.141592653589793,
 					target: "0-range",
 				},
 				{
-					yaw: 0.17879800768915466,
-					pitch: 0.0006311009176496185,
-					rotation: 9.42477796076938,
-					target: "3-wood-salad-bowl-with-serving-spoons",
+					yaw: -2.8871011130308233,
+					pitch: 0.08476201176402043,
+					rotation: 1.5707963267948966,
+					target: "1-kitchen-counter",
 				},
 			],
 			infoHotspots: [
 				{
-					yaw: -0.5655719823993159,
-					pitch: 0.31854015457002127,
+					yaw: 0.9015299537163557,
+					pitch: 0.32768977559304346,
+					title: "Cookbook",
+					images: [
+						"",
+					],
+					subhead: "",
+					text:
+						"<div>iframe goes here, will be full width and no carousel/links/subhead</div>",
+					pdf_links: [
+
+					],
+				},
+				{
+					yaw: -0.43194371027012224,
+					pitch: 0.28823727706400426,
+					title: "BE A CONSULTANT",
+					images: [
+						"./1080x1080/be_a_consultant/01.jpg",
+						"./1080x1080/be_a_consultant/02.jpg",
+					],
+					subhead: "Be a Consultant",
+					text:
+						"<span class='addtl_modal_body'><h3>What's in It for You?</h3><p>You mean... besides earning commission on every sale?</p><span class='consultant_perks'>Here are more amazing perks!</span><br/><br/><h4 class='modal_block-header'>Work/Life Balance</h4><p>Make your business work around another job or family commitments-and take it wherever you go with your website and online tools.</p><h4 class='modal_block-header'>Free Products & Discounts</h4><p>You'll get 20–50% off products right away, and you'll have the chance to earn products or Pampered Chef logo gear every month.</p><h4 class='modal_block-header'>Fantastic Rewards</h4><p>On top of free products, you can earn cash rewards and even vacations-and you'll earn even more if you promote!</p><h4 class='modal_block-header'>Purpose & Community</h4><p>You'll be part of a strong community of people who share the same passion for helping others by inspiring mealtime wins.</p><br/><span class='modal_block-footer'>Contact your consultant to learn more today!</span></span>",
+					pdf_links: [
+						{
+							id: "New Consultant Kit",
+							preview_image:
+								"./modals/be_a_consultant/flyer-new-consultant-kit-us_Page_1.jpg",
+							link: "./modals/be_a_consultant/flyer-new-consultant-kit-us.pdf",
+						},
+						{
+							id: "Make Your Everyday Better Poster",
+							preview_image:
+								"./modals/be_a_consultant/poster-everyday-better-checklist-20x30-us.jpg",
+							link:
+								"./modals/be_a_consultant/poster-everyday-better-checklist-20x30-us.pdf",
+						},
+					],
+				},
+
+				{
+					yaw: -0.7174876309002975,
+					pitch: 0.24890468744372818,
 					title: "PREMIUM CHARCUTERIE & CHEESE BOARD SET",
 					videos: ["./videos/charcuterie.mp4"],
 					images: [
@@ -541,26 +445,31 @@ var APP_DATA = {
 					],
 				},
 				{
-					yaw: 0.57680002139396116,
-					pitch: 0.2976681843137335,
-					title: "SMALL SQUARE COOL & SERVE",
-					videos: ["./videos/cool_and_serve.mp4"],
+					yaw: 0.5109851975910793,
+					pitch: 0.6273853907545508,
+					title: "HOST A PARTY",
 					images: [
-						"./1080x1080/cool_serve/01.jpg",
-						"./1080x1080/cool_serve/02.jpg",
-						"./1080x1080/cool_serve/03.jpg",
-						"./1080x1080/cool_serve/04.jpg",
-						"./1080x1080/cool_serve/05.jpg",
+						"./1080x1080/host_party/01.jpg",
+						"./1080x1080/host_party/02.jpg",
+						"./1080x1080/host_party/03.jpg",
+						"./1080x1080/host_party/04.jpg",
 					],
-					subhead: "Small Square Cool & Serve",
+					subhead: "Host a Party",
 					text:
-						"<p>The fun-sized Small Square Cool & Serve is perfect for parties, picnics, snacks, lunch on the go, and road trips. The exclusive gel insert (which features a handy finger slot for easy removal) keeps veggies, fruit, cheese, deli meat, dip, and other snacks cool for 4–6 hours—even outdoors!</p><br><p>It comes with a clear insert divided into two compartments with a 1-cup dip well in the center and has solid walls that keep food from mixing. The lid snaps onto the base so it’s easy to transport, and it even fits neatly underneath while in use.</p>",
+						"<span class='addtl_modal_body'><h4 class='modal_block-header'>Free Product Rewards</h4><p>The higher your party sales, the more free product value you get to spend on the products you want.</p><h4 class='modal_block-header'>Half-Price Products</h4><p>Get up to five, including exclusive host exclusive combos.</p><h4 class='modal_block-header'>Monthly Host Special</h4><p>Get an exclusive offer just for hosting.</p><h4 class='modal_block-header'>Booking Bonuses</h4><p>Get 40% off one item or set at any party booked from yours - and get $50 in free product rewards when three guests book parties!</p><h4 class='modal_block-header'>Discounted Products</h4><p>Save up to 30% at your party, and 10% for one year.</p><br/><span class='modal_block-footer'>Contact your consultant to learn more today!</span></span>",
+					pdf_links: [
+						{
+							id: "Host Rewards PDF",
+							preview_image: "./modals/host_party/p28619-092020us-host-rewards.jpg",
+							link: "./modals/host_party/p28619-092020us-host-rewards.pdf",
+						},
+					],
 				},
 			],
 		},
 		{
-			id: "3-wood-salad-bowl-with-serving-spoons",
-			name: "Wood Salad Bowl with Serving Spoons",
+			id: "3-dining-room-table",
+			name: "Dining Room Table",
 			levels: [
 				{
 					tileSize: 256,
@@ -582,34 +491,65 @@ var APP_DATA = {
 			],
 			faceSize: 2048,
 			initialViewParameters: {
-				yaw: -0.19005647915938795,
-				pitch: 0.5206946786835491,
-				fov: 1.387279393921156,
+				yaw: -0.12754400970612778,
+				pitch: 0.509802213262418,
+				fov: 1.3848081938437478,
 			},
 			linkHotspots: [
 				{
-					yaw: -2.623036695618625,
-					pitch: -0.05440192212403261,
-					rotation: 3.9269908169872414,
-					target: "1-deluxe-air-fryer-manual-food-processor-and-pizza-peel",
+					yaw: -2.572424974392515,
+					pitch: -0.044303694376196745,
+					rotation: 10.210176124166829,
+					target: "1-kitchen-counter",
 				},
 				{
-					yaw: 3.0260798563474207,
-					pitch: -0.03992654510803462,
-					rotation: 9.42477796076938,
+					yaw: 2.871067361891951,
+					pitch: -0.047934228187788364,
+					rotation: 14.922565104551524,
 					target: "0-range",
 				},
 				{
-					yaw: -2.9472786506205075,
-					pitch: 0.03654518347697078,
-					rotation: 14.922565104551524,
-					target: "2-charcuterie-set--square-cool-and-serve",
+					yaw: -2.9275537918448737,
+					pitch: 0.0770009934747602,
+					rotation: 3.141592653589793,
+					target: "2-kitchen-island",
 				},
 			],
 			infoHotspots: [
 				{
-					yaw: -0.5027758576081087,
-					pitch: 0.3796108223121806,
+					yaw: 0.5854073038617518,
+					pitch: 0.36187944817504913,
+
+					title: "INSULATED SERVING BOWL SET",
+					images: [
+						"./products/insulated_01.jpg",
+						"./products/insulated_02.jpg",
+						"./products/insulated_03.jpg",
+						"./products/insulated_04-@lazynolaketo.jpg",
+					],
+					subhead: "Insulated Serving Bowl Set",
+					text:
+						"<p>For holidays, potlucks, or any big meal, it can feel nearly impossible to keep everything warm. With this insulated serving bowl set, you can keep foods warm up to 2 hours.</p><br><p>The bowls’ double-walled vacuum insulation keeps food hot, prevents sweating, and has a stay-cool exterior. Works with cold foods, too!</p><br><p>Each bowl comes with a clear plastic lid that’s double-walled and lets you see what's inside. The lid also hooks onto the side of the bowl, making it easier to dish out and serve food.</p>",
+				},
+				{
+					yaw: -0.8499462461096794,
+					pitch: 0.2760168179510689,
+					title: "SMALL SQUARE COOL & SERVE",
+					videos: ["./videos/cool_and_serve.mp4"],
+					images: [
+						"./1080x1080/cool_serve/01.jpg",
+						"./1080x1080/cool_serve/02.jpg",
+						"./1080x1080/cool_serve/03.jpg",
+						"./1080x1080/cool_serve/04.jpg",
+						"./1080x1080/cool_serve/05.jpg",
+					],
+					subhead: "Small Square Cool & Serve",
+					text:
+						"<p>The fun-sized Small Square Cool & Serve is perfect for parties, picnics, snacks, lunch on the go, and road trips. The exclusive gel insert (which features a handy finger slot for easy removal) keeps veggies, fruit, cheese, deli meat, dip, and other snacks cool for 4–6 hours—even outdoors!</p><br><p>It comes with a clear insert divided into two compartments with a 1-cup dip well in the center and has solid walls that keep food from mixing. The lid snaps onto the base so it’s easy to transport, and it even fits neatly underneath while in use.</p>",
+				},
+				{
+					yaw: -0.6265618269195876,
+					pitch: 0.6596888420069771,
 					title: "WOOD SALAD BOWL & SERVERS SET",
 					images: [
 						"./1080x1080/salad/01.jpg",
