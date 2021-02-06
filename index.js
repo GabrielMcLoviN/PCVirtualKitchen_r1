@@ -368,7 +368,7 @@ function createInfoHotspotElement(hotspot) {
 			const influencer_credit_container = document.createElement("div");
 			influencer_credit_container.classList.add("influencer_credit_container");
 			const credit_pointer = document.createElement("div");
-			credit_pointer.classList.add("pointer")
+			credit_pointer.classList.add("pointer");
 			influencer_credit_container.appendChild(credit_pointer);
 			const influencer_credit = document.createElement("span");
 			influencer_credit.classList.add("influencer_credit");
@@ -432,11 +432,24 @@ function createInfoHotspotElement(hotspot) {
 
 	document.body.appendChild(modal);
 
-	const reset_scroll = function () {
+	// reset modal content logic
+	const pause_video = function () {
+		if (!modal.querySelector(".product-video").paused) {
+			modal.querySelector(".product-video").pause();
+			modal.querySelector(".playbtn_wrap").style.backgroundImage = "url(./SVG/playbtn.svg)";
+			modal.querySelector(".playbtn_wrap").style.opacity = 1;
+		}
+	};
+
+	const reset_modal = function () {
 		setTimeout(function () {
 			modal.querySelector(".product-txt-container").scrollTo(0, 0);
 			slideTo(0);
+			modal.querySelector(".product-video").currentTime = 0;
+			modal.querySelector(".playbtn_wrap").style.backgroundImage = "url(./SVG/playbtn.svg)";
+			modal.querySelector(".playbtn_wrap").style.opacity = 1;
 		}, 1000);
+		pause_video();
 	};
 
 	modal.addEventListener("mouseover", function () {
@@ -444,9 +457,10 @@ function createInfoHotspotElement(hotspot) {
 		document.body.classList.add("no-touch");
 	});
 
+	//
 	const toggle = function () {
 		modal.classList.toggle("visible");
-		reset_scroll();
+		reset_modal();
 	};
 
 	wrapper.querySelector(".info-hotspot-header").addEventListener("click", toggle);
@@ -510,7 +524,7 @@ function createInfoHotspotElement(hotspot) {
 		if (evt.key === "Escape") {
 			modal.classList.remove("visible");
 		}
-		reset_scroll();
+		reset_modal();
 	});
 
 	carouselImgs.addEventListener("touchstart", (e) => {
@@ -547,6 +561,7 @@ function createInfoHotspotElement(hotspot) {
 		bullets[currentIndex].classList.remove("active-bullet");
 		bullets[index].classList.add("active-bullet");
 		currentIndex = index;
+		pause_video();
 	}
 
 	bullets[currentIndex].classList.add("active-bullet");
