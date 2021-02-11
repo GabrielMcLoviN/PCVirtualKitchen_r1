@@ -575,15 +575,14 @@
   }
 }
 
-@media (max-width: 639px) {
-  .carousel_container {
+@media (max-width: 800px) {
+   .carousel_container {
     grid-row: 1 / span 1;
   }
   .product-txt-container {
     grid-row: 2 / span 1;
     display: block;
   }
-
 }
 
 @media (max-width: 800px) and (min-height: 1024px) {
@@ -595,10 +594,10 @@
     display: block;
   }
   .info-hotspot-modal .info-hotspot-content {
-    top: 150px;
+    top: 120px;
   }
   .info-hotspot-modal .info-hotspot-header {
-    top: 100px;
+    top: 50px;
   }
 }
 @media (max-width: 1024px) and (min-height: 1366px) {

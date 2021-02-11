@@ -25,15 +25,13 @@
 }
 
 
-
-
 :root {
   --primary-blue: rgb(42, 127, 140);
   --primary-blue-opaque: rgb(42, 127, 140, 0.5);
   --secondary-blk: #292829;
   --secondary-blk-opaque: rgba(41, 40, 41, 0.5);
   --secondary-white: rgb(245, 245, 245);
-  --secondary-white-opaque: rgba(245, 245, 245, 0.226);
+  --secondary-white-opaque: rgba(245, 245, 245, 0.438);
   --accent-blue: rgb(0, 173, 174);
   --accent-blue-opaque: rgba(0, 173, 174, 0.5);
   --accent-red: rgb(233, 115, 85);
@@ -122,6 +120,9 @@ a:visited {
 }
 
 #titleBar {
+  transition: opacity 0.4s ease-in;
+
+  opacity: 0;
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -211,9 +212,9 @@ body.fullscreen-enabled #fullscreenToggle {
 }
 
 .link-hotspot-icon {
-  border: 3px solid var(--accent-blue);
-  width: 75%;
-  height: 75%;
+  border: 2px solid var(--accent-blue);
+  width: 80%;
+  height: 80%;
   border-radius: 50%;
   cursor: pointer;
 }
@@ -304,13 +305,9 @@ body.fullscreen-enabled #fullscreenToggle {
   border-radius: 20px;
   border: 2px solid var(--accent-green-opaque);
   cursor: pointer;
-  -webkit-transition: width 0.3s ease-in-out 0.5s, border-radius 0.3s ease-in-out 0.5s;
-  transition: width 0.3s ease-in-out 0.5s, border-radius 0.3s ease-in-out 0.5s;
-}
+  -webkit-transition: width 0.3s ease-in-out 0.5s, border-radius 0.3s ease-in-out 0.5s, background 0.5s ease-in-out;
+  transition: width 0.3s ease-in-out 0.5s, border-radius 0.3s ease-in-out 0.5s, background 0.5s ease-in-out;
 
-.mobile .info-hotspot .info-hotspot-header {
-  width: 40px;
-  height: 40px;
 }
 
 .desktop.no-touch .info-hotspot .info-hotspot-header:hover,
@@ -318,18 +315,22 @@ body.fullscreen-enabled #fullscreenToggle {
   width: 210px;
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
-  -webkit-transition: width 0.3s ease-in-out, border-radius 0.3s ease-in-out;
-  transition: width 0.3s ease-in-out, border-radius 0.3s ease-in-out;
+  -webkit-transition: width 0.3s ease-in-out, border-radius 0.3s ease-in-out, background 0.5s ease-in-out;
+  transition: width 0.3s ease-in-out, border-radius 0.3s ease-in-out, background 0.5s ease-in-out;
+  background: var(--secondary-white-opaque);
+
 }
 
 .desktop .info-hotspot.visible .info-hotspot-header,
 .desktop.no-touch .info-hotspot.visible .info-hotspot-header:hover,
 .mobile.no-touch .info-hotspot .info-hotspot-header:hover {
   width: 210px;
+  background: var(--secondary-white-opaque);
+
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
-  -webkit-transition: width 0.3s ease-in-out, border-radius 0.3s ease-in-out;
-  transition: width 0.3s ease-in-out, border-radius 0.3s ease-in-out;
+  -webkit-transition: width 0.3s ease-in-out, border-radius 0.3s ease-in-out, background 0.5s ease-in-out;
+  transition: width 0.3s ease-in-out, border-radius 0.3s ease-in-out, background 0.3s ease-in-out, background 0.5s ease-in-out;
 }
 
 .info-hotspot .info-hotspot-icon-wrapper {
@@ -338,14 +339,17 @@ body.fullscreen-enabled #fullscreenToggle {
 }
 
 .info-hotspot .info-hotspot-icon {
-  width: 80%;
+  max-width: 80%;
   height: 80%;
   margin: 1.5px;
 }
 
 .info-hotspot .info-hotspot-title-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   position: absolute;
-  left: 40px;
+  left: 42px;
   top: 0;
   width: 0;
   height: 40px;
@@ -372,10 +376,15 @@ body.fullscreen-enabled #fullscreenToggle {
 }
 
 .info-hotspot .info-hotspot-title {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 0;
+  margin: 0;
   vertical-align: middle;
   font-size: 0.8rem;
-  line-height: 0.9rem;
+  line-height: 0.8rem;
   -moz-user-select: text;
   -webkit-user-select: text;
   -ms-user-select: text;
@@ -401,43 +410,3 @@ body.fullscreen-enabled #fullscreenToggle {
     max-width: 150px;
   }
 }
-
-/* @media (min-width: 2560px) {
-  .logoWrapper {
-    left: 20px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-  }
-
-  .sceneName {
-    max-width: 200px;
-  }
-  #titleBar {
-    height: 80px;
-  }
-  .sceneName {
-    padding-top: .5rem;
-    padding-left: 1rem;
-    max-width: 220px;
-  }
-  #fullscreenToggle {
-    padding: 0;
-    margin-right: 25px;
-  }
-  #fullscreenToggle .icon {
-    width: 40px;
-    height: 40px;
-  }
-  .link-hotspot {
-    width: 100px;
-    height: 100px;
-  }
-  .link-hotspot-tooltip {
-    width: 300px;
-    font-size: 1.5rem;
-    padding: 16px;
-
-    -webkit-transition: -ms-transform 0.3s, -webkit-transform 0.3s, transform 0.3s, opacity 0.3s;
-    transition: -ms-transform 0.3s, -webkit-transform 0.3s, transform 0.3s, opacity 0.3s;
-  }
-} */

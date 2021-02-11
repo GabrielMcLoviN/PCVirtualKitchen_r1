@@ -382,7 +382,7 @@ var APP_DATA = {
 				{
 					yaw: 0.9252211561111885,
 					pitch: 0.37401104062703183,
-					title: "EAT WELL - RECIPE COOKBOOK (PREVIEW)",
+					title: "EAT WELL RECIPE BOOK",
 					images: [""],
 					subhead: "",
 					fullWidth: true,
