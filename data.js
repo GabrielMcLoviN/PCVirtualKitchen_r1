@@ -138,7 +138,7 @@ var APP_DATA = {
 					yaw: 0.9132800657738347,
 					pitch: 0.12546033681835667,
 					title: '12" CAST IRON SKILLET',
-					videos: ["./videos/cast-iron2.mp4"],
+					videos: ["./videos/castiron.mp4"],
 					images: [
 						"./1080x1080/cast_iron/01.jpg",
 						"./1080x1080/cast_iron/02.jpg",
