@@ -460,6 +460,7 @@
 .recipes-list {
   display: flex;
   padding: 0;
+  padding-bottom: 10%;
   flex: 1;
   flex-wrap: wrap;
   align-items: flex-start;
