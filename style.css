@@ -82,12 +82,6 @@ body {
   background-color: var(--secondary-blk);
   color: #fff;
   scroll-behavior: smooth;
-
-}
-body > *:not(.preloader){
-  opacity: 0;
-  transition: opacity 0.5s ease-in;
-  visibility: hidden;
 }
 
 .preloader {
@@ -98,13 +92,15 @@ body > *:not(.preloader){
   left: 0;
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: center;
   flex-direction: column;
   opacity: 1;
   transition: opacity 0.5s linear;
 }
 
-
+.loader-inner {
+  margin-top: 6rem;
+}
 
 a,
 a:hover,
@@ -115,6 +111,8 @@ a:visited {
 }
 
 #pano {
+  transition: opacity 0.4s ease-in;
+  opacity: 0;
   position: absolute;
   top: 0;
   left: 0;

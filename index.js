@@ -645,8 +645,7 @@ const fadeEffect = setInterval(() => {
 
 window.addEventListener("load", function () {
 	fadeEffect;
-	document.querySelector("body > *").style.visibility = "visible";
-	document.querySelector("body > *").style.opacity = 1;
+	panoElement.style.opacity = 1;
 	preloader.style.display = "none";
 });
 
