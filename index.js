@@ -18,26 +18,33 @@
 		const setMode = function () {
 			if (mql.matches) {
 				document.body.classList.remove("desktop");
+				document.body.classList.remove("no-touch");
 				document.body.classList.add("mobile");
 			} else {
 				document.body.classList.remove("mobile");
+				document.body.classList.remove("touch");
 				document.body.classList.add("desktop");
+				document.body.classList.add("no-touch");
+
 			}
 		};
 		const mql = matchMedia("(max-width: 700px), (max-height: 500px)");
 		setMode();
 		mql.addListener(setMode);
 	} else {
+
 		document.body.classList.add("desktop");
 	}
 
+window.addEventListener("touchstart", function (e) {
+	e.preventDefault();
+	document.body.classList.remove("no-touch");
+	document.body.classList.add("touch");
+});
 	// Detect whether we are on a touch device.
-	document.body.classList.add("no-touch");
 
-	window.addEventListener("touchstart", function () {
-		document.body.classList.remove("no-touch");
-		document.body.classList.add("touch");
-	});
+
+
 
 	// Use tooltip fallback mode on IE < 11.
 	if (bowser.msie && parseFloat(bowser.version) < 11) {
@@ -94,7 +101,7 @@
 				.createHotspot(
 					element,
 					{ yaw: hotspot.yaw, pitch: hotspot.pitch },
-					{ perspective: { radius: 500 } }
+					{ perspective: { radius: 420 } }
 				);
 		});
 
@@ -454,11 +461,6 @@
 			}, 1000);
 			pause_video();
 		};
-
-		modal.addEventListener("mouseover", function () {
-			document.body.classList.remove("touch");
-			document.body.classList.add("no-touch");
-		});
 
 		//
 		const toggle = function () {

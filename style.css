@@ -219,6 +219,11 @@ body.fullscreen-enabled #fullscreenToggle {
   cursor: pointer;
 }
 
+.mobile .link-hotspot-icon {
+  max-width: 75%;
+  height: 75%;
+}
+
 .link-hotspot-tooltip {
   position: absolute;
   right: -37.5px;
@@ -310,8 +315,7 @@ body.fullscreen-enabled #fullscreenToggle {
 
 }
 
-.desktop.no-touch .info-hotspot .info-hotspot-header:hover,
-.mobile.no-touch .info-hotspot .info-hotspot-header:hover {
+.no-touch .info-hotspot .info-hotspot-header:hover {
   width: 210px;
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
@@ -321,9 +325,7 @@ body.fullscreen-enabled #fullscreenToggle {
 
 }
 
-.desktop .info-hotspot.visible .info-hotspot-header,
-.desktop.no-touch .info-hotspot.visible .info-hotspot-header:hover,
-.mobile.no-touch .info-hotspot .info-hotspot-header:hover {
+.no-touch .info-hotspot.visible .info-hotspot-header:hover {
   width: 210px;
   background: var(--secondary-white-opaque);
 
@@ -359,9 +361,7 @@ body.fullscreen-enabled #fullscreenToggle {
   transition: width 0s 0.4s, padding 0s 0.4s;
 }
 
-.desktop .info-hotspot.visible .info-hotspot-title-wrapper,
-.desktop.no-touch .info-hotspot .info-hotspot-header:hover .info-hotspot-title-wrapper,
-.mobile.no-touch .info-hotspot .info-hotspot-header:hover .info-hotspot-title-wrapper {
+.no-touch .info-hotspot .info-hotspot-header:hover .info-hotspot-title-wrapper {
   width: 160px;
   padding: 0 0 0 5px;
   -webkit-transition: width 0s 0.4s, padding 0s 0.4s;
