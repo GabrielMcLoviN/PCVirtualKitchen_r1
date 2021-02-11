@@ -99,7 +99,7 @@ const scenes = data.scenes.map(function (data) {
 			.createHotspot(
 				element,
 				{ yaw: hotspot.yaw, pitch: hotspot.pitch },
-				{ perspective: { radius: 600 } }
+				{ perspective: { radius: 500 } }
 			);
 	});
 
