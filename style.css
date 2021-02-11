@@ -31,7 +31,7 @@
   --secondary-blk: #292829;
   --secondary-blk-opaque: rgba(41, 40, 41, 0.5);
   --secondary-white: rgb(245, 245, 245);
-  --secondary-white-opaque: rgba(245, 245, 245, 0.438);
+  --secondary-white-opaque: rgba(245, 245, 245, 0.5);
   --accent-blue: rgb(0, 173, 174);
   --accent-blue-opaque: rgba(0, 173, 174, 0.5);
   --accent-red: rgb(233, 115, 85);
@@ -305,8 +305,8 @@ body.fullscreen-enabled #fullscreenToggle {
   border-radius: 20px;
   border: 2px solid var(--accent-green-opaque);
   cursor: pointer;
-  -webkit-transition: width 0.3s ease-in-out 0.5s, border-radius 0.3s ease-in-out 0.5s, background 0.5s ease-in-out;
-  transition: width 0.3s ease-in-out 0.5s, border-radius 0.3s ease-in-out 0.5s, background 0.5s ease-in-out;
+  -webkit-transition: width 0.3s ease-in-out 0.5s, border-radius 0.3s ease-in-out 0.5s, background 1s ease-in-out;
+  transition: width 0.3s ease-in-out 0.5s, border-radius 0.3s ease-in-out 0.5s, background 1s ease-in-out;
 
 }
 
