@@ -142,7 +142,7 @@ var APP_DATA = {
 					images: [
 						"./1080x1080/cast_iron/01.jpg",
 						"./1080x1080/cast_iron/02.jpg",
-						["makandheart", "./1080x1080/cast_iron/03.jpg"],
+						["@makandheart", "./1080x1080/cast_iron/03.jpg"],
 						"./1080x1080/cast_iron/04.jpg",
 						// "./1080x1080/cast_iron/05.jpg",
 					],
@@ -425,7 +425,7 @@ var APP_DATA = {
 					yaw: -0.9441282059169254,
 					pitch: 0.3569723830509055,
 					title: "PREMIUM CHARCUTERIE & CHEESE BOARD SET",
-					videos: ["./videos/charc_stopmotion.mp4", "./videos/charc.mp4"],
+					videos: ["./videos/charc_stopmotion.mp4"],
 					images: [
 						"./1080x1080/charc/01.jpg",
 						"./1080x1080/charc/02.jpg",
@@ -439,7 +439,7 @@ var APP_DATA = {
 						{
 							id: "How to Build a Charcuterie Board (Video)",
 							preview_image: "./videos/charc_video_preview_img.jpg",
-							link: "./videos/charcuterie-2.mp4",
+							link: "./videos/charc.mp4",
 						},
 					],
 				},

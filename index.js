@@ -347,12 +347,12 @@ function createInfoHotspotElement(hotspot) {
 	const carouselNav = document.createElement("div");
 	carouselNav.classList.add("carousel-nav");
 	const carouselNext = document.createElement("img");
-	carouselNext.src = "./assets/1x/ic_chevron_right_48px.png";
+	carouselNext.src = "./SVG/chevron-right.svg";
 	carouselNext.classList.add("carousel-button");
 	carouselNext.classList.add("next");
 	carouselNext.setAttribute("id", "next");
 	const carouselPrev = document.createElement("img");
-	carouselPrev.src = "./assets/1x/ic_chevron_left_48px-2.png";
+	carouselPrev.src = "./SVG/chevron-left.svg";
 	carouselPrev.classList.add("carousel-button");
 	carouselPrev.classList.add("previous");
 	carouselPrev.setAttribute("id", "previous");
@@ -520,7 +520,7 @@ function createInfoHotspotElement(hotspot) {
 		}
 	}
 
-	window.addEventListener("keydown", (evt) => {
+	document.addEventListener("keydown", (evt) => {
 		if (evt.key === "Escape") {
 			modal.classList.remove("visible");
 		}

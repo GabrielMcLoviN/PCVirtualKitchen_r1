@@ -26,6 +26,7 @@
 }
 
 .info-hotspot-modal .info-hotspot-header {
+  margin-left: 2rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -116,6 +117,10 @@
   user-select: text;
 }
 
+.mobile .info-hotspot-modal .info-hotspot-content {
+  max-height: 95%;
+}
+
 .info-hotspot-content.fullwidth_modal {
   display: flex;
   align-items: center;
@@ -143,7 +148,6 @@
 }
 
 .carousel_container {
-  border: 1px solid var(--secondary-blk);
   grid-row: 1 / span 2;
   display: flex;
   position: relative;
@@ -264,29 +268,30 @@
   display: flex;
   align-self: center;
   width: 100%;
+  max-height: fit-content;
   flex-direction: row-reverse;
   justify-content: space-between;
-  padding: 0 10px;
   position: absolute;
   pointer-events: none;
 }
 
 .carousel-nav .carousel-button {
-  background-color: var(--secondary-blk-opaque);
-  border-radius: 50%;
-  opacity: 0.8;
+
   cursor: pointer;
-  height: 30px;
   transition: all 0.25s;
-  width: 30px;
   z-index: 1;
   pointer-events: all;
+  max-width: 60px;
+  max-height: 60px;
 }
 
-.mobile .carousel-button {
-  width: 24px;
-  height: 24px;
+.mobile .carousel-nav .carousel-button
+{
+  max-width: 35px;
+  max-height: 35px;
+
 }
+
 
 .carousel-nav .carousel-button:hover {
   opacity: 1;
@@ -334,7 +339,7 @@
 }
 
 .product-txt-container {
-  border: 1px solid var(--secondary-blk);
+
 
   display: flex;
   width: 100%;
@@ -348,15 +353,23 @@
   padding: 5% 10%;
 }
 
+/* .mobile .product-txt-container {
+  border-top: none;
+}
+.mobile .carousel_container{
+  border-bottom: none;
+} */
+
 .product-txt-wrapper {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: center;
   height: 95%;
 }
-.product-txt-wrapper * {
-  padding-top: 1rem;
+.product-txt-wrapper > * {
+  margin-top: 1rem;
+  margin-bottom: 2rem;
 }
 
 .product-txt-container::-webkit-scrollbar-track {
@@ -388,6 +401,7 @@
 }
 
 .product-txt h3 {
+  font-weight: 500;
   margin-bottom: 0.5rem;
 }
 
@@ -430,7 +444,6 @@
   align-items: flex-start;
   justify-content: flex-start;
   margin: 0;
-  padding-top: 1rem;
   padding-bottom: 5%;
 }
 
@@ -505,12 +518,8 @@
 }
 
 .__related-content {
-  margin-right: -1rem;
-  width: 120px;
+  width: 140px;
   height: 80px;
-}
-.__related-content-title {
-  margin-right: -1rem;
 }
 
 .recipes-list li:hover .recipe-preview-img-wrap {
@@ -562,6 +571,8 @@
 }
 
 @media (min-width: 1440px) {
+
+
   .product-txt-wrapper .product-txt-subhead {
   width: 65%;
 }
@@ -593,10 +604,7 @@
     width: 50px;
     height: 50px;
   }
-  .carousel-nav .carousel-button {
-    width: 40px;
-    height: 40px;
-  }
+
   .carousel-pagination {
     margin-bottom: 1rem;
   }
