@@ -53,6 +53,7 @@ var APP_DATA = {
 					yaw: -0.6509018897961045,
 					pitch: 0.050632497711122326,
 					title: '12" STAINLESS STEEL NONSTICK SKILLET',
+					videos: ["./videos/nonstick.mp4"],
 					images: [
 						"./1080x1080/nonstick/01.jpg",
 						"./1080x1080/nonstick/02.jpg",
@@ -227,7 +228,7 @@ var APP_DATA = {
 					yaw: -0.834871800104505,
 					pitch: 0.049530882327811554,
 					title: "MANUAL FOOD PROCESSOR",
-					videos: ["./videos/manualfoodprocessor.mp4"],
+					videos: ["./videos/foodprocessor.mp4"],
 					images: [
 						"./1080x1080/food_processor/01.jpg",
 						"./1080x1080/food_processor/02.jpg",
@@ -266,7 +267,7 @@ var APP_DATA = {
 					yaw: -0.11903815248984984,
 					pitch: 0.5148730551134122,
 					title: "PIZZA PEEL",
-					videos: ["./videos/pizza-peel.mp4"],
+					videos: ["./videos/pizzapeel.mp4"],
 					images: [
 						"./1080x1080/pizza/01.jpg",
 						["@midwestLifeandStyle", "./1080x1080/pizza/02.jpg"],
@@ -394,6 +395,7 @@ var APP_DATA = {
 					yaw: -0.4090293373787688,
 					pitch: 0.2717199998552431,
 					title: "BE A CONSULTANT",
+					videos: ["./videos/Consultant.mp4"],
 					images: [
 						"./1080x1080/be_a_consultant/01.jpg",
 						"./1080x1080/be_a_consultant/02.jpg",
@@ -423,7 +425,7 @@ var APP_DATA = {
 					yaw: -0.9441282059169254,
 					pitch: 0.3569723830509055,
 					title: "PREMIUM CHARCUTERIE & CHEESE BOARD SET",
-					videos: ["./videos/charcuterie.mp4"],
+					videos: ["./videos/charc_stopmotion.mp4", "./videos/charc.mp4"],
 					images: [
 						"./1080x1080/charc/01.jpg",
 						"./1080x1080/charc/02.jpg",
@@ -534,7 +536,7 @@ var APP_DATA = {
 					yaw: -0.8887952514793653,
 					pitch: 0.6658357151531433,
 					title: "SMALL SQUARE COOL & SERVE",
-					videos: ["./videos/cool_and_serve.mp4"],
+					videos: ["./videos/coolandserve.mp4"],
 					images: [
 						"./1080x1080/cool_serve/01.jpg",
 						"./1080x1080/cool_serve/02.jpg",
@@ -553,8 +555,8 @@ var APP_DATA = {
 					images: [
 						"./1080x1080/salad/01.jpg",
 						"./1080x1080/salad/02.jpg",
-						["@thecraftofcooking","./1080x1080/salad/03.jpg"],
-						["@theparsleypotato","./1080x1080/salad/04.jpg"],
+						["@thecraftofcooking", "./1080x1080/salad/03.jpg"],
+						["@theparsleypotato", "./1080x1080/salad/04.jpg"],
 					],
 					subhead: "Wood Salad Bowl & Servers Set",
 					text:
