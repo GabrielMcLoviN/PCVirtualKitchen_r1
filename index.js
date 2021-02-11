@@ -434,20 +434,28 @@ function createInfoHotspotElement(hotspot) {
 
 	// reset modal content logic
 	const pause_video = function () {
-		if (!modal.querySelector(".product-video").paused) {
-			modal.querySelector(".product-video").pause();
-			modal.querySelector(".playbtn_wrap").style.backgroundImage = "url(./SVG/playbtn.svg)";
-			modal.querySelector(".playbtn_wrap").style.opacity = 1;
+		if (hotspot.videos != undefined) {
+			if (!modal.querySelector(".product-video").paused) {
+				modal.querySelector(".product-video").pause();
+				modal.querySelector(".playbtn_wrap").style.backgroundImage =
+					"url(./SVG/playbtn.svg)";
+				modal.querySelector(".playbtn_wrap").style.opacity = 1;
+			}
 		}
 	};
 
 	const reset_modal = function () {
 		setTimeout(function () {
-			modal.querySelector(".product-txt-container").scrollTo(0, 0);
-			slideTo(0);
-			modal.querySelector(".product-video").currentTime = 0;
-			modal.querySelector(".playbtn_wrap").style.backgroundImage = "url(./SVG/playbtn.svg)";
-			modal.querySelector(".playbtn_wrap").style.opacity = 1;
+			if (modal.querySelector(".product-txt-container")) {
+				modal.querySelector(".product-txt-container").scrollTo(0, 0);
+				slideTo(0);
+			}
+			if (modal.querySelector(".product-video")) {
+				modal.querySelector(".product-video").currentTime = 0;
+				modal.querySelector(".playbtn_wrap").style.backgroundImage =
+					"url(./SVG/playbtn.svg)";
+				modal.querySelector(".playbtn_wrap").style.opacity = 1;
+			}
 		}, 1000);
 		pause_video();
 	};
@@ -460,7 +468,6 @@ function createInfoHotspotElement(hotspot) {
 	//
 	const toggle = function () {
 		modal.classList.toggle("visible");
-		reset_modal();
 	};
 
 	wrapper.querySelector(".info-hotspot-header").addEventListener("click", toggle);
@@ -618,3 +625,28 @@ function findSceneDataById(id) {
 
 // Display the initial scene.
 switchScene(scenes[0]);
+
+
+
+const preloader = document.querySelector(".preloader");
+
+const fadeEffect = setInterval(() => {
+	// if we don't set opacity 1 in CSS, then   //it will be equaled to "", that's why we   // check it
+	if (!preloader.style.opacity) {
+		preloader.style.opacity = 1;
+	}
+	if (preloader.style.opacity > 0) {
+		preloader.style.opacity -= 0.1;
+	} else {
+		clearInterval(fadeEffect);
+	}
+}, 1000);
+
+
+window.addEventListener("load", function () {
+	fadeEffect;
+	document.querySelector("body > *").style.visibility = "visible";
+	document.querySelector("body > *").style.opacity = 1;
+	preloader.style.display = "none";
+});
+
