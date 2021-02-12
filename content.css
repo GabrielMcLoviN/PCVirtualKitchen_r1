@@ -116,7 +116,7 @@
   left: 50px;
   right: 50px;
   background-color: #fff;
-  color: var(--secondary-blk);
+  color: #282727;
   opacity: 0;
   -webkit-transition: opacity 0.3s ease-in-out;
   transition: opacity 0.3s ease-in-out;
