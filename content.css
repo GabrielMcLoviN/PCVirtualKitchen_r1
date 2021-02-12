@@ -1,5 +1,5 @@
 .info-hotspot-modal {
-  font-family: "museo sans", sans-serif;
+  font-family: "Museo sans", sans-serif;
   font-weight: 100;
   display: grid;
   place-items: center;
@@ -373,16 +373,16 @@
 
 .product-txt {
   font-size: clamp(1rem, -0.875rem + 8.333333vw, 1.25rem);
-  font-weight: 100;
+  font-weight: lighter;
 }
 
 .product-txt h3 {
-  font-weight: bold;
+  font-weight: 500;
   margin-bottom: 0.5rem;
 }
 
 .product-txt h4 {
-  font-weight: bold;
+  font-weight: 500;
   margin-bottom: 0.5rem;
 }
 
@@ -395,11 +395,11 @@
 }
 
 .consultant_perks {
-  font-weight: bold;
+  font-weight: 100;
 }
 
 .product-txt .modal_block-header {
-  font-weight: bold;
+  font-weight: 500;
   margin-bottom: 0.25rem;
 }
 
