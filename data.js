@@ -54,7 +54,7 @@ var APP_DATA = {
 					pitch: 0.050632497711122326,
 					title: '12" STAINLESS STEEL NONSTICK SKILLET',
 					videos: [
-						'<iframe width="560" height="315" src="https://www.youtube.com/embed/hZ739Jtg_yg" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>',
+						'<iframe width="840" height="472.5" src="https://www.youtube.com/embed/hZ739Jtg_yg" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>',
 					],
 					images: [
 						"./images_min/nonstick/01-min.jpg",
@@ -102,7 +102,7 @@ var APP_DATA = {
 					pitch: -0.059097614950658794,
 					title: "6-QT. ENAMELED DUTCH OVEN",
 					videos: [
-						'<iframe width="560" height="315" src="https://www.youtube.com/embed/qsHmDecSbGY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>',
+						'<iframe width="840" height="472.5" src="https://www.youtube.com/embed/qsHmDecSbGY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>',
 					],
 					images: [
 						"./images_min/dutchoven/01-min.jpg",
@@ -142,7 +142,7 @@ var APP_DATA = {
 					pitch: 0.12546033681835667,
 					title: '12" CAST IRON SKILLET',
 					videos: [
-						'<iframe width="560" height="315" src="https://www.youtube.com/embed/PlKzT_mXPUI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>',
+						'<iframe width="840" height="472.5" src="https://www.youtube.com/embed/PlKzT_mXPUI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>',
 					],
 					images: [
 						"./images_min/castiron/01-min.jpg",
@@ -233,7 +233,7 @@ var APP_DATA = {
 					pitch: 0.049530882327811554,
 					title: "MANUAL FOOD PROCESSOR",
 					videos: [
-						'<iframe width="560" height="315" src="https://www.youtube.com/embed/XdYZOHuvdhU" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>',
+						'<iframe width="840" height="472.5" src="https://www.youtube.com/embed/XdYZOHuvdhU" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>',
 					],
 					images: [
 						"./images_min/foodprocessor/01-min.jpg",
@@ -274,7 +274,7 @@ var APP_DATA = {
 					pitch: 0.5148730551134122,
 					title: "PIZZA PEEL",
 					videos: [
-						'<iframe width="560" height="315" src="https://www.youtube.com/embed/I_u050UNyf4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>',
+						'<iframe width="840" height="472.5" src="https://www.youtube.com/embed/I_u050UNyf4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>',
 					],
 					images: [
 						"./images_min/pizza/01-min.jpg",
@@ -403,7 +403,7 @@ var APP_DATA = {
 					pitch: 0.2717199998552431,
 					title: "BE A CONSULTANT",
 					videos: [
-						'<iframe width="560" height="315" src="https://www.youtube.com/embed/aat1m2sbIvg" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>',
+						'<iframe width="840" height="472.5" src="https://www.youtube.com/embed/aat1m2sbIvg" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>',
 					],
 					images: [
 						"./images_min/consultant/01-min.jpg",
@@ -435,7 +435,7 @@ var APP_DATA = {
 					pitch: 0.3569723830509055,
 					title: "PREMIUM CHARCUTERIE & CHEESE BOARD SET",
 					videos: [
-						'<iframe width="560" height="315" src="https://www.youtube.com/embed/kaztmnKWbZg" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>',
+						'<iframe width="840" height="472.5" src="https://www.youtube.com/embed/kaztmnKWbZg" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>',
 					],
 					images: [
 						"./images_min/charcuterie/01-min.jpg",
@@ -460,7 +460,7 @@ var APP_DATA = {
 					title: "HOST A PARTY",
 					containImages: true,
 					videos: [
-						'<iframe width="560" height="315" src="https://www.youtube.com/embed/4Z8xfjQcrq0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>',
+						'<iframe width="840" height="472.5" src="https://www.youtube.com/embed/4Z8xfjQcrq0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>',
 					],
 					images: [
 						"./images_min/hostaparty/01-min.jpg",
@@ -552,7 +552,7 @@ var APP_DATA = {
 					pitch: 0.6658357151531433,
 					title: "SMALL SQUARE COOL & SERVE",
 					videos: [
-						'<iframe width="560" height="315" src="https://www.youtube.com/embed/b0gKhBjoqzM" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>',
+						'<iframe width="840" height="472.5" src="https://www.youtube.com/embed/b0gKhBjoqzM" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>',
 					],
 					images: [
 						"./images_min/coolserve/01-min.jpg",

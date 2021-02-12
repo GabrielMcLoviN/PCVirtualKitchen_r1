@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 (function () {
 	const Marzipano = window.Marzipano;
 	const bowser = window.bowser;
@@ -25,26 +25,20 @@
 				document.body.classList.remove("touch");
 				document.body.classList.add("desktop");
 				document.body.classList.add("no-touch");
-
 			}
 		};
 		const mql = matchMedia("(max-width: 700px), (max-height: 500px)");
 		setMode();
 		mql.addListener(setMode);
 	} else {
-
 		document.body.classList.add("desktop");
 	}
-
-window.addEventListener("touchstart", function (e) {
-	e.preventDefault();
-	document.body.classList.remove("no-touch");
-	document.body.classList.add("touch");
-});
 	// Detect whether we are on a touch device.
 
-
-
+	window.addEventListener("touchstart", function (e) {
+		document.body.classList.remove("no-touch");
+		document.body.classList.add("touch");
+	});
 
 	// Use tooltip fallback mode on IE < 11.
 	if (bowser.msie && parseFloat(bowser.version) < 11) {
@@ -396,7 +390,7 @@ window.addEventListener("touchstart", function (e) {
 				const carousel_bullet = document.createElement("li");
 				carousel_bullet.classList.add("carousel-bullet");
 				const iframe_container = document.createElement("div");
-				iframe_container.classList.add("iframe_container");
+				iframe_container.classList.add("iframe_container__video");
 				iframe_container.innerHTML = hotspot.videos[i];
 
 				carousel_pagination.appendChild(carousel_bullet);
@@ -451,6 +445,17 @@ window.addEventListener("touchstart", function (e) {
 
 		wrapper.querySelector(".info-hotspot-header").addEventListener("click", toggle);
 		modal.querySelector(".info-hotspot-close-wrapper").addEventListener("click", toggle);
+
+		modal.addEventListener("mouseover", function (e) {
+			if (e.target === modal) {
+				modal.addEventListener("click", function (e) {
+					if (e.target === modal) {
+						modal.classList.remove("visible");
+						reset_modal();
+					}
+				});
+			}
+		});
 
 		// const video_parent = modal.querySelectorAll(".video-wrapper");
 		const nextBtn = modal.querySelector("#next");
@@ -507,12 +512,16 @@ window.addEventListener("touchstart", function (e) {
 			}
 		}
 
-		document.body.addEventListener("keydown", (evt) => {
-			if (evt.key === "Escape") {
-				modal.classList.remove("visible");
-			}
-			reset_modal();
-		}, {passive: true});
+		document.body.addEventListener(
+			"keydown",
+			(evt) => {
+				if (evt.key === "Escape") {
+					modal.classList.remove("visible");
+				}
+				reset_modal();
+			},
+			{ passive: true }
+		);
 
 		carouselImgs.addEventListener("touchstart", (e) => {
 			touchstartX = e.changedTouches[0].pageX;
@@ -523,14 +532,18 @@ window.addEventListener("touchstart", function (e) {
 			handleGesture();
 		});
 
-		carouselImgs.addEventListener("wheel", (e) => {
-			let wheel_direction = e.deltaY * 1;
-			if (Math.sign(wheel_direction) === -1) {
-				if (currentIndex !== 0) prevBtn.click();
-			} else {
-				if (currentIndex !== numberOfImages - 1) nextBtn.click();
-			}
-		}, {passive: true});
+		carouselImgs.addEventListener(
+			"wheel",
+			(e) => {
+				let wheel_direction = e.deltaY * 1;
+				if (Math.sign(wheel_direction) === -1) {
+					if (currentIndex !== 0) prevBtn.click();
+				} else {
+					if (currentIndex !== numberOfImages - 1) nextBtn.click();
+				}
+			},
+			{ passive: true }
+		);
 
 		function next() {
 			slideTo(currentIndex + 1);
@@ -612,6 +625,5 @@ window.addEventListener("touchstart", function (e) {
 		panoElement.style.opacity = 1;
 		titleBar.style.opacity = 1;
 		preloader.style.display = "none";
-
 	});
 })();
