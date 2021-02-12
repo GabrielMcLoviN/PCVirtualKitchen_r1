@@ -395,23 +395,12 @@ window.addEventListener("touchstart", function (e) {
 			for (let i = 0; i < hotspot.videos.length; i++) {
 				const carousel_bullet = document.createElement("li");
 				carousel_bullet.classList.add("carousel-bullet");
-				const video_wrapper = document.createElement("div");
-				video_wrapper.classList.add("video-wrapper");
-				const product_video = document.createElement("video");
-				product_video.controls = true;
-				product_video.setAttribute("preload", "auto");
-				product_video.classList.add("product-video");
-				const source = document.createElement("source");
-				source.setAttribute("src", hotspot.videos[i]);
-				source.setAttribute("type", "video/mp4");
-				const playbtn_wrap = document.createElement("div");
-				playbtn_wrap.classList.add("playbtn_wrap");
-				playbtn_wrap.style.background = "url(./SVG/playbtn.svg)";
-				product_video.appendChild(source);
-				video_wrapper.appendChild(playbtn_wrap);
-				video_wrapper.appendChild(product_video);
+				const iframe_container = document.createElement("div");
+				iframe_container.classList.add("iframe_container");
+				iframe_container.innerHTML = hotspot.videos[i];
+
 				carousel_pagination.appendChild(carousel_bullet);
-				carouselImages.appendChild(video_wrapper);
+				carouselImages.appendChild(iframe_container);
 			}
 		}
 
@@ -436,12 +425,11 @@ window.addEventListener("touchstart", function (e) {
 
 		// reset modal content logic
 		const pause_video = function () {
-			if (hotspot.videos != undefined) {
-				if (!modal.querySelector(".product-video").paused) {
-					modal.querySelector(".product-video").pause();
-					modal.querySelector(".playbtn_wrap").style.backgroundImage =
-						"url(./SVG/playbtn.svg)";
-					modal.querySelector(".playbtn_wrap").style.opacity = 1;
+			//if there is an iframe inside maybe embedded multimedia video/audio, we should reload so it stops playing
+			var iframes = modal.getElementsByTagName("iframe");
+			if (iframes != null) {
+				for (var i = 0; i < iframes.length; i++) {
+					iframes[i].src = iframes[i].src;
 				}
 			}
 		};
@@ -451,12 +439,6 @@ window.addEventListener("touchstart", function (e) {
 				if (modal.querySelector(".product-txt-container")) {
 					modal.querySelector(".product-txt-container").scrollTo(0, 0);
 					slideTo(0);
-				}
-				if (modal.querySelector(".product-video")) {
-					modal.querySelector(".product-video").currentTime = 0;
-					modal.querySelector(".playbtn_wrap").style.backgroundImage =
-						"url(./SVG/playbtn.svg)";
-					modal.querySelector(".playbtn_wrap").style.opacity = 1;
 				}
 			}, 1000);
 			pause_video();
@@ -470,45 +452,46 @@ window.addEventListener("touchstart", function (e) {
 		wrapper.querySelector(".info-hotspot-header").addEventListener("click", toggle);
 		modal.querySelector(".info-hotspot-close-wrapper").addEventListener("click", toggle);
 
-		const video_parent = modal.querySelectorAll(".video-wrapper");
+		// const video_parent = modal.querySelectorAll(".video-wrapper");
 		const nextBtn = modal.querySelector("#next");
 		const prevBtn = modal.querySelector("#previous");
 
-		video_parent.forEach((video) => {
-			let pairs = [];
-			const playbtn = video.querySelector(".playbtn_wrap");
-			const video_tag = video.querySelector(".product-video");
-			pairs.push([playbtn, video_tag]);
-			pairs.forEach((pair) => {
-				pair[0].addEventListener("click", function () {
-					if (pair[1].paused) {
-						pair[1].play();
-						pair[0].style.backgroundImage = "url(./SVG/pause.svg)";
-					} else {
-						pair[1].pause();
-						pair[0].style.backgroundImage = "url(./SVG/playbtn.svg)";
-					}
-					pair[1].addEventListener("mouseover", function () {
-						pair[0].style.opacity = 1;
-					});
-					pair[0].addEventListener("mouseover", function () {
-						pair[0].style.opacity = 1;
-					});
-					pair[1].addEventListener("mouseleave", function () {
-						if (!pair[1].paused) {
-							pair[0].style.opacity = 0;
-						} else {
-							pair[0].style.opacity = 1;
-						}
-					});
-				});
-			});
-		});
+		// video_parent.forEach((video) => {
+		// 	let pairs = [];
+		// 	const playbtn = video.querySelector(".playbtn_wrap");
+		// 	const video_tag = video.querySelector(".product-video");
+		// 	pairs.push([playbtn, video_tag]);
+		// 	pairs.forEach((pair) => {
+		// 		pair[0].addEventListener("click", function () {
+		// 			if (pair[1].paused) {
+		// 				pair[1].play();
+		// 				pair[0].style.backgroundImage = "url(./SVG/pause.svg)";
+		// 			} else {
+		// 				pair[1].pause();
+		// 				pair[0].style.backgroundImage = "url(./SVG/playbtn.svg)";
+		// 			}
+		// 			pair[1].addEventListener("mouseover", function () {
+		// 				pair[0].style.opacity = 1;
+		// 			});
+		// 			pair[0].addEventListener("mouseover", function () {
+		// 				pair[0].style.opacity = 1;
+		// 			});
+		// 			pair[1].addEventListener("mouseleave", function () {
+		// 				if (!pair[1].paused) {
+		// 					pair[0].style.opacity = 0;
+		// 				} else {
+		// 					pair[0].style.opacity = 1;
+		// 				}
+		// 			});
+		// 		});
+		// 	});
+		// });
 
 		const carouselImgs = modal.querySelector(".carousel-images");
 		const numberOfImages = modal.querySelectorAll(".carousel-images > *").length;
 		const pagination = modal.querySelector(".carousel-pagination");
 		var bullets = [].slice.call(modal.querySelectorAll(".carousel-bullet"));
+
 		let currentIndex = 0;
 		let percentage = 100;
 
@@ -524,12 +507,12 @@ window.addEventListener("touchstart", function (e) {
 			}
 		}
 
-		document.addEventListener("keydown", (evt) => {
+		document.body.addEventListener("keydown", (evt) => {
 			if (evt.key === "Escape") {
 				modal.classList.remove("visible");
 			}
 			reset_modal();
-		});
+		}, {passive: true});
 
 		carouselImgs.addEventListener("touchstart", (e) => {
 			touchstartX = e.changedTouches[0].pageX;
@@ -541,14 +524,13 @@ window.addEventListener("touchstart", function (e) {
 		});
 
 		carouselImgs.addEventListener("wheel", (e) => {
-			e.preventDefault();
 			let wheel_direction = e.deltaY * 1;
 			if (Math.sign(wheel_direction) === -1) {
 				if (currentIndex !== 0) prevBtn.click();
 			} else {
 				if (currentIndex !== numberOfImages - 1) nextBtn.click();
 			}
-		});
+		}, {passive: true});
 
 		function next() {
 			slideTo(currentIndex + 1);

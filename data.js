@@ -53,7 +53,9 @@ var APP_DATA = {
 					yaw: -0.6509018897961045,
 					pitch: 0.050632497711122326,
 					title: '12" STAINLESS STEEL NONSTICK SKILLET',
-					videos: ["./videos/nonstick.mp4"],
+					videos: [
+						'<iframe width="560" height="315" src="https://www.youtube.com/embed/hZ739Jtg_yg" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>',
+					],
 					images: [
 						"./images_min/nonstick/01-min.jpg",
 						"./images_min/nonstick/02-min.jpg",
@@ -99,7 +101,9 @@ var APP_DATA = {
 					yaw: 0.10354516204319353,
 					pitch: -0.059097614950658794,
 					title: "6-QT. ENAMELED DUTCH OVEN",
-					videos: ["./videos/dutchoven.mp4"],
+					videos: [
+						'<iframe width="560" height="315" src="https://www.youtube.com/embed/qsHmDecSbGY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>',
+					],
 					images: [
 						"./images_min/dutchoven/01-min.jpg",
 						"./images_min/dutchoven/02-min.jpg",
@@ -137,7 +141,9 @@ var APP_DATA = {
 					yaw: 0.9132800657738347,
 					pitch: 0.12546033681835667,
 					title: '12" CAST IRON SKILLET',
-					videos: ["./videos/castiron.mp4"],
+					videos: [
+						'<iframe width="560" height="315" src="https://www.youtube.com/embed/PlKzT_mXPUI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>',
+					],
 					images: [
 						"./images_min/castiron/01-min.jpg",
 						"./images_min/castiron/02-min.jpg",
@@ -226,7 +232,9 @@ var APP_DATA = {
 					yaw: -0.834871800104505,
 					pitch: 0.049530882327811554,
 					title: "MANUAL FOOD PROCESSOR",
-					videos: ["./videos/foodprocessor.mp4"],
+					videos: [
+						'<iframe width="560" height="315" src="https://www.youtube.com/embed/XdYZOHuvdhU" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>',
+					],
 					images: [
 						"./images_min/foodprocessor/01-min.jpg",
 						"./images_min/foodprocessor/02-min.jpg",
@@ -265,7 +273,9 @@ var APP_DATA = {
 					yaw: -0.11903815248984984,
 					pitch: 0.5148730551134122,
 					title: "PIZZA PEEL",
-					videos: ["./videos/pizzapeel.mp4"],
+					videos: [
+						'<iframe width="560" height="315" src="https://www.youtube.com/embed/I_u050UNyf4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>',
+					],
 					images: [
 						"./images_min/pizza/01-min.jpg",
 						["@midwestLifeandStyle", "./images_min/pizza/02-min.jpg"],
@@ -316,8 +326,7 @@ var APP_DATA = {
 						},
 						{
 							id: "Kebab Combinations",
-							preview_image:
-								"./modals/fryer/post-recipe-kebab-combinations-min.jpg",
+							preview_image: "./modals/fryer/post-recipe-kebab-combinations-min.jpg",
 							link: "./modals/fryer/Recipes/post-recipe-kebab-combinations-steps.pdf",
 						},
 						{
@@ -393,7 +402,9 @@ var APP_DATA = {
 					yaw: -0.4090293373787688,
 					pitch: 0.2717199998552431,
 					title: "BE A CONSULTANT",
-					videos: ["./videos/Consultant.mp4"],
+					videos: [
+						'<iframe width="560" height="315" src="https://www.youtube.com/embed/aat1m2sbIvg" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>',
+					],
 					images: [
 						"./images_min/consultant/01-min.jpg",
 						"./images_min/consultant/02-min.jpg",
@@ -423,6 +434,9 @@ var APP_DATA = {
 					yaw: -0.9441282059169254,
 					pitch: 0.3569723830509055,
 					title: "PREMIUM CHARCUTERIE & CHEESE BOARD SET",
+					videos: [
+						'<iframe width="560" height="315" src="https://www.youtube.com/embed/kaztmnKWbZg" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>',
+					],
 					images: [
 						"./images_min/charcuterie/01-min.jpg",
 						"./images_min/charcuterie/02-min.jpg",
@@ -436,7 +450,7 @@ var APP_DATA = {
 						{
 							id: "How to Build a Charcuterie Board (Video)",
 							preview_image: "./videos/charc_video_preview_img.jpg",
-							link: "./videos/charc.mp4",
+							link: "https://youtu.be/FGNCzBBoxY0",
 						},
 					],
 				},
@@ -445,6 +459,9 @@ var APP_DATA = {
 					pitch: 0.6329996689133868,
 					title: "HOST A PARTY",
 					containImages: true,
+					videos: [
+						'<iframe width="560" height="315" src="https://www.youtube.com/embed/4Z8xfjQcrq0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>',
+					],
 					images: [
 						"./images_min/hostaparty/01-min.jpg",
 						"./images_min/hostaparty/02-min.jpg",
@@ -457,7 +474,8 @@ var APP_DATA = {
 					pdf_links: [
 						{
 							id: "Host Rewards PDF",
-							preview_image: "./modals/host_party/p28619-092020us-host-rewards-min.jpg",
+							preview_image:
+								"./modals/host_party/p28619-092020us-host-rewards-min.jpg",
 							link: "./modals/host_party/p28619-092020us-host-rewards.pdf",
 						},
 					],
@@ -533,7 +551,9 @@ var APP_DATA = {
 					yaw: -0.8887952514793653,
 					pitch: 0.6658357151531433,
 					title: "SMALL SQUARE COOL & SERVE",
-					videos: ["./videos/coolandserve.mp4"],
+					videos: [
+						'<iframe width="560" height="315" src="https://www.youtube.com/embed/b0gKhBjoqzM" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>',
+					],
 					images: [
 						"./images_min/coolserve/01-min.jpg",
 						"./images_min/coolserve/02-min.jpg",
@@ -561,8 +581,7 @@ var APP_DATA = {
 					recipes: [
 						{
 							id: "Classic Cobb Salad",
-							preview_image:
-								"./modals/salad/post-recipe-classic-cobb-salad-min.jpg",
+							preview_image: "./modals/salad/post-recipe-classic-cobb-salad-min.jpg",
 							link:
 								"./modals/salad/Recipes/flyer-recipe-classic-cobb-salad-02-usca.pdf",
 						},
