@@ -79,21 +79,21 @@ var APP_DATA = {
 							preview_image:
 								"./modals/nonstick/post-recipe-chicken-sausage-spinach-ravioli-usca-min.jpg",
 							link:
-								"./modals/nonstick/Recipes/post-recipe-chicken-sausage-spinach-ravioli-steps.pdf",
+								"./modals/nonstick/post-recipe-chicken-sausage-spinach-ravioli-steps.pdf",
 						},
 						{
 							id: "Egg Roll in a Bowl",
 							preview_image:
 								"./modals/nonstick/post-recipe-egg-roll-in-a-bowl-min.jpg",
 							link:
-								"./modals/nonstick/Recipes/post-recipe-egg-roll-in-a-bowl-steps-usca.pdf",
+								"./modals/nonstick/post-recipe-egg-roll-in-a-bowl-steps-usca.pdf",
 						},
 						{
 							id: "Roasted Chicken & Asparagus",
 							preview_image:
 								"./modals/nonstick/post-recipe-roasted-chicken-asparagus-usca-min.jpg",
 							link:
-								"./modals/nonstick/Recipes/post-recipe-roasted-chicken-asparagus-steps-usca.pdf",
+								"./modals/nonstick/post-recipe-roasted-chicken-asparagus-steps-usca.pdf",
 						},
 					],
 				},
@@ -119,21 +119,21 @@ var APP_DATA = {
 						{
 							id: "Baked Orzo",
 							preview_image: "./modals/dutch_oven/post-recipe-baked-orzo-min.jpg",
-							link: "./modals/dutch_oven/Recipes/post-recipe-baked-orzo-steps.pdf",
+							link: "./modals/dutch_oven/post-recipe-baked-orzo-steps.pdf",
 						},
 						{
 							id: "Baked Ziti with Sausage",
 							preview_image:
 								"./modals/dutch_oven/post-recipe-baked-ziti-with-sausage-min.jpg",
 							link:
-								"./modals/dutch_oven/Recipes/post-recipe-baked-ziti-with-sausage-steps.pdf",
+								"./modals/dutch_oven/post-recipe-baked-ziti-with-sausage-steps.pdf",
 						},
 						{
 							id: "Dutch Oven Bread",
 							preview_image:
 								"./modals/dutch_oven/post-recipe-dutch-oven-bread-min.jpg",
 							link:
-								"./modals/dutch_oven/Recipes/post-recipe-dutch-oven-bread-steps.pdf",
+								"./modals/dutch_oven/post-recipe-dutch-oven-bread-steps.pdf",
 						},
 					],
 				},
@@ -159,21 +159,21 @@ var APP_DATA = {
 							preview_image:
 								"./modals/cast_iron/post-recipe-mac-n-cheese-usca-min.jpg",
 							link:
-								"./modals/cast_iron/Recipes/post-recipe-mac-n-cheese-steps-usca.pdf",
+								"./modals/cast_iron/post-recipe-mac-n-cheese-steps-usca.pdf",
 						},
 						{
 							id: "Chili Lime Pork",
 							preview_image:
 								"./modals/cast_iron/post-recipe-chili-lime-pork-usca-min.jpg",
 							link:
-								"./modals/cast_iron/Recipes/post-recipe-chili-lime-pork-steps-usca.pdf",
+								"./modals/cast_iron/post-recipe-chili-lime-pork-steps-usca.pdf",
 						},
 						{
 							id: "Blackened Chicken",
 							preview_image:
 								"./modals/cast_iron/post-recipe-blackened-chicken-min.jpg",
 							link:
-								"./modals/cast_iron/Recipes/post-recipe-blackened-chicken-steps.pdf",
+								"./modals/cast_iron/post-recipe-blackened-chicken-steps.pdf",
 						},
 					],
 				},
@@ -251,21 +251,21 @@ var APP_DATA = {
 							preview_image:
 								"./modals/foodprocessor/post-recipe-pico-de-gallo-usca-min.jpg",
 							link:
-								"./modals/foodprocessor/RECIPES/post-recipe-pico-de-gallo-steps-usca.pdf",
+								"./modals/foodprocessor/post-recipe-pico-de-gallo-steps-usca.pdf",
 						},
 						{
 							id: "Cucumber-Dill Guacamole",
 							preview_image:
 								"./modals/foodprocessor/post-recipe-cucumber-dill-guacamole-usca-min.jpg",
 							link:
-								"./modals/foodprocessor/RECIPES/post-recipe-cucumber-dill-guacamole-steps-usca.pdf",
+								"./modals/foodprocessor/post-recipe-cucumber-dill-guacamole-steps-usca.pdf",
 						},
 						{
 							id: "Cranberry Salsa",
 							preview_image:
 								"./modals/foodprocessor/post-recipe-cranberry-salsa-usca-min.jpg",
 							link:
-								"./modals/foodprocessor/RECIPES/post-recipe-cranberry-salsa-steps-usca.pdf",
+								"./modals/foodprocessor/post-recipe-cranberry-salsa-steps-usca.pdf",
 						},
 					],
 				},
@@ -295,7 +295,7 @@ var APP_DATA = {
 							preview_image:
 								"./modals/pizza/post-recipe-homemade-pizza-dough-min.jpg",
 							link:
-								"./modals/pizza/Recipes/post-recipe-homemade-pizza-dough-steps.pdf",
+								"./modals/pizza/post-recipe-homemade-pizza-dough-steps.pdf",
 						},
 					],
 				},
@@ -322,17 +322,17 @@ var APP_DATA = {
 							preview_image:
 								"./modals/fryer/post-recipe-homemade-beef-jerky-usca-min.jpg",
 							link:
-								"./modals/fryer/Recipes/post-recipe-homemade-beef-jerky-steps-usca.pdf",
+								"./modals/fryer/post-recipe-homemade-beef-jerky-steps-usca.pdf",
 						},
 						{
 							id: "Kebab Combinations",
 							preview_image: "./modals/fryer/post-recipe-kebab-combinations-min.jpg",
-							link: "./modals/fryer/Recipes/post-recipe-kebab-combinations-steps.pdf",
+							link: "./modals/fryer/post-recipe-kebab-combinations-steps.pdf",
 						},
 						{
 							id: "Potato Tacos",
 							preview_image: "./modals/fryer/post-recipe-potato-tacos-min.jpg",
-							link: "./modals/fryer/Recipes/post-recipe-potato-tacos-steps.pdf",
+							link: "./modals/fryer/post-recipe-potato-tacos-steps.pdf",
 						},
 					],
 				},
@@ -583,20 +583,20 @@ var APP_DATA = {
 							id: "Classic Cobb Salad",
 							preview_image: "./modals/salad/post-recipe-classic-cobb-salad-min.jpg",
 							link:
-								"./modals/salad/Recipes/flyer-recipe-classic-cobb-salad-02-usca.pdf",
+								"./modals/salad/flyer-recipe-classic-cobb-salad-02-usca.pdf",
 						},
 						{
 							id: "Superfood Salad",
 							preview_image:
 								"./modals/salad/post-recipe-superfood-salad-usca-min.jpg",
-							link: "./modals/salad/Recipes/flyer-recipe-superfood-salad-usca.pdf",
+							link: "./modals/salad/flyer-recipe-superfood-salad-usca.pdf",
 						},
 						{
 							id: "Southwestern Salad",
 							preview_image:
 								"./modals/salad/post-recipe-southwestern-salad-usca-min.jpg",
 							link:
-								"./modals/salad/Recipes/post-recipe-southwestern-salad-steps-usca.pdf",
+								"./modals/salad/post-recipe-southwestern-salad-steps-usca.pdf",
 						},
 					],
 				},
