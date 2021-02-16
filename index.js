@@ -1,5 +1,3 @@
-"use strict";
-(function () {
 	const Marzipano = window.Marzipano;
 	const bowser = window.bowser;
 	const screenfull = window.screenfull;
@@ -16,15 +14,12 @@
 	// Detect desktop or mobile mode.
 	if (window.matchMedia) {
 		const setMode = function () {
-			if (mql.matches) {
-				document.body.classList.remove("desktop");
-				document.body.classList.remove("no-touch");
-				document.body.classList.add("mobile");
+		  if (mql.matches) {
+				document.body.classList.remove('desktop');
+				document.body.classList.add('mobile');
 			} else {
-				document.body.classList.remove("mobile");
-				document.body.classList.remove("touch");
-				document.body.classList.add("desktop");
-				document.body.classList.add("no-touch");
+				document.body.classList.remove('mobile');
+				document.body.classList.add('desktop');
 			}
 		};
 		const mql = matchMedia("(max-width: 700px), (max-height: 500px)");
@@ -34,6 +29,8 @@
 		document.body.classList.add("desktop");
 	}
 	// Detect whether we are on a touch device.
+	document.body.classList.add('no-touch');
+
 
 	window.addEventListener("touchstart", function (e) {
 		document.body.classList.remove("no-touch");
@@ -420,9 +417,9 @@
 		// reset modal content logic
 		const pause_video = function () {
 			//if there is an iframe inside maybe embedded multimedia video/audio, we should reload so it stops playing
-			var iframes = modal.getElementsByTagName("iframe");
+			let iframes = modal.getElementsByTagName("iframe");
 			if (iframes != null) {
-				for (var i = 0; i < iframes.length; i++) {
+				for (let i = 0; i < iframes.length; i++) {
 					iframes[i].src = iframes[i].src;
 				}
 			}
@@ -446,10 +443,11 @@
 		wrapper.querySelector(".info-hotspot-header").addEventListener("click", toggle);
 		modal.querySelector(".info-hotspot-close-wrapper").addEventListener("click", toggle);
 
+
 		modal.addEventListener("mouseover", function (e) {
-			if (e.target === modal) {
+			if (e.target === modal && modal.classList.contains('visible')) {
 				modal.addEventListener("click", function (e) {
-					if (e.target === modal) {
+					if (e.target === modal && modal.classList.contains('visible')) {
 						modal.classList.remove("visible");
 						reset_modal();
 					}
@@ -495,7 +493,7 @@
 		const carouselImgs = modal.querySelector(".carousel-images");
 		const numberOfImages = modal.querySelectorAll(".carousel-images > *").length;
 		const pagination = modal.querySelector(".carousel-pagination");
-		var bullets = [].slice.call(modal.querySelectorAll(".carousel-bullet"));
+		const bullets = [].slice.call(modal.querySelectorAll(".carousel-bullet"));
 
 		let currentIndex = 0;
 		let percentage = 100;
@@ -570,7 +568,7 @@
 		pagination.addEventListener(
 			"click",
 			function (e) {
-				var index = bullets.indexOf(e.target);
+				let index = bullets.indexOf(e.target);
 				if (index !== -1 && index !== currentIndex) {
 					slideTo(index);
 				}
@@ -626,4 +624,3 @@
 		titleBar.style.opacity = 1;
 		preloader.style.display = "none";
 	});
-})();
