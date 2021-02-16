@@ -4,8 +4,8 @@
 <head>
   <title>Pampered Chef - Virtual Host</title>
   <meta charset="utf-8">
-  <meta name="viewport",
-     width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, minimal-ui" />
+  <meta name="viewport" , width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no,
+    minimal-ui" />
   <link rel="icon" type="image/png" href="./assets/PC+Seal-Solid_whiteCircle-reverseLogo.png">
   <style>
     @-ms-viewport {
@@ -13,14 +13,18 @@
     }
   </style>
 
-  <link rel="preload" href="./assets/antonio-desktop/Antonio-Light.ttf" as="font" type="font/ttf" crossorigin="anonymous">
-  <link rel="preload" href="./assets/museo-sans-webfont/Museo-Sans-Family/MuseoSans-100.otf" as="font" type="font/otf" crossorigin="anonymous">
-  <link rel="preload" as="font" href="./assets/museo-sans-webfont/Museo-Sans-Family/MuseoSans-500.otf" type="font/otf" crossorigin="anonymous">
+  <link rel="preload" href="./assets/antonio-desktop/Antonio-Light.ttf" as="font" type="font/ttf"
+    crossorigin="anonymous">
+  <link rel="preload" href="./assets/museo-sans-webfont/Museo-Sans-Family/MuseoSans-100.otf" as="font" type="font/otf"
+    crossorigin="anonymous">
+  <link rel="preload" as="font" href="./assets/museo-sans-webfont/Museo-Sans-Family/MuseoSans-500.otf" type="font/otf"
+    crossorigin="anonymous">
 
-  <link rel="stylesheet" href="vendor/reset.min.css">
-  <link rel="stylesheet" href="./vendor/loaders.css-master/loaders.min.css">
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="content.css">
+  <link rel="stylesheet" href="./reset.min.css">
+  <link rel="stylesheet" href="./loaders.min.css">
+  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="./content.css">
+  <script src="./data.js"></script>
 
 </head>
 
@@ -38,18 +42,17 @@
   </div>
   <div class="preloader">
     <img src="./assets/PC+Logo_reverse_Registered.png" alt="loading image" width="250px" height="auto">
-<div class="loader-inner ball-zig-zag-deflect">
-  <div></div>
-  <div></div>
-</div>
-</div>
+    <div class="loader-inner ball-zig-zag-deflect">
+      <div></div>
+      <div></div>
+    </div>
+  </div>
 
-  <script src="vendor/screenfull.min.js"></script>
+  <!-- <script src="vendor/screenfull.min.js"></script>
   <script src="vendor/bowser.min.js"></script>
-  <script src="vendor/marzipano.js"></script>
+  <script src="vendor/marzipano.js"></script> -->
 
-  <script src="data.js"></script>
-  <script src="index.js"></script>
+  <script src="./dist/index.bundle.js"></script>
 
 
 </body>
