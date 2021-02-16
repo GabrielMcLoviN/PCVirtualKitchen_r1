@@ -269,7 +269,7 @@
   cursor: pointer;
   border: none;
   background-color: var(--secondary-white);
-  box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.637);
+
   border-radius: 50%;
   opacity: 0.7;
   transition: all 0.25s;
@@ -278,6 +278,13 @@
   max-width: 36px;
   max-height: 36px;
   margin: 0 10px;
+}
+
+.carousel-button.previous {
+  box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.5);
+}
+.carousel-button.next {
+  box-shadow: -2px 3px 5px rgba(0, 0, 0, 0.5);
 }
 
 .mobile .carousel-nav .carousel-button {
