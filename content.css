@@ -550,7 +550,7 @@
   }
 }
 
-@media (max-width: 800px) {
+@media (max-width: 400px) {
   .carousel_container {
     grid-row: 1 / span 1;
   }
