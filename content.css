@@ -109,9 +109,9 @@
   position: absolute;
   width: auto;
   height: auto;
-  max-width: 75%;
+  max-width: 90%;
   max-height: 90%;
-  top: 100px;
+  top: 80px;
   bottom: 30px;
   left: 50px;
   right: 50px;
@@ -214,7 +214,6 @@
 }
 
 .carousel_container .influencer_credit {
-  font-size: 0.7rem;
   padding: 7px 10px;
   color: var(--secondary-blk);
   background: var(--secondary-white);
@@ -357,7 +356,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: .9rem;
+  font-size: .7rem;
 }
 
 .product-txt-wrapper > *:not(.product-txt) {
@@ -380,7 +379,7 @@
 
 .product-txt-wrapper .product-txt-subhead {
   font-family: "Antonio", sans-serif;
-  font-size: clamp(2rem, 9vw, 2.9rem);
+  font-size: clamp(1rem, 9vw, 2rem);
   width: 95%;
   align-self: start;
   margin-bottom: 1rem;
@@ -388,7 +387,7 @@
 }
 
 .product-txt {
-  font-size: clamp(1rem, -0.875rem + 8.333333vw, 1.25rem);
+  font-size: clamp(0.75rem, -0.875rem + 8.333333vw, 1rem);
   font-weight: lighter;
 }
 
