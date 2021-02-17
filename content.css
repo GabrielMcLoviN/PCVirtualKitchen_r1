@@ -551,7 +551,14 @@
   }
 }
 
-@media (max-width: 400px) {
+@media (max-width: 550px) {
+  body {
+    overflow-y: scroll;
+  }
+  .info-hotspot-content {
+    height: 100%;
+  }
+  
   .carousel_container {
     grid-row: 1 / span 1;
   }
