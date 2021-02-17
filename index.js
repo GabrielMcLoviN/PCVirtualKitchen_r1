@@ -2,10 +2,6 @@
 // const bowser = window.bowser;
 // const screenfull = window.screenfull;
 // const data = window.APP_DATA;
-import './loaders.min.css';
-import './reset.min.css';
-import './style.css';
-import './content.css';
 
 import Marzipano from 'marzipano';
 import bowser from 'bowser';
@@ -98,7 +94,7 @@ const scenes = data.scenes.map(function (data) {
 			.createHotspot(
 				element,
 				{ yaw: hotspot.yaw, pitch: hotspot.pitch },
-				{ perspective: { radius: 800 } }
+				{ perspective: { radius: 500 } }
 			);
 	});
 
