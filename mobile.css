@@ -1,0 +1,161 @@
+.mobile .info-hotspot-modal .info-hotspot-header {
+  top: 40px;
+  left: 20px;
+  right: 20px;
+}
+
+.mobile .info-hotspot-modal .info-hotspot-title-wrapper {
+  justify-self: start;
+  justify-content: start;
+  padding-left: 10px;
+}
+
+.mobile .info-hotspot-modal .info-hotspot-content {
+  left: 20px;
+  right: 20px;
+  top: 100px;
+}
+
+.mobile .carousel_container .influencer_credit_container {
+  bottom: 4%;
+}
+
+.mobile .carousel_container .influencer_credit_container {
+  bottom: 7.5%;
+}
+
+.mobile .carousel_container .pointer {
+  top: -20%;
+  width: calc(25px / 2);
+  height: calc(9.5px / 2);
+  background: var(--secondary-white);
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+}
+
+.mobile .carousel_container .influencer_credit {
+  font-size: 0.5rem;
+  padding: 5px 8px;
+}
+
+.mobile .carousel-nav .carousel-button {
+  max-width: 25px;
+  max-height: 25px;
+}
+
+.mobile .carousel_container,
+.mobile .carousel-images .product-image {
+  height: 250px;
+}
+
+@media only screen and (min-height: 600px) {
+  .mobile .carousel_container,
+  .mobile .carousel-images .product-image {
+    height: 300px;
+  }
+}
+
+@media only screen and (min-height: 800px) {
+  .mobile .carousel_container,
+  .mobile .carousel-images .product-image {
+    height: 350px;
+  }
+}
+
+/* iframe */
+@media only screen and (min-width: 400px) and (max-width: 700px) {
+  .carousel-nav .carousel-button {
+    max-width: 15px;
+    max-height: 15px;
+    margin: auto 1px;
+  }
+  .carousel-bullet {
+    margin: 0 2px;
+  }
+  .product-txt-wrapper > *:not(.product-txt) {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .recipe-link {
+    align-items: start;
+  }
+
+  .product-txt-wrapper {
+    font-size: 0.65rem;
+  }
+
+  .product-txt {
+    font-size: 0.75rem;
+  }
+
+  .recipes-header {
+    font-size: 1rem;
+  }
+
+  .info-hotspot-modal .info-hotspot-close-wrapper {
+    position: absolute;
+    right: 0.8rem;
+  }
+  .info-hotspot-modal .info-hotspot-header {
+    top: 30px;
+    left: 20px;
+    right: 20px;
+  }
+  .info-hotspot-modal .info-hotspot-content {
+    max-width: 100%;
+    max-height: 99%;
+    left: 20px;
+    right: 20px;
+    bottom: 10px;
+  }
+}
+
+/* ipad */
+/* portrait */
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 1) and (orientation: portrait) {
+  .carousel_container {
+    grid-row: 1 / span 1;
+  }
+  .product-txt-container {
+    grid-row: 2 / span 1;
+    display: block;
+  }
+  .carousel_container,
+  .carousel-images .product-image {
+    height: 100%;
+  }
+}
+/* landscape */
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 1) {
+  .carousel_container {
+    grid-row: 1 / span 2;
+  }
+  .product-txt-container {
+    grid-row: 1 / span 2;
+  }
+}
+
+/* ipad pro */
+/* portrait */
+@media only screen and (min-device-width: 834px) and (max-device-width: 834px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 2) {
+  .carousel_container {
+    grid-row: 1 / span 1;
+  }
+  .product-txt-container {
+    grid-row: 2 / span 1;
+    display: block;
+  }
+  .carousel_container,
+  .carousel-images .product-image {
+    height: 100%;
+  }
+}
+/* landscape */
+@media only screen and (min-device-width: 1112px) and (max-device-width: 1112px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 2) {
+  .carousel_container {
+    grid-row: 1 / span 2;
+  }
+  .product-txt-container {
+    grid-row: 1 / span 2;
+  }
+}
