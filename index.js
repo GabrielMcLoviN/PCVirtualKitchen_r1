@@ -1,11 +1,10 @@
-// const Marzipano = window.Marzipano;
-// const bowser = window.bowser;
-// const screenfull = window.screenfull;
-// const data = window.APP_DATA;
+// import { Marzipano } from 'marzipano';
+// import bowser from 'bowser';
+// import { screenfull } from 'screenfull';
 
-import Marzipano from 'marzipano';
-import bowser from 'bowser';
-import screenfull from 'screenfull';
+const Marzipano = window.Marzipano;
+const bowser = window.bowser;
+const screenfull = window.screenfull;
 const data = window.APP_DATA;
 
 // Grab elements from DOM.
