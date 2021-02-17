@@ -127,9 +127,15 @@
   user-select: text;
 }
 
-.mobile .info-hotspot-modal .info-hotspot-content {
+/* .mobile .info-hotspot-modal .info-hotspot-content {
   max-height: 95%;
 }
+
+.mobile .info-hotspot-modal .info-hotspot-content {
+  left: 20px;
+  right: 20px;
+  top: 100px;
+} */
 
 .info-hotspot-content.fullwidth_modal {
   display: flex;
@@ -523,11 +529,7 @@
   visibility: hidden;
 }
 
-.mobile .info-hotspot-modal .info-hotspot-content {
-  left: 20px;
-  right: 20px;
-  top: 100px;
-}
+
 
 @media (max-width: 320px) {
   .info-hotspot-modal .info-hotspot-title {
