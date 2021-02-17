@@ -126,7 +126,6 @@ a:visited {
   padding: 0 1rem;
 }
 
-
 body.multiple-scenes #titleBar {
   left: 0px;
 }
@@ -145,13 +144,9 @@ body.multiple-scenes.mobile #titleBar {
   margin-left: 10px;
 }
 
-.mobile .logoWrapper {
-  padding-top: 10px;
-}
-
 .sceneName {
   display: block;
-  max-width: 250px;
+  max-width: 175px;
   height: auto;
 }
 
@@ -320,8 +315,7 @@ body.fullscreen-enabled #fullscreenToggle {
   border-bottom-right-radius: 0;
   -webkit-transition: width 0.3s ease-in-out, border-radius 0.3s ease-in-out, background 0.5s ease-in-out;
   transition: width 0.3s ease-in-out, border-radius 0.3s ease-in-out, background 0.5s ease-in-out;
-  background: var(--secondary-white-opaque);
-
+  background: var(--accent-gray-opaque);
 }
 
 .no-touch .info-hotspot.visible .info-hotspot-header:hover {
