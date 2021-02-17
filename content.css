@@ -312,8 +312,8 @@
 
 .carousel-bullet {
   display: inline-block;
-  width: 9px;
-  height: 9px;
+  width: 7px;
+  height: 7px;
   background-color: var(--accent-lightgray);
   border: 1px solid var(--secondary-blk);
   cursor: pointer;
