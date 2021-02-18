@@ -60,15 +60,6 @@
 }
 
 
-
-
-/* @media (max-width: 400px) {
-  .mobile .info-hotspot-modal .info-hotspot-title-wrapper {
-    margin-right: 2rem;
-    justify-content: flex-start;
-  }
-} */
-
 .info-hotspot-modal .info-hotspot-title-wrapper:before {
   content: "";
   display: inline-block;
@@ -129,9 +120,6 @@
   user-select: text;
 }
 
-/* .mobile .info-hotspot-modal .info-hotspot-content {
-  max-height: 95%;
-} */
 
 
 .info-hotspot-content.fullwidth_modal {
