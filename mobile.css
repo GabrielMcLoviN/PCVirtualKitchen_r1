@@ -1,9 +1,5 @@
 @media only screen and (max-width: 400px) {
-  .info-hotspot-modal .info-hotspot-header {
-    top: 40px;
-    left: 10px;
-    right: 10px;
-  }
+
 
   .info-hotspot-modal .info-hotspot-title-wrapper {
     justify-self: start;
@@ -146,20 +142,21 @@
   .mobile .info-hotspot-modal .info-hotspot-close-wrapper,
   .info-hotspot-modal .info-hotspot-close-wrapper {
     position: absolute;
-    right: 0.8rem;
+    right: 0.5rem;
   }
- 
+
   .mobile .info-hotspot-modal .info-hotspot-header,
   .info-hotspot-modal .info-hotspot-header {
     top: 30px;
-    left: 20px;
-    right: 20px;
+    left: 10px;
+    right: 10px;
   }
   .mobile .info-hotspot-modal .info-hotspot-content,
   .info-hotspot-modal .info-hotspot-content {
     grid-template-columns: repeat(auto-fit, minmax(20px, 1fr));
     max-width: 100%;
     max-height: 100%;
+    top: 70px;
     left: 10px;
     right: 10px;
     bottom: 10px;
