@@ -1,4 +1,9 @@
 @media only screen and (max-width: 450px) {
+  .product-txt-wrapper > *:not(.product-txt) {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+
   .info-hotspot-modal .info-hotspot-title {
     font-size: 1.2rem;
   }
@@ -16,8 +21,8 @@
   }
 
   .info-hotspot-modal .info-hotspot-content {
-    left: 20px;
-    right: 20px;
+    left: 10px;
+    right: 10px;
     top: 85px;
   }
 
@@ -111,7 +116,8 @@
 }
 
 /* iframe */
-@media only screen and (min-width: 200px) and (max-width: 700px) and (min-height: 389px) and (max-height: 389px) {
+
+@media only screen and (min-width: 100px) and (max-width: 700px) and (min-height: 389px) and (max-height: 389px) {
   .carousel-nav .carousel-button {
     max-width: 15px;
     max-height: 15px;
@@ -153,17 +159,22 @@
   }
   .info-hotspot-modal .info-hotspot-header {
     top: 30px;
-    left: 20px;
-    right: 20px;
+    left: 10px;
+    right: 10px;
   }
   .info-hotspot-modal .info-hotspot-content {
-    grid-template-columns: repeat(auto-fit, minmax(20px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
     max-width: 100%;
     max-height: 100%;
     left: 10px;
     right: 10px;
     bottom: 10px;
     top: 75px;
+  }
+
+  .mobile .info-hotspot-modal .info-hotspot-title-wrapper {
+    justify-self: start;
+    justify-content: start;
   }
 }
 

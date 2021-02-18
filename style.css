@@ -165,7 +165,7 @@ body.fullscreen-enabled #fullscreenToggle {
   max-width: 30px;
   max-height: 30px;
   filter: invert(1);
-  opacity: .9;
+  opacity: .8;
 }
 
 #fullscreenToggle .icon.on {
@@ -199,8 +199,6 @@ body.fullscreen-enabled #fullscreenToggle {
 .no-touch .link-hotspot:hover {
   opacity: 1;
 }
-
-
 
 .link-hotspot-icon {
   border: 2px solid var(--accent-blue);
