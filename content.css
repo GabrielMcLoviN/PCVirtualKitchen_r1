@@ -24,6 +24,7 @@
 }
 
 .info-hotspot-modal .info-hotspot-header {
+  margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -130,8 +131,40 @@
   position: relative;
 }
 
+.iframe_container__video .slider-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 40%;
+  align-self: flex-start;
+  background: transparent;
+  z-index: 10!important;
+}
+
+.iframe_container__video .slider-bot {
+  position: absolute;
+  height: 40%;
+  background: transparent;
+  width: 100%;
+  align-self: flex-end;
+  z-index: 10!important;
+}
 .iframe_container__video {
-  z-index: -5;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  padding-top: 56.25%;
+}
+
+.iframe_container__video iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
 }
 
 .hotspot-title-span {
@@ -191,7 +224,7 @@
   height: 9.5px;
   background: var(--secondary-white);
   -webkit-clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
-          clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
 }
 
 .carousel_container .influencer_credit {
@@ -229,6 +262,7 @@
   justify-content: space-between;
   position: absolute;
   pointer-events: none;
+  z-index: 11 !important;
 }
 
 .carousel-nav .carousel-button {
@@ -353,6 +387,7 @@
 .product-txt h3 {
   font-weight: 500;
   margin-bottom: 0.5rem;
+  padding: 0 !important;
 }
 
 .product-txt h4 {
@@ -445,7 +480,7 @@
   background-size: cover;
   background-position: center;
   -o-object-fit: contain;
-     object-fit: contain;
+  object-fit: contain;
   margin-bottom: 10px;
   height: clamp(75px, -0.875rem + 8.333333vw, 200px);
   width: clamp(75px, -0.875rem + 8.333333vw, 200px);
@@ -482,7 +517,7 @@
     height: 60px;
   }
   .product-txt {
-    font-size: 1.25rem;
+    font-size: 1.35rem;
   }
   .carousel_container .influencer_credit {
     font-size: 0.75rem;
@@ -501,15 +536,18 @@
   }
   .product-txt-wrapper .product-txt-subhead {
     width: 65%;
+    font-size: 3rem;
   }
   .recipes {
     padding: 0;
   }
   .info-hotspot-modal .info-hotspot-header {
     top: 65px;
+    max-width: 1600px;
   }
   .info-hotspot-modal .info-hotspot-content {
     top: 130px;
+    max-width: 1600px;
     bottom: 50px;
   }
   .product-txt .modal_block-header {

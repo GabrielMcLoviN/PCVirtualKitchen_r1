@@ -54,7 +54,7 @@ var APP_DATA = {
 					pitch: 0.013927065660876536,
 					title: 'MANUAL FOOD PROCESSOR',
 					videos: [
-						'<iframe width="840" height="472.5" src="https://www.youtube.com/embed/XdYZOHuvdhU" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>',
+						'<iframe width="840" x src="https://www.youtube.com/embed/XdYZOHuvdhU" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>',
 					],
 					images: [
 						'./images_min/foodprocessor/01-min.jpg',

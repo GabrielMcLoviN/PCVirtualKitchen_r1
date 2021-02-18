@@ -333,6 +333,7 @@ function createInfoHotspotElement(hotspot) {
 	carousel.classList.add('carousel');
 	const carouselImages = document.createElement('div');
 	carouselImages.classList.add('carousel-images');
+
 	const carouselNav = document.createElement('div');
 	carouselNav.classList.add('carousel-nav');
 	const carouselNext = document.createElement('img');
@@ -380,11 +381,16 @@ function createInfoHotspotElement(hotspot) {
 	}
 	if (hotspot.videos != undefined) {
 		for (let i = 0; i < hotspot.videos.length; i++) {
+			const sliderTop = document.createElement('div');
+			sliderTop.classList.add('slider-top');
+			const sliderBot = document.createElement('div');
+			sliderBot.classList.add('slider-bot');
 			const carousel_bullet = document.createElement('li');
 			carousel_bullet.classList.add('carousel-bullet');
 			const iframe_container = document.createElement('div');
 			iframe_container.classList.add('iframe_container__video');
 			iframe_container.innerHTML = hotspot.videos[i];
+			iframe_container.append(sliderTop, sliderBot);
 
 			carousel_pagination.appendChild(carousel_bullet);
 			carouselImages.appendChild(iframe_container);

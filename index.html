@@ -4,7 +4,7 @@
 <head>
   <title>Pampered Chef - Virtual Host</title>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="icon" type="image/png" href="./assets/PC+Seal-Solid_whiteCircle-reverseLogo.png">
   <style>
     @-ms-viewport {
@@ -12,19 +12,13 @@
     }
   </style>
 
-  <link rel="preload" href="./assets/antonio-desktop/Antonio-Light.ttf" as="font" type="font/ttf"
-    crossorigin="anonymous">
-  <link rel="preload" href="./assets/museo-sans-webfont/Museo-Sans-Family/MuseoSans-100.otf" as="font" type="font/otf"
-    crossorigin="anonymous">
-  <link rel="preload" as="font" href="./assets/museo-sans-webfont/Museo-Sans-Family/MuseoSans-500.otf" type="font/otf"
-    crossorigin="anonymous">
-
   <link rel="stylesheet" href="./reset.min.css">
   <link rel="stylesheet" href="./loaders.min.css">
   <link rel="stylesheet" href="./style.css">
   <link rel="stylesheet" href="./content.css">
   <link rel="stylesheet" href="./mobile.css">
-  <script src="./data.js"></script>
+
+
 
 </head>
 
@@ -41,11 +35,19 @@
     </a>
   </div>
   <div class="preloader">
-    <img src="./assets/PC+Logo_reverse_Registered.png" alt="loading image" width="200px" height="auto">
-    <div class="loader-inner ball-zig-zag-deflect">
+    <img class="preloader-img" src="./assets/PC+Logo_reverse_Registered.png" alt="loading image" width="200px"
+      height="auto">
+    <div class="loader-inner ball-spin-fade-loader">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
       <div></div>
       <div></div>
     </div>
+    <p class="preload-text">Setting your table</p>
   </div>
 
   <script src="vendor/screenfull.min.js"></script>
@@ -53,7 +55,15 @@
   <script src="vendor/marzipano.js"></script>
 
   <!-- <script src="./dist/index.bundle.js"></script> -->
+  <script src="./data.js"></script>
   <script src="./index.js"></script>
+  <script>
+    const iframes = document.querySelectorAll('iframe');
+    iframes.forEach(element => {
+      element.setAttribute('loading', 'lazy');
+    });
+  </script>
+
 
 </body>
 
