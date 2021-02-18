@@ -1,7 +1,3 @@
-// import { Marzipano } from 'marzipano';
-// import bowser from 'bowser';
-// import { screenfull } from 'screenfull';
-
 const Marzipano = window.Marzipano;
 const bowser = window.bowser;
 const screenfull = window.screenfull;
@@ -32,6 +28,7 @@ if (window.matchMedia) {
 } else {
 	document.body.classList.add('desktop');
 }
+
 // Detect whether we are on a touch device.
 document.body.classList.add('no-touch');
 
@@ -284,11 +281,9 @@ function createInfoHotspotElement(hotspot) {
 			recipe_link.setAttribute('target', '_blank');
 			const recipe_preview_img_wrap = document.createElement('div');
 			recipe_preview_img_wrap.classList.add('recipe-preview-img-wrap');
-			recipe_preview_img_wrap.classList.add('__related-content');
 			recipe_preview_img_wrap.style.backgroundImage = `url(${hotspot.related_content[i].preview_image})`;
 			const recipe_title = document.createElement('p');
 			recipe_title.classList.add('recipe-title');
-			recipe_title.classList.add('__related_');
 			recipe_title.innerHTML = hotspot.related_content[i].id;
 			recipe_title.href = hotspot.related_content[i].link;
 			recipe_title.setAttribute('target', '_blank');
@@ -350,9 +345,9 @@ function createInfoHotspotElement(hotspot) {
 	carouselPrev.classList.add('carousel-button');
 	carouselPrev.classList.add('previous');
 	carouselPrev.setAttribute('id', 'previous');
-
 	const carousel_pagination = document.createElement('ul');
 	carousel_pagination.classList.add('carousel-pagination');
+
 	for (let i = 0; i < hotspot.images.length; i++) {
 		const carousel_bullet = document.createElement('li');
 		carousel_bullet.classList.add('carousel-bullet');
@@ -415,9 +410,8 @@ function createInfoHotspotElement(hotspot) {
 
 	document.body.appendChild(modal);
 
-	// reset modal content logic
+	// reset modal content + pause video on close logic
 	const pause_video = function () {
-		//if there is an iframe inside maybe embedded multimedia video/audio, we should reload so it stops playing
 		let iframes = modal.getElementsByTagName('iframe');
 		if (iframes != null) {
 			for (let i = 0; i < iframes.length; i++) {
@@ -428,13 +422,12 @@ function createInfoHotspotElement(hotspot) {
 
 	const reset_modal = function () {
 		setTimeout(function () {
-				modal.querySelector('.product-txt-container').scrollTo(0, 0);
-				slideTo(0);
+			modal.querySelector('.product-txt-container').scrollTo(0, 0);
+			slideTo(0);
 		}, 1000);
 		pause_video();
 	};
 
-	//
 	const toggle = function () {
 		modal.classList.toggle('visible');
 	};
@@ -453,7 +446,6 @@ function createInfoHotspotElement(hotspot) {
 		}
 	});
 
-	// const video_parent = modal.querySelectorAll(".video-wrapper");
 	const nextBtn = modal.querySelector('#next');
 	const prevBtn = modal.querySelector('#previous');
 

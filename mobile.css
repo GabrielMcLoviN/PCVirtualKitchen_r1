@@ -39,7 +39,8 @@
     width: calc(25px / 2);
     height: calc(9.5px / 2);
     background: var(--secondary-white);
-    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+    -webkit-clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
   }
 }
 

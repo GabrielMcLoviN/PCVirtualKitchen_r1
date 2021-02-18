@@ -44,8 +44,6 @@
 * {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
   box-sizing: border-box;
   -moz-user-select: none;
   -webkit-user-select: none;
@@ -164,7 +162,8 @@ body.fullscreen-enabled #fullscreenToggle {
 #fullscreenToggle .icon {
   max-width: 30px;
   max-height: 30px;
-  filter: invert(1);
+  -webkit-filter: invert(1);
+          filter: invert(1);
   opacity: .8;
 }
 
@@ -192,7 +191,6 @@ body.fullscreen-enabled #fullscreenToggle {
   margin-left: -30px;
   margin-top: -30px;
   opacity: 0.9;
-  -webkit-transition: opacity 0.2s;
   transition: opacity 0.2s;
 }
 
@@ -234,19 +232,12 @@ body.fullscreen-enabled #fullscreenToggle {
   cursor: pointer;
 
   opacity: 0;
-
-  -ms-transform: translateY(-8px);
-  -webkit-transform: translateY(-8px);
   transform: translateY(-8px);
-
-  -webkit-transition: -ms-transform 0.3s, -webkit-transform 0.3s, transform 0.3s, opacity 0.3s;
-  transition: -ms-transform 0.3s, -webkit-transform 0.3s, transform 0.3s, opacity 0.3s;
+  transition: transform 0.3s, opacity 0.3s;
 }
 
 .no-touch .link-hotspot:hover .link-hotspot-tooltip {
   opacity: 1;
-  -ms-transform: translateY(0);
-  -webkit-transform: translateY(0);
   transform: translateY(0);
 }
 
@@ -275,13 +266,11 @@ body.fullscreen-enabled #fullscreenToggle {
 .info-hotspot {
   line-height: 1.2em;
   opacity: 0.9;
-  -webkit-transition: opacity 0.2s 0.2s;
   transition: opacity 0.2s 0.2s;
 }
 
 .info-hotspot:hover {
   opacity: 1;
-  -webkit-transition: opacity 0.2s;
   transition: opacity 0.2s;
 }
 
@@ -295,7 +284,6 @@ body.fullscreen-enabled #fullscreenToggle {
   border-radius: 20px;
   border: 2px solid var(--accent-green-opaque);
   cursor: pointer;
-  -webkit-transition: width 0.3s ease-in-out 0.5s, border-radius 0.3s ease-in-out 0.5s, background 1s ease-in-out;
   transition: width 0.3s ease-in-out 0.5s, border-radius 0.3s ease-in-out 0.5s, background 1s ease-in-out;
 
 }
@@ -304,7 +292,6 @@ body.fullscreen-enabled #fullscreenToggle {
   width: 210px;
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
-  -webkit-transition: width 0.3s ease-in-out, border-radius 0.3s ease-in-out, background 0.5s ease-in-out;
   transition: width 0.3s ease-in-out, border-radius 0.3s ease-in-out, background 0.5s ease-in-out;
   background: var(--accent-gray-opaque);
 }
@@ -315,7 +302,6 @@ body.fullscreen-enabled #fullscreenToggle {
 
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
-  -webkit-transition: width 0.3s ease-in-out, border-radius 0.3s ease-in-out, background 0.5s ease-in-out;
   transition: width 0.3s ease-in-out, border-radius 0.3s ease-in-out, background 0.3s ease-in-out, background 0.5s ease-in-out;
 }
 
@@ -341,14 +327,12 @@ body.fullscreen-enabled #fullscreenToggle {
   height: 40px;
   padding: 0;
   overflow: hidden;
-  -webkit-transition: width 0s 0.4s, padding 0s 0.4s;
   transition: width 0s 0.4s, padding 0s 0.4s;
 }
 
 .no-touch .info-hotspot .info-hotspot-header:hover .info-hotspot-title-wrapper {
   width: 160px;
   padding: 0 0 0 5px;
-  -webkit-transition: width 0s 0.4s, padding 0s 0.4s;
   transition: width 0s 0.4s, padding 0s 0.4s;
 }
 
@@ -385,7 +369,8 @@ body.fullscreen-enabled #fullscreenToggle {
   #fullscreenToggle .icon {
     width: 24px;
     height: 24px;
-    filter: invert(1);
+    -webkit-filter: invert(1);
+            filter: invert(1);
   }
   #titleBar {
     height: 70px;
