@@ -162,6 +162,7 @@
     left: 10px;
     right: 10px;
   }
+  .mobile .info-hotspot-modal .info-hotspot-content,
   .info-hotspot-modal .info-hotspot-content {
     grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
     max-width: 100%;
