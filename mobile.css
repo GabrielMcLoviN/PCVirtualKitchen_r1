@@ -74,7 +74,7 @@
 @media only screen and (max-width: 500px) and (min-height: 800px) {
   .carousel_container,
   .carousel-images .product-image {
-    height: 350px;
+    height: 100%;
   }
   .info-hotspot-modal .info-hotspot-content {
     max-width: 100%;
@@ -108,7 +108,7 @@
 /* iframe */
 
 @media only screen and (min-width: 100px) and (max-width: 700px) and (min-height: 389px) and (max-height: 389px) {
-  
+
   .link-hotspot {
     width: 35px;
     height: 35px;
