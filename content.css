@@ -45,8 +45,6 @@
   transition: opacity 0.3s ease-in-out 0.2s;
 }
 
-
-
 .info-hotspot-modal .info-hotspot-icon {
   display: none;
 }
@@ -58,7 +56,6 @@
   justify-content: center;
   text-align: center;
 }
-
 
 .info-hotspot-modal .info-hotspot-title-wrapper:before {
   content: "";
@@ -119,8 +116,6 @@
   -ms-user-select: text;
   user-select: text;
 }
-
-
 
 .info-hotspot-content.fullwidth_modal {
   display: flex;
@@ -191,8 +186,6 @@
   width: 100%;
 }
 
-
-
 .carousel_container .pointer {
   position: absolute;
   top: -30%;
@@ -203,7 +196,8 @@
 }
 
 .carousel_container .influencer_credit {
-  padding: 7px 10px;
+  font-size: 0.5rem;
+  padding: 5px 8px;
   color: var(--secondary-blk);
   background: var(--secondary-white);
   font-size: clamp(0.5rem, 2vw, 1rem);
@@ -213,8 +207,6 @@
   -ms-user-select: text;
   user-select: text;
 }
-
-
 
 .carousel-images .product-image {
   display: flex;
@@ -248,9 +240,10 @@
   transition: all 0.25s;
   z-index: 1;
   pointer-events: all;
-  max-width: 30px;
-  max-height: 30px;
+  max-width: 20px;
+  max-height: 20px;
   margin: 0 10px;
+  margin: auto 5px;
 }
 
 .carousel-button.previous {
@@ -259,7 +252,6 @@
 .carousel-button.next {
   box-shadow: -2px 3px 5px rgba(0, 0, 0, 0.5);
 }
-
 
 .carousel-nav .carousel-button:hover {
   opacity: 0.9;
@@ -270,7 +262,7 @@
   align-items: center;
   justify-content: center;
   position: absolute;
-  bottom: 4%;
+  bottom: 2.5%;
   min-width: 50%;
   list-style: none;
   margin: 0 auto;
@@ -285,7 +277,7 @@
   background-color: var(--accent-lightgray);
   border: 1px solid var(--secondary-blk);
   cursor: pointer;
-  margin: 0 5px;
+  margin: 0 2px;
   border-radius: 50%;
   opacity: 0.75;
   transition-property: transform, opacity, background-color;
@@ -324,7 +316,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: 0.7rem;
+  font-size: 0.65rem;
 }
 
 .product-txt-wrapper > *:not(.product-txt) {
@@ -355,7 +347,7 @@
 }
 
 .product-txt {
-  font-size: clamp(0.75rem, 10vw, 1.2rem);
+  font-size: clamp(0.75rem, 10vw, 1rem);
   font-weight: lighter;
 }
 
@@ -476,7 +468,6 @@
 
 .recipe-title {
   padding: 0 1px;
-
   font-weight: 300;
   font-style: italic;
   text-align: center;
@@ -487,6 +478,28 @@
 }
 
 @media (min-width: 1440px) {
+  .link-hotspot {
+    width: 60px;
+    height: 60px;
+  }
+  .product-txt {
+    font-size: 1.25rem;
+  }
+  .carousel_container .influencer_credit {
+    font-size: 0.75rem;
+  }
+  .carousel-pagination {
+    bottom: 4%;
+  }
+  .carousel-bullet {
+    width: 10px;
+    height: 10px;
+  }
+  .carousel-nav .carousel-button {
+    max-width: 30px;
+    max-height: 30px;
+    margin: auto 10px;
+  }
   .product-txt-wrapper .product-txt-subhead {
     width: 65%;
   }
