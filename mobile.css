@@ -107,7 +107,7 @@
 }
 
 /* iframe */
-@media only screen and (min-height: 389px) and (max-height: 389px) {
+@media only screen and (min-width: 100px) and (max-width: 700px) and (min-height: 389px) and (max-height: 389px) {
   .mobile .carousel-nav .carousel-button,
   .carousel-nav .carousel-button {
     max-width: 15px;
