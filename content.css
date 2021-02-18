@@ -135,6 +135,10 @@
   position: relative;
 }
 
+.iframe_container__video {
+  z-index: -5;
+}
+
 .hotspot-title-span {
   font-style: italic;
 }

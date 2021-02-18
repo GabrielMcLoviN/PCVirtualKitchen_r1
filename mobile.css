@@ -108,9 +108,7 @@
 /* iframe */
 
 @media only screen and (min-width: 100px) and (max-width: 700px) and (min-height: 389px) and (max-height: 389px) {
-  .iframe_container__video {
-    z-index: -2;
-  }
+  
   .link-hotspot {
     width: 35px;
     height: 35px;
@@ -129,7 +127,7 @@
   .recipe-link {
     align-items: start;
   }
-  
+
   .product-txt {
     font-size: 0.75rem;
   }
