@@ -148,12 +148,7 @@
     position: absolute;
     right: 0.8rem;
   }
-  .mobile .info-hotspot-modal .info-hotspot-title-wrapper,
-  .info-hotspot-modal .info-hotspot-title-wrapper {
-    justify-self: center;
-    justify-content: center;
-    padding-left: 10px;
-  }
+ 
   .mobile .info-hotspot-modal .info-hotspot-header,
   .info-hotspot-modal .info-hotspot-header {
     top: 30px;
