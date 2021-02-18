@@ -1,5 +1,13 @@
-@media only screen and (max-width: 400px) {
+@media only screen and (max-width: 450px) {
+  .info-hotspot-modal .info-hotspot-title {
+    font-size: 1.2rem;
+  }
 
+  .info-hotspot-modal .info-hotspot-header {
+    top: 40px;
+    left: 10px;
+    right: 10px;
+  }
 
   .info-hotspot-modal .info-hotspot-title-wrapper {
     justify-self: start;
@@ -103,63 +111,59 @@
 }
 
 /* iframe */
-@media only screen and (min-width: 100px) and (max-width: 700px) and (min-height: 389px) and (max-height: 389px) {
-  .mobile .carousel-nav .carousel-button,
+@media only screen and (min-width: 200px) and (max-width: 700px) and (min-height: 389px) and (max-height: 389px) {
   .carousel-nav .carousel-button {
     max-width: 15px;
     max-height: 15px;
     margin: auto 1px;
   }
-  .mobile .carousel-bullet,
   .carousel-bullet {
     margin: 0 2px;
   }
-  .mobile .product-txt-wrapper > *:not(.product-txt),
   .product-txt-wrapper > *:not(.product-txt) {
     margin-top: 1rem;
     margin-bottom: 1rem;
   }
-  .mobile .recipe-link,
+
   .recipe-link {
     align-items: start;
   }
 
-  .mobile .product-txt-wrapper,
   .product-txt-wrapper {
     font-size: 0.65rem;
   }
 
-  .mobile .product-txt,
   .product-txt {
     font-size: 0.75rem;
   }
 
-  .mobile .recipes-header,
   .recipes-header {
     font-size: 1rem;
   }
 
-  .mobile .info-hotspot-modal .info-hotspot-close-wrapper,
   .info-hotspot-modal .info-hotspot-close-wrapper {
     position: absolute;
-    right: 0.5rem;
+    right: 0rem;
   }
 
-  .mobile .info-hotspot-modal .info-hotspot-header,
+  .info-hotspot-modal .info-hotspot-title-wrapper {
+    justify-self: center;
+    justify-content: center;
+    padding-left: 10px;
+  }
   .info-hotspot-modal .info-hotspot-header {
     top: 30px;
-    left: 10px;
-    right: 10px;
+    left: 20px;
+    right: 20px;
   }
-  .mobile .info-hotspot-modal .info-hotspot-content,
   .info-hotspot-modal .info-hotspot-content {
     grid-template-columns: repeat(auto-fit, minmax(20px, 1fr));
     max-width: 100%;
     max-height: 100%;
-    top: 70px;
     left: 10px;
     right: 10px;
     bottom: 10px;
+    top: 75px;
   }
 }
 
