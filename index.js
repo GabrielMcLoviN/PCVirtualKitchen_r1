@@ -261,6 +261,7 @@ function createInfoHotspotElement(hotspot) {
 			recipe_link.setAttribute('target', '_blank');
 			const recipe_preview_img_wrap = document.createElement('div');
 			recipe_preview_img_wrap.classList.add('recipe-preview-img-wrap');
+			recipe_preview_img_wrap.classList.add('.lazy');
 			recipe_preview_img_wrap.style.backgroundImage = `url(${hotspot.recipes[i].preview_image})`;
 			const recipe_title = document.createElement('p');
 			recipe_title.classList.add('recipe-title');
@@ -368,7 +369,9 @@ function createInfoHotspotElement(hotspot) {
 		} else {
 			productImage.style.backgroundImage = `url(${hotspot.images[i]})`;
 		}
-		productImage.classList.add('product-image');
+		productImage.setAttribute('id', 'product-image');
+		productImage.classList.add('lazy');
+
 		if (hotspot.containImages) {
 			productImage.style.backgroundSize = 'contain';
 			productImage.style.width = '80%';
@@ -584,8 +587,10 @@ switchScene(scenes[0]);
 const preloader = document.querySelector('.preloader');
 const titleBar = document.querySelector('#titleBar');
 
-window.addEventListener('load', function () {
-	panoElement.style.opacity = 1;
-	titleBar.style.opacity = 1;
-	preloader.style.display = 'none';
+window.addEventListener('DOMContentLoaded', function () {
+	setTimeout(function () {
+		panoElement.style.opacity = 1;
+		titleBar.style.opacity = 1;
+		preloader.style.display = 'none';
+	}, 4000);
 });

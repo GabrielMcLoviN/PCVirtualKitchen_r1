@@ -1,25 +1,133 @@
-<!DOCTYPE html>
+<!DOCTYPE html lang="en">
 <html>
-
 <head>
   <title>Pampered Chef - Virtual Host</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="icon" type="image/png" href="./assets/PC+Seal-Solid_whiteCircle-reverseLogo.png">
+  <link rel="icon" type="image/png" href="./assets/PC+Seal-Solid_black.png" width="50px" height="50px">
+
   <style>
     @-ms-viewport {
       width: device-width;
     }
+
+    @-webkit-keyframes ball-spin-fade-loader {
+      50% {
+        opacity: 0.3;
+        -webkit-transform: scale(0.4);
+        transform: scale(0.4);
+      }
+
+      100% {
+        opacity: 1;
+        -webkit-transform: scale(1);
+        transform: scale(1);
+      }
+    }
+
+    @keyframes ball-spin-fade-loader {
+      50% {
+        opacity: 0.3;
+        -webkit-transform: scale(0.4);
+        transform: scale(0.4);
+      }
+
+      100% {
+        opacity: 1;
+        -webkit-transform: scale(1);
+        transform: scale(1);
+      }
+    }
+
+    .ball-spin-fade-loader {
+      position: relative;
+      top: -10px;
+      left: -10px;
+    }
+
+    .ball-spin-fade-loader>div:nth-child(1) {
+      top: 25px;
+      left: 0;
+      -webkit-animation: ball-spin-fade-loader 1s -0.96s infinite linear;
+      animation: ball-spin-fade-loader 1s -0.96s infinite linear;
+    }
+
+    .ball-spin-fade-loader>div:nth-child(2) {
+      top: 17.05px;
+      left: 17.05px;
+      -webkit-animation: ball-spin-fade-loader 1s -0.84s infinite linear;
+      animation: ball-spin-fade-loader 1s -0.84s infinite linear;
+    }
+
+    .ball-spin-fade-loader>div:nth-child(3) {
+      top: 0;
+      left: 25px;
+      -webkit-animation: ball-spin-fade-loader 1s -0.72s infinite linear;
+      animation: ball-spin-fade-loader 1s -0.72s infinite linear;
+    }
+
+    .ball-spin-fade-loader>div:nth-child(4) {
+      top: -17.05px;
+      left: 17.05px;
+      -webkit-animation: ball-spin-fade-loader 1s -0.6s infinite linear;
+      animation: ball-spin-fade-loader 1s -0.6s infinite linear;
+    }
+
+    .ball-spin-fade-loader>div:nth-child(5) {
+      top: -25px;
+      left: 0;
+      -webkit-animation: ball-spin-fade-loader 1s -0.48s infinite linear;
+      animation: ball-spin-fade-loader 1s -0.48s infinite linear;
+    }
+
+    .ball-spin-fade-loader>div:nth-child(6) {
+      top: -17.05px;
+      left: -17.05px;
+      -webkit-animation: ball-spin-fade-loader 1s -0.36s infinite linear;
+      animation: ball-spin-fade-loader 1s -0.36s infinite linear;
+    }
+
+    .ball-spin-fade-loader>div:nth-child(7) {
+      top: 0;
+      left: -25px;
+      -webkit-animation: ball-spin-fade-loader 1s -0.24s infinite linear;
+      animation: ball-spin-fade-loader 1s -0.24s infinite linear;
+    }
+
+    .ball-spin-fade-loader>div:nth-child(8) {
+      top: 17.05px;
+      left: -17.05px;
+      -webkit-animation: ball-spin-fade-loader 1s -0.12s infinite linear;
+      animation: ball-spin-fade-loader 1s -0.12s infinite linear;
+    }
+
+    .ball-spin-fade-loader>div,
+    .ball-spin-loader>div {
+      -webkit-animation-fill-mode: both;
+      position: absolute;
+      width: 15px;
+      height: 15px;
+      border-radius: 100%;
+    }
+
+    .ball-spin-fade-loader>div {
+      background-color: #fff;
+      margin: 2px;
+      animation-fill-mode: both;
+    }
   </style>
 
+  <link rel="preload" href="./assets/antonio-desktop/Antonio-Light.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="preload" href="./assets/museo-sans-webfont/Museo-Sans-Family/MuseoSans-100.otf" as="font" type="font/otf"
+    crossorigin>
+  <link rel="preload" href="./assets/museo-sans-webfont/Museo-Sans-Family/MuseoSans-500.otf" as="font" type="font/otf"
+    crossorigin>
+
+
   <link rel="stylesheet" href="./reset.min.css">
-  <link rel="stylesheet" href="./loaders.min.css">
-  <link rel="stylesheet" href="./style.css">
-  <link rel="stylesheet" href="./content.css">
-  <link rel="stylesheet" href="./mobile.css">
-
-
-
+  <link rel="stylesheet" href="./style.css" media="all">
+  <link rel="stylesheet" href="./content.css" media="all">
+  <link rel="stylesheet" href="./mobile.css" media="(max-width: 450px)">
 </head>
 
 <body class="multiple-scenes">
@@ -27,7 +135,7 @@
   <div id="pano"></div>
   <div id="titleBar">
     <div class="logoWrapper">
-      <img class="sceneName" src="./assets/PC+Logo_black_Registered.png" alt="PC Logo">
+      <img class="sceneName lazyload" data-src="./assets/PC+Logo_black_Registered.png" alt="PC Logo">
     </div>
     <a href="javascript:void(0)" id="fullscreenToggle">
       <img class="icon off" src="./SVG/fullscreen-line.svg">
@@ -50,6 +158,7 @@
     <p class="preload-text">Setting your table</p>
   </div>
 
+  <script src="./lazysizes.min.js"></script>
   <script src="vendor/screenfull.min.js"></script>
   <script src="vendor/bowser.min.js"></script>
   <script src="vendor/marzipano.js"></script>
@@ -57,11 +166,63 @@
   <!-- <script src="./dist/index.bundle.js"></script> -->
   <script src="./data.js"></script>
   <script src="./index.js"></script>
+
   <script>
     const iframes = document.querySelectorAll('iframe');
     iframes.forEach(element => {
       element.setAttribute('loading', 'lazy');
     });
+
+    document.addEventListener("DOMContentLoaded", function () {
+      var lazyloadImages;
+
+      if ("IntersectionObserver" in window) {
+        lazyloadImages = document.querySelectorAll(".lazy");
+        var imageObserver = new IntersectionObserver(function (entries, observer) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              var image = entry.target;
+              image.classList.remove("lazy");
+              imageObserver.unobserve(image);
+            }
+          });
+        });
+
+        lazyloadImages.forEach(function (image) {
+          imageObserver.observe(image);
+        });
+      } else {
+        var lazyloadThrottleTimeout;
+        lazyloadImages = document.querySelectorAll(".lazy");
+
+        function lazyload() {
+          if (lazyloadThrottleTimeout) {
+            clearTimeout(lazyloadThrottleTimeout);
+          }
+
+          lazyloadThrottleTimeout = setTimeout(function () {
+            var scrollTop = window.pageYOffset;
+            lazyloadImages.forEach(function (img) {
+              if (img.offsetTop < (window.innerHeight + scrollTop)) {
+                img.src = img.dataset.src;
+                img.classList.remove('lazy');
+              }
+            });
+            if (lazyloadImages.length == 0) {
+              document.removeEventListener("scroll", lazyload);
+              window.removeEventListener("resize", lazyload);
+              window.removeEventListener("orientationChange", lazyload);
+            }
+          }, 20);
+        }
+
+        document.addEventListener("scroll", lazyload);
+        window.addEventListener("resize", lazyload);
+        window.addEventListener("orientationChange", lazyload);
+      }
+    })
+
+
   </script>
 
 
