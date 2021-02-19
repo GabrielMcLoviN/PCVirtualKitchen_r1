@@ -119,6 +119,12 @@ var APP_DATA = {
 					],
 				},
 				// {
+				// 	yaw: -0.19474308589460065,
+				// 	pitch: -0.021905487937900148,
+				// 	title: 'Grill',
+				// 	text: 'Info coming soon!',
+				// },
+				// {
 				// 	yaw: 1.1271171703883915,
 				// 	pitch: 0.2273838905217449,
 				// 	title: 'DELUXE AIR FRYER',
