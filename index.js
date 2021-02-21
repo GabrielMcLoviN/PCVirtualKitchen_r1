@@ -161,10 +161,8 @@ introLH.addEventListener('click', function () {
 tour_movement.on('complete', function () {
 	introHandIconOverlay.style.opacity = 0;
 	introHandIconOverlay.style.display = 'none';
+	switchScene(scenes[0]);
 	tour_final.start();
-	setTimeout(() => {
-		tour_final.complete();
-	}, 5000);
 });
 
 let destinationViewParameters = {

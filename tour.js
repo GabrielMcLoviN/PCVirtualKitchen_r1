@@ -18,7 +18,7 @@ export const tour_infoHotspots = new Shepherd.Tour({
 
 tour_infoHotspots.addStep({
 	showOn: document.body.classList.contains('tour-accepted'),
-	text: `Throughout our virtual kitchen, you'll see icons just like this one. These are our product hotspots. Each hotspot is associated with the product closest to it.<br/><br/> Go ahead and click on this one here!`,
+	text: `Throughout our virtual kitchen, you'll see icons just like this one. These are our product hotspots. Each hotspot is associated with the product closest to it.<br/><br/> Go ahead and click on this one here!👇`,
 	attachTo: {
 		element: '.intro-starter',
 		on: 'top',
@@ -54,8 +54,8 @@ tour_modal.addStep({
 	modalOverlayOpeningPadding: 10,
 	text: `On the left, you'll see all of the product information.`,
 	attachTo: {
-		element: '.intro-starter .product-txt-wrapper',
-		on: 'top-start',
+		element: '.intro-starter .product-txt-wrapper .product-txt',
+		on: 'auto',
 	},
 	popperOptions: {
 		modifiers: [
@@ -85,7 +85,7 @@ tour_modal.addStep({
 	text: `On the bottom, you'll find downloadable PDF files for recipes and additional content.`,
 	attachTo: {
 		element: '.intro-starter .product-txt-wrapper .recipes',
-		on: 'top',
+		on: 'auto',
 	},
 	popperOptions: {
 		modifiers: [
@@ -112,7 +112,7 @@ tour_modal.addStep({
 });
 
 tour_modal.addStep({
-	text: `This is our product gallery. In it, you'll find high-quality photos and videos of each product.`,
+	text: `On the right, you'll see the product gallery. In it, you'll find high-quality photos and videos of each product.`,
 	attachTo: {
 		element: '.intro-starter .carousel_container',
 		on: 'auto-start',
@@ -194,6 +194,7 @@ export var tour_linkHotspots = new Shepherd.Tour({
 		scrollTo: { behavior: 'smooth', block: 'center' },
 	},
 });
+
 const introHandIconOverlay = document.querySelector('.tour_movement-cta');
 
 tour_linkHotspots.addStep({
@@ -205,7 +206,7 @@ tour_linkHotspots.addStep({
 		},
 	},
 	advanceOn: { element: '.link-hotspot.second-tour-starter', event: 'click' },
-	text: `These arrow icons with a blue outline will take you to a different part of our virtual kitchen. Try clicking this one to view the pots & pans located on the stove top.`,
+	text: `These arrow icons with a blue outline will take you to a different part of our virtual kitchen.<br/> <br/>Try clicking this one to view the pots & pans located on the stove top 👇`,
 	attachTo: {
 		element: '.second-tour-starter',
 		on: 'top',
@@ -245,7 +246,7 @@ tour_movement.addStep({
 	text: `Good moves! I think you got the hang of it!<br/><br/>Just one last note before we let you explore the kitchen (it's stunning isn't it?😍)<br/><br/>To move yourself around, just touch or click any part of the screen and drag it around. You have 360° of freedom here!`,
 	attachTo: {
 		element: '.tour_movement-cta img',
-		on: 'top',
+		on: 'auto',
 	},
 	buttons: [
 		{
@@ -293,6 +294,13 @@ tour_final.addStep({
 			document.body.classList.remove('tour-accepted');
 		},
 	},
+	buttons: [
+		{
+			text: 'Dismiss',
+			action: tour_final.next,
+			classes: 'shep-next',
+		},
+	],
 	popperOptions: {
 		modifiers: [
 			{
