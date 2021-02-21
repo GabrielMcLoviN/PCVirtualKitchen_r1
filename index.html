@@ -4,8 +4,9 @@
 <head>
   <title>Pampered Chef - Virtual Host</title>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="icon" type="image/png" href="./assets/PC+Seal-Solid_black.png" width="50px" height="50px">
+  <meta name="viewport"
+    content="target-densitydpi=device-dpi, width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, minimal-ui" />
+  <link rel="icon" type="image/png" href="static/assets/PC+Seal-Solid_black.png" width="50px" height="50px">
 
   <style>
     @-ms-viewport {
@@ -118,24 +119,24 @@
     }
   </style>
 
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/shepherd.js@8.1.0/dist/css/shepherd.css">
-  <script src="https://cdn.jsdelivr.net/npm/shepherd.js@5.0.1/dist/js/shepherd.js"></script>
-
-
-  <link rel="preload" href="./assets/antonio-desktop/Antonio-Light.ttf" as="font" type="font/ttf" crossorigin>
-  <link rel="preload" href="./assets/museo-sans-webfont/Museo-Sans-Family/MuseoSans-100.otf" as="font" type="font/otf"
+  <link rel="preload" href="static/assets/antonio-desktop/Antonio-Light.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="preload" href="static/assets/museo-sans-webfont/Museo-Sans-Family/MuseoSans-100.otf" as="font" type="font/otf"
     crossorigin>
-  <link rel="preload" href="./assets/museo-sans-webfont/Museo-Sans-Family/MuseoSans-500.otf" as="font" type="font/otf"
+  <link rel="preload" href="static/assets/museo-sans-webfont/Museo-Sans-Family/MuseoSans-500.otf" as="font" type="font/otf"
     crossorigin>
+
   <link rel="stylesheet" href="./reset.min.css">
-  <link rel="stylesheet" href="./style.css" media="all">
-  <link rel="stylesheet" href="./content.css" media="all">
+  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="./shepherd.css">
+  <link rel="stylesheet" href="./content.css">
   <link rel="stylesheet" href="./mobile.css" media="(max-width: 450px)">
+
+
 </head>
 
 <body class="multiple-scenes">
   <div class="preloader">
-    <img class="preloader-img" src="./assets/PC+Logo_reverse_Registered.png" alt="loading image" width="200px"
+    <img class="preloader-img" src="static/assets/PC+Logo_reverse_Registered.png" alt="loading image" width="200px"
       height="auto">
     <div class="loader-inner ball-spin-fade-loader">
       <div></div>
@@ -149,37 +150,67 @@
     </div>
     <p class="preload-text">Setting your table</p>
   </div>
+
   <div id="pano"></div>
 
-  <!--
-  <div class="info-hotspot-modal visible" id="intro">
-    <div class="info-hotspot-header">
-      <div class="info-hotspot-close-wrapper"><img src="./SVG/close-line.svg" class="info-hotspot-close-icon" id="intro-close"></div>
+
+  <div class="info-hotspot-modal intro visible" id="intro">
+    <div class="intro-content">
+      <div class="intro-header">
+        <div class="info-hotspot-close-wrapper"><img src="static/SVG/close-line.svg" class="info-hotspot-close-icon"
+            id="intro-close"></div>
+      </div>
+      <div id="intro-heading">
+        <h1 class="intro-h1">Welcome to your Pampered Chef Virtual Party!</h1>
+      </div>
+      <div id="intro-body">
+        <p class="intro-text">Before you get started, would you like to take a quick tour?</p>
+      </div>
+      <div id="intro-buttons">
+        <a href="#" class="tour-btn cancel">No thanks, I got this!</a>
+        <a href="#" class="tour-btn confirm">Sure, show me around!</a>
+      </div>
     </div>
-    <div class="info-hotspot-content">
-      <h1>Welcome to your Pampered Chef Virtual Party!</h1>
-    </div>
-  </div> -->
+  </div>
 
   <div id="titleBar">
     <div class="logoWrapper">
-      <img class="sceneName lazyload" data-src="./assets/PC+Logo_black_Registered.png" alt="PC Logo">
+      <img class="sceneName" src="static/assets/PC+Logo_black_Registered.png" alt="PC Logo">
     </div>
     <a href="javascript:void(0)" id="fullscreenToggle">
-      <img class="icon off" src="./SVG/fullscreen-line.svg">
-      <img class="icon on" src="./SVG/fullscreen-exit-line.svg">
+      <img class="icon off" src="static/SVG/fullscreen-line.svg">
+      <img class="icon on" src="static/SVG/fullscreen-exit-line.svg">
     </a>
   </div>
 
+  <div class="tour_movement-cta">
+    <img src="static/SVG/swipe-black-48dp.svg" alt="touchscreen-directions">
+  </div>
 
-  <script src="./lazysizes.min.js"></script>
-  <script src="vendor/screenfull.min.js"></script>
-  <script src="vendor/bowser.min.js"></script>
-  <script src="vendor/marzipano.js"></script>
+  <div role="tooltip" id="tooltip">
+    <span>Ok, you can always click this button<br/>here if you need some help!</span>
+    <div id="arrow" data-popper-arrow></div>
+  </div>
 
-  <!-- <script src="./dist/index.bundle.js"></script> -->
-  <script src="./data.js"></script>
-  <script src="./index.js"></script>
+  <div class="help-menu">
+    <svg aria-describedby="tooltip" id="target" xmlns="http://www.w3.org/2000/svg" width="40" height="40"
+      viewBox="0 0 24 24">
+      <path
+        d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 22c-5.514 0-10-4.486-10-10s4.486-10 10-10 10 4.486 10 10-4.486 10-10 10zm0-18.8c-4.853 0-8.8 3.947-8.8 8.8s3.947 8.8 8.8 8.8 8.8-3.947 8.8-8.8-3.947-8.8-8.8-8.8zm0 15.05c-.689 0-1.25-.56-1.25-1.25s.561-1.25 1.25-1.25c.691 0 1.25.56 1.25 1.25s-.559 1.25-1.25 1.25zm1.961-5.928c-.904.975-.947 1.514-.935 2.178h-2.005c-.007-1.475.02-2.125 1.432-3.468.572-.544 1.024-.975.962-1.821-.058-.805-.73-1.226-1.364-1.226-.709 0-1.538.527-1.538 2.013h-2.011c0-2.4 1.41-3.95 3.59-3.95 1.036 0 1.942.339 2.551.955.57.578.865 1.372.854 2.298-.018 1.383-.859 2.291-1.536 3.021z" />
+    </svg>
+  </div>
+
+  <!-- <script src="https://unpkg.com/@popperjs/core@2"></script>
+  <script src="https://cdn.jsdelivr.net/npm/shepherd.js@5.0.1/dist/js/shepherd.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bowser@2.11.0/es5.min.js"></script> -->
+  <!-- <script src="./lazysizes.min.js"></script> -->
+  <!-- <script src="vendor/screenfull.min.js"></script> -->
+
+  <!-- <script src="vendor/bowser.min.js"></script> -->
+  <!-- <script src="vendor/marzipano.js"></script> -->
+  <script src="tour.js"></script>
+  <script src="data.js"></script>
+  <script src="index.js"></script>
 
   <script>
     const iframes = document.querySelectorAll('iframe');

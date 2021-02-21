@@ -1,21 +1,49 @@
 @font-face {
   font-family: "Antonio";
-  src: url("./assets/antonio-desktop/Antonio-Light.ttf") format("truetype");
+  src: url("static/assets/antonio-desktop/Antonio-Light.ttf") format("truetype");
   font-weight: lighter;
   font-style: normal;
 }
 @font-face {
   font-family: "Museo Sans";
-  src: url("./assets/museo-sans-webfont/Museo-Sans-Family/MuseoSans-100.otf") format("opentype");
+  src: url("static/assets/museo-sans-webfont/Museo-Sans-Family/MuseoSans-100.otf") format("opentype");
   font-weight: 100;
   font-style: normal;
 }
 @font-face {
   font-family: "Museo Sans";
-  src: url("./assets/museo-sans-webfont/Museo-Sans-Family/MuseoSans-500.otf") format("opentype");
+  src: url("static/assets/museo-sans-webfont/Museo-Sans-Family/MuseoSans-500.otf") format("opentype");
   font-weight: 500;
   font-style: normal;
 }
+
+/* * {
+  background-color: rgba(255, 0, 0, 0.2);
+}
+* * {
+  background-color: rgba(0, 255, 0, 0.2);
+}
+* * * {
+  background-color: rgba(0, 0, 255, 0.2);
+}
+* * * * {
+  background-color: rgba(255, 0, 255, 0.2);
+}
+* * * * * {
+  background-color: rgba(0, 255, 255, 0.2);
+}
+* * * * * * {
+  background-color: rgba(255, 255, 0, 0.2);
+}
+* * * * * * * {
+  background-color: rgba(255, 0, 0, 0.2);
+}
+* * * * * * * * {
+  background-color: rgba(0, 255, 0, 0.2);
+}
+* * * * * * * * * {
+  background-color: rgba(0, 0, 255, 0.2);
+} */
 
 :root {
   --primary-blue: rgb(42, 127, 140);
@@ -55,6 +83,7 @@
   -webkit-touch-callout: none;
   -ms-content-zooming: none;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  opacity: 0.99;
 }
 
 html,
@@ -83,7 +112,191 @@ body {
   justify-content: center;
   flex-direction: column;
   opacity: 1;
+  /* visibility: hidden; */
   transition: opacity 0.5s linear;
+}
+
+.tour_movement-cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 2s linear;
+}
+
+.tour_movement-cta img {
+  width: 100px;
+  filter: invert(1);
+}
+
+#tooltip {
+  opacity: 0;
+  color: #292829;
+  padding: 10px;
+  border-radius: 4px;
+  font-size: 13px;
+  transition: opacity 0.3s linear;
+  background: #fff;
+}
+
+#tooltip[data-show] {
+  opacity: 1;
+}
+
+#arrow,
+#arrow::before {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: inherit;
+}
+
+#arrow {
+  visibility: hidden;
+}
+
+#arrow::before {
+  visibility: visible;
+  content: "";
+  transform: rotate(45deg);
+}
+#tooltip[data-popper-placement^="top"] > #arrow {
+  bottom: -4px;
+}
+
+#tooltip[data-popper-placement^="bottom"] > #arrow {
+  top: -4px;
+}
+
+#tooltip[data-popper-placement^="left"] > #arrow {
+  right: -4px;
+}
+
+#tooltip[data-popper-placement^="right"] > #arrow {
+  left: -4px;
+}
+
+.shepherd-button {
+  color: #292829!important;
+  background: transparent!important;
+  border: 1px solid var(--secondary-blk)!important;
+}
+.shepherd-button:hover {
+  background: var(--accent-gray)!important;
+}
+
+#intro {
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  margin: auto;
+}
+
+#intro .intro-content {
+  border-radius: 0.5rem;
+  color: #292829;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 450px;
+  height: auto;
+  margin: auto;
+  font-size: 1rem;
+}
+
+#intro .intro-header {
+  border-radius: 0.5rem 0.5rem 0 0;
+  width: 100%;
+  height: 100%;
+  max-height: 40px;
+  padding: 10px 5px;
+  background: var(--secondary-blk);
+  border-bottom: 1px solid var(--secondary-blk);
+  align-self: flex-start;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+#intro .intro-header .info-hotspot-close-wrapper {
+  position: relative;
+}
+
+#intro-heading {
+  display: flex;
+  text-align: center;
+  margin: 1rem 2rem;
+}
+
+#intro-heading .intro-h1 {
+  font-size: 1.45rem;
+  line-height: 1.5rem;
+  margin: 0 1rem;
+  font-weight: 500;
+  max-width: 22ch;
+  justify-self: flex-start;
+}
+
+#intro-body {
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+  height: 100%;
+  justify-content: center;
+  padding: 0.5rem 0 2rem 0;
+  line-height: 1.15rem;
+  max-width: 26ch;
+}
+
+#intro-buttons {
+  display: flex;
+  width: 100%;
+  height: auto;
+}
+
+#intro-buttons .tour-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top: 2px solid var(--secondary-blk);
+  margin: 0;
+  padding: 0;
+  width: auto;
+  overflow: visible;
+  width: 100%;
+
+  color: inherit;
+  font: inherit;
+
+  line-height: normal;
+
+  -webkit-font-smoothing: inherit;
+  -moz-osx-font-smoothing: inherit;
+
+  /* Corrects inability to style clickable `input` types in iOS */
+  -webkit-appearance: none;
+  flex: 1;
+  height: 50px;
+  transition: 0.1s background-color linear;
+  font-size: 1rem;
+}
+
+.tour-btn:hover {
+  cursor: pointer;
+  background-color: var(--accent-lightgray);
+}
+
+#intro-buttons .cancel {
+  border-right: 2px solid var(--secondary-blk);
+  border-bottom-left-radius: 0.5rem;
+}
+
+#intro-buttons .confirm {
+  /* border-left: 1px solid var(--secondary-blk); */
+  border-bottom-right-radius: 0.5rem;
 }
 
 .loader-inner {
@@ -124,6 +337,28 @@ body {
   100% {
     text-shadow: 0.25em 0 0 white, 0.5em 0 0 white;
   }
+}
+
+.help-menu {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  display: flex;
+  padding: 1rem;
+  justify-content: flex-end;
+  opacity: 0;
+  transition: opacity 0.4s ease-in;
+}
+
+.help-menu svg {
+  opacity: 0.75;
+  transition: opacity 0.1s ease-in-out;
+}
+
+.help-menu svg:hover {
+  cursor: pointer;
+  opacity: 1;
 }
 
 a,
@@ -220,8 +455,7 @@ body.fullscreen-enabled #fullscreenToggle {
 /* Link hotspot */
 
 .link-hotspot {
-  width: 40px;
-  height: 40px;
+  display: flex;
   margin-left: -30px;
   margin-top: -30px;
   opacity: 0.9;
@@ -234,16 +468,18 @@ body.fullscreen-enabled #fullscreenToggle {
 
 .link-hotspot-icon {
   border: 2px solid var(--accent-blue);
-  width: 80%;
-  height: 80%;
+  width: 50px;
+  height: 50px;
+
   border-radius: 50%;
   cursor: pointer;
 }
 
 .link-hotspot-tooltip {
   position: absolute;
-  right: -25px;
-  top: 90%; /* ( 60 - (16 + 2*8) ) / 2 */
+  align-self: center;
+  left: -50%;
+  top: 110%; /* ( 60 - (16 + 2*8) ) / 2 */
 
   /* margin-left: 3px; */
 

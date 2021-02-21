@@ -1,4 +1,4 @@
-var APP_DATA = {
+export var APP_DATA = {
 	scenes: [
 		{
 			id: '0-countertop',
@@ -34,6 +34,7 @@ var APP_DATA = {
 					pitch: 0.014033423948905721,
 					rotation: 8.63937979737193,
 					target: '1-range',
+					class: 'second-tour-starter',
 				},
 				{
 					yaw: -2.632127247947512,
@@ -53,6 +54,7 @@ var APP_DATA = {
 					yaw: -1.1812190708391341,
 					pitch: 0.013927065660876536,
 					title: 'MANUAL FOOD PROCESSOR',
+					class: 'intro-starter',
 					videos: [
 						'<iframe width="840" x src="https://www.youtube.com/embed/XdYZOHuvdhU" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>',
 					],

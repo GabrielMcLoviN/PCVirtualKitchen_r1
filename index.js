@@ -1,12 +1,27 @@
-const Marzipano = window.Marzipano;
-const bowser = window.bowser;
-const screenfull = window.screenfull;
-const data = window.APP_DATA;
+// import { Bowser as bowser } from 'bowser';
+import Marzipano from 'marzipano';
+import screenfull from 'screenfull';
+import { APP_DATA as data } from './data.js';
+import { createPopper } from '@popperjs/core';
+import Shepherd from 'shepherd.js';
+
+import {
+	tour_infoHotspots,
+	tour_linkHotspots,
+	tour_modal,
+	tour_movement,
+	tour_final,
+} from './tour.js';
+
+// var Marzipano = window.Marzipano;
+// var screenfull = window.screenfull;
+// var data = window.APP_DATA;
+
+// var bowser = window.bowser;
 
 // Grab elements from DOM.
 const panoElement = document.querySelector('#pano');
 const sceneNameElement = document.querySelector('#titleBar .sceneName');
-const sceneListElement = document.querySelector('#sceneList');
 const sceneElements = document.querySelectorAll('#sceneList .scene');
 const sceneListToggleElement = document.querySelector('#sceneListToggle');
 const fullscreenToggleElement = document.querySelector('#fullscreenToggle');
@@ -38,9 +53,9 @@ window.addEventListener('touchstart', function (e) {
 });
 
 // Use tooltip fallback mode on IE < 11.
-if (bowser.msie && parseFloat(bowser.version) < 11) {
-	document.body.classList.add('tooltip-fallback');
-}
+// if (bowser.msie && parseFloat(bowser.version) < 11) {
+// 	document.body.classList.add('tooltip-fallback');
+// }
 
 // Viewer options.
 const viewerOpts = {
@@ -51,25 +66,25 @@ const viewerOpts = {
 };
 
 // Initialize viewer.
-const viewer = new Marzipano.Viewer(panoElement, viewerOpts);
+var viewer = new Marzipano.Viewer(panoElement, viewerOpts);
 
 // Create scenes.
-const scenes = data.scenes.map(function (data) {
-	const urlPrefix = 'tiles';
-	const source = Marzipano.ImageUrlSource.fromString(
+var scenes = data.scenes.map(function (data) {
+	var urlPrefix = 'tiles';
+	var source = Marzipano.ImageUrlSource.fromString(
 		urlPrefix + '/' + data.id + '/{z}/{f}/{y}/{x}.jpg',
 		{ cubeMapPreviewUrl: urlPrefix + '/' + data.id + '/preview.jpg' }
 	);
-	const geometry = new Marzipano.CubeGeometry(data.levels);
+	var geometry = new Marzipano.CubeGeometry(data.levels);
 
-	const limiter = Marzipano.RectilinearView.limit.traditional(
+	var limiter = Marzipano.RectilinearView.limit.traditional(
 		data.faceSize,
 		(100 * Math.PI) / 180,
 		(120 * Math.PI) / 180
 	);
-	const view = new Marzipano.RectilinearView(data.initialViewParameters, limiter);
+	var view = new Marzipano.RectilinearView(data.initialViewParameters, limiter);
 
-	const scene = viewer.createScene({
+	var scene = viewer.createScene({
 		source: source,
 		geometry: geometry,
 		view: view,
@@ -101,8 +116,129 @@ const scenes = data.scenes.map(function (data) {
 	};
 });
 
+const exit_tour = document.querySelector('.cancel');
+const start_tour = document.querySelector('.confirm');
+const exit_tour_x = document.querySelector('.intro-header .info-hotspot-close-wrapper');
+const intro_scene = scenes[0].scene;
+const infohotspot = document.querySelector('.info-hotspot-header.intro-starter');
+const introModal = document.querySelector('.info-hotspot-modal.intro-starter');
+const introLH = document.querySelector('.link-hotspot.second-tour-starter');
+const introHandIconOverlay = document.querySelector('.tour_movement-cta');
+
+tour_modal.on('complete', function () {
+	introModal.classList.remove('visible');
+	intro_scene.lookTo(
+		destinationViewParameters_linkHotspot,
+		options_linkHotspot,
+		infoHotspotsTour_done
+	);
+	introModal.classList.remove('intro-starter');
+	infohotspot.classList.remove('intro-starter');
+	document
+		.querySelector('.info-hotspot-modal .info-hotspot-header.intro-starter')
+		.classList.remove('intro-starter');
+});
+
+tour_final.on('complete', function () {
+	document.body.classList.remove('tour-accepted');
+});
+
+infohotspot.addEventListener('click', function () {
+	document.body.classList.contains('tour-accepted') ? tour_infoHotspots.next() : '';
+});
+
+tour_infoHotspots.on('complete', function () {
+	document.body.classList.contains('tour-accepted') ? tour_modal.start() : '';
+});
+
+introLH.addEventListener('click', function () {
+	introLH.classList.remove('second-tour-starter');
+	tour_linkHotspots.next();
+	tour_movement.start();
+	introHandIconOverlay.style.opacity = 1;
+});
+
+tour_movement.on('complete', function () {
+	introHandIconOverlay.style.opacity = 0;
+	introHandIconOverlay.style.display = 'none';
+	tour_final.start();
+	setTimeout(() => {
+		tour_final.complete();
+	}, 5000);
+});
+
+let destinationViewParameters = {
+	yaw: -1.1812190708391341,
+	pitch: 0.013927065660876536,
+	fov: (60 * Math.PI) / 180,
+};
+let options = {
+	transitionDuration: 2000,
+};
+
+start_tour.addEventListener('click', function () {
+	intro.classList.remove('visible');
+	intro_scene.lookTo(destinationViewParameters, options, done);
+	document.body.classList.add('tour-accepted');
+});
+
+function done() {
+	tour_infoHotspots.start();
+}
+
+[exit_tour, exit_tour_x].forEach((el) => {
+	el.addEventListener('click', function () {
+		intro.classList.remove('visible');
+		infohotspot.classList.remove('intro-starter');
+		introModal.classList.remove('intro-starter');
+		introLH.classList.remove('intro-starter');
+		show();
+		setTimeout(function () {
+			hide();
+		}, 10000);
+	});
+});
+
+function infoHotspotsTour_done() {
+	tour_linkHotspots.start();
+}
+
+var destinationViewParameters_linkHotspot = {
+	yaw: -1.5387431328173449,
+	pitch: 0.014033423948905721,
+	fov: (40 * Math.PI) / 180,
+};
+
+var options_linkHotspot = {
+	transitionDuration: 2000,
+};
+
+const help = document.querySelector('#target');
+const tooltip = document.querySelector('#tooltip');
+
+const helpPopper = createPopper(help, tooltip, {
+	placement: 'top-start',
+	modifiers: [
+		{
+			name: 'offset',
+			options: {
+				offset: [0, 8],
+			},
+		},
+	],
+});
+
+function show() {
+	tooltip.setAttribute('data-show', '');
+	helpPopper.update();
+}
+
+function hide() {
+	tooltip.removeAttribute('data-show');
+}
+
 // Set up fullscreen mode, if supported.
-if (screenfull.enabled && data.settings.fullscreenButton) {
+if (data.settings.fullscreenButton) {
 	document.body.classList.add('fullscreen-enabled');
 	fullscreenToggleElement.addEventListener('click', function () {
 		screenfull.toggle();
@@ -159,6 +295,7 @@ function createLinkHotspotElement(hotspot) {
 	const wrapper = document.createElement('div');
 	wrapper.classList.add('hotspot');
 	wrapper.classList.add('link-hotspot');
+	hotspot.class ? wrapper.classList.add(hotspot.class) : '';
 
 	// Create image element.
 	const icon = document.createElement('img');
@@ -198,6 +335,7 @@ function createInfoHotspotElement(hotspot) {
 	// Create hotspot/tooltip header.
 	const header = document.createElement('div');
 	header.classList.add('info-hotspot-header');
+	hotspot.class ? header.classList.add(hotspot.class) : '';
 
 	// Create image element.
 	const iconWrapper = document.createElement('div');
@@ -416,6 +554,7 @@ function createInfoHotspotElement(hotspot) {
 	const modal = document.createElement('div');
 	modal.innerHTML = wrapper.innerHTML;
 	modal.classList.add('info-hotspot-modal');
+	hotspot.class ? modal.classList.add(hotspot.class) : '';
 
 	document.body.appendChild(modal);
 
@@ -495,6 +634,15 @@ function createInfoHotspotElement(hotspot) {
 
 	carouselImgs.addEventListener('touchend', (e) => {
 		touchendX = e.changedTouches[0].pageX;
+		handleGesture();
+	});
+
+	carouselImgs.addEventListener('mousedown', (e) => {
+		touchstartX = e.pageX;
+	});
+
+	carouselImgs.addEventListener('mouseup', (e) => {
+		touchendX = e.pageX;
 		handleGesture();
 	});
 
@@ -585,12 +733,21 @@ function findSceneDataById(id) {
 switchScene(scenes[0]);
 
 const preloader = document.querySelector('.preloader');
-const titleBar = document.querySelector('#titleBar');
+const titleBar = document.getElementById('titleBar');
+const intro = document.getElementById('intro');
+const help_menu = document.querySelector('.help-menu');
+
+const introClose = document.getElementById('intro-close');
+introClose.addEventListener('click', function () {
+	intro.classList.remove('visible');
+});
 
 window.addEventListener('DOMContentLoaded', function () {
 	setTimeout(function () {
+		help_menu.style.opacity = 1;
 		panoElement.style.opacity = 1;
 		titleBar.style.opacity = 1;
+		intro.style.opacity = 1;
 		preloader.style.display = 'none';
 	}, 4000);
 });
