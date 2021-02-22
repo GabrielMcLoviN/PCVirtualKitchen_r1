@@ -1,9 +1,9 @@
 // import { Bowser as bowser } from 'bowser';
+
 import Marzipano from 'marzipano';
 import screenfull from 'screenfull';
 import { APP_DATA as data } from './data.js';
 import { createPopper } from '@popperjs/core';
-import Shepherd from 'shepherd.js';
 
 import {
 	tour_infoHotspots,
@@ -733,7 +733,9 @@ switchScene(scenes[0]);
 const preloader = document.querySelector('.preloader');
 const titleBar = document.getElementById('titleBar');
 const intro = document.getElementById('intro');
-const help_menu = document.querySelector('.help-menu');
+const help_menu = document.getElementById('help-menu')
+const help_menu_btn = document.querySelector('.help-menu-btn');
+const help_menu_opener = document.querySelector('.help-menu-btn svg')
 
 const introClose = document.getElementById('intro-close');
 introClose.addEventListener('click', function () {
@@ -743,9 +745,14 @@ introClose.addEventListener('click', function () {
 window.addEventListener('DOMContentLoaded', function () {
 	setTimeout(function () {
 		help_menu.style.opacity = 1;
+		help_menu_btn.style.opacity = 1;
 		panoElement.style.opacity = 1;
 		titleBar.style.opacity = 1;
 		intro.style.opacity = 1;
 		preloader.style.display = 'none';
 	}, 4000);
 });
+
+help_menu_opener.addEventListener('click', function () {
+	help_menu.classList.add('visible');
+})

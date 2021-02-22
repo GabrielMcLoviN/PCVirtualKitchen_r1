@@ -280,7 +280,7 @@ export const tour_final = new Shepherd.Tour({
 tour_final.addStep({
 	text: `If you ever need help, you can click this icon here for help with navigating the kitchen.<br/><br/>Have a good time at your Pampered Chef (virtual) party! 🥳✨🥂`,
 	attachTo: {
-		element: '.help-menu svg',
+		element: '.help-menu-btn svg',
 		on: 'auto',
 	},
 	when: {
