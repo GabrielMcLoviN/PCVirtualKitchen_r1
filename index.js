@@ -1,5 +1,4 @@
-// import { Bowser as bowser } from 'bowser';
-
+import Bowser from 'bowser';
 import Marzipano from 'marzipano';
 import screenfull from 'screenfull';
 import { APP_DATA as data } from './data.js';
@@ -57,11 +56,10 @@ window.addEventListener('touchstart', function (e) {
 // 	document.body.classList.add('tooltip-fallback');
 // }
 
-// Viewer options.
 const viewerOpts = {
 	controls: {
 		mouseViewMode: data.settings.mouseViewMode,
-		scrollZoom: true,
+		scrollZoom: false,
 	},
 };
 
@@ -105,7 +103,7 @@ var scenes = data.scenes.map(function (data) {
 			.createHotspot(
 				element,
 				{ yaw: hotspot.yaw, pitch: hotspot.pitch },
-				{ perspective: { radius: 500 } }
+				{ perspective: { radius: 320 } }
 			);
 	});
 
@@ -118,31 +116,45 @@ var scenes = data.scenes.map(function (data) {
 
 const exit_tour = document.querySelector('.cancel');
 const start_tour = document.querySelector('.confirm');
-const exit_tour_x = document.querySelector('.intro-header .info-hotspot-close-wrapper');
+const exit_tour_x = document.querySelector('.intro-header .intro-close');
 const intro_scene = scenes[0].scene;
 const infohotspot = document.querySelector('.info-hotspot-header.intro-starter');
 const introModal = document.querySelector('.info-hotspot-modal.intro-starter');
 const introLH = document.querySelector('.link-hotspot.second-tour-starter');
 const introHandIconOverlay = document.querySelector('.tour_movement-cta');
 
-tour_modal.on('complete', function () {
-	introModal.classList.remove('visible');
-	intro_scene.lookTo(
-		destinationViewParameters_linkHotspot,
-		options_linkHotspot,
-		infoHotspotsTour_done
-	);
-	introModal.classList.remove('intro-starter');
-	infohotspot.classList.remove('intro-starter');
-	document
-		.querySelector('.info-hotspot-modal .info-hotspot-header.intro-starter')
-		.classList.remove('intro-starter');
+let h = window.innerHeight;
+
+let destinationViewParameters = {
+	yaw: -1.1812190708391341,
+	pitch: 0.013927065660876536,
+	fov: (60 * Math.PI) / 180,
+};
+
+let options = {
+	transitionDuration: 2000,
+};
+
+let iframeViewParameters = {
+	yaw: -1.1812190708391341,
+	pitch: -0.053927065660876536,
+	fov: (60 * Math.PI) / 180,
+};
+
+start_tour.addEventListener('click', function () {
+	viewer.controls().disable();
+	intro.classList.remove('visible');
+	if (h > 389) {
+		intro_scene.lookTo(destinationViewParameters, options, done);
+	} else if (h === 389) {
+		intro_scene.lookTo(iframeViewParameters, options, done);
+	}
+	document.body.classList.add('tour-accepted');
 });
 
-tour_final.on('complete', function () {
-	document.body.classList.remove('tour-accepted');
-});
-
+function done() {
+	tour_infoHotspots.start();
+}
 infohotspot.addEventListener('click', function () {
 	document.body.classList.contains('tour-accepted') ? tour_infoHotspots.next() : '';
 });
@@ -151,38 +163,64 @@ tour_infoHotspots.on('complete', function () {
 	document.body.classList.contains('tour-accepted') ? tour_modal.start() : '';
 });
 
+var destinationViewParameters_linkHotspot = {
+	yaw: -1.5387431328173449,
+	pitch: 0.014033423948905721,
+	fov: (40 * Math.PI) / 180,
+};
+
+var iframeViewParameters_linkHotspot = {
+	yaw: -1.5387431328173449,
+	pitch: 0.094033423948905721,
+	fov: (40 * Math.PI) / 180,
+};
+
+var options_linkHotspot = {
+	transitionDuration: 2000,
+};
+
+tour_modal.on('complete', function () {
+	introModal.classList.remove('visible');
+	if (h > 389) {
+		intro_scene.lookTo(
+			destinationViewParameters_linkHotspot,
+			options_linkHotspot,
+			infoHotspotsTour_done
+		);
+	} else if (h === 389) {
+		intro_scene.lookTo(
+			iframeViewParameters_linkHotspot,
+			options_linkHotspot,
+			infoHotspotsTour_done
+		);
+	}
+	introModal.classList.remove('intro-starter');
+	infohotspot.classList.remove('intro-starter');
+	document
+		.querySelector('.info-hotspot-modal .info-hotspot-header.intro-starter')
+		.classList.remove('intro-starter');
+});
+
+function infoHotspotsTour_done() {
+	tour_linkHotspots.start();
+}
+
 introLH.addEventListener('click', function () {
-	introLH.classList.remove('second-tour-starter');
-	tour_linkHotspots.next();
-	tour_movement.start();
-	introHandIconOverlay.style.opacity = 1;
+	if (document.body.classList.contains('tour-accepted')) {
+		tour_linkHotspots.next();
+		tour_movement.start();
+	}
 });
 
 tour_movement.on('complete', function () {
-	introHandIconOverlay.style.opacity = 0;
-	introHandIconOverlay.style.display = 'none';
 	switchScene(scenes[0]);
 	tour_final.start();
 });
 
-let destinationViewParameters = {
-	yaw: -1.1812190708391341,
-	pitch: 0.013927065660876536,
-	fov: (60 * Math.PI) / 180,
-};
-let options = {
-	transitionDuration: 2000,
-};
-
-start_tour.addEventListener('click', function () {
-	intro.classList.remove('visible');
-	intro_scene.lookTo(destinationViewParameters, options, done);
-	document.body.classList.add('tour-accepted');
+tour_final.on('complete', function () {
+	document.body.classList.remove('tour-accepted');
+	viewer.controls().enable();
 });
-
-function done() {
-	tour_infoHotspots.start();
-}
 
 [exit_tour, exit_tour_x].forEach((el) => {
 	el.addEventListener('click', function () {
@@ -191,25 +229,12 @@ function done() {
 		introModal.classList.remove('intro-starter');
 		introLH.classList.remove('intro-starter');
 		show();
+		viewer.controls().enable();
 		setTimeout(function () {
 			hide();
-		}, 10000);
+		}, 5000);
 	});
 });
-
-function infoHotspotsTour_done() {
-	tour_linkHotspots.start();
-}
-
-var destinationViewParameters_linkHotspot = {
-	yaw: -1.5387431328173449,
-	pitch: 0.014033423948905721,
-	fov: (40 * Math.PI) / 180,
-};
-
-var options_linkHotspot = {
-	transitionDuration: 2000,
-};
 
 const help = document.querySelector('#target');
 const tooltip = document.querySelector('#tooltip');
@@ -574,11 +599,16 @@ function createInfoHotspotElement(hotspot) {
 		pause_video();
 	};
 
+	tour_modal.on('complete', function () {
+		reset_modal();
+	});
+
 	const toggle = function () {
 		modal.classList.toggle('visible');
 	};
 
 	wrapper.querySelector('.info-hotspot-header').addEventListener('click', toggle);
+
 	modal.querySelector('.info-hotspot-close-wrapper').addEventListener('click', toggle);
 
 	modal.addEventListener('mouseover', function (e) {
@@ -733,13 +763,24 @@ switchScene(scenes[0]);
 const preloader = document.querySelector('.preloader');
 const titleBar = document.getElementById('titleBar');
 const intro = document.getElementById('intro');
-const help_menu = document.getElementById('help-menu')
+const help_menu = document.getElementById('help-menu');
 const help_menu_btn = document.querySelector('.help-menu-btn');
-const help_menu_opener = document.querySelector('.help-menu-btn svg')
+const help_menu_opener = document.querySelector('.help-menu-btn svg');
+const help_menu_close = document.querySelector('.help-header #intro-close');
 
 const introClose = document.getElementById('intro-close');
 introClose.addEventListener('click', function () {
 	intro.classList.remove('visible');
+});
+
+const mobile_cta_btn = document.querySelector('.fullscreen-btn');
+const mobile_cta = document.querySelector('.mobile-cta');
+
+mobile_cta_btn.addEventListener('click', function () {
+	screenfull.toggle();
+	mobile_cta.classList.remove('visible');
+	mobile_cta.style.display = 'none';
+	intro.classList.add('visible');
 });
 
 window.addEventListener('DOMContentLoaded', function () {
@@ -750,9 +791,18 @@ window.addEventListener('DOMContentLoaded', function () {
 		titleBar.style.opacity = 1;
 		intro.style.opacity = 1;
 		preloader.style.display = 'none';
+		if (Bowser.parse(window.navigator.userAgent).platform.type === 'mobile' && h === 389) {
+			mobile_cta.classList.add('visible');
+		} else {
+			intro.classList.add('visible');
+		}
 	}, 4000);
 });
 
 help_menu_opener.addEventListener('click', function () {
 	help_menu.classList.add('visible');
-})
+});
+
+help_menu_close.addEventListener('click', function () {
+	help_menu.classList.remove('visible');
+});

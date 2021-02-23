@@ -151,11 +151,11 @@
 
   <div id="pano"></div>
 
-  <div class="info-hotspot-modal intro visible" id="intro">
+  <div class="info-hotspot-modal intro" id="intro">
     <div class="intro-content">
       <div class="intro-header">
-        <div class="info-hotspot-close-wrapper"><img src="static/SVG/close-line.svg" class="info-hotspot-close-icon"
-            id="intro-close"></div>
+        <div class="intro-close"><img src="static/SVG/close-line.svg" class="info-hotspot-close-icon" id="intro-close">
+        </div>
       </div>
       <div id="intro-heading">
         <h1 class="intro-h1">Welcome to your Pampered Chef Virtual Party!</h1>
@@ -180,8 +180,16 @@
     </a>
   </div>
 
-  <div class="tour_movement-cta">
-    <img src="static/SVG/swipe-black-48dp.svg" alt="touchscreen-directions">
+  <div class="mobile-cta info-hotspot-modal">
+    <div class="mobile-fullscreen-cta">
+      <img src="./static/SVG/cook.svg" alt="chef-icon" class="chef-icon">
+      <h1 class="cta-text">
+        Hi! We noticed you're currently viewing this on your mobile device.
+        <br /><br />
+        In order to give you the best viewing experience, please enable fullscreen mode by clicking the button below.
+      </h1>
+      <button class="fullscreen-btn">Enable Fullscreen</button>
+    </div>
   </div>
 
   <div role="tooltip" id="tooltip">
@@ -190,7 +198,7 @@
   </div>
 
   <div class="help-menu-btn">
-    <svg aria-describedby="tooltip" id="target" xmlns="http://www.w3.org/2000/svg" width="40" height="40"
+    <svg aria-describedby="tooltip" id="target" xmlns="http://www.w3.org/2000/svg" width="30" height="30"
       viewBox="0 0 24 24">
       <path
         d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 22c-5.514 0-10-4.486-10-10s4.486-10 10-10 10 4.486 10 10-4.486 10-10 10zm0-18.8c-4.853 0-8.8 3.947-8.8 8.8s3.947 8.8 8.8 8.8 8.8-3.947 8.8-8.8-3.947-8.8-8.8-8.8zm0 15.05c-.689 0-1.25-.56-1.25-1.25s.561-1.25 1.25-1.25c.691 0 1.25.56 1.25 1.25s-.559 1.25-1.25 1.25zm1.961-5.928c-.904.975-.947 1.514-.935 2.178h-2.005c-.007-1.475.02-2.125 1.432-3.468.572-.544 1.024-.975.962-1.821-.058-.805-.73-1.226-1.364-1.226-.709 0-1.538.527-1.538 2.013h-2.011c0-2.4 1.41-3.95 3.59-3.95 1.036 0 1.942.339 2.551.955.57.578.865 1.372.854 2.298-.018 1.383-.859 2.291-1.536 3.021z" />
@@ -200,7 +208,7 @@
   <div class="info-hotspot-modal" id="help-menu">
     <div class="help-content">
       <div class="help-header">
-        <div class="info-hotspot-close-wrapper">
+        <div class="help-menu-close">
           <img src="static/SVG/close-line.svg" class="info-hotspot-close-icon" id="intro-close">
         </div>
       </div>
@@ -215,16 +223,18 @@
             <img src="/static/SVG/swipe-black-48dp.svg" alt="hand-icon" width="25px" height="25px">
             <span>Move around the kitchen by touching anywhere on the screen and dragging your finger across it.</span>
           </div>
-          <span class="help-break help-device">Mouse & keyboard:</span>
           <div class="help-list-section">
+            <span class="help-break help-device">Mouse & keyboard:</span>
             <img src="/static/SVG/iconmonstr-cursor-9.svg" alt="hand-icon" width="25px" height="25px">
             <span>Move around the kitchen by clicking your mouse cursor, holding it down as you drag across the
               screen.</span>
           </div>
         </div class="help-list-section">
+        <div class="help-list-heading">
+          <h4>Navigation</h4>
+        </div>
         <div class="help-list icon-spec">
-          <div>
-            <span class="help-break help-hotspots">Navigation</span>
+          <div class="help-list-section">
             <img src="/static/SVG/arrow-up-circle-fill.svg" alt="arrow-icon" width="25px" height="25px"
               style="translate: rotate(8.63937979737193rad)">
             <span>Arrows will take you to a different part of the kitchen.</span>
@@ -232,13 +242,14 @@
           <div class="help-list-section">
             <img src="/static/assets/PC+Seal-Solid_whiteCircle-reverseLogo.png" alt="pampered-chef-icon" width="25px"
               height="25px">
-            <span>The Pampered Chef icons each correspond to the product closest to it. Clicking on the icon will open
-              the product information panel for that product.</span>
+            <span>Pampered Chef icons will take you to the info panel of the product closest to it.</span>
           </div>
+        </div>
+        <div class="help-list-heading">
+          <h4>General Controls</h4>
         </div>
         <div class="help-list misc-spec">
           <div class="help-list-section">
-            <span class="help-break help-misc">Controls</span>
             <img src="static/SVG/fullscreen-line.svg" width="25px" height="25px">
             <span>View in fullscreen mode.</span>
           </div>
@@ -246,10 +257,6 @@
             <img src="static/SVG/fullscreen-exit-line.svg" width="25px" height="25px">
             <span>Exit fullscreen mode.</span>
           </div class="help-list-section">
-          <div class="help-list-section">
-            <img src="static/SVG/fullscreen-exit-line.svg" width="25px" height="25px">
-            <span>Exit fullscreen mode.</span>
-          </div>
           <div class="help-list-section">
             <img src="static/SVG/close-line.svg" width="25px" height="25px">
             <span>Close window.</span>
