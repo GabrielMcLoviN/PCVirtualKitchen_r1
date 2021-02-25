@@ -106,8 +106,14 @@ body {
 
 .mobile-fullscreen-cta button {
   padding: 0.5rem 1rem;
-  border: 1px solid black;
-  background: var(--secondary-white);
+  color: var(--secondary-white);
+  border: 1px solid var(--secondary-white);
+  background: transparent;
+}
+
+.mobile-fullscreen-cta button:hover {
+  cursor: pointer;
+  background: var(--secondary-blk-opaque);
 }
 
 .preloader {
@@ -145,7 +151,7 @@ body {
   color: #292829;
   padding: 10px;
   border-radius: 4px;
-  font-size: 13px;
+  font-size: 14px;
   transition: opacity 0.3s linear;
   background: #fff;
 }
@@ -250,7 +256,7 @@ body {
 }
 
 #intro .intro-content {
-  width: 600px;
+  max-width: 600px;
   max-width: 100%;
 }
 
@@ -372,8 +378,9 @@ body {
 
 #intro-heading .intro-h1 {
   margin: 0 1rem;
+  font-size: 1rem;
+  line-height: 1rem;
   font-weight: 500;
-  line-height: 1.25rem;
   max-width: 22ch;
   justify-self: flex-start;
 }
@@ -420,7 +427,7 @@ body {
 
 .tour-btn:hover {
   cursor: pointer;
-  background-color: var(--accent-lightgray);
+  background-color: var(--secondary-blk);
 }
 
 #intro-buttons .cancel {
@@ -595,8 +602,8 @@ body.fullscreen-enabled #fullscreenToggle {
 
 .link-hotspot {
   display: flex;
-  width: 100%;
-  height: 100%;
+  width: 40px;
+  height: 40px;
   margin-left: -30px;
   margin-top: -30px;
   opacity: 0.9;
@@ -609,8 +616,8 @@ body.fullscreen-enabled #fullscreenToggle {
 
 .link-hotspot-icon {
   border: 2px solid var(--accent-blue);
-  width: 50px;
-  height: 50px;
+  width: 100%;
+  height: 100%;
   padding: 1px;
   border-radius: 50%;
   cursor: pointer;
@@ -618,11 +625,9 @@ body.fullscreen-enabled #fullscreenToggle {
 
 .link-hotspot-tooltip {
   position: absolute;
-  align-self: center;
-  left: -50%;
-  top: 110%; /* ( 60 - (16 + 2*8) ) / 2 */
+  left: -87.5%;
+  top: 110%;
 
-  /* margin-left: 3px; */
 
   font-size: 12px;
 
@@ -771,12 +776,8 @@ body.fullscreen-enabled #fullscreenToggle {
 
 /* media queries */
 @media (min-width: 1440px) {
-  .link-hotspot-icon {
-    width: 60px;
-    height: 60px;
-  }
   .link-hotspot-tooltip {
-    right: -80%;
+    left: -87.5%;
     font-size: 1rem;
     width: 170px;
   }

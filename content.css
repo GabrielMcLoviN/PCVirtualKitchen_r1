@@ -86,6 +86,10 @@
   min-height: 25px;
 }
 
+.info-hotspot-close-icon:hover {
+  cursor: pointer;
+}
+
 .info-hotspot-modal .info-hotspot-content {
   border-radius: 0.5rem;
   display: grid;

@@ -103,7 +103,7 @@ var scenes = data.scenes.map(function (data) {
 			.createHotspot(
 				element,
 				{ yaw: hotspot.yaw, pitch: hotspot.pitch },
-				{ perspective: { radius: 440 } }
+				{ perspective: { radius: 400 } }
 			);
 	});
 
@@ -121,7 +121,6 @@ const intro_scene = scenes[0].scene;
 const infohotspot = document.querySelector('.info-hotspot-header.intro-starter');
 const introModal = document.querySelector('.info-hotspot-modal.intro-starter');
 const introLH = document.querySelector('.link-hotspot.second-tour-starter');
-const introHandIconOverlay = document.querySelector('.tour_movement-cta');
 
 let h = window.innerHeight;
 
@@ -236,16 +235,16 @@ tour_final.on('complete', function () {
 	});
 });
 
-const help = document.querySelector('#footer');
+const help = document.querySelector('#footer svg');
 const tooltip = document.querySelector('#tooltip');
 
 const helpPopper = createPopper(help, tooltip, {
-	placement: 'top-end',
+	placement: 'top-start',
 	modifiers: [
 		{
 			name: 'offset',
 			options: {
-				offset: [0, 10],
+				offset: [0, 15],
 			},
 		},
 	],
@@ -778,7 +777,7 @@ controls_close.addEventListener('click', function () {
 	controls.classList.remove('visible');
 	intro.style.opacity = 1;
 	intro.classList.add('visible');
-})
+});
 
 const mobile_cta_btn = document.querySelector('.fullscreen-btn');
 const mobile_cta = document.querySelector('.mobile-cta');
@@ -812,3 +811,15 @@ help_menu_opener.addEventListener('click', function () {
 help_menu_close.addEventListener('click', function () {
 	help_menu.classList.remove('visible');
 });
+
+document.body.addEventListener(
+	'keydown',
+	(evt) => {
+		if (evt.key === 'Escape') {
+			[intro, help_menu, controls].forEach((open_item) => {
+				open_item.classList.remove('visible');
+			});
+		}
+	},
+	{ passive: true }
+);
