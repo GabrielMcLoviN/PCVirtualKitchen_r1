@@ -1,4 +1,9 @@
-@media only screen and (max-width: 450px) {
+@media only screen and (max-width: 500px) {
+  .controls-content {
+    flex-direction: column;
+    max-width: 300px;
+  }
+
   .product-txt-wrapper > *:not(.product-txt) {
     margin-top: 1rem;
     margin-bottom: 1rem;

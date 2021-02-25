@@ -31,7 +31,7 @@ tour_modal.addStep({
 	modalOverlayOpeningPadding: 10,
 	text: `This is where you'll see all of the product information.`,
 	attachTo: {
-		element: '.intro-starter .product-txt-container',
+		element: '.intro-starter .product-txt-wrapper',
 		on: 'auto',
 	},
 	popperOptions: {
@@ -174,7 +174,7 @@ tour_linkHotspots.addStep({
 	showOn: document.body.classList.contains('tour-accepted'),
 	text: `These arrow icons with a blue outline will take you to a different part of our virtual kitchen.<br/> <br/>Try clicking this one to view the pots & pans located on the stove top.`,
 	attachTo: {
-		element: '.second-tour-starter',
+		element: '.second-tour-starter img',
 		on: 'top',
 	},
 	popperOptions: {
@@ -203,7 +203,7 @@ export const tour_movement = new Shepherd.Tour({
 
 tour_movement.addStep({
 	showOn: document.body.classList.contains('tour-accepted'),
-	text: `Good moves! I think you got the hang of it!<br/><br/>Just one last note before we let you explore the kitchen (it's stunning isn't it?😍)<br/><br/>To move yourself around, just touch or click any part of the screen and drag it around. You have 360° of freedom here!`,
+	text: `Good moves! I think you got the hang of it!<br/><br/>Just one last note before we let you explore the kitchen (it's stunning isn't it?😍)<br/><br/>To move yourself around, just touch or click any part of the screen and drag it around. You have 360° of freedom here!<br/><br/><svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" viewBox="0 0 24 24" fill="#000" width="48px" height="48px"><g><rect fill="none" height="24" width="24" x="0"/></g><g><g><path d="M18.89,14.75l-4.09-2.04c-0.28-0.14-0.58-0.21-0.89-0.21H13v-6C13,5.67,12.33,5,11.5,5S10,5.67,10,6.5v10.74L6.75,16.5 c-0.33-0.07-0.68,0.03-0.92,0.28L5,17.62l4.54,4.79C9.92,22.79,10.68,23,11.21,23h6.16c1,0,1.84-0.73,1.98-1.72l0.63-4.46 C20.1,15.97,19.66,15.14,18.89,14.75z"/><path d="M20.13,3.87C18.69,2.17,15.6,1,12,1S5.31,2.17,3.87,3.87L2,2v5h5L4.93,4.93c1-1.29,3.7-2.43,7.07-2.43 s6.07,1.14,7.07,2.43L17,7h5V2L20.13,3.87z"/></g></g></svg>`,
 	buttons: [
 		{
 			text: 'Dismiss',

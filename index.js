@@ -103,7 +103,7 @@ var scenes = data.scenes.map(function (data) {
 			.createHotspot(
 				element,
 				{ yaw: hotspot.yaw, pitch: hotspot.pitch },
-				{ perspective: { radius: 320 } }
+				{ perspective: { radius: 440 } }
 			);
 	});
 
@@ -768,11 +768,17 @@ const help_menu_btn = document.querySelector('.help-menu-btn');
 const help_menu_opener = document.querySelector('.help-menu-btn svg');
 const help_menu_close = document.querySelector('.help-header #intro-close');
 const controls = document.getElementById('controls');
-
+const controls_close = document.getElementById('controls-close');
 const introClose = document.getElementById('intro-close');
 introClose.addEventListener('click', function () {
 	intro.classList.remove('visible');
 });
+
+controls_close.addEventListener('click', function () {
+	controls.classList.remove('visible');
+	intro.style.opacity = 1;
+	intro.classList.add('visible');
+})
 
 const mobile_cta_btn = document.querySelector('.fullscreen-btn');
 const mobile_cta = document.querySelector('.mobile-cta');
@@ -790,7 +796,6 @@ window.addEventListener('DOMContentLoaded', function () {
 		help_menu_btn.style.opacity = 1;
 		panoElement.style.opacity = 1;
 		titleBar.style.opacity = 1;
-		intro.style.opacity = 1;
 		preloader.style.display = 'none';
 		if (Bowser.parse(window.navigator.userAgent).platform.type === 'mobile' && h === 389) {
 			mobile_cta.classList.add('visible');
