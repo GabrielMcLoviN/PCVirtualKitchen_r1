@@ -236,8 +236,8 @@ tour_final.on('complete', function () {
 	});
 });
 
-const help = document.querySelector('#target');
-const tooltip = document.querySelector('#tooltip');
+const help = document.getElementById('#footer');
+const tooltip = document.getElementById('#tooltip');
 
 const helpPopper = createPopper(help, tooltip, {
 	placement: 'top-start',
