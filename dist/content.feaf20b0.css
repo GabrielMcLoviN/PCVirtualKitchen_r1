@@ -274,14 +274,15 @@
   cursor: pointer;
   border: none;
   background-color: var(--secondary-white);
+  border: 1px solid var(--secondary-blk);
 
   border-radius: 50%;
-  opacity: 0.7;
+  opacity: 1;
   transition: all 0.25s;
   z-index: 1;
   pointer-events: all;
-  max-width: 20px;
-  max-height: 20px;
+  max-width: 30px;
+  max-height: 30px;
   margin: 0 10px;
   margin: auto 5px;
 }
@@ -367,7 +368,7 @@
 }
 
 .product-txt-container::-webkit-scrollbar {
-  width: 5px;
+  width: 8px;
   background-color: #fff;
 }
 
