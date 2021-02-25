@@ -236,16 +236,16 @@ tour_final.on('complete', function () {
 	});
 });
 
-const help = document.getElementById('#footer svg');
+const help = document.querySelector('#footer svg');
 const tooltip = document.getElementById('#tooltip');
 
 const helpPopper = createPopper(help, tooltip, {
-	placement: 'top-end',
+	placement: 'top-start',
 	modifiers: [
 		{
 			name: 'offset',
 			options: {
-				offset: [0, 20],
+				offset: [0, 8],
 			},
 		},
 	],
