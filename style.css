@@ -236,10 +236,9 @@ body {
 }
 
 #help-menu .help-content {
-  overflow-y: scroll;
   /* padding: 0 1rem; */
   color: #fff;
-  background: var(--secondary-blk);
+  background: var(--secondary-blk-opaque);
   display: flex;
   align-items: center;
   justify-content: center;

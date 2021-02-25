@@ -767,6 +767,7 @@ const help_menu = document.getElementById('help-menu');
 const help_menu_btn = document.querySelector('.help-menu-btn');
 const help_menu_opener = document.querySelector('.help-menu-btn svg');
 const help_menu_close = document.querySelector('.help-header #intro-close');
+const controls = document.getElementById('controls');
 
 const introClose = document.getElementById('intro-close');
 introClose.addEventListener('click', function () {
@@ -794,7 +795,7 @@ window.addEventListener('DOMContentLoaded', function () {
 		if (Bowser.parse(window.navigator.userAgent).platform.type === 'mobile' && h === 389) {
 			mobile_cta.classList.add('visible');
 		} else {
-			intro.classList.add('visible');
+			controls.classList.add('visible');
 		}
 	}, 4000);
 });

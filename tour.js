@@ -31,7 +31,7 @@ tour_modal.addStep({
 	modalOverlayOpeningPadding: 10,
 	text: `This is where you'll see all of the product information.`,
 	attachTo: {
-		element: '.intro-starter .product-txt-wrapper .product-txt',
+		element: '.intro-starter .product-txt-container',
 		on: 'auto',
 	},
 	popperOptions: {
@@ -59,38 +59,38 @@ tour_modal.addStep({
 });
 
 
-tour_modal.addStep({
-	arrow: false,
-	showOn: document.body.classList.contains('tour-accepted'),
-	text: `Below that, you'll find downloadable PDF files for recipes and additional content.`,
-	attachTo: {
-		element: '.intro-starter .product-txt-wrapper .recipes',
-		on: 'top',
-	},
-	scrollTo: { behavior: 'smooth', block: 'start' },
-	popperOptions: {
-		modifiers: [
-			{
-				name: 'offset',
-				options: {
-					offset: [0, 25],
-				},
-			},
-		],
-	},
-	buttons: [
-		{
-			text: 'Back',
-			action: tour_modal.back,
-			classes: 'shep-back',
-		},
-		{
-			text: 'Next',
-			action: tour_modal.next,
-			classes: 'shep-next',
-		},
-	],
-});
+// tour_modal.addStep({
+// 	arrow: false,
+// 	showOn: document.body.classList.contains('tour-accepted'),
+// 	text: `Below that, you'll find downloadable PDF files for recipes and additional content.`,
+// 	attachTo: {
+// 		element: '.intro-starter .product-txt-wrapper .recipes',
+// 		on: 'top',
+// 	},
+// 	scrollTo: { behavior: 'smooth', block: 'start' },
+// 	popperOptions: {
+// 		modifiers: [
+// 			{
+// 				name: 'offset',
+// 				options: {
+// 					offset: [0, 25],
+// 				},
+// 			},
+// 		],
+// 	},
+// 	buttons: [
+// 		{
+// 			text: 'Back',
+// 			action: tour_modal.back,
+// 			classes: 'shep-back',
+// 		},
+// 		{
+// 			text: 'Next',
+// 			action: tour_modal.next,
+// 			classes: 'shep-next',
+// 		},
+// 	],
+// });
 
 tour_modal.addStep({
 	arrow: false,
