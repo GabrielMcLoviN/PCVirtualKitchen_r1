@@ -33423,7 +33423,7 @@ tour_final.addStep({
   }
 });
 },{"shepherd.js":"node_modules/shepherd.js/dist/js/shepherd.esm.js"}],"index.js":[function(require,module,exports) {
-"use strict";
+'use strict';
 
 var _bowser = _interopRequireDefault(require("bowser"));
 

@@ -1,3 +1,5 @@
+'use strict';
+
 import Bowser from 'bowser';
 import Marzipano from 'marzipano';
 import { data } from '/data.js';
