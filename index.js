@@ -275,8 +275,11 @@ if (
 
 // Set up fullscreen mode, if supported.
 fullscreenToggleElement.addEventListener('click', function () {
-	screenfull.toggle();
+	if (screenfull.isEnabled) {
+		screenfull.toggle();
+	}
 });
+
 screenfull.on('change', function () {
 	if (screenfull.isFullscreen) {
 		fullscreenToggleElement.classList.add('enabled');
@@ -309,16 +312,6 @@ function updateSceneList(scene) {
 			el.classList.remove('current');
 		}
 	}
-}
-
-function hideSceneList() {
-	sceneListElement.classList.remove('enabled');
-	sceneListToggleElement.classList.remove('enabled');
-}
-
-function toggleSceneList() {
-	sceneListElement.classList.toggle('enabled');
-	sceneListToggleElement.classList.toggle('enabled');
 }
 
 function createLinkHotspotElement(hotspot) {
@@ -812,8 +805,10 @@ window.addEventListener('DOMContentLoaded', function () {
 		preloader.style.display = 'none';
 		if (document.body.classList.contains('fullscreen-disabled') && h === 389) {
 			safariOnly.classList.add('visible');
-		 }
-		else if (Bowser.parse(window.navigator.userAgent).platform.type === 'mobile' && h === 389) {
+		} else if (
+			Bowser.parse(window.navigator.userAgent).platform.type === 'mobile' &&
+			h === 389
+		) {
 			mobile_cta.classList.add('visible');
 		} else {
 			controls.classList.add('visible');

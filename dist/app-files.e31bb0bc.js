@@ -33613,7 +33613,9 @@ if (_bowser.default.parse(window.navigator.userAgent).platform.type === 'mobile'
 
 
 fullscreenToggleElement.addEventListener('click', function () {
-  _screenfullMin.default.toggle();
+  if (_screenfullMin.default.isEnabled) {
+    _screenfullMin.default.toggle();
+  }
 });
 
 _screenfullMin.default.on('change', function () {
@@ -33649,16 +33651,6 @@ function updateSceneList(scene) {
       el.classList.remove('current');
     }
   }
-}
-
-function hideSceneList() {
-  sceneListElement.classList.remove('enabled');
-  sceneListToggleElement.classList.remove('enabled');
-}
-
-function toggleSceneList() {
-  sceneListElement.classList.toggle('enabled');
-  sceneListToggleElement.classList.toggle('enabled');
 }
 
 function createLinkHotspotElement(hotspot) {
