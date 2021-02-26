@@ -23851,151 +23851,7 @@ module.exports = {
   }
 };
 
-},{"./stages/WebGl":"node_modules/marzipano/src/stages/WebGl.js","./renderers/WebGlCube":"node_modules/marzipano/src/renderers/WebGlCube.js","./renderers/WebGlFlat":"node_modules/marzipano/src/renderers/WebGlFlat.js","./renderers/WebGlEquirect":"node_modules/marzipano/src/renderers/WebGlEquirect.js","./renderers/registerDefaultRenderers":"node_modules/marzipano/src/renderers/registerDefaultRenderers.js","./geometries/Cube":"node_modules/marzipano/src/geometries/Cube.js","./geometries/Flat":"node_modules/marzipano/src/geometries/Flat.js","./geometries/Equirect":"node_modules/marzipano/src/geometries/Equirect.js","./views/Rectilinear":"node_modules/marzipano/src/views/Rectilinear.js","./views/Flat":"node_modules/marzipano/src/views/Flat.js","./sources/ImageUrl":"node_modules/marzipano/src/sources/ImageUrl.js","./sources/SingleAsset":"node_modules/marzipano/src/sources/SingleAsset.js","./assets/Static":"node_modules/marzipano/src/assets/Static.js","./assets/Dynamic":"node_modules/marzipano/src/assets/Dynamic.js","./TextureStore":"node_modules/marzipano/src/TextureStore.js","./Layer":"node_modules/marzipano/src/Layer.js","./RenderLoop":"node_modules/marzipano/src/RenderLoop.js","./controls/Key":"node_modules/marzipano/src/controls/Key.js","./controls/Drag":"node_modules/marzipano/src/controls/Drag.js","./controls/Qtvr":"node_modules/marzipano/src/controls/Qtvr.js","./controls/ScrollZoom":"node_modules/marzipano/src/controls/ScrollZoom.js","./controls/PinchZoom":"node_modules/marzipano/src/controls/PinchZoom.js","./controls/Velocity":"node_modules/marzipano/src/controls/Velocity.js","./controls/ElementPress":"node_modules/marzipano/src/controls/ElementPress.js","./controls/Controls":"node_modules/marzipano/src/controls/Controls.js","./controls/Dynamics":"node_modules/marzipano/src/controls/Dynamics.js","./Viewer":"node_modules/marzipano/src/Viewer.js","./Scene":"node_modules/marzipano/src/Scene.js","./Hotspot":"node_modules/marzipano/src/Hotspot.js","./HotspotContainer":"node_modules/marzipano/src/HotspotContainer.js","./colorEffects":"node_modules/marzipano/src/colorEffects.js","./controls/registerDefaultControls":"node_modules/marzipano/src/controls/registerDefaultControls.js","./autorotate":"node_modules/marzipano/src/autorotate.js","./util/async":"node_modules/marzipano/src/util/async.js","./util/cancelize":"node_modules/marzipano/src/util/cancelize.js","./util/chain":"node_modules/marzipano/src/util/chain.js","./util/clamp":"node_modules/marzipano/src/util/clamp.js","./util/clearOwnProperties":"node_modules/marzipano/src/util/clearOwnProperties.js","./util/cmp":"node_modules/marzipano/src/util/cmp.js","./util/compose":"node_modules/marzipano/src/util/compose.js","./util/convertFov":"node_modules/marzipano/src/util/convertFov.js","./util/decimal":"node_modules/marzipano/src/util/decimal.js","./util/defaults":"node_modules/marzipano/src/util/defaults.js","./util/defer":"node_modules/marzipano/src/util/defer.js","./util/degToRad":"node_modules/marzipano/src/util/degToRad.js","./util/delay":"node_modules/marzipano/src/util/delay.js","./util/dom":"node_modules/marzipano/src/util/dom.js","./util/extend":"node_modules/marzipano/src/util/extend.js","./util/hash":"node_modules/marzipano/src/util/hash.js","./util/inherits":"node_modules/marzipano/src/util/inherits.js","./util/mod":"node_modules/marzipano/src/util/mod.js","./util/noop":"node_modules/marzipano/src/util/noop.js","./util/now":"node_modules/marzipano/src/util/now.js","./util/once":"node_modules/marzipano/src/util/once.js","./util/pixelRatio":"node_modules/marzipano/src/util/pixelRatio.js","./util/radToDeg":"node_modules/marzipano/src/util/radToDeg.js","./util/real":"node_modules/marzipano/src/util/real.js","./util/retry":"node_modules/marzipano/src/util/retry.js","./util/tween":"node_modules/marzipano/src/util/tween.js","./util/type":"node_modules/marzipano/src/util/type.js","bowser":"node_modules/bowser/es5.js","gl-matrix":"node_modules/gl-matrix/esm/index.js","minimal-event-emitter":"node_modules/minimal-event-emitter/index.js","hammerjs":"node_modules/hammerjs/hammer.js"}],"node_modules/screenfull/dist/screenfull.js":[function(require,module,exports) {
-/*!
-* screenfull
-* v5.1.0 - 2020-12-24
-* (c) Sindre Sorhus; MIT License
-*/
-(function () {
-  'use strict';
-
-  var document = typeof window !== 'undefined' && typeof window.document !== 'undefined' ? window.document : {};
-  var isCommonjs = typeof module !== 'undefined' && module.exports;
-
-  var fn = function () {
-    var val;
-    var fnMap = [['requestFullscreen', 'exitFullscreen', 'fullscreenElement', 'fullscreenEnabled', 'fullscreenchange', 'fullscreenerror'], // New WebKit
-    ['webkitRequestFullscreen', 'webkitExitFullscreen', 'webkitFullscreenElement', 'webkitFullscreenEnabled', 'webkitfullscreenchange', 'webkitfullscreenerror'], // Old WebKit
-    ['webkitRequestFullScreen', 'webkitCancelFullScreen', 'webkitCurrentFullScreenElement', 'webkitCancelFullScreen', 'webkitfullscreenchange', 'webkitfullscreenerror'], ['mozRequestFullScreen', 'mozCancelFullScreen', 'mozFullScreenElement', 'mozFullScreenEnabled', 'mozfullscreenchange', 'mozfullscreenerror'], ['msRequestFullscreen', 'msExitFullscreen', 'msFullscreenElement', 'msFullscreenEnabled', 'MSFullscreenChange', 'MSFullscreenError']];
-    var i = 0;
-    var l = fnMap.length;
-    var ret = {};
-
-    for (; i < l; i++) {
-      val = fnMap[i];
-
-      if (val && val[1] in document) {
-        for (i = 0; i < val.length; i++) {
-          ret[fnMap[0][i]] = val[i];
-        }
-
-        return ret;
-      }
-    }
-
-    return false;
-  }();
-
-  var eventNameMap = {
-    change: fn.fullscreenchange,
-    error: fn.fullscreenerror
-  };
-  var screenfull = {
-    request: function (element, options) {
-      return new Promise(function (resolve, reject) {
-        var onFullScreenEntered = function () {
-          this.off('change', onFullScreenEntered);
-          resolve();
-        }.bind(this);
-
-        this.on('change', onFullScreenEntered);
-        element = element || document.documentElement;
-        var returnPromise = element[fn.requestFullscreen](options);
-
-        if (returnPromise instanceof Promise) {
-          returnPromise.then(onFullScreenEntered).catch(reject);
-        }
-      }.bind(this));
-    },
-    exit: function () {
-      return new Promise(function (resolve, reject) {
-        if (!this.isFullscreen) {
-          resolve();
-          return;
-        }
-
-        var onFullScreenExit = function () {
-          this.off('change', onFullScreenExit);
-          resolve();
-        }.bind(this);
-
-        this.on('change', onFullScreenExit);
-        var returnPromise = document[fn.exitFullscreen]();
-
-        if (returnPromise instanceof Promise) {
-          returnPromise.then(onFullScreenExit).catch(reject);
-        }
-      }.bind(this));
-    },
-    toggle: function (element, options) {
-      return this.isFullscreen ? this.exit() : this.request(element, options);
-    },
-    onchange: function (callback) {
-      this.on('change', callback);
-    },
-    onerror: function (callback) {
-      this.on('error', callback);
-    },
-    on: function (event, callback) {
-      var eventName = eventNameMap[event];
-
-      if (eventName) {
-        document.addEventListener(eventName, callback, false);
-      }
-    },
-    off: function (event, callback) {
-      var eventName = eventNameMap[event];
-
-      if (eventName) {
-        document.removeEventListener(eventName, callback, false);
-      }
-    },
-    raw: fn
-  };
-
-  if (!fn) {
-    if (isCommonjs) {
-      module.exports = {
-        isEnabled: false
-      };
-    } else {
-      window.screenfull = {
-        isEnabled: false
-      };
-    }
-
-    return;
-  }
-
-  Object.defineProperties(screenfull, {
-    isFullscreen: {
-      get: function () {
-        return Boolean(document[fn.fullscreenElement]);
-      }
-    },
-    element: {
-      enumerable: true,
-      get: function () {
-        return document[fn.fullscreenElement];
-      }
-    },
-    isEnabled: {
-      enumerable: true,
-      get: function () {
-        // Coerce to boolean in case of old WebKit
-        return Boolean(document[fn.fullscreenEnabled]);
-      }
-    }
-  });
-
-  if (isCommonjs) {
-    module.exports = screenfull;
-  } else {
-    window.screenfull = screenfull;
-  }
-})();
-},{}],"data.js":[function(require,module,exports) {
+},{"./stages/WebGl":"node_modules/marzipano/src/stages/WebGl.js","./renderers/WebGlCube":"node_modules/marzipano/src/renderers/WebGlCube.js","./renderers/WebGlFlat":"node_modules/marzipano/src/renderers/WebGlFlat.js","./renderers/WebGlEquirect":"node_modules/marzipano/src/renderers/WebGlEquirect.js","./renderers/registerDefaultRenderers":"node_modules/marzipano/src/renderers/registerDefaultRenderers.js","./geometries/Cube":"node_modules/marzipano/src/geometries/Cube.js","./geometries/Flat":"node_modules/marzipano/src/geometries/Flat.js","./geometries/Equirect":"node_modules/marzipano/src/geometries/Equirect.js","./views/Rectilinear":"node_modules/marzipano/src/views/Rectilinear.js","./views/Flat":"node_modules/marzipano/src/views/Flat.js","./sources/ImageUrl":"node_modules/marzipano/src/sources/ImageUrl.js","./sources/SingleAsset":"node_modules/marzipano/src/sources/SingleAsset.js","./assets/Static":"node_modules/marzipano/src/assets/Static.js","./assets/Dynamic":"node_modules/marzipano/src/assets/Dynamic.js","./TextureStore":"node_modules/marzipano/src/TextureStore.js","./Layer":"node_modules/marzipano/src/Layer.js","./RenderLoop":"node_modules/marzipano/src/RenderLoop.js","./controls/Key":"node_modules/marzipano/src/controls/Key.js","./controls/Drag":"node_modules/marzipano/src/controls/Drag.js","./controls/Qtvr":"node_modules/marzipano/src/controls/Qtvr.js","./controls/ScrollZoom":"node_modules/marzipano/src/controls/ScrollZoom.js","./controls/PinchZoom":"node_modules/marzipano/src/controls/PinchZoom.js","./controls/Velocity":"node_modules/marzipano/src/controls/Velocity.js","./controls/ElementPress":"node_modules/marzipano/src/controls/ElementPress.js","./controls/Controls":"node_modules/marzipano/src/controls/Controls.js","./controls/Dynamics":"node_modules/marzipano/src/controls/Dynamics.js","./Viewer":"node_modules/marzipano/src/Viewer.js","./Scene":"node_modules/marzipano/src/Scene.js","./Hotspot":"node_modules/marzipano/src/Hotspot.js","./HotspotContainer":"node_modules/marzipano/src/HotspotContainer.js","./colorEffects":"node_modules/marzipano/src/colorEffects.js","./controls/registerDefaultControls":"node_modules/marzipano/src/controls/registerDefaultControls.js","./autorotate":"node_modules/marzipano/src/autorotate.js","./util/async":"node_modules/marzipano/src/util/async.js","./util/cancelize":"node_modules/marzipano/src/util/cancelize.js","./util/chain":"node_modules/marzipano/src/util/chain.js","./util/clamp":"node_modules/marzipano/src/util/clamp.js","./util/clearOwnProperties":"node_modules/marzipano/src/util/clearOwnProperties.js","./util/cmp":"node_modules/marzipano/src/util/cmp.js","./util/compose":"node_modules/marzipano/src/util/compose.js","./util/convertFov":"node_modules/marzipano/src/util/convertFov.js","./util/decimal":"node_modules/marzipano/src/util/decimal.js","./util/defaults":"node_modules/marzipano/src/util/defaults.js","./util/defer":"node_modules/marzipano/src/util/defer.js","./util/degToRad":"node_modules/marzipano/src/util/degToRad.js","./util/delay":"node_modules/marzipano/src/util/delay.js","./util/dom":"node_modules/marzipano/src/util/dom.js","./util/extend":"node_modules/marzipano/src/util/extend.js","./util/hash":"node_modules/marzipano/src/util/hash.js","./util/inherits":"node_modules/marzipano/src/util/inherits.js","./util/mod":"node_modules/marzipano/src/util/mod.js","./util/noop":"node_modules/marzipano/src/util/noop.js","./util/now":"node_modules/marzipano/src/util/now.js","./util/once":"node_modules/marzipano/src/util/once.js","./util/pixelRatio":"node_modules/marzipano/src/util/pixelRatio.js","./util/radToDeg":"node_modules/marzipano/src/util/radToDeg.js","./util/real":"node_modules/marzipano/src/util/real.js","./util/retry":"node_modules/marzipano/src/util/retry.js","./util/tween":"node_modules/marzipano/src/util/tween.js","./util/type":"node_modules/marzipano/src/util/type.js","bowser":"node_modules/bowser/es5.js","gl-matrix":"node_modules/gl-matrix/esm/index.js","minimal-event-emitter":"node_modules/minimal-event-emitter/index.js","hammerjs":"node_modules/hammerjs/hammer.js"}],"data.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -27313,7 +27169,151 @@ var _createPopper = require("./createPopper.js");
 var _popper = require("./popper.js");
 
 var _popperLite = require("./popper-lite.js");
-},{"./enums.js":"node_modules/@popperjs/core/lib/enums.js","./modifiers/index.js":"node_modules/@popperjs/core/lib/modifiers/index.js","./createPopper.js":"node_modules/@popperjs/core/lib/createPopper.js","./popper.js":"node_modules/@popperjs/core/lib/popper.js","./popper-lite.js":"node_modules/@popperjs/core/lib/popper-lite.js"}],"node_modules/shepherd.js/dist/js/shepherd.esm.js":[function(require,module,exports) {
+},{"./enums.js":"node_modules/@popperjs/core/lib/enums.js","./modifiers/index.js":"node_modules/@popperjs/core/lib/modifiers/index.js","./createPopper.js":"node_modules/@popperjs/core/lib/createPopper.js","./popper.js":"node_modules/@popperjs/core/lib/popper.js","./popper-lite.js":"node_modules/@popperjs/core/lib/popper-lite.js"}],"node_modules/screenfull/dist/screenfull.js":[function(require,module,exports) {
+/*!
+* screenfull
+* v5.1.0 - 2020-12-24
+* (c) Sindre Sorhus; MIT License
+*/
+(function () {
+  'use strict';
+
+  var document = typeof window !== 'undefined' && typeof window.document !== 'undefined' ? window.document : {};
+  var isCommonjs = typeof module !== 'undefined' && module.exports;
+
+  var fn = function () {
+    var val;
+    var fnMap = [['requestFullscreen', 'exitFullscreen', 'fullscreenElement', 'fullscreenEnabled', 'fullscreenchange', 'fullscreenerror'], // New WebKit
+    ['webkitRequestFullscreen', 'webkitExitFullscreen', 'webkitFullscreenElement', 'webkitFullscreenEnabled', 'webkitfullscreenchange', 'webkitfullscreenerror'], // Old WebKit
+    ['webkitRequestFullScreen', 'webkitCancelFullScreen', 'webkitCurrentFullScreenElement', 'webkitCancelFullScreen', 'webkitfullscreenchange', 'webkitfullscreenerror'], ['mozRequestFullScreen', 'mozCancelFullScreen', 'mozFullScreenElement', 'mozFullScreenEnabled', 'mozfullscreenchange', 'mozfullscreenerror'], ['msRequestFullscreen', 'msExitFullscreen', 'msFullscreenElement', 'msFullscreenEnabled', 'MSFullscreenChange', 'MSFullscreenError']];
+    var i = 0;
+    var l = fnMap.length;
+    var ret = {};
+
+    for (; i < l; i++) {
+      val = fnMap[i];
+
+      if (val && val[1] in document) {
+        for (i = 0; i < val.length; i++) {
+          ret[fnMap[0][i]] = val[i];
+        }
+
+        return ret;
+      }
+    }
+
+    return false;
+  }();
+
+  var eventNameMap = {
+    change: fn.fullscreenchange,
+    error: fn.fullscreenerror
+  };
+  var screenfull = {
+    request: function (element, options) {
+      return new Promise(function (resolve, reject) {
+        var onFullScreenEntered = function () {
+          this.off('change', onFullScreenEntered);
+          resolve();
+        }.bind(this);
+
+        this.on('change', onFullScreenEntered);
+        element = element || document.documentElement;
+        var returnPromise = element[fn.requestFullscreen](options);
+
+        if (returnPromise instanceof Promise) {
+          returnPromise.then(onFullScreenEntered).catch(reject);
+        }
+      }.bind(this));
+    },
+    exit: function () {
+      return new Promise(function (resolve, reject) {
+        if (!this.isFullscreen) {
+          resolve();
+          return;
+        }
+
+        var onFullScreenExit = function () {
+          this.off('change', onFullScreenExit);
+          resolve();
+        }.bind(this);
+
+        this.on('change', onFullScreenExit);
+        var returnPromise = document[fn.exitFullscreen]();
+
+        if (returnPromise instanceof Promise) {
+          returnPromise.then(onFullScreenExit).catch(reject);
+        }
+      }.bind(this));
+    },
+    toggle: function (element, options) {
+      return this.isFullscreen ? this.exit() : this.request(element, options);
+    },
+    onchange: function (callback) {
+      this.on('change', callback);
+    },
+    onerror: function (callback) {
+      this.on('error', callback);
+    },
+    on: function (event, callback) {
+      var eventName = eventNameMap[event];
+
+      if (eventName) {
+        document.addEventListener(eventName, callback, false);
+      }
+    },
+    off: function (event, callback) {
+      var eventName = eventNameMap[event];
+
+      if (eventName) {
+        document.removeEventListener(eventName, callback, false);
+      }
+    },
+    raw: fn
+  };
+
+  if (!fn) {
+    if (isCommonjs) {
+      module.exports = {
+        isEnabled: false
+      };
+    } else {
+      window.screenfull = {
+        isEnabled: false
+      };
+    }
+
+    return;
+  }
+
+  Object.defineProperties(screenfull, {
+    isFullscreen: {
+      get: function () {
+        return Boolean(document[fn.fullscreenElement]);
+      }
+    },
+    element: {
+      enumerable: true,
+      get: function () {
+        return document[fn.fullscreenElement];
+      }
+    },
+    isEnabled: {
+      enumerable: true,
+      get: function () {
+        // Coerce to boolean in case of old WebKit
+        return Boolean(document[fn.fullscreenEnabled]);
+      }
+    }
+  });
+
+  if (isCommonjs) {
+    module.exports = screenfull;
+  } else {
+    window.screenfull = screenfull;
+  }
+})();
+},{}],"node_modules/shepherd.js/dist/js/shepherd.esm.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -33429,11 +33429,11 @@ var _bowser = _interopRequireDefault(require("bowser"));
 
 var _marzipano = _interopRequireDefault(require("marzipano"));
 
-var _screenfull = _interopRequireDefault(require("screenfull"));
-
 var _data = require("./data.js");
 
 var _core = require("@popperjs/core");
+
+var _screenfull = _interopRequireDefault(require("screenfull"));
 
 var _tour = require("./tour.js");
 
@@ -33660,25 +33660,28 @@ function show() {
 
 function hide() {
   tooltip.removeAttribute('data-show');
+}
+
+document.fullscreenEnabled = document.fullscreenEnabled || document.mozFullScreenEnabled || document.documentElement.webkitRequestFullScreen;
+
+if (_bowser.default.parse(window.navigator.userAgent).platform.type === 'mobile' && _bowser.default.parse(window.navigator.userAgent).browser.name === 'safari') {
+  document.body.classList.add('fullscreen-disabled');
+} else {
+  document.body.classList.add('fullscreen-enabled');
 } // Set up fullscreen mode, if supported.
 
 
-if (_data.APP_DATA.settings.fullscreenButton) {
-  document.body.classList.add('fullscreen-enabled');
-  fullscreenToggleElement.addEventListener('click', function () {
-    _screenfull.default.toggle();
-  });
+fullscreenToggleElement.addEventListener('click', function () {
+  _screenfull.default.toggle();
+});
 
-  _screenfull.default.on('change', function () {
-    if (_screenfull.default.isFullscreen) {
-      fullscreenToggleElement.classList.add('enabled');
-    } else {
-      fullscreenToggleElement.classList.remove('enabled');
-    }
-  });
-} else {
-  document.body.classList.add('fullscreen-disabled');
-}
+_screenfull.default.on('change', function () {
+  if (_screenfull.default.isFullscreen) {
+    fullscreenToggleElement.classList.add('enabled');
+  } else {
+    fullscreenToggleElement.classList.remove('enabled');
+  }
+});
 
 function sanitize(s) {
   return s.replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;');
@@ -34144,6 +34147,7 @@ const help_menu_close = document.querySelector('.help-header #intro-close');
 const controls = document.getElementById('controls');
 const controls_close = document.getElementById('controls-close');
 const introClose = document.getElementById('intro-close');
+const safari = document.getElementById('safariOnly');
 introClose.addEventListener('click', function () {
   intro.classList.remove('visible');
 });
@@ -34170,7 +34174,9 @@ window.addEventListener('DOMContentLoaded', function () {
     titleBar.style.opacity = 1;
     preloader.style.display = 'none';
 
-    if (_bowser.default.parse(window.navigator.userAgent).platform.type === 'mobile' && h === 389) {
+    if (document.body.classList.contains('fullscreen-disabled')) {
+      safariOnly.classList.add('visible');
+    } else if (_bowser.default.parse(window.navigator.userAgent).platform.type === 'mobile' && h === 389) {
       mobile_cta.classList.add('visible');
     } else {
       controls.classList.add('visible');
@@ -34194,7 +34200,7 @@ document.body.addEventListener('keydown', evt => {
 }, {
   passive: true
 });
-},{"bowser":"node_modules/bowser/es5.js","marzipano":"node_modules/marzipano/src/index.js","screenfull":"node_modules/screenfull/dist/screenfull.js","./data.js":"data.js","@popperjs/core":"node_modules/@popperjs/core/lib/index.js","./tour.js":"tour.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"bowser":"node_modules/bowser/es5.js","marzipano":"node_modules/marzipano/src/index.js","./data.js":"data.js","@popperjs/core":"node_modules/@popperjs/core/lib/index.js","screenfull":"node_modules/screenfull/dist/screenfull.js","./tour.js":"tour.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -34222,7 +34228,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "2274" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "5396" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

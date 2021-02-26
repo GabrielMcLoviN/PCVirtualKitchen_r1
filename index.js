@@ -1,8 +1,8 @@
 import Bowser from 'bowser';
 import Marzipano from 'marzipano';
-import screenfull from 'screenfull';
 import { APP_DATA as data } from './data.js';
 import { createPopper } from '@popperjs/core';
+import screenfull from 'screenfull';
 
 import {
 	tour_infoHotspots,
@@ -259,22 +259,31 @@ function hide() {
 	tooltip.removeAttribute('data-show');
 }
 
-// Set up fullscreen mode, if supported.
-if (data.settings.fullscreenButton) {
-	document.body.classList.add('fullscreen-enabled');
-	fullscreenToggleElement.addEventListener('click', function () {
-		screenfull.toggle();
-	});
-	screenfull.on('change', function () {
-		if (screenfull.isFullscreen) {
-			fullscreenToggleElement.classList.add('enabled');
-		} else {
-			fullscreenToggleElement.classList.remove('enabled');
-		}
-	});
-} else {
+document.fullscreenEnabled =
+	document.fullscreenEnabled ||
+	document.mozFullScreenEnabled ||
+	document.documentElement.webkitRequestFullScreen;
+
+if (
+	Bowser.parse(window.navigator.userAgent).platform.type === 'mobile' &&
+	Bowser.parse(window.navigator.userAgent).browser.name === 'safari'
+) {
 	document.body.classList.add('fullscreen-disabled');
+} else {
+	document.body.classList.add('fullscreen-enabled');
 }
+
+// Set up fullscreen mode, if supported.
+fullscreenToggleElement.addEventListener('click', function () {
+	screenfull.toggle();
+});
+screenfull.on('change', function () {
+	if (screenfull.isFullscreen) {
+		fullscreenToggleElement.classList.add('enabled');
+	} else {
+		fullscreenToggleElement.classList.remove('enabled');
+	}
+});
 
 function sanitize(s) {
 	return s.replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;');
@@ -771,6 +780,8 @@ const controls = document.getElementById('controls');
 const controls_close = document.getElementById('controls-close');
 const introClose = document.getElementById('intro-close');
 
+const safari = document.getElementById('safariOnly');
+
 introClose.addEventListener('click', function () {
 	intro.classList.remove('visible');
 });
@@ -799,7 +810,10 @@ window.addEventListener('DOMContentLoaded', function () {
 		panoElement.style.opacity = 1;
 		titleBar.style.opacity = 1;
 		preloader.style.display = 'none';
-		if (Bowser.parse(window.navigator.userAgent).platform.type === 'mobile' && h === 389) {
+		if (document.body.classList.contains('fullscreen-disabled')) {
+			safariOnly.classList.add('visible');
+		 }
+		else if (Bowser.parse(window.navigator.userAgent).platform.type === 'mobile' && h === 389) {
 			mobile_cta.classList.add('visible');
 		} else {
 			controls.classList.add('visible');
