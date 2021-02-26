@@ -389,8 +389,8 @@ const introLH = document.querySelector('.link-hotspot.second-tour-starter');
 let h = window.innerHeight;
 
 let destinationViewParameters = {
-	yaw: -1.1812190708391341,
-	pitch: 0.013927065660876536,
+	yaw: -1.1815019536187705,
+	pitch: 0.21382602521738114,
 	fov: (60 * Math.PI) / 180,
 };
 
@@ -399,8 +399,8 @@ let options = {
 };
 
 let iframeViewParameters = {
-	yaw: -1.1812190708391341,
-	pitch: -0.053927065660876536,
+	yaw: -1.1815019536187705,
+	pitch: 0.21382602521738114,
 	fov: (60 * Math.PI) / 180,
 };
 
@@ -427,14 +427,14 @@ tour_infoHotspots.on('complete', function () {
 });
 
 var destinationViewParameters_linkHotspot = {
-	yaw: -1.5387431328173449,
-	pitch: 0.014033423948905721,
+	yaw: -1.600429731329104,
+	pitch: 0.5002192152175962,
 	fov: (40 * Math.PI) / 180,
 };
 
 var iframeViewParameters_linkHotspot = {
-	yaw: -1.5387431328173449,
-	pitch: 0.094033423948905721,
+	yaw: -1.600429731329104,
+	pitch: 0.5002192152175962,
 	fov: (40 * Math.PI) / 180,
 };
 
@@ -523,23 +523,22 @@ function hide() {
 	tooltip.removeAttribute('data-show');
 }
 
-
 // Set up fullscreen mode, if supported.
-  if (screenfull.enabled && data.settings.fullscreenButton) {
-		document.body.classList.add('fullscreen-enabled');
-		fullscreenToggleElement.addEventListener('click', function () {
-			screenfull.toggle();
-		});
-		screenfull.on('change', function () {
-			if (screenfull.isFullscreen) {
-				fullscreenToggleElement.classList.add('enabled');
-			} else {
-				fullscreenToggleElement.classList.remove('enabled');
-			}
-		});
-  } else {
-		document.body.classList.add('fullscreen-disabled');
-  }
+if (screenfull.enabled && data.settings.fullscreenButton) {
+	document.body.classList.add('fullscreen-enabled');
+	fullscreenToggleElement.addEventListener('click', function () {
+		screenfull.toggle();
+	});
+	screenfull.on('change', function () {
+		if (screenfull.isFullscreen) {
+			fullscreenToggleElement.classList.add('enabled');
+		} else {
+			fullscreenToggleElement.classList.remove('enabled');
+		}
+	});
+} else {
+	document.body.classList.add('fullscreen-disabled');
+}
 
 function sanitize(s) {
 	return s.replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;');
@@ -596,6 +595,43 @@ function createLinkHotspotElement(hotspot) {
 	tooltip.classList.add('hotspot-tooltip');
 	tooltip.classList.add('link-hotspot-tooltip');
 	tooltip.innerHTML = findSceneDataById(hotspot.target).name;
+	tooltip.setAttribute('role', 'tooltip');
+	const arrow = document.createElement('div');
+	arrow.setAttribute('id', 'arrow-LH');
+	arrow.setAttribute('data-popper-arrow', '');
+	tooltip.appendChild(arrow);
+
+	const LH_popper = createPopper(wrapper, tooltip, {
+		placement: 'top',
+		modifiers: [
+			{
+				name: 'offset',
+				options: {
+					offset: [0, 15],
+				},
+			},
+		],
+	});
+
+	function show() {
+		tooltip.setAttribute('data-show', '');
+		LH_popper.update();
+	}
+
+	function hide() {
+		tooltip.removeAttribute('data-show');
+	}
+
+	const showEvents = ['mouseenter', 'focus'];
+	const hideEvents = ['mouseleave', 'blur'];
+
+	showEvents.forEach((event) => {
+		wrapper.addEventListener(event, show);
+	});
+
+	hideEvents.forEach((event) => {
+		wrapper.addEventListener(event, hide);
+	});
 
 	wrapper.appendChild(icon);
 	wrapper.appendChild(tooltip);
@@ -1081,16 +1117,10 @@ help_menu_close.addEventListener('click', function () {
 	help_menu.classList.remove('visible');
 });
 
-document.body.addEventListener(
-	'keydown',
-	(evt) => {
-		if (evt.key === 'Escape') {
-			[intro, help_menu, controls].forEach((open_item) => {
-				open_item.classList.remove('visible');
-			});
-		}
-	},
-);
-
-
-
+document.body.addEventListener('keydown', (evt) => {
+	if (evt.key === 'Escape') {
+		[intro, help_menu, controls].forEach((open_item) => {
+			open_item.classList.remove('visible');
+		});
+	}
+});

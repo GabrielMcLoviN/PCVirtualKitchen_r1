@@ -146,7 +146,7 @@ body {
   width: 100px;
 }
 
-#tooltip {
+#tooltip, .link-hotspot-tooltip {
   opacity: 0;
   color: #292829;
   padding: 10px;
@@ -156,12 +156,12 @@ body {
   background: #fff;
 }
 
-#tooltip[data-show] {
+#tooltip[data-show], .link-hotspot-tooltip[data-show] {
   opacity: 1;
 }
 
 #arrow,
-#arrow::before {
+#arrow::before, #arrow-LH, #arrow-LH:before {
   position: absolute;
   width: 8px;
   height: 8px;
@@ -624,7 +624,7 @@ body.fullscreen-enabled #fullscreenToggle {
 }
 
 .link-hotspot-tooltip {
-  position: absolute;
+  /* position: absolute;
   left: -87.5%;
   top: 110%;
 
@@ -648,7 +648,12 @@ body.fullscreen-enabled #fullscreenToggle {
 
   opacity: 0;
   transform: translateY(-8px);
-  transition: transform 0.3s, opacity 0.3s;
+  transition: transform 0.3s, opacity 0.3s; */
+  display: none;
+}
+
+.link-hotspot-tooltip[data-show] {
+  display: block;
 }
 
 .no-touch .link-hotspot:hover .link-hotspot-tooltip {

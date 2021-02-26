@@ -1,8 +1,8 @@
 export var data = {
 	scenes: [
 		{
-			id: '0-countertop',
-			name: 'Countertop',
+			id: '0-counter',
+			name: 'Counter',
 			levels: [
 				{
 					tileSize: 256,
@@ -24,35 +24,35 @@ export var data = {
 			],
 			faceSize: 2048,
 			initialViewParameters: {
-				yaw: -1.8661597386708877,
-				pitch: 0.10010661642245111,
+				yaw: -1.7305354528919654,
+				pitch: 0.18810183577540407,
 				fov: 1.3848081938437478,
 			},
 			linkHotspots: [
 				{
-					yaw: -1.5387431328173449,
-					pitch: 0.014033423948905721,
-					rotation: 8.63937979737193,
+					yaw: -1.600429731329104,
+					pitch: 0.5002192152175962,
+					rotation: 13.351768777756625,
 					target: '1-range',
 					class: 'second-tour-starter',
 				},
 				{
-					yaw: -2.632127247947512,
-					pitch: 0.14679384842206034,
-					rotation: 27.48893571891071,
+					yaw: -2.0067365901605037,
+					pitch: 0.6455930272769592,
+					rotation: 5.497787143782138,
 					target: '2-island',
 				},
 				{
-					yaw: -2.792197403983094,
-					pitch: -0.05659947694189427,
-					rotation: 3.141592653589793,
+					yaw: 3.1144623360250305,
+					pitch: 0.25626992303908835,
+					rotation: 25.918139392115812,
 					target: '3-dining',
 				},
 			],
 			infoHotspots: [
 				{
-					yaw: -1.1812190708391341,
-					pitch: 0.013927065660876536,
+					yaw: -1.1815019536187705,
+					pitch: 0.21382602521738114,
 					title: 'MANUAL FOOD PROCESSOR',
 					class: 'intro-starter',
 					videos: [
@@ -92,8 +92,8 @@ export var data = {
 					],
 				},
 				{
-					yaw: -0.8645670356253881,
-					pitch: 0.09241525106832427,
+					yaw: -0.9109833783616796,
+					pitch: 0.27485461667772526,
 					title: 'PIZZA PEEL',
 					videos: [
 						'<iframe width="840" height="472.5" src="https://www.youtube.com/embed/I_u050UNyf4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>',
@@ -120,48 +120,42 @@ export var data = {
 						},
 					],
 				},
-				// {
-				// 	yaw: -0.19474308589460065,
-				// 	pitch: -0.021905487937900148,
-				// 	title: 'Grill',
-				// 	text: 'Info coming soon!',
-				// },
-				// {
-				// 	yaw: 1.1271171703883915,
-				// 	pitch: 0.2273838905217449,
-				// 	title: 'DELUXE AIR FRYER',
-				// 	images: [
-				// 		'./images_min/airfryer/01-min.jpg',
-				// 		'./images_min/airfryer/02-min.jpg',
-				// 		'./images_min/airfryer/03-min.jpg',
-				// 		['@jennlott', './images_min/airfryer/04-min.jpg'],
-				// 		'./images_min/airfryer/05-min.jpg',
-				// 		'./images_min/airfryer/06-min.jpg',
-				// 		'./images_min/airfryer/07-min.jpg',
-				// 		['@lazynolaketo', './images_min/airfryer/08-min.jpg'],
-				// 	],
-				// 	subhead: 'Deluxe Air Fryer',
-				// 	text:
-				// 		'<h4>AIR FRYER, ROTISSERIE, & DEHYDRATOR ALL-IN-ONE</h4><br><p>Enjoy fried foods at home without all the mess, hassle, and oil of deep frying but with all the flavor and texture you love. Ours is family-sized to quickly cook up to six servings, a whole chicken or roast, or appetizers for a crowd. Like a convection oven, superheated air circulates giving food a crispy texture. No preheating is necessary, saving you precious time. Conveniently fits under kitchen cabinets.</p><br><p>You can make perfectly cooked rotisserie chicken, roast veggies, bake dessert, make beef jerky, and dehydrate fruits and veggies for healthy snacks. Let’s get cooking.</p>',
-				// 	recipes: [
-				// 		{
-				// 			id: 'Homemade Beef Jerky',
-				// 			preview_image:
-				// 				'./modals/fryer/post-recipe-homemade-beef-jerky-usca-min.jpg',
-				// 			link: './modals/fryer/post-recipe-homemade-beef-jerky-steps-usca.pdf',
-				// 		},
-				// 		{
-				// 			id: 'Kebab Combinations',
-				// 			preview_image: './modals/fryer/post-recipe-kebab-combinations-min.jpg',
-				// 			link: './modals/fryer/post-recipe-kebab-combinations-steps.pdf',
-				// 		},
-				// 		{
-				// 			id: 'Potato Tacos',
-				// 			preview_image: './modals/fryer/post-recipe-potato-tacos-min.jpg',
-				// 			link: './modals/fryer/post-recipe-potato-tacos-steps.pdf',
-				// 		},
-				// 	],
-				// },
+				{
+					yaw: -0.7506175698032482,
+					pitch: 0.49199024725491114,
+					title: 'GRILL',
+					images: [
+						'./images_min/airfryer/01-min.jpg',
+						'./images_min/airfryer/02-min.jpg',
+						'./images_min/airfryer/03-min.jpg',
+						['@jennlott', './images_min/airfryer/04-min.jpg'],
+						'./images_min/airfryer/05-min.jpg',
+						'./images_min/airfryer/06-min.jpg',
+						'./images_min/airfryer/07-min.jpg',
+						['@lazynolaketo', './images_min/airfryer/08-min.jpg'],
+					],
+					subhead: 'Deluxe Air Fryer',
+					text:
+						'<h4>AIR FRYER, ROTISSERIE, & DEHYDRATOR ALL-IN-ONE</h4><br><p>Enjoy fried foods at home without all the mess, hassle, and oil of deep frying but with all the flavor and texture you love. Ours is family-sized to quickly cook up to six servings, a whole chicken or roast, or appetizers for a crowd. Like a convection oven, superheated air circulates giving food a crispy texture. No preheating is necessary, saving you precious time. Conveniently fits under kitchen cabinets.</p><br><p>You can make perfectly cooked rotisserie chicken, roast veggies, bake dessert, make beef jerky, and dehydrate fruits and veggies for healthy snacks. Let’s get cooking.</p>',
+					recipes: [
+						{
+							id: 'Homemade Beef Jerky',
+							preview_image:
+								'./modals/fryer/post-recipe-homemade-beef-jerky-usca-min.jpg',
+							link: './modals/fryer/post-recipe-homemade-beef-jerky-steps-usca.pdf',
+						},
+						{
+							id: 'Kebab Combinations',
+							preview_image: './modals/fryer/post-recipe-kebab-combinations-min.jpg',
+							link: './modals/fryer/post-recipe-kebab-combinations-steps.pdf',
+						},
+						{
+							id: 'Potato Tacos',
+							preview_image: './modals/fryer/post-recipe-potato-tacos-min.jpg',
+							link: './modals/fryer/post-recipe-potato-tacos-steps.pdf',
+						},
+					],
+				},
 			],
 		},
 		{
@@ -188,34 +182,34 @@ export var data = {
 			],
 			faceSize: 2048,
 			initialViewParameters: {
-				yaw: 0.09263771246977193,
-				pitch: 0.24655888859597397,
+				yaw: 0.15935469126256763,
+				pitch: 0.47446732721544294,
 				fov: 1.3848081938437478,
 			},
 			linkHotspots: [
 				{
-					yaw: 1.2903000094014132,
-					pitch: 0.05857506902295739,
-					rotation: 16.493361431346422,
-					target: '0-countertop',
+					yaw: 1.54461620215851,
+					pitch: 0.4545689203398311,
+					rotation: 10.995574287564278,
+					target: '0-counter',
 				},
 				{
-					yaw: 2.284958166162105,
-					pitch: 0.06266782806181048,
-					rotation: 3.141592653589793,
+					yaw: 1.9983218513556338,
+					pitch: 0.6812157926345623,
+					rotation: 7.0685834705770345,
 					target: '2-island',
 				},
 				{
-					yaw: 3.0320836164678813,
-					pitch: -0.05419655007991331,
-					rotation: 3.141592653589793,
+					yaw: -3.0429579353509766,
+					pitch: 0.17921049226157493,
+					rotation: 5.497787143782138,
 					target: '3-dining',
 				},
 			],
 			infoHotspots: [
 				{
-					yaw: -0.6169007280735173,
-					pitch: 0.03596687759716133,
+					yaw: -0.6429950241920146,
+					pitch: 0.6079593591219776,
 					title: '12" STAINLESS STEEL NONSTICK SKILLET',
 					videos: [
 						'<iframe width="840" height="472.5" src="https://www.youtube.com/embed/hZ739Jtg_yg" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>',
@@ -261,8 +255,8 @@ export var data = {
 					],
 				},
 				{
-					yaw: 0.23939810480061752,
-					pitch: -0.07048776752256103,
+					yaw: 0.2592774000177265,
+					pitch: 0.47995705785557874,
 					title: '6-QT. ENAMELED DUTCH OVEN',
 					videos: [
 						'<iframe width="840" height="472.5" src="https://www.youtube.com/embed/qsHmDecSbGY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>',
@@ -300,8 +294,8 @@ export var data = {
 					],
 				},
 				{
-					yaw: 0.7642802378402251,
-					pitch: 0.10133008113589881,
+					yaw: 0.7912179938169785,
+					pitch: 0.6150013929935234,
 					title: '12" CAST IRON SKILLET',
 					videos: [
 						'<iframe width="840" height="472.5" src="https://www.youtube.com/embed/PlKzT_mXPUI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>',
@@ -363,34 +357,34 @@ export var data = {
 			],
 			faceSize: 2048,
 			initialViewParameters: {
-				yaw: 0.1785606080886577,
-				pitch: 0.34110402632830983,
+				yaw: 0.16781932880340733,
+				pitch: 0.6173271244982672,
 				fov: 1.3848081938437478,
 			},
 			linkHotspots: [
 				{
-					yaw: 0.2874966411224804,
-					pitch: -0.031324661736199744,
-					rotation: 15.707963267948973,
-					target: '3-dining',
-				},
-				{
-					yaw: 2.3242416062501245,
-					pitch: -0.02741758043220699,
-					rotation: 3.141592653589793,
+					yaw: 2.073695580130355,
+					pitch: 0.6867101573530814,
+					rotation: 7.0685834705770345,
 					target: '1-range',
 				},
 				{
-					yaw: 2.82649720828649,
-					pitch: 0.06003677315651679,
-					rotation: 14.922565104551524,
-					target: '0-countertop',
+					yaw: -2.240233598672516,
+					pitch: 0.7910227684497411,
+					rotation: 5.497787143782138,
+					target: '0-counter',
+				},
+				{
+					yaw: -0.005228740281733479,
+					pitch: 0.23492673103993944,
+					rotation: 44.767695313654535,
+					target: '3-dining',
 				},
 			],
 			infoHotspots: [
 				{
-					yaw: 0.920323733173106,
-					pitch: 0.1594540831329585,
+					yaw: 0.9117469385656278,
+					pitch: 0.420756560898079,
 					title: 'EAT WELL RECIPE BOOK',
 					images: [''],
 					subhead: '',
@@ -399,8 +393,8 @@ export var data = {
 						"<iframe allowfullscreen='true' style='border:none;width:100%;height:100%;' src='//e.issuu.com/embed.html?d=p30530-012021usca-eat-well-ebook&hideIssuuLogo=true&hideShareButton=true&u=pamperedchef'></iframe>",
 				},
 				{
-					yaw: -0.7416328666204635,
-					pitch: 0.3615805204161795,
+					yaw: -0.3672164953440813,
+					pitch: 0.47383427360583674,
 					title: 'BE A CONSULTANT',
 					videos: [
 						'<iframe width="840" height="472.5" src="https://www.youtube.com/embed/aat1m2sbIvg" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>',
@@ -431,8 +425,8 @@ export var data = {
 				},
 
 				{
-					yaw: 0.07397339293299865,
-					pitch: 0.42649087459827406,
+					yaw: 0.24380359723473255,
+					pitch: 0.7252554361478651,
 					title: 'PREMIUM CHARCUTERIE & CHEESE BOARD SET',
 					videos: [
 						'<iframe width="840" height="472.5" src="https://www.youtube.com/embed/kaztmnKWbZg" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>',
@@ -455,8 +449,8 @@ export var data = {
 					],
 				},
 				{
-					yaw: -0.5291487467558582,
-					pitch: 0.14556019232329476,
+					yaw: -0.7068853189452113,
+					pitch: 0.44914982598033504,
 					title: 'HOST A PARTY',
 					containImages: true,
 					videos: [
@@ -507,34 +501,34 @@ export var data = {
 			],
 			faceSize: 2048,
 			initialViewParameters: {
-				yaw: -0.08055365778435686,
-				pitch: 0.46716420997137575,
+				yaw: -0.1235145795909709,
+				pitch: 0.5635631739337121,
 				fov: 1.3848081938437478,
 			},
 			linkHotspots: [
 				{
-					yaw: -2.884606978313702,
-					pitch: -0.09607554389392092,
-					rotation: 10.210176124166829,
-					target: '0-countertop',
+					yaw: -2.354654286612135,
+					pitch: 0.1774186200543646,
+					rotation: 5.497787143782138,
+					target: '0-counter',
 				},
 				{
-					yaw: -2.7617181565443296,
-					pitch: 0.06782166406841128,
-					rotation: 9.42477796076938,
-					target: '2-island',
-				},
-				{
-					yaw: 3.0241446965140177,
-					pitch: -0.03831864646294392,
-					rotation: 3.141592653589793,
+					yaw: 2.607801081118793,
+					pitch: 0.1750555843206847,
+					rotation: 0.7853981633974483,
 					target: '1-range',
+				},
+				{
+					yaw: -2.721992958257644,
+					pitch: 0.6033749028382758,
+					rotation: 18.06415775814132,
+					target: '2-island',
 				},
 			],
 			infoHotspots: [
 				{
-					yaw: 0.36648993845147615,
-					pitch: 0.40381266634976143,
+					yaw: 0.49130821657672286,
+					pitch: 0.58489454445475,
 					title: 'INSULATED SERVING BOWL SET',
 					images: [
 						'./images_min/insulated_bowl/01-min.jpg',
@@ -548,8 +542,8 @@ export var data = {
 						"<p>For holidays, potlucks, or any big meal, it can feel nearly impossible to keep everything warm. With this insulated serving bowl set, you can keep foods warm up to 2 hours.</p><br><p>The bowls’ double-walled vacuum insulation keeps food hot, prevents sweating, and has a stay-cool exterior. Works with cold foods, too!</p><br><p>Each bowl comes with a clear plastic lid that’s double-walled and lets you see what's inside. The lid also hooks onto the side of the bowl, making it easier to dish out and serve food.</p>",
 				},
 				{
-					yaw: -0.6741948920665166,
-					pitch: 0.328242870444166,
+					yaw: -0.8810722073104316,
+					pitch: 0.452917691463405,
 					title: 'SMALL SQUARE COOL & SERVE',
 					videos: [
 						'<iframe width="840" height="472.5" src="https://www.youtube.com/embed/b0gKhBjoqzM" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>',
@@ -566,8 +560,8 @@ export var data = {
 						'<p>The fun-sized Small Square Cool & Serve is perfect for parties, picnics, snacks, lunch on the go, and road trips. The exclusive gel insert (which features a handy finger slot for easy removal) keeps veggies, fruit, cheese, deli meat, dip, and other snacks cool for 4–6 hours—even outdoors!</p><br><p>It comes with a clear insert divided into two compartments with a 1-cup dip well in the center and has solid walls that keep food from mixing. The lid snaps onto the base so it’s easy to transport, and it even fits neatly underneath while in use.</p>',
 				},
 				{
-					yaw: -0.4289007614989675,
-					pitch: 0.8189082348235459,
+					yaw: -0.26892060769045756,
+					pitch: 0.5234438282081175,
 					title: 'WOOD SALAD BOWL & SERVERS SET',
 					images: [
 						'./images_min/salad_bowl-min/01-min.jpg',
