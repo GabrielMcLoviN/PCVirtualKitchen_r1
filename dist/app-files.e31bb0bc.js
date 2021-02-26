@@ -34328,7 +34328,7 @@ window.addEventListener('DOMContentLoaded', function () {
     } else {
       controls.classList.add('visible');
     }
-  }, 4000);
+  }, 6000);
 });
 help_menu_opener.addEventListener('click', function () {
   help_menu.classList.add('visible');
