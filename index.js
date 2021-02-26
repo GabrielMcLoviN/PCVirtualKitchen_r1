@@ -2,7 +2,7 @@
 
 import Bowser from 'bowser';
 import Marzipano from 'marzipano';
-import { data } from './data.js';
+import { data } from '/data.js';
 import { createPopper } from '@popperjs/core';
 import screenfull from 'screenfull';
 import Shepherd from 'shepherd.js';
@@ -525,21 +525,21 @@ function hide() {
 
 
 // Set up fullscreen mode, if supported.
-fullscreenToggleElement.addEventListener('click', function () {
-	if (screenfull.isEnabled) {
-		screenfull.toggle();
-	} else {
-		return false;
-	}
-});
-
-screenfull.on('change', function () {
-	if (screenfull.isFullscreen) {
-		fullscreenToggleElement.classList.add('enabled');
-	} else {
-		fullscreenToggleElement.classList.remove('enabled');
-	}
-});
+  if (screenfull.enabled && data.settings.fullscreenButton) {
+		document.body.classList.add('fullscreen-enabled');
+		fullscreenToggleElement.addEventListener('click', function () {
+			screenfull.toggle();
+		});
+		screenfull.on('change', function () {
+			if (screenfull.isFullscreen) {
+				fullscreenToggleElement.classList.add('enabled');
+			} else {
+				fullscreenToggleElement.classList.remove('enabled');
+			}
+		});
+  } else {
+		document.body.classList.add('fullscreen-disabled');
+  }
 
 function sanitize(s) {
 	return s.replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;');

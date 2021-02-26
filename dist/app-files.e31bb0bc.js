@@ -33326,7 +33326,7 @@ var _bowser = _interopRequireDefault(require("bowser"));
 
 var _marzipano = _interopRequireDefault(require("marzipano"));
 
-var _data = require("./data.js");
+var _data = require("/data.js");
 
 var _core = require("@popperjs/core");
 
@@ -33787,21 +33787,22 @@ function hide() {
 } // Set up fullscreen mode, if supported.
 
 
-fullscreenToggleElement.addEventListener('click', function () {
-  if (_screenfull.default.isEnabled) {
+if (_screenfull.default.enabled && _data.data.settings.fullscreenButton) {
+  document.body.classList.add('fullscreen-enabled');
+  fullscreenToggleElement.addEventListener('click', function () {
     _screenfull.default.toggle();
-  } else {
-    return false;
-  }
-});
+  });
 
-_screenfull.default.on('change', function () {
-  if (_screenfull.default.isFullscreen) {
-    fullscreenToggleElement.classList.add('enabled');
-  } else {
-    fullscreenToggleElement.classList.remove('enabled');
-  }
-});
+  _screenfull.default.on('change', function () {
+    if (_screenfull.default.isFullscreen) {
+      fullscreenToggleElement.classList.add('enabled');
+    } else {
+      fullscreenToggleElement.classList.remove('enabled');
+    }
+  });
+} else {
+  document.body.classList.add('fullscreen-disabled');
+}
 
 function sanitize(s) {
   return s.replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;');
@@ -34342,7 +34343,7 @@ document.body.addEventListener('keydown', function (evt) {
     });
   }
 });
-},{"bowser":"node_modules/bowser/es5.js","marzipano":"node_modules/marzipano/src/index.js","./data.js":"data.js","@popperjs/core":"node_modules/@popperjs/core/lib/index.js","screenfull":"node_modules/screenfull/dist/screenfull.js","shepherd.js":"node_modules/shepherd.js/dist/js/shepherd.esm.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"bowser":"node_modules/bowser/es5.js","marzipano":"node_modules/marzipano/src/index.js","/data.js":"data.js","@popperjs/core":"node_modules/@popperjs/core/lib/index.js","screenfull":"node_modules/screenfull/dist/screenfull.js","shepherd.js":"node_modules/shepherd.js/dist/js/shepherd.esm.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -34370,7 +34371,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "7348" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "10244" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
