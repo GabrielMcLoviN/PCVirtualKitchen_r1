@@ -118,6 +118,12 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 
   return newRequire;
 })({"data.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.APP_DATA = void 0;
 var APP_DATA = {
   scenes: [{
     id: '0-countertop',
@@ -519,6 +525,7 @@ var APP_DATA = {
     viewControlButtons: false
   }
 };
+exports.APP_DATA = APP_DATA;
 },{}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';

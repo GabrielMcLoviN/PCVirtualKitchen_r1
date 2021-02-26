@@ -1,7 +1,7 @@
 import Bowser from 'bowser';
 import Marzipano from 'marzipano';
 import screenfull from 'screenfull';
-// import { APP_DATA as data } from './data.js';
+import { APP_DATA as data } from './data.js';
 import { createPopper } from '@popperjs/core';
 
 import {
@@ -14,7 +14,7 @@ import {
 
 // var Marzipano = window.Marzipano;
 // var screenfull = window.screenfull;
-var data = window.APP_DATA;
+// var data = window.APP_DATA;
 
 // var bowser = window.bowser;
 
