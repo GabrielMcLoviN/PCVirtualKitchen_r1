@@ -1056,7 +1056,11 @@ window.addEventListener('DOMContentLoaded', function () {
 		panoElement.style.opacity = 1;
 		titleBar.style.opacity = 1;
 		preloader.style.display = 'none';
-		if (document.body.classList.contains('fullscreen-disabled') && h === 389) {
+		if (
+			Bowser.parse(window.navigator.userAgent).platform.type === 'mobile' &&
+			Bowser.parse(window.navigator.userAgent).browser.name === 'Safari' &&
+			h === 389
+		) {
 			safariOnly.classList.add('visible');
 		} else if (
 			Bowser.parse(window.navigator.userAgent).platform.type === 'mobile' &&
