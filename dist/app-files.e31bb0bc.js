@@ -34174,7 +34174,7 @@ window.addEventListener('DOMContentLoaded', function () {
     titleBar.style.opacity = 1;
     preloader.style.display = 'none';
 
-    if (document.body.classList.contains('fullscreen-disabled')) {
+    if (document.body.classList.contains('fullscreen-disabled') && h === 389) {
       safariOnly.classList.add('visible');
     } else if (_bowser.default.parse(window.navigator.userAgent).platform.type === 'mobile' && h === 389) {
       mobile_cta.classList.add('visible');
