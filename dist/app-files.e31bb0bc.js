@@ -27169,150 +27169,91 @@ var _createPopper = require("./createPopper.js");
 var _popper = require("./popper.js");
 
 var _popperLite = require("./popper-lite.js");
-},{"./enums.js":"node_modules/@popperjs/core/lib/enums.js","./modifiers/index.js":"node_modules/@popperjs/core/lib/modifiers/index.js","./createPopper.js":"node_modules/@popperjs/core/lib/createPopper.js","./popper.js":"node_modules/@popperjs/core/lib/popper.js","./popper-lite.js":"node_modules/@popperjs/core/lib/popper-lite.js"}],"node_modules/screenfull/dist/screenfull.js":[function(require,module,exports) {
+},{"./enums.js":"node_modules/@popperjs/core/lib/enums.js","./modifiers/index.js":"node_modules/@popperjs/core/lib/modifiers/index.js","./createPopper.js":"node_modules/@popperjs/core/lib/createPopper.js","./popper.js":"node_modules/@popperjs/core/lib/popper.js","./popper-lite.js":"node_modules/@popperjs/core/lib/popper-lite.js"}],"vendor/screenfull.min.js":[function(require,module,exports) {
 /*!
 * screenfull
-* v5.1.0 - 2020-12-24
+* v4.0.0 - 2018-12-15
 * (c) Sindre Sorhus; MIT License
 */
-(function () {
-  'use strict';
+!function () {
+  "use strict";
 
-  var document = typeof window !== 'undefined' && typeof window.document !== 'undefined' ? window.document : {};
-  var isCommonjs = typeof module !== 'undefined' && module.exports;
+  var u = "undefined" != typeof window && void 0 !== window.document ? window.document : {},
+      e = "undefined" != typeof module && module.exports,
+      t = "undefined" != typeof Element && "ALLOW_KEYBOARD_INPUT" in Element,
+      c = function () {
+    for (var e, n = [["requestFullscreen", "exitFullscreen", "fullscreenElement", "fullscreenEnabled", "fullscreenchange", "fullscreenerror"], ["webkitRequestFullscreen", "webkitExitFullscreen", "webkitFullscreenElement", "webkitFullscreenEnabled", "webkitfullscreenchange", "webkitfullscreenerror"], ["webkitRequestFullScreen", "webkitCancelFullScreen", "webkitCurrentFullScreenElement", "webkitCancelFullScreen", "webkitfullscreenchange", "webkitfullscreenerror"], ["mozRequestFullScreen", "mozCancelFullScreen", "mozFullScreenElement", "mozFullScreenEnabled", "mozfullscreenchange", "mozfullscreenerror"], ["msRequestFullscreen", "msExitFullscreen", "msFullscreenElement", "msFullscreenEnabled", "MSFullscreenChange", "MSFullscreenError"]], r = 0, l = n.length, t = {}; r < l; r++) if ((e = n[r]) && e[1] in u) {
+      for (r = 0; r < e.length; r++) t[n[0][r]] = e[r];
 
-  var fn = function () {
-    var val;
-    var fnMap = [['requestFullscreen', 'exitFullscreen', 'fullscreenElement', 'fullscreenEnabled', 'fullscreenchange', 'fullscreenerror'], // New WebKit
-    ['webkitRequestFullscreen', 'webkitExitFullscreen', 'webkitFullscreenElement', 'webkitFullscreenEnabled', 'webkitfullscreenchange', 'webkitfullscreenerror'], // Old WebKit
-    ['webkitRequestFullScreen', 'webkitCancelFullScreen', 'webkitCurrentFullScreenElement', 'webkitCancelFullScreen', 'webkitfullscreenchange', 'webkitfullscreenerror'], ['mozRequestFullScreen', 'mozCancelFullScreen', 'mozFullScreenElement', 'mozFullScreenEnabled', 'mozfullscreenchange', 'mozfullscreenerror'], ['msRequestFullscreen', 'msExitFullscreen', 'msFullscreenElement', 'msFullscreenEnabled', 'MSFullscreenChange', 'MSFullscreenError']];
-    var i = 0;
-    var l = fnMap.length;
-    var ret = {};
-
-    for (; i < l; i++) {
-      val = fnMap[i];
-
-      if (val && val[1] in document) {
-        for (i = 0; i < val.length; i++) {
-          ret[fnMap[0][i]] = val[i];
-        }
-
-        return ret;
-      }
+      return t;
     }
 
-    return false;
-  }();
-
-  var eventNameMap = {
-    change: fn.fullscreenchange,
-    error: fn.fullscreenerror
-  };
-  var screenfull = {
-    request: function (element, options) {
-      return new Promise(function (resolve, reject) {
-        var onFullScreenEntered = function () {
-          this.off('change', onFullScreenEntered);
-          resolve();
+    return !1;
+  }(),
+      l = {
+    change: c.fullscreenchange,
+    error: c.fullscreenerror
+  },
+      n = {
+    request: function (l) {
+      return new Promise(function (e) {
+        var n = c.requestFullscreen,
+            r = function () {
+          this.off("change", r), e();
         }.bind(this);
 
-        this.on('change', onFullScreenEntered);
-        element = element || document.documentElement;
-        var returnPromise = element[fn.requestFullscreen](options);
-
-        if (returnPromise instanceof Promise) {
-          returnPromise.then(onFullScreenEntered).catch(reject);
-        }
+        l = l || u.documentElement, / Version\/5\.1(?:\.\d+)? Safari\//.test(navigator.userAgent) ? l[n]() : l[n](t ? Element.ALLOW_KEYBOARD_INPUT : {}), this.on("change", r);
       }.bind(this));
     },
     exit: function () {
-      return new Promise(function (resolve, reject) {
-        if (!this.isFullscreen) {
-          resolve();
-          return;
-        }
-
-        var onFullScreenExit = function () {
-          this.off('change', onFullScreenExit);
-          resolve();
+      return new Promise(function (e) {
+        var n = function () {
+          this.off("change", n), e();
         }.bind(this);
 
-        this.on('change', onFullScreenExit);
-        var returnPromise = document[fn.exitFullscreen]();
-
-        if (returnPromise instanceof Promise) {
-          returnPromise.then(onFullScreenExit).catch(reject);
-        }
+        u[c.exitFullscreen](), this.on("change", n);
       }.bind(this));
     },
-    toggle: function (element, options) {
-      return this.isFullscreen ? this.exit() : this.request(element, options);
+    toggle: function (e) {
+      return this.isFullscreen ? this.exit() : this.request(e);
     },
-    onchange: function (callback) {
-      this.on('change', callback);
+    onchange: function (e) {
+      this.on("change", e);
     },
-    onerror: function (callback) {
-      this.on('error', callback);
+    onerror: function (e) {
+      this.on("error", e);
     },
-    on: function (event, callback) {
-      var eventName = eventNameMap[event];
-
-      if (eventName) {
-        document.addEventListener(eventName, callback, false);
-      }
+    on: function (e, n) {
+      var r = l[e];
+      r && u.addEventListener(r, n, !1);
     },
-    off: function (event, callback) {
-      var eventName = eventNameMap[event];
-
-      if (eventName) {
-        document.removeEventListener(eventName, callback, false);
-      }
+    off: function (e, n) {
+      var r = l[e];
+      r && u.removeEventListener(r, n, !1);
     },
-    raw: fn
+    raw: c
   };
 
-  if (!fn) {
-    if (isCommonjs) {
-      module.exports = {
-        isEnabled: false
-      };
-    } else {
-      window.screenfull = {
-        isEnabled: false
-      };
-    }
-
-    return;
-  }
-
-  Object.defineProperties(screenfull, {
+  c ? (Object.defineProperties(n, {
     isFullscreen: {
       get: function () {
-        return Boolean(document[fn.fullscreenElement]);
+        return Boolean(u[c.fullscreenElement]);
       }
     },
     element: {
-      enumerable: true,
+      enumerable: !0,
       get: function () {
-        return document[fn.fullscreenElement];
+        return u[c.fullscreenElement];
       }
     },
-    isEnabled: {
-      enumerable: true,
+    enabled: {
+      enumerable: !0,
       get: function () {
-        // Coerce to boolean in case of old WebKit
-        return Boolean(document[fn.fullscreenEnabled]);
+        return Boolean(u[c.fullscreenEnabled]);
       }
     }
-  });
-
-  if (isCommonjs) {
-    module.exports = screenfull;
-  } else {
-    window.screenfull = screenfull;
-  }
-})();
+  }), e ? module.exports = n : window.screenfull = n) : e ? module.exports = !1 : window.screenfull = !1;
+}();
 },{}],"node_modules/shepherd.js/dist/js/shepherd.esm.js":[function(require,module,exports) {
 "use strict";
 
@@ -33433,7 +33374,7 @@ var _data = require("./data.js");
 
 var _core = require("@popperjs/core");
 
-var _screenfull = _interopRequireDefault(require("screenfull"));
+var _screenfullMin = _interopRequireDefault(require("./vendor/screenfull.min.js"));
 
 var _tour = require("./tour.js");
 
@@ -33672,11 +33613,11 @@ if (_bowser.default.parse(window.navigator.userAgent).platform.type === 'mobile'
 
 
 fullscreenToggleElement.addEventListener('click', function () {
-  _screenfull.default.toggle();
+  _screenfullMin.default.toggle();
 });
 
-_screenfull.default.on('change', function () {
-  if (_screenfull.default.isFullscreen) {
+_screenfullMin.default.on('change', function () {
+  if (_screenfullMin.default.isFullscreen) {
     fullscreenToggleElement.classList.add('enabled');
   } else {
     fullscreenToggleElement.classList.remove('enabled');
@@ -34159,7 +34100,7 @@ controls_close.addEventListener('click', function () {
 const mobile_cta_btn = document.querySelector('.fullscreen-btn');
 const mobile_cta = document.querySelector('.mobile-cta');
 mobile_cta_btn.addEventListener('click', function () {
-  _screenfull.default.toggle();
+  _screenfullMin.default.toggle();
 
   mobile_cta.classList.remove('visible');
   mobile_cta.style.display = 'none';
@@ -34200,7 +34141,7 @@ document.body.addEventListener('keydown', evt => {
 }, {
   passive: true
 });
-},{"bowser":"node_modules/bowser/es5.js","marzipano":"node_modules/marzipano/src/index.js","./data.js":"data.js","@popperjs/core":"node_modules/@popperjs/core/lib/index.js","screenfull":"node_modules/screenfull/dist/screenfull.js","./tour.js":"tour.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"bowser":"node_modules/bowser/es5.js","marzipano":"node_modules/marzipano/src/index.js","./data.js":"data.js","@popperjs/core":"node_modules/@popperjs/core/lib/index.js","./vendor/screenfull.min.js":"vendor/screenfull.min.js","./tour.js":"tour.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;

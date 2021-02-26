@@ -2,7 +2,7 @@ import Bowser from 'bowser';
 import Marzipano from 'marzipano';
 import { APP_DATA as data } from './data.js';
 import { createPopper } from '@popperjs/core';
-import screenfull from 'screenfull';
+import screenfull from './vendor/screenfull.min.js';
 
 import {
 	tour_infoHotspots,
