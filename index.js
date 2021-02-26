@@ -596,7 +596,7 @@ function createLinkHotspotElement(hotspot) {
 	tooltip.classList.add('link-hotspot-tooltip');
 	tooltip.innerHTML = findSceneDataById(hotspot.target).name;
 	tooltip.setAttribute('role', 'tooltip');
-	tooltip.setAttribute('id', 'tooltip');
+	tooltip.setAttribute('id', 'tooltip-LH');
 	const arrow = document.createElement('div');
 	arrow.setAttribute('id', 'arrow');
 	arrow.setAttribute('data-popper-arrow', '');

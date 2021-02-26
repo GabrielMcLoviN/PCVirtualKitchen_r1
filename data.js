@@ -123,36 +123,34 @@ export var data = {
 				{
 					yaw: -0.7506175698032482,
 					pitch: 0.49199024725491114,
-					title: 'GRILL',
-					images: [
-						'./images_min/airfryer/01-min.jpg',
-						'./images_min/airfryer/02-min.jpg',
-						'./images_min/airfryer/03-min.jpg',
-						['@jennlott', './images_min/airfryer/04-min.jpg'],
-						'./images_min/airfryer/05-min.jpg',
-						'./images_min/airfryer/06-min.jpg',
-						'./images_min/airfryer/07-min.jpg',
-						['@lazynolaketo', './images_min/airfryer/08-min.jpg'],
+					title: 'DELUXE ELECTRIC GRILL & GRIDDLE',
+					videos: [
+						'<iframe width="840" height="472.5" src="https://www.youtube.com/embed/ztHdcO9j_ts" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>',
 					],
-					subhead: 'Deluxe Air Fryer',
+					images: [
+						'./images_min/grill/grill-1.jpg',
+						'./images_min/grill/grill-2.jpg',
+						'./images_min/grill/grill-3.jpg',
+						'./images_min/grill/grill-4.jpg',
+					],
+					subhead: 'Deluxe Electric Grill & Griddle',
 					text:
-						'<h4>AIR FRYER, ROTISSERIE, & DEHYDRATOR ALL-IN-ONE</h4><br><p>Enjoy fried foods at home without all the mess, hassle, and oil of deep frying but with all the flavor and texture you love. Ours is family-sized to quickly cook up to six servings, a whole chicken or roast, or appetizers for a crowd. Like a convection oven, superheated air circulates giving food a crispy texture. No preheating is necessary, saving you precious time. Conveniently fits under kitchen cabinets.</p><br><p>You can make perfectly cooked rotisserie chicken, roast veggies, bake dessert, make beef jerky, and dehydrate fruits and veggies for healthy snacks. Let’s get cooking.</p>',
+						"<p>Whether you're making breakfast, lunch, dinner, snacks, or apps, this multitasker is ready when you are. And when your day does a 180, so will this grill, turning out family favorites and inspiring something fresh and new.</p><br/><p>You’ll get four nonstick plates: two ridged grill plates and two smooth griddle plates that can be used in any combination and can be set to different temperatures for endless possibilities. For no-guess cooking, just set the included temperature probe to how you want your food cooked, and it’ll let you know when it’s ready. And it comes with a cooking guide with handy charts and delicious recipes.</p><br/><p>There are three cooking positions for maximum versatility. You can cook with the lid closed to use as a contact press to grill meat and to turn out restaurant-style sandwiches, or you can open the grill flat on the counter to cook on both plates at the same time. There is also a Top Melt position so the top hovers over without touching the food to melt cheese. Plus, you can adjust the height of the top so it won’t smash thicker foods.</p>",
 					recipes: [
 						{
-							id: 'Homemade Beef Jerky',
-							preview_image:
-								'./modals/fryer/post-recipe-homemade-beef-jerky-usca-min.jpg',
-							link: './modals/fryer/post-recipe-homemade-beef-jerky-steps-usca.pdf',
+							id: 'Banana Foster Sandwich',
+							preview_image: './modals/grill/banana_foster-img.jpg',
+							link: './modals/grill/banana_foster_sandwich.pdf',
 						},
 						{
-							id: 'Kebab Combinations',
-							preview_image: './modals/fryer/post-recipe-kebab-combinations-min.jpg',
-							link: './modals/fryer/post-recipe-kebab-combinations-steps.pdf',
+							id: 'Greek Zucchini Fritters',
+							preview_image: './modals/grill/greek_fritters-img.jpg',
+							link: './modals/grill/greek_fritters.pdf',
 						},
 						{
-							id: 'Potato Tacos',
-							preview_image: './modals/fryer/post-recipe-potato-tacos-min.jpg',
-							link: './modals/fryer/post-recipe-potato-tacos-steps.pdf',
+							id: 'French Onion Sliders',
+							preview_image: './modals/grill/fr_onion_sliders-img.jpg',
+							link: './modals/grill/fr_onion_sliders.pdf',
 						},
 					],
 				},
