@@ -33319,20 +33319,25 @@ Object.assign(Shepherd, {
 });
 var _default = Shepherd;
 exports.default = _default;
-},{}],"tour.js":[function(require,module,exports) {
-"use strict";
+},{}],"index.js":[function(require,module,exports) {
+'use strict';
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.tour_final = exports.tour_movement = exports.tour_linkHotspots = exports.tour_modal = exports.tour_infoHotspots = void 0;
+var _bowser = _interopRequireDefault(require("bowser"));
+
+var _marzipano = _interopRequireDefault(require("marzipano"));
+
+var _data = require("./data.js");
+
+var _core = require("@popperjs/core");
+
+var _screenfull = _interopRequireDefault(require("screenfull"));
 
 var _shepherd = _interopRequireDefault(require("shepherd.js"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+// tour
 var tour_infoHotspots = new _shepherd.default.Tour();
-exports.tour_infoHotspots = tour_infoHotspots;
 tour_infoHotspots.addStep({
   showOn: document.body.classList.contains('tour-accepted'),
   text: "Throughout our virtual kitchen, you'll see icons just like this one. These are our product hotspots. Each hotspot is associated with the product closest to it.<br/><br/> Go ahead and click on this one here!\uD83D\uDC47",
@@ -33352,7 +33357,6 @@ tour_infoHotspots.addStep({
 var tour_modal = new _shepherd.default.Tour({
   useModalOverlay: true
 });
-exports.tour_modal = tour_modal;
 tour_modal.addStep({
   arrow: false,
   showOn: document.body.classList.contains('tour-accepted'),
@@ -33477,7 +33481,6 @@ tour_modal.addStep({
   }]
 });
 var tour_linkHotspots = new _shepherd.default.Tour();
-exports.tour_linkHotspots = tour_linkHotspots;
 tour_linkHotspots.addStep({
   showOn: document.body.classList.contains('tour-accepted'),
   text: "These arrow icons with a blue outline will take you to a different part of our virtual kitchen.<br/> <br/>Try clicking this one to view the pots & pans located on the stove top.",
@@ -33508,7 +33511,6 @@ var tour_movement = new _shepherd.default.Tour({
     }
   }
 });
-exports.tour_movement = tour_movement;
 tour_movement.addStep({
   showOn: document.body.classList.contains('tour-accepted'),
   text: "Good moves! I think you got the hang of it!<br/><br/>Just one last note before we let you explore the kitchen (it's stunning isn't it?\uD83D\uDE0D)<br/><br/>To move yourself around, just touch or click any part of the screen and drag it around. You have 360\xB0 of freedom here!<br/><br/><svg xmlns=\"http://www.w3.org/2000/svg\" enable-background=\"new 0 0 24 24\" viewBox=\"0 0 24 24\" fill=\"#000\" width=\"48px\" height=\"48px\"><g><rect fill=\"none\" height=\"24\" width=\"24\" x=\"0\"/></g><g><g><path d=\"M18.89,14.75l-4.09-2.04c-0.28-0.14-0.58-0.21-0.89-0.21H13v-6C13,5.67,12.33,5,11.5,5S10,5.67,10,6.5v10.74L6.75,16.5 c-0.33-0.07-0.68,0.03-0.92,0.28L5,17.62l4.54,4.79C9.92,22.79,10.68,23,11.21,23h6.16c1,0,1.84-0.73,1.98-1.72l0.63-4.46 C20.1,15.97,19.66,15.14,18.89,14.75z\"/><path d=\"M20.13,3.87C18.69,2.17,15.6,1,12,1S5.31,2.17,3.87,3.87L2,2v5h5L4.93,4.93c1-1.29,3.7-2.43,7.07-2.43 s6.07,1.14,7.07,2.43L17,7h5V2L20.13,3.87z\"/></g></g></svg>",
@@ -33538,7 +33540,6 @@ var tour_final = new _shepherd.default.Tour({
     }
   }
 });
-exports.tour_final = tour_final;
 tour_final.addStep({
   showOn: document.body.classList.contains('tour-accepted'),
   text: "If you ever need help, you can click this icon here for help with navigating the kitchen.<br/><br/>Have a good time at your Pampered Chef (virtual) party!<br/>\uD83E\uDD73\u2728\uD83E\uDD42",
@@ -33570,29 +33571,12 @@ tour_final.addStep({
       }
     }]
   }
-});
-},{"shepherd.js":"node_modules/shepherd.js/dist/js/shepherd.esm.js"}],"index.js":[function(require,module,exports) {
-'use strict';
-
-var _bowser = _interopRequireDefault(require("bowser"));
-
-var _marzipano = _interopRequireDefault(require("marzipano"));
-
-var _data = require("./data.js");
-
-var _core = require("@popperjs/core");
-
-var _screenfull = _interopRequireDefault(require("screenfull"));
-
-var _tour = require("./tour.js");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-// var Marzipano = window.Marzipano;
+}); // var Marzipano = window.Marzipano;
 // var screenfull = window.screenfull;
 // var data = window.APP_DATA;
 // var bowser = window.bowser;
 // Grab elements from DOM.
+
 var panoElement = document.querySelector('#pano');
 var sceneNameElement = document.querySelector('#titleBar .sceneName');
 var sceneElements = document.querySelectorAll('#sceneList .scene');
@@ -33714,17 +33698,15 @@ start_tour.addEventListener('click', function () {
 });
 
 function done() {
-  _tour.tour_infoHotspots.start();
+  tour_infoHotspots.start();
 }
 
 infohotspot.addEventListener('click', function () {
-  document.body.classList.contains('tour-accepted') ? _tour.tour_infoHotspots.next() : '';
+  document.body.classList.contains('tour-accepted') ? tour_infoHotspots.next() : '';
 });
-
-_tour.tour_infoHotspots.on('complete', function () {
-  document.body.classList.contains('tour-accepted') ? _tour.tour_modal.start() : '';
+tour_infoHotspots.on('complete', function () {
+  document.body.classList.contains('tour-accepted') ? tour_modal.start() : '';
 });
-
 var destinationViewParameters_linkHotspot = {
   yaw: -1.5387431328173449,
   pitch: 0.014033423948905721,
@@ -33738,8 +33720,7 @@ var iframeViewParameters_linkHotspot = {
 var options_linkHotspot = {
   transitionDuration: 2000
 };
-
-_tour.tour_modal.on('complete', function () {
+tour_modal.on('complete', function () {
   introModal.classList.remove('visible');
 
   if (h > 389) {
@@ -33754,28 +33735,23 @@ _tour.tour_modal.on('complete', function () {
 });
 
 function infoHotspotsTour_done() {
-  _tour.tour_linkHotspots.start();
+  tour_linkHotspots.start();
 }
 
 introLH.addEventListener('click', function () {
   if (document.body.classList.contains('tour-accepted')) {
-    _tour.tour_linkHotspots.next();
-
-    _tour.tour_movement.start();
+    tour_linkHotspots.next();
+    tour_movement.start();
   }
 });
-
-_tour.tour_movement.on('complete', function () {
+tour_movement.on('complete', function () {
   switchScene(scenes[0]);
-
-  _tour.tour_final.start();
+  tour_final.start();
 });
-
-_tour.tour_final.on('complete', function () {
+tour_final.on('complete', function () {
   document.body.classList.remove('tour-accepted');
   viewer.controls().enable();
 });
-
 [exit_tour, exit_tour_x].forEach(function (el) {
   el.addEventListener('click', function () {
     intro.classList.remove('visible');
@@ -34158,7 +34134,7 @@ function createInfoHotspotElement(hotspot) {
     pause_video();
   };
 
-  _tour.tour_modal.on('complete', function () {
+  tour_modal.on('complete', function () {
     reset_modal();
   });
 
@@ -34366,7 +34342,7 @@ document.body.addEventListener('keydown', function (evt) {
     });
   }
 });
-},{"bowser":"node_modules/bowser/es5.js","marzipano":"node_modules/marzipano/src/index.js","./data.js":"data.js","@popperjs/core":"node_modules/@popperjs/core/lib/index.js","screenfull":"node_modules/screenfull/dist/screenfull.js","./tour.js":"tour.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"bowser":"node_modules/bowser/es5.js","marzipano":"node_modules/marzipano/src/index.js","./data.js":"data.js","@popperjs/core":"node_modules/@popperjs/core/lib/index.js","screenfull":"node_modules/screenfull/dist/screenfull.js","shepherd.js":"node_modules/shepherd.js/dist/js/shepherd.esm.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
