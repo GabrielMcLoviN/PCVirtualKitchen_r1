@@ -788,8 +788,8 @@ mobile_cta_btn.addEventListener('click', function () {
 	screenfull.toggle();
 	mobile_cta.classList.remove('visible');
 	mobile_cta.style.display = 'none';
-	intro.style.opacity = 1;
-	intro.classList.add('visible');
+	controls.style.opacity = 1;
+	controls.classList.add('visible');
 });
 
 window.addEventListener('DOMContentLoaded', function () {

@@ -394,7 +394,7 @@ var APP_DATA = {
       images: [''],
       subhead: '',
       fullWidth: true,
-      text: "<iframe allowfullscreen='true' style='border:none;width:100%;height:100%;' src='https://e.issuu.com/embed.html?d=p30530-012021usca-eat-well-ebook&hideIssuuLogo=true&hideShareButton=true&u=pamperedchef' allowfullscreen></iframe>"
+      text: "<iframe allowfullscreen='true' style='border:none;width:100%;height:100%;' src='https://issuu.com/embed.html?d=p30530-012021usca-eat-well-ebook&hideIssuuLogo=true&hideShareButton=true&u=pamperedchef'></iframe>"
     }, {
       yaw: -0.7416328666204635,
       pitch: 0.3615805204161795,
