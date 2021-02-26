@@ -34176,6 +34176,7 @@ function createInfoHotspotElement(hotspot) {
 
   var toggle = function toggle() {
     modal.classList.toggle('visible');
+    reset_modal();
   };
 
   wrapper.querySelector('.info-hotspot-header').addEventListener('click', toggle);
@@ -34343,6 +34344,7 @@ mobile_cta_btn.addEventListener('click', function () {
 
   mobile_cta.classList.remove('visible');
   mobile_cta.style.display = 'none';
+  intro.style.opacity = 1;
   intro.classList.add('visible');
 });
 window.addEventListener('DOMContentLoaded', function () {
@@ -34372,6 +34374,8 @@ document.body.addEventListener('keydown', function (evt) {
       open_item.classList.remove('visible');
     });
   }
+
+  reset_modal();
 }, {
   passive: true
 });

@@ -604,6 +604,7 @@ function createInfoHotspotElement(hotspot) {
 
 	const toggle = function () {
 		modal.classList.toggle('visible');
+		reset_modal();
 	};
 
 	wrapper.querySelector('.info-hotspot-header').addEventListener('click', toggle);
@@ -769,6 +770,7 @@ const help_menu_close = document.querySelector('.help-header #intro-close');
 const controls = document.getElementById('controls');
 const controls_close = document.getElementById('controls-close');
 const introClose = document.getElementById('intro-close');
+
 introClose.addEventListener('click', function () {
 	intro.classList.remove('visible');
 });
@@ -786,6 +788,7 @@ mobile_cta_btn.addEventListener('click', function () {
 	screenfull.toggle();
 	mobile_cta.classList.remove('visible');
 	mobile_cta.style.display = 'none';
+	intro.style.opacity = 1;
 	intro.classList.add('visible');
 });
 
@@ -820,6 +823,7 @@ document.body.addEventListener(
 				open_item.classList.remove('visible');
 			});
 		}
+		reset_modal();
 	},
 	{ passive: true }
 );
