@@ -27321,57 +27321,13 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
-
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
-function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
-
-function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter); }
-
-function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function (obj) { return typeof obj; }; } else { _typeof = function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
 /*! shepherd.js 8.1.0 */
 var isMergeableObject = function isMergeableObject(value) {
   return isNonNullObject(value) && !isSpecial(value);
 };
 
 function isNonNullObject(value) {
-  return !!value && _typeof(value) === 'object';
+  return !!value && typeof value === 'object';
 }
 
 function isSpecial(value) {
@@ -27535,86 +27491,67 @@ function isUndefined(value) {
   return value === undefined;
 }
 
-var Evented = /*#__PURE__*/function () {
-  function Evented() {
-    _classCallCheck(this, Evented);
+class Evented {
+  on(event, handler, ctx, once = false) {
+    if (isUndefined(this.bindings)) {
+      this.bindings = {};
+    }
+
+    if (isUndefined(this.bindings[event])) {
+      this.bindings[event] = [];
+    }
+
+    this.bindings[event].push({
+      handler,
+      ctx,
+      once
+    });
+    return this;
   }
 
-  _createClass(Evented, [{
-    key: "on",
-    value: function on(event, handler, ctx) {
-      var once = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : false;
+  once(event, handler, ctx) {
+    return this.on(event, handler, ctx, true);
+  }
 
-      if (isUndefined(this.bindings)) {
-        this.bindings = {};
-      }
+  off(event, handler) {
+    if (isUndefined(this.bindings) || isUndefined(this.bindings[event])) {
+      return this;
+    }
 
-      if (isUndefined(this.bindings[event])) {
-        this.bindings[event] = [];
-      }
-
-      this.bindings[event].push({
-        handler: handler,
-        ctx: ctx,
-        once: once
+    if (isUndefined(handler)) {
+      delete this.bindings[event];
+    } else {
+      this.bindings[event].forEach((binding, index) => {
+        if (binding.handler === handler) {
+          this.bindings[event].splice(index, 1);
+        }
       });
-      return this;
     }
-  }, {
-    key: "once",
-    value: function once(event, handler, ctx) {
-      return this.on(event, handler, ctx, true);
+
+    return this;
+  }
+
+  trigger(event, ...args) {
+    if (!isUndefined(this.bindings) && this.bindings[event]) {
+      this.bindings[event].forEach((binding, index) => {
+        const {
+          ctx,
+          handler,
+          once
+        } = binding;
+        const context = ctx || this;
+        handler.apply(context, args);
+
+        if (once) {
+          this.bindings[event].splice(index, 1);
+        }
+      });
     }
-  }, {
-    key: "off",
-    value: function off(event, handler) {
-      var _this = this;
 
-      if (isUndefined(this.bindings) || isUndefined(this.bindings[event])) {
-        return this;
-      }
+    return this;
+  }
 
-      if (isUndefined(handler)) {
-        delete this.bindings[event];
-      } else {
-        this.bindings[event].forEach(function (binding, index) {
-          if (binding.handler === handler) {
-            _this.bindings[event].splice(index, 1);
-          }
-        });
-      }
-
-      return this;
-    }
-  }, {
-    key: "trigger",
-    value: function trigger(event) {
-      var _this2 = this;
-
-      for (var _len2 = arguments.length, args = new Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
-        args[_key2 - 1] = arguments[_key2];
-      }
-
-      if (!isUndefined(this.bindings) && this.bindings[event]) {
-        this.bindings[event].forEach(function (binding, index) {
-          var ctx = binding.ctx,
-              handler = binding.handler,
-              once = binding.once;
-          var context = ctx || _this2;
-          handler.apply(context, args);
-
-          if (once) {
-            _this2.bindings[event].splice(index, 1);
-          }
-        });
-      }
-
-      return this;
-    }
-  }]);
-
-  return Evented;
-}();
+}
 /**
  * Binds all the methods on a JS Class to the `this` context of the class.
  * Adapted from https://github.com/sindresorhus/auto-bind
@@ -27624,11 +27561,11 @@ var Evented = /*#__PURE__*/function () {
 
 
 function autoBind(self) {
-  var keys = Object.getOwnPropertyNames(self.constructor.prototype);
+  const keys = Object.getOwnPropertyNames(self.constructor.prototype);
 
-  for (var i = 0; i < keys.length; i++) {
-    var key = keys[i];
-    var val = self[key];
+  for (let i = 0; i < keys.length; i++) {
+    const key = keys[i];
+    const val = self[key];
 
     if (key !== 'constructor' && typeof val === 'function') {
       self[key] = val.bind(self);
@@ -27647,10 +27584,10 @@ function autoBind(self) {
 
 
 function _setupAdvanceOnHandler(selector, step) {
-  return function (event) {
+  return event => {
     if (step.isOpen()) {
-      var targetIsEl = step.el && event.currentTarget === step.el;
-      var targetIsSelector = !isUndefined(selector) && event.currentTarget.matches(selector);
+      const targetIsEl = step.el && event.currentTarget === step.el;
+      const targetIsSelector = !isUndefined(selector) && event.currentTarget.matches(selector);
 
       if (targetIsSelector || targetIsEl) {
         step.tour.next();
@@ -27666,15 +27603,16 @@ function _setupAdvanceOnHandler(selector, step) {
 
 function bindAdvance(step) {
   // An empty selector matches the step element
-  var _ref4 = step.options.advanceOn || {},
-      event = _ref4.event,
-      selector = _ref4.selector;
+  const {
+    event,
+    selector
+  } = step.options.advanceOn || {};
 
   if (event) {
-    var handler = _setupAdvanceOnHandler(selector, step); // TODO: this should also bind/unbind on show/hide
+    const handler = _setupAdvanceOnHandler(selector, step); // TODO: this should also bind/unbind on show/hide
 
 
-    var el;
+    let el;
 
     try {
       el = document.querySelector(selector);
@@ -27685,12 +27623,12 @@ function bindAdvance(step) {
       return console.error("No element was found for the selector supplied to advanceOn: ".concat(selector));
     } else if (el) {
       el.addEventListener(event, handler);
-      step.on('destroy', function () {
+      step.on('destroy', () => {
         return el.removeEventListener(event, handler);
       });
     } else {
       document.body.addEventListener(event, handler, true);
-      step.on('destroy', function () {
+      step.on('destroy', () => {
         return document.body.removeEventListener(event, handler, true);
       });
     }
@@ -29374,24 +29312,26 @@ function _extends() {
 function _getCenteredStylePopperModifier() {
   return [{
     name: 'applyStyles',
-    fn: function (_ref5) {
-      var state = _ref5.state;
-      Object.keys(state.elements).forEach(function (name) {
+
+    fn({
+      state
+    }) {
+      Object.keys(state.elements).forEach(name => {
         if (name !== 'popper') {
           return;
         }
 
-        var style = {
+        const style = {
           position: 'fixed',
           left: '50%',
           top: '50%',
           transform: 'translate(-50%, -50%)'
         };
-        var attributes = state.attributes[name] || {};
-        var element = state.elements[name];
+        const attributes = state.attributes[name] || {};
+        const element = state.elements[name];
         Object.assign(element.style, style);
-        Object.keys(attributes).forEach(function (name) {
-          var value = attributes[name];
+        Object.keys(attributes).forEach(name => {
+          const value = attributes[name];
 
           if (value === false) {
             element.removeAttribute(name);
@@ -29401,6 +29341,7 @@ function _getCenteredStylePopperModifier() {
         });
       });
     }
+
   }, {
     name: 'computeStyles',
     options: {
@@ -29419,26 +29360,28 @@ function _getCenteredStylePopperModifier() {
 
 
 function makeCenteredPopper(step) {
-  var centeredStylePopperModifier = _getCenteredStylePopperModifier();
+  const centeredStylePopperModifier = _getCenteredStylePopperModifier();
 
-  var popperOptions = {
+  let popperOptions = {
     placement: 'top',
     strategy: 'fixed',
     modifiers: [{
       name: 'focusAfterRender',
       enabled: true,
       phase: 'afterWrite',
-      fn: function () {
-        setTimeout(function () {
+
+      fn() {
+        setTimeout(() => {
           if (step.el) {
             step.el.focus();
           }
         }, 300);
       }
+
     }]
   };
   popperOptions = _extends({}, popperOptions, {
-    modifiers: Array.from(new Set([].concat(_toConsumableArray(popperOptions.modifiers), _toConsumableArray(centeredStylePopperModifier))))
+    modifiers: Array.from(new Set([...popperOptions.modifiers, ...centeredStylePopperModifier]))
   });
   return popperOptions;
 }
@@ -29466,8 +29409,8 @@ function normalizePrefix(prefix) {
 
 
 function parseAttachTo(step) {
-  var options = step.options.attachTo || {};
-  var returnOpts = Object.assign({}, options);
+  const options = step.options.attachTo || {};
+  const returnOpts = Object.assign({}, options);
 
   if (isString(options.element)) {
     // Can't override the element in user opts reference because we can't
@@ -29496,13 +29439,13 @@ function setupTooltip(step) {
     step.tooltip.destroy();
   }
 
-  var attachToOptions = parseAttachTo(step);
-  var target = attachToOptions.element;
-  var popperOptions = getPopperOptions(attachToOptions, step);
+  const attachToOptions = parseAttachTo(step);
+  let target = attachToOptions.element;
+  const popperOptions = getPopperOptions(attachToOptions, step);
 
   if (step.isCentered()) {
     target = document.body;
-    var content = step.shepherdElementComponent.getElement();
+    const content = step.shepherdElementComponent.getElement();
     content.classList.add('shepherd-centered');
   }
 
@@ -29517,9 +29460,9 @@ function setupTooltip(step) {
 
 
 function uuid() {
-  var d = Date.now();
-  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
-    var r = (d + Math.random() * 16) % 16 | 0;
+  let d = Date.now();
+  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, c => {
+    const r = (d + Math.random() * 16) % 16 | 0;
     d = Math.floor(d / 16);
     return (c == 'x' ? r : r & 0x3 | 0x8).toString(16);
   });
@@ -29534,7 +29477,7 @@ function uuid() {
 
 
 function getPopperOptions(attachToOptions, step) {
-  var popperOptions = {
+  let popperOptions = {
     modifiers: [{
       name: 'preventOverflow',
       options: {
@@ -29544,13 +29487,15 @@ function getPopperOptions(attachToOptions, step) {
       name: 'focusAfterRender',
       enabled: true,
       phase: 'afterWrite',
-      fn: function () {
-        setTimeout(function () {
+
+      fn() {
+        setTimeout(() => {
           if (step.el) {
             step.el.focus();
           }
         }, 300);
       }
+
     }],
     strategy: 'absolute'
   };
@@ -29561,7 +29506,7 @@ function getPopperOptions(attachToOptions, step) {
     popperOptions.placement = attachToOptions.on;
   }
 
-  var defaultStepOptions = step.tour && step.tour.options && step.tour.options.defaultStepOptions;
+  const defaultStepOptions = step.tour && step.tour.options && step.tour.options.defaultStepOptions;
 
   if (defaultStepOptions) {
     popperOptions = _mergeModifiers(defaultStepOptions, popperOptions);
@@ -29573,16 +29518,12 @@ function getPopperOptions(attachToOptions, step) {
 
 function _mergeModifiers(stepOptions, popperOptions) {
   if (stepOptions.popperOptions) {
-    var mergedPopperOptions = Object.assign({}, popperOptions, stepOptions.popperOptions);
+    let mergedPopperOptions = Object.assign({}, popperOptions, stepOptions.popperOptions);
 
     if (stepOptions.popperOptions.modifiers && stepOptions.popperOptions.modifiers.length > 0) {
-      var names = stepOptions.popperOptions.modifiers.map(function (mod) {
-        return mod.name;
-      });
-      var filteredModifiers = popperOptions.modifiers.filter(function (mod) {
-        return !names.includes(mod.name);
-      });
-      mergedPopperOptions.modifiers = Array.from(new Set([].concat(_toConsumableArray(filteredModifiers), _toConsumableArray(stepOptions.popperOptions.modifiers))));
+      const names = stepOptions.popperOptions.modifiers.map(mod => mod.name);
+      const filteredModifiers = popperOptions.modifiers.filter(mod => !names.includes(mod.name));
+      mergedPopperOptions.modifiers = Array.from(new Set([...filteredModifiers, ...stepOptions.popperOptions.modifiers]));
     }
 
     return mergedPopperOptions;
@@ -29595,9 +29536,7 @@ function noop() {}
 
 function assign(tar, src) {
   // @ts-ignore
-  for (var k in src) {
-    tar[k] = src[k];
-  }
+  for (const k in src) tar[k] = src[k];
 
   return tar;
 }
@@ -29619,7 +29558,7 @@ function is_function(thing) {
 }
 
 function safe_not_equal(a, b) {
-  return a != a ? b == b : a !== b || a && _typeof(a) === 'object' || typeof a === 'function';
+  return a != a ? b == b : a !== b || a && typeof a === 'object' || typeof a === 'function';
 }
 
 function is_empty(obj) {
@@ -29639,7 +29578,7 @@ function detach(node) {
 }
 
 function destroy_each(iterations, detaching) {
-  for (var i = 0; i < iterations.length; i += 1) {
+  for (let i = 0; i < iterations.length; i += 1) {
     if (iterations[i]) iterations[i].d(detaching);
   }
 }
@@ -29666,9 +29605,7 @@ function empty() {
 
 function listen(node, event, handler, options) {
   node.addEventListener(event, handler, options);
-  return function () {
-    return node.removeEventListener(event, handler, options);
-  };
+  return () => node.removeEventListener(event, handler, options);
 }
 
 function attr(node, attribute, value) {
@@ -29677,9 +29614,9 @@ function attr(node, attribute, value) {
 
 function set_attributes(node, attributes) {
   // @ts-ignore
-  var descriptors = Object.getOwnPropertyDescriptors(node.__proto__);
+  const descriptors = Object.getOwnPropertyDescriptors(node.__proto__);
 
-  for (var key in attributes) {
+  for (const key in attributes) {
     if (attributes[key] == null) {
       node.removeAttribute(key);
     } else if (key === 'style') {
@@ -29702,7 +29639,7 @@ function toggle_class(element, name, toggle) {
   element.classList[toggle ? 'add' : 'remove'](name);
 }
 
-var current_component;
+let current_component;
 
 function set_current_component(component) {
   current_component = component;
@@ -29721,12 +29658,12 @@ function afterUpdate(fn) {
   get_current_component().$$.after_update.push(fn);
 }
 
-var dirty_components = [];
-var binding_callbacks = [];
-var render_callbacks = [];
-var flush_callbacks = [];
-var resolved_promise = Promise.resolve();
-var update_scheduled = false;
+const dirty_components = [];
+const binding_callbacks = [];
+const render_callbacks = [];
+const flush_callbacks = [];
+const resolved_promise = Promise.resolve();
+let update_scheduled = false;
 
 function schedule_update() {
   if (!update_scheduled) {
@@ -29739,8 +29676,8 @@ function add_render_callback(fn) {
   render_callbacks.push(fn);
 }
 
-var flushing = false;
-var seen_callbacks = new Set();
+let flushing = false;
+const seen_callbacks = new Set();
 
 function flush() {
   if (flushing) return;
@@ -29749,8 +29686,8 @@ function flush() {
   do {
     // first, call beforeUpdate functions
     // and update components
-    for (var i = 0; i < dirty_components.length; i += 1) {
-      var component = dirty_components[i];
+    for (let i = 0; i < dirty_components.length; i += 1) {
+      const component = dirty_components[i];
       set_current_component(component);
       update(component.$$);
     }
@@ -29758,15 +29695,13 @@ function flush() {
     set_current_component(null);
     dirty_components.length = 0;
 
-    while (binding_callbacks.length) {
-      binding_callbacks.pop()();
-    } // then, once components are updated, call
+    while (binding_callbacks.length) binding_callbacks.pop()(); // then, once components are updated, call
     // afterUpdate functions. This may cause
     // subsequent updates...
 
 
-    for (var _i2 = 0; _i2 < render_callbacks.length; _i2 += 1) {
-      var callback = render_callbacks[_i2];
+    for (let i = 0; i < render_callbacks.length; i += 1) {
+      const callback = render_callbacks[i];
 
       if (!seen_callbacks.has(callback)) {
         // ...so guard against infinite loops
@@ -29791,15 +29726,15 @@ function update($$) {
   if ($$.fragment !== null) {
     $$.update();
     run_all($$.before_update);
-    var dirty = $$.dirty;
+    const dirty = $$.dirty;
     $$.dirty = [-1];
     $$.fragment && $$.fragment.p($$.ctx, dirty);
     $$.after_update.forEach(add_render_callback);
   }
 }
 
-var outroing = new Set();
-var outros;
+const outroing = new Set();
+let outros;
 
 function group_outros() {
   outros = {
@@ -29829,7 +29764,7 @@ function transition_out(block, local, detach, callback) {
   if (block && block.o) {
     if (outroing.has(block)) return;
     outroing.add(block);
-    outros.c.push(function () {
+    outros.c.push(() => {
       outroing.delete(block);
 
       if (callback) {
@@ -29842,39 +29777,39 @@ function transition_out(block, local, detach, callback) {
 }
 
 function get_spread_update(levels, updates) {
-  var update = {};
-  var to_null_out = {};
-  var accounted_for = {
+  const update = {};
+  const to_null_out = {};
+  const accounted_for = {
     $$scope: 1
   };
-  var i = levels.length;
+  let i = levels.length;
 
   while (i--) {
-    var o = levels[i];
-    var n = updates[i];
+    const o = levels[i];
+    const n = updates[i];
 
     if (n) {
-      for (var key in o) {
+      for (const key in o) {
         if (!(key in n)) to_null_out[key] = 1;
       }
 
-      for (var _key3 in n) {
-        if (!accounted_for[_key3]) {
-          update[_key3] = n[_key3];
-          accounted_for[_key3] = 1;
+      for (const key in n) {
+        if (!accounted_for[key]) {
+          update[key] = n[key];
+          accounted_for[key] = 1;
         }
       }
 
       levels[i] = n;
     } else {
-      for (var _key4 in o) {
-        accounted_for[_key4] = 1;
+      for (const key in o) {
+        accounted_for[key] = 1;
       }
     }
   }
 
-  for (var _key5 in to_null_out) {
-    if (!(_key5 in update)) update[_key5] = undefined;
+  for (const key in to_null_out) {
+    if (!(key in update)) update[key] = undefined;
   }
 
   return update;
@@ -29885,18 +29820,19 @@ function create_component(block) {
 }
 
 function mount_component(component, target, anchor) {
-  var _component$$$ = component.$$,
-      fragment = _component$$$.fragment,
-      on_mount = _component$$$.on_mount,
-      on_destroy = _component$$$.on_destroy,
-      after_update = _component$$$.after_update;
+  const {
+    fragment,
+    on_mount,
+    on_destroy,
+    after_update
+  } = component.$$;
   fragment && fragment.m(target, anchor); // onMount happens before the initial afterUpdate
 
-  add_render_callback(function () {
-    var new_on_destroy = on_mount.map(run).filter(is_function);
+  add_render_callback(() => {
+    const new_on_destroy = on_mount.map(run).filter(is_function);
 
     if (on_destroy) {
-      on_destroy.push.apply(on_destroy, _toConsumableArray(new_on_destroy));
+      on_destroy.push(...new_on_destroy);
     } else {
       // Edge case - component was destroyed immediately,
       // most likely as a result of a binding initialising
@@ -29909,7 +29845,7 @@ function mount_component(component, target, anchor) {
 }
 
 function destroy_component(component, detaching) {
-  var $$ = component.$$;
+  const $$ = component.$$;
 
   if ($$.fragment !== null) {
     run_all($$.on_destroy);
@@ -29931,18 +29867,17 @@ function make_dirty(component, i) {
   component.$$.dirty[i / 31 | 0] |= 1 << i % 31;
 }
 
-function init(component, options, instance, create_fragment, not_equal, props) {
-  var dirty = arguments.length > 6 && arguments[6] !== undefined ? arguments[6] : [-1];
-  var parent_component = current_component;
+function init(component, options, instance, create_fragment, not_equal, props, dirty = [-1]) {
+  const parent_component = current_component;
   set_current_component(component);
-  var prop_values = options.props || {};
-  var $$ = component.$$ = {
+  const prop_values = options.props || {};
+  const $$ = component.$$ = {
     fragment: null,
     ctx: null,
     // state
-    props: props,
+    props,
     update: noop,
-    not_equal: not_equal,
+    not_equal,
     bound: blank_object(),
     // lifecycle
     on_mount: [],
@@ -29952,12 +29887,12 @@ function init(component, options, instance, create_fragment, not_equal, props) {
     context: new Map(parent_component ? parent_component.$$.context : []),
     // everything else
     callbacks: blank_object(),
-    dirty: dirty,
+    dirty,
     skip_bound: false
   };
-  var ready = false;
-  $$.ctx = instance ? instance(component, prop_values, function (i, ret) {
-    var value = (arguments.length <= 2 ? 0 : arguments.length - 2) ? arguments.length <= 2 ? undefined : arguments[2] : ret;
+  let ready = false;
+  $$.ctx = instance ? instance(component, prop_values, (i, ret, ...rest) => {
+    const value = rest.length ? rest[0] : ret;
 
     if ($$.ctx && not_equal($$.ctx[i], $$.ctx[i] = value)) {
       if (!$$.skip_bound && $$.bound[i]) $$.bound[i](value);
@@ -29974,7 +29909,7 @@ function init(component, options, instance, create_fragment, not_equal, props) {
 
   if (options.target) {
     if (options.hydrate) {
-      var nodes = children(options.target); // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+      const nodes = children(options.target); // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
 
       $$.fragment && $$.fragment.l(nodes);
       nodes.forEach(detach);
@@ -29991,51 +29926,41 @@ function init(component, options, instance, create_fragment, not_equal, props) {
   set_current_component(parent_component);
 }
 
-var SvelteComponent = /*#__PURE__*/function () {
-  function SvelteComponent() {
-    _classCallCheck(this, SvelteComponent);
+class SvelteComponent {
+  $destroy() {
+    destroy_component(this, 1);
+    this.$destroy = noop;
   }
 
-  _createClass(SvelteComponent, [{
-    key: "$destroy",
-    value: function $destroy() {
-      destroy_component(this, 1);
-      this.$destroy = noop;
-    }
-  }, {
-    key: "$on",
-    value: function $on(type, callback) {
-      var callbacks = this.$$.callbacks[type] || (this.$$.callbacks[type] = []);
-      callbacks.push(callback);
-      return function () {
-        var index = callbacks.indexOf(callback);
-        if (index !== -1) callbacks.splice(index, 1);
-      };
-    }
-  }, {
-    key: "$set",
-    value: function $set($$props) {
-      if (this.$$set && !is_empty($$props)) {
-        this.$$.skip_bound = true;
-        this.$$set($$props);
-        this.$$.skip_bound = false;
-      }
-    }
-  }]);
+  $on(type, callback) {
+    const callbacks = this.$$.callbacks[type] || (this.$$.callbacks[type] = []);
+    callbacks.push(callback);
+    return () => {
+      const index = callbacks.indexOf(callback);
+      if (index !== -1) callbacks.splice(index, 1);
+    };
+  }
 
-  return SvelteComponent;
-}();
+  $set($$props) {
+    if (this.$$set && !is_empty($$props)) {
+      this.$$.skip_bound = true;
+      this.$$set($$props);
+      this.$$.skip_bound = false;
+    }
+  }
+
+}
 /* src/js/components/shepherd-button.svelte generated by Svelte v3.28.0 */
 
 
 function create_fragment(ctx) {
-  var button;
-  var button_aria_label_value;
-  var button_class_value;
-  var mounted;
-  var dispose;
+  let button;
+  let button_aria_label_value;
+  let button_class_value;
+  let mounted;
+  let dispose;
   return {
-    c: function () {
+    c() {
       button = element("button");
       attr(button, "aria-label", button_aria_label_value =
       /*label*/
@@ -30052,7 +29977,8 @@ function create_fragment(ctx) {
       ctx[2];
       attr(button, "tabindex", "0");
     },
-    m: function (target, anchor) {
+
+    m(target, anchor) {
       insert(target, button, anchor);
       button.innerHTML =
       /*text*/
@@ -30069,10 +29995,8 @@ function create_fragment(ctx) {
         mounted = true;
       }
     },
-    p: function (new_ctx, _ref6) {
-      var _ref7 = _slicedToArray(_ref6, 1),
-          dirty = _ref7[0];
 
+    p(new_ctx, [dirty]) {
       ctx = new_ctx;
       if (dirty &
       /*text*/
@@ -30108,20 +30032,27 @@ function create_fragment(ctx) {
         ctx[2];
       }
     },
+
     i: noop,
     o: noop,
-    d: function (detaching) {
+
+    d(detaching) {
       if (detaching) detach(button);
       mounted = false;
       dispose();
     }
+
   };
 }
 
 function instance($$self, $$props, $$invalidate) {
-  var config = $$props.config,
-      step = $$props.step;
-  var action, classes, disabled, label, secondary, text;
+  let {
+    config
+  } = $$props,
+      {
+    step
+  } = $$props;
+  let action, classes, disabled, label, secondary, text;
 
   function getDisabled(disabled) {
     if (isFunction(disabled)) {
@@ -30131,12 +30062,12 @@ function instance($$self, $$props, $$invalidate) {
     return disabled;
   }
 
-  $$self.$$set = function ($$props) {
+  $$self.$$set = $$props => {
     if ("config" in $$props) $$invalidate(6, config = $$props.config);
     if ("step" in $$props) $$invalidate(7, step = $$props.step);
   };
 
-  $$self.$$.update = function () {
+  $$self.$$.update = () => {
     if ($$self.$$.dirty &
     /*config, step*/
     192) {
@@ -30154,136 +30085,125 @@ function instance($$self, $$props, $$invalidate) {
   return [action, classes, disabled, label, secondary, text, config, step];
 }
 
-var Shepherd_button = /*#__PURE__*/function (_SvelteComponent) {
-  _inherits(Shepherd_button, _SvelteComponent);
-
-  var _super = _createSuper(Shepherd_button);
-
-  function Shepherd_button(options) {
-    var _this3;
-
-    _classCallCheck(this, Shepherd_button);
-
-    _this3 = _super.call(this);
-    init(_assertThisInitialized(_this3), options, instance, create_fragment, safe_not_equal, {
+class Shepherd_button extends SvelteComponent {
+  constructor(options) {
+    super();
+    init(this, options, instance, create_fragment, safe_not_equal, {
       config: 6,
       step: 7
     });
-    return _this3;
   }
 
-  return Shepherd_button;
-}(SvelteComponent);
+}
 /* src/js/components/shepherd-footer.svelte generated by Svelte v3.28.0 */
 
 
 function get_each_context(ctx, list, i) {
-  var child_ctx = ctx.slice();
+  const child_ctx = ctx.slice();
   child_ctx[2] = list[i];
   return child_ctx;
 } // (24:4) {#if buttons}
 
 
 function create_if_block(ctx) {
-  var each_1_anchor;
-  var current;
-  var each_value =
+  let each_1_anchor;
+  let current;
+  let each_value =
   /*buttons*/
   ctx[1];
-  var each_blocks = [];
+  let each_blocks = [];
 
-  for (var i = 0; i < each_value.length; i += 1) {
+  for (let i = 0; i < each_value.length; i += 1) {
     each_blocks[i] = create_each_block(get_each_context(ctx, each_value, i));
   }
 
-  var out = function (i) {
-    return transition_out(each_blocks[i], 1, 1, function () {
-      each_blocks[i] = null;
-    });
-  };
+  const out = i => transition_out(each_blocks[i], 1, 1, () => {
+    each_blocks[i] = null;
+  });
 
   return {
-    c: function () {
-      for (var _i3 = 0; _i3 < each_blocks.length; _i3 += 1) {
-        each_blocks[_i3].c();
+    c() {
+      for (let i = 0; i < each_blocks.length; i += 1) {
+        each_blocks[i].c();
       }
 
       each_1_anchor = empty();
     },
-    m: function (target, anchor) {
-      for (var _i4 = 0; _i4 < each_blocks.length; _i4 += 1) {
-        each_blocks[_i4].m(target, anchor);
+
+    m(target, anchor) {
+      for (let i = 0; i < each_blocks.length; i += 1) {
+        each_blocks[i].m(target, anchor);
       }
 
       insert(target, each_1_anchor, anchor);
       current = true;
     },
-    p: function (ctx, dirty) {
+
+    p(ctx, dirty) {
       if (dirty &
       /*buttons, step*/
       3) {
         each_value =
         /*buttons*/
         ctx[1];
+        let i;
 
-        var _i5;
+        for (i = 0; i < each_value.length; i += 1) {
+          const child_ctx = get_each_context(ctx, each_value, i);
 
-        for (_i5 = 0; _i5 < each_value.length; _i5 += 1) {
-          var child_ctx = get_each_context(ctx, each_value, _i5);
-
-          if (each_blocks[_i5]) {
-            each_blocks[_i5].p(child_ctx, dirty);
-
-            transition_in(each_blocks[_i5], 1);
+          if (each_blocks[i]) {
+            each_blocks[i].p(child_ctx, dirty);
+            transition_in(each_blocks[i], 1);
           } else {
-            each_blocks[_i5] = create_each_block(child_ctx);
-
-            each_blocks[_i5].c();
-
-            transition_in(each_blocks[_i5], 1);
-
-            each_blocks[_i5].m(each_1_anchor.parentNode, each_1_anchor);
+            each_blocks[i] = create_each_block(child_ctx);
+            each_blocks[i].c();
+            transition_in(each_blocks[i], 1);
+            each_blocks[i].m(each_1_anchor.parentNode, each_1_anchor);
           }
         }
 
         group_outros();
 
-        for (_i5 = each_value.length; _i5 < each_blocks.length; _i5 += 1) {
-          out(_i5);
+        for (i = each_value.length; i < each_blocks.length; i += 1) {
+          out(i);
         }
 
         check_outros();
       }
     },
-    i: function (local) {
+
+    i(local) {
       if (current) return;
 
-      for (var _i6 = 0; _i6 < each_value.length; _i6 += 1) {
-        transition_in(each_blocks[_i6]);
+      for (let i = 0; i < each_value.length; i += 1) {
+        transition_in(each_blocks[i]);
       }
 
       current = true;
     },
-    o: function (local) {
+
+    o(local) {
       each_blocks = each_blocks.filter(Boolean);
 
-      for (var _i7 = 0; _i7 < each_blocks.length; _i7 += 1) {
-        transition_out(each_blocks[_i7]);
+      for (let i = 0; i < each_blocks.length; i += 1) {
+        transition_out(each_blocks[i]);
       }
 
       current = false;
     },
-    d: function (detaching) {
+
+    d(detaching) {
       destroy_each(each_blocks, detaching);
       if (detaching) detach(each_1_anchor);
     }
+
   };
 } // (25:8) {#each buttons as config}
 
 
 function create_each_block(ctx) {
-  var shepherdbutton;
-  var current;
+  let shepherdbutton;
+  let current;
   shepherdbutton = new Shepherd_button({
     props: {
       config:
@@ -30295,15 +30215,17 @@ function create_each_block(ctx) {
     }
   });
   return {
-    c: function () {
+    c() {
       create_component(shepherdbutton.$$.fragment);
     },
-    m: function (target, anchor) {
+
+    m(target, anchor) {
       mount_component(shepherdbutton, target, anchor);
       current = true;
     },
-    p: function (ctx, dirty) {
-      var shepherdbutton_changes = {};
+
+    p(ctx, dirty) {
+      const shepherdbutton_changes = {};
       if (dirty &
       /*buttons*/
       2) shepherdbutton_changes.config =
@@ -30316,42 +30238,45 @@ function create_each_block(ctx) {
       ctx[0];
       shepherdbutton.$set(shepherdbutton_changes);
     },
-    i: function (local) {
+
+    i(local) {
       if (current) return;
       transition_in(shepherdbutton.$$.fragment, local);
       current = true;
     },
-    o: function (local) {
+
+    o(local) {
       transition_out(shepherdbutton.$$.fragment, local);
       current = false;
     },
-    d: function (detaching) {
+
+    d(detaching) {
       destroy_component(shepherdbutton, detaching);
     }
+
   };
 }
 
 function create_fragment$1(ctx) {
-  var footer;
-  var current;
-  var if_block =
+  let footer;
+  let current;
+  let if_block =
   /*buttons*/
   ctx[1] && create_if_block(ctx);
   return {
-    c: function () {
+    c() {
       footer = element("footer");
       if (if_block) if_block.c();
       attr(footer, "class", "shepherd-footer");
     },
-    m: function (target, anchor) {
+
+    m(target, anchor) {
       insert(target, footer, anchor);
       if (if_block) if_block.m(footer, null);
       current = true;
     },
-    p: function (ctx, _ref8) {
-      var _ref9 = _slicedToArray(_ref8, 1),
-          dirty = _ref9[0];
 
+    p(ctx, [dirty]) {
       if (
       /*buttons*/
       ctx[1]) {
@@ -30371,38 +30296,44 @@ function create_fragment$1(ctx) {
         }
       } else if (if_block) {
         group_outros();
-        transition_out(if_block, 1, 1, function () {
+        transition_out(if_block, 1, 1, () => {
           if_block = null;
         });
         check_outros();
       }
     },
-    i: function (local) {
+
+    i(local) {
       if (current) return;
       transition_in(if_block);
       current = true;
     },
-    o: function (local) {
+
+    o(local) {
       transition_out(if_block);
       current = false;
     },
-    d: function (detaching) {
+
+    d(detaching) {
       if (detaching) detach(footer);
       if (if_block) if_block.d();
     }
+
   };
 }
 
 function instance$1($$self, $$props, $$invalidate) {
-  var step = $$props.step;
+  let {
+    step
+  } = $$props;
 
-  $$self.$$set = function ($$props) {
+  $$self.$$set = $$props => {
     if ("step" in $$props) $$invalidate(0, step = $$props.step);
   };
 
-  var buttons;
+  let buttons;
 
-  $$self.$$.update = function () {
+  $$self.$$.update = () => {
     if ($$self.$$.dirty &
     /*step*/
     1) {
@@ -30413,36 +30344,26 @@ function instance$1($$self, $$props, $$invalidate) {
   return [step, buttons];
 }
 
-var Shepherd_footer = /*#__PURE__*/function (_SvelteComponent2) {
-  _inherits(Shepherd_footer, _SvelteComponent2);
-
-  var _super2 = _createSuper(Shepherd_footer);
-
-  function Shepherd_footer(options) {
-    var _this4;
-
-    _classCallCheck(this, Shepherd_footer);
-
-    _this4 = _super2.call(this);
-    init(_assertThisInitialized(_this4), options, instance$1, create_fragment$1, safe_not_equal, {
+class Shepherd_footer extends SvelteComponent {
+  constructor(options) {
+    super();
+    init(this, options, instance$1, create_fragment$1, safe_not_equal, {
       step: 0
     });
-    return _this4;
   }
 
-  return Shepherd_footer;
-}(SvelteComponent);
+}
 /* src/js/components/shepherd-cancel-icon.svelte generated by Svelte v3.28.0 */
 
 
 function create_fragment$2(ctx) {
-  var button;
-  var span;
-  var button_aria_label_value;
-  var mounted;
-  var dispose;
+  let button;
+  let span;
+  let button_aria_label_value;
+  let mounted;
+  let dispose;
   return {
-    c: function () {
+    c() {
       button = element("button");
       span = element("span");
       span.textContent = "×";
@@ -30455,7 +30376,8 @@ function create_fragment$2(ctx) {
       attr(button, "class", "shepherd-cancel-icon");
       attr(button, "type", "button");
     },
-    m: function (target, anchor) {
+
+    m(target, anchor) {
       insert(target, button, anchor);
       append(button, span);
 
@@ -30466,10 +30388,8 @@ function create_fragment$2(ctx) {
         mounted = true;
       }
     },
-    p: function (ctx, _ref10) {
-      var _ref11 = _slicedToArray(_ref10, 1),
-          dirty = _ref11[0];
 
+    p(ctx, [dirty]) {
       if (dirty &
       /*cancelIcon*/
       1 && button_aria_label_value !== (button_aria_label_value =
@@ -30480,29 +30400,36 @@ function create_fragment$2(ctx) {
         attr(button, "aria-label", button_aria_label_value);
       }
     },
+
     i: noop,
     o: noop,
-    d: function (detaching) {
+
+    d(detaching) {
       if (detaching) detach(button);
       mounted = false;
       dispose();
     }
+
   };
 }
 
 function instance$2($$self, $$props, $$invalidate) {
-  var cancelIcon = $$props.cancelIcon,
-      step = $$props.step;
+  let {
+    cancelIcon
+  } = $$props,
+      {
+    step
+  } = $$props;
   /**
   * Add a click listener to the cancel link that cancels the tour
   */
 
-  var handleCancelClick = function (e) {
+  const handleCancelClick = e => {
     e.preventDefault();
     step.cancel();
   };
 
-  $$self.$$set = function ($$props) {
+  $$self.$$set = $$props => {
     if ("cancelIcon" in $$props) $$invalidate(0, cancelIcon = $$props.cancelIcon);
     if ("step" in $$props) $$invalidate(2, step = $$props.step);
   };
@@ -30510,49 +30437,38 @@ function instance$2($$self, $$props, $$invalidate) {
   return [cancelIcon, handleCancelClick, step];
 }
 
-var Shepherd_cancel_icon = /*#__PURE__*/function (_SvelteComponent3) {
-  _inherits(Shepherd_cancel_icon, _SvelteComponent3);
-
-  var _super3 = _createSuper(Shepherd_cancel_icon);
-
-  function Shepherd_cancel_icon(options) {
-    var _this5;
-
-    _classCallCheck(this, Shepherd_cancel_icon);
-
-    _this5 = _super3.call(this);
-    init(_assertThisInitialized(_this5), options, instance$2, create_fragment$2, safe_not_equal, {
+class Shepherd_cancel_icon extends SvelteComponent {
+  constructor(options) {
+    super();
+    init(this, options, instance$2, create_fragment$2, safe_not_equal, {
       cancelIcon: 0,
       step: 2
     });
-    return _this5;
   }
 
-  return Shepherd_cancel_icon;
-}(SvelteComponent);
+}
 /* src/js/components/shepherd-title.svelte generated by Svelte v3.28.0 */
 
 
 function create_fragment$3(ctx) {
-  var h3;
+  let h3;
   return {
-    c: function () {
+    c() {
       h3 = element("h3");
       attr(h3, "id",
       /*labelId*/
       ctx[1]);
       attr(h3, "class", "shepherd-title");
     },
-    m: function (target, anchor) {
+
+    m(target, anchor) {
       insert(target, h3, anchor);
       /*h3_binding*/
 
       ctx[3](h3);
     },
-    p: function (ctx, _ref12) {
-      var _ref13 = _slicedToArray(_ref12, 1),
-          dirty = _ref13[0];
 
+    p(ctx, [dirty]) {
       if (dirty &
       /*labelId*/
       2) {
@@ -30561,22 +30477,31 @@ function create_fragment$3(ctx) {
         ctx[1]);
       }
     },
+
     i: noop,
     o: noop,
-    d: function (detaching) {
+
+    d(detaching) {
       if (detaching) detach(h3);
       /*h3_binding*/
 
       ctx[3](null);
     }
+
   };
 }
 
 function instance$3($$self, $$props, $$invalidate) {
-  var labelId = $$props.labelId,
-      element = $$props.element,
-      title = $$props.title;
-  afterUpdate(function () {
+  let {
+    labelId
+  } = $$props,
+      {
+    element
+  } = $$props,
+      {
+    title
+  } = $$props;
+  afterUpdate(() => {
     if (isFunction(title)) {
       $$invalidate(2, title = title());
     }
@@ -30585,13 +30510,13 @@ function instance$3($$self, $$props, $$invalidate) {
   });
 
   function h3_binding($$value) {
-    binding_callbacks[$$value ? "unshift" : "push"](function () {
+    binding_callbacks[$$value ? "unshift" : "push"](() => {
       element = $$value;
       $$invalidate(0, element);
     });
   }
 
-  $$self.$$set = function ($$props) {
+  $$self.$$set = $$props => {
     if ("labelId" in $$props) $$invalidate(1, labelId = $$props.labelId);
     if ("element" in $$props) $$invalidate(0, element = $$props.element);
     if ("title" in $$props) $$invalidate(2, title = $$props.title);
@@ -30600,33 +30525,23 @@ function instance$3($$self, $$props, $$invalidate) {
   return [element, labelId, title, h3_binding];
 }
 
-var Shepherd_title = /*#__PURE__*/function (_SvelteComponent4) {
-  _inherits(Shepherd_title, _SvelteComponent4);
-
-  var _super4 = _createSuper(Shepherd_title);
-
-  function Shepherd_title(options) {
-    var _this6;
-
-    _classCallCheck(this, Shepherd_title);
-
-    _this6 = _super4.call(this);
-    init(_assertThisInitialized(_this6), options, instance$3, create_fragment$3, safe_not_equal, {
+class Shepherd_title extends SvelteComponent {
+  constructor(options) {
+    super();
+    init(this, options, instance$3, create_fragment$3, safe_not_equal, {
       labelId: 1,
       element: 0,
       title: 2
     });
-    return _this6;
   }
 
-  return Shepherd_title;
-}(SvelteComponent);
+}
 /* src/js/components/shepherd-header.svelte generated by Svelte v3.28.0 */
 
 
 function create_if_block_1(ctx) {
-  var shepherdtitle;
-  var current;
+  let shepherdtitle;
+  let current;
   shepherdtitle = new Shepherd_title({
     props: {
       labelId:
@@ -30638,15 +30553,17 @@ function create_if_block_1(ctx) {
     }
   });
   return {
-    c: function () {
+    c() {
       create_component(shepherdtitle.$$.fragment);
     },
-    m: function (target, anchor) {
+
+    m(target, anchor) {
       mount_component(shepherdtitle, target, anchor);
       current = true;
     },
-    p: function (ctx, dirty) {
-      var shepherdtitle_changes = {};
+
+    p(ctx, dirty) {
+      const shepherdtitle_changes = {};
       if (dirty &
       /*labelId*/
       1) shepherdtitle_changes.labelId =
@@ -30659,25 +30576,29 @@ function create_if_block_1(ctx) {
       ctx[2];
       shepherdtitle.$set(shepherdtitle_changes);
     },
-    i: function (local) {
+
+    i(local) {
       if (current) return;
       transition_in(shepherdtitle.$$.fragment, local);
       current = true;
     },
-    o: function (local) {
+
+    o(local) {
       transition_out(shepherdtitle.$$.fragment, local);
       current = false;
     },
-    d: function (detaching) {
+
+    d(detaching) {
       destroy_component(shepherdtitle, detaching);
     }
+
   };
 } // (39:4) {#if cancelIcon && cancelIcon.enabled}
 
 
 function create_if_block$1(ctx) {
-  var shepherdcancelicon;
-  var current;
+  let shepherdcancelicon;
+  let current;
   shepherdcancelicon = new Shepherd_cancel_icon({
     props: {
       cancelIcon:
@@ -30689,15 +30610,17 @@ function create_if_block$1(ctx) {
     }
   });
   return {
-    c: function () {
+    c() {
       create_component(shepherdcancelicon.$$.fragment);
     },
-    m: function (target, anchor) {
+
+    m(target, anchor) {
       mount_component(shepherdcancelicon, target, anchor);
       current = true;
     },
-    p: function (ctx, dirty) {
-      var shepherdcancelicon_changes = {};
+
+    p(ctx, dirty) {
+      const shepherdcancelicon_changes = {};
       if (dirty &
       /*cancelIcon*/
       8) shepherdcancelicon_changes.cancelIcon =
@@ -30710,52 +30633,55 @@ function create_if_block$1(ctx) {
       ctx[1];
       shepherdcancelicon.$set(shepherdcancelicon_changes);
     },
-    i: function (local) {
+
+    i(local) {
       if (current) return;
       transition_in(shepherdcancelicon.$$.fragment, local);
       current = true;
     },
-    o: function (local) {
+
+    o(local) {
       transition_out(shepherdcancelicon.$$.fragment, local);
       current = false;
     },
-    d: function (detaching) {
+
+    d(detaching) {
       destroy_component(shepherdcancelicon, detaching);
     }
+
   };
 }
 
 function create_fragment$4(ctx) {
-  var header;
-  var t;
-  var current;
-  var if_block0 =
+  let header;
+  let t;
+  let current;
+  let if_block0 =
   /*title*/
   ctx[2] && create_if_block_1(ctx);
-  var if_block1 =
+  let if_block1 =
   /*cancelIcon*/
   ctx[3] &&
   /*cancelIcon*/
   ctx[3].enabled && create_if_block$1(ctx);
   return {
-    c: function () {
+    c() {
       header = element("header");
       if (if_block0) if_block0.c();
       t = space();
       if (if_block1) if_block1.c();
       attr(header, "class", "shepherd-header");
     },
-    m: function (target, anchor) {
+
+    m(target, anchor) {
       insert(target, header, anchor);
       if (if_block0) if_block0.m(header, null);
       append(header, t);
       if (if_block1) if_block1.m(header, null);
       current = true;
     },
-    p: function (ctx, _ref14) {
-      var _ref15 = _slicedToArray(_ref14, 1),
-          dirty = _ref15[0];
 
+    p(ctx, [dirty]) {
       if (
       /*title*/
       ctx[2]) {
@@ -30775,7 +30701,7 @@ function create_fragment$4(ctx) {
         }
       } else if (if_block0) {
         group_outros();
-        transition_out(if_block0, 1, 1, function () {
+        transition_out(if_block0, 1, 1, () => {
           if_block0 = null;
         });
         check_outros();
@@ -30802,42 +30728,50 @@ function create_fragment$4(ctx) {
         }
       } else if (if_block1) {
         group_outros();
-        transition_out(if_block1, 1, 1, function () {
+        transition_out(if_block1, 1, 1, () => {
           if_block1 = null;
         });
         check_outros();
       }
     },
-    i: function (local) {
+
+    i(local) {
       if (current) return;
       transition_in(if_block0);
       transition_in(if_block1);
       current = true;
     },
-    o: function (local) {
+
+    o(local) {
       transition_out(if_block0);
       transition_out(if_block1);
       current = false;
     },
-    d: function (detaching) {
+
+    d(detaching) {
       if (detaching) detach(header);
       if (if_block0) if_block0.d();
       if (if_block1) if_block1.d();
     }
+
   };
 }
 
 function instance$4($$self, $$props, $$invalidate) {
-  var labelId = $$props.labelId,
-      step = $$props.step;
-  var title, cancelIcon;
+  let {
+    labelId
+  } = $$props,
+      {
+    step
+  } = $$props;
+  let title, cancelIcon;
 
-  $$self.$$set = function ($$props) {
+  $$self.$$set = $$props => {
     if ("labelId" in $$props) $$invalidate(0, labelId = $$props.labelId);
     if ("step" in $$props) $$invalidate(1, step = $$props.step);
   };
 
-  $$self.$$.update = function () {
+  $$self.$$.update = () => {
     if ($$self.$$.dirty &
     /*step*/
     2) {
@@ -30851,49 +30785,38 @@ function instance$4($$self, $$props, $$invalidate) {
   return [labelId, step, title, cancelIcon];
 }
 
-var Shepherd_header = /*#__PURE__*/function (_SvelteComponent5) {
-  _inherits(Shepherd_header, _SvelteComponent5);
-
-  var _super5 = _createSuper(Shepherd_header);
-
-  function Shepherd_header(options) {
-    var _this7;
-
-    _classCallCheck(this, Shepherd_header);
-
-    _this7 = _super5.call(this);
-    init(_assertThisInitialized(_this7), options, instance$4, create_fragment$4, safe_not_equal, {
+class Shepherd_header extends SvelteComponent {
+  constructor(options) {
+    super();
+    init(this, options, instance$4, create_fragment$4, safe_not_equal, {
       labelId: 0,
       step: 1
     });
-    return _this7;
   }
 
-  return Shepherd_header;
-}(SvelteComponent);
+}
 /* src/js/components/shepherd-text.svelte generated by Svelte v3.28.0 */
 
 
 function create_fragment$5(ctx) {
-  var div;
+  let div;
   return {
-    c: function () {
+    c() {
       div = element("div");
       attr(div, "class", "shepherd-text");
       attr(div, "id",
       /*descriptionId*/
       ctx[1]);
     },
-    m: function (target, anchor) {
+
+    m(target, anchor) {
       insert(target, div, anchor);
       /*div_binding*/
 
       ctx[3](div);
     },
-    p: function (ctx, _ref16) {
-      var _ref17 = _slicedToArray(_ref16, 1),
-          dirty = _ref17[0];
 
+    p(ctx, [dirty]) {
       if (dirty &
       /*descriptionId*/
       2) {
@@ -30902,23 +30825,34 @@ function create_fragment$5(ctx) {
         ctx[1]);
       }
     },
+
     i: noop,
     o: noop,
-    d: function (detaching) {
+
+    d(detaching) {
       if (detaching) detach(div);
       /*div_binding*/
 
       ctx[3](null);
     }
+
   };
 }
 
 function instance$5($$self, $$props, $$invalidate) {
-  var descriptionId = $$props.descriptionId,
-      element = $$props.element,
-      step = $$props.step;
-  afterUpdate(function () {
-    var text = step.options.text;
+  let {
+    descriptionId
+  } = $$props,
+      {
+    element
+  } = $$props,
+      {
+    step
+  } = $$props;
+  afterUpdate(() => {
+    let {
+      text
+    } = step.options;
 
     if (isFunction(text)) {
       text = text.call(step);
@@ -30932,13 +30866,13 @@ function instance$5($$self, $$props, $$invalidate) {
   });
 
   function div_binding($$value) {
-    binding_callbacks[$$value ? "unshift" : "push"](function () {
+    binding_callbacks[$$value ? "unshift" : "push"](() => {
       element = $$value;
       $$invalidate(0, element);
     });
   }
 
-  $$self.$$set = function ($$props) {
+  $$self.$$set = $$props => {
     if ("descriptionId" in $$props) $$invalidate(1, descriptionId = $$props.descriptionId);
     if ("element" in $$props) $$invalidate(0, element = $$props.element);
     if ("step" in $$props) $$invalidate(2, step = $$props.step);
@@ -30947,33 +30881,23 @@ function instance$5($$self, $$props, $$invalidate) {
   return [element, descriptionId, step, div_binding];
 }
 
-var Shepherd_text = /*#__PURE__*/function (_SvelteComponent6) {
-  _inherits(Shepherd_text, _SvelteComponent6);
-
-  var _super6 = _createSuper(Shepherd_text);
-
-  function Shepherd_text(options) {
-    var _this8;
-
-    _classCallCheck(this, Shepherd_text);
-
-    _this8 = _super6.call(this);
-    init(_assertThisInitialized(_this8), options, instance$5, create_fragment$5, safe_not_equal, {
+class Shepherd_text extends SvelteComponent {
+  constructor(options) {
+    super();
+    init(this, options, instance$5, create_fragment$5, safe_not_equal, {
       descriptionId: 1,
       element: 0,
       step: 2
     });
-    return _this8;
   }
 
-  return Shepherd_text;
-}(SvelteComponent);
+}
 /* src/js/components/shepherd-content.svelte generated by Svelte v3.28.0 */
 
 
 function create_if_block_2(ctx) {
-  var shepherdheader;
-  var current;
+  let shepherdheader;
+  let current;
   shepherdheader = new Shepherd_header({
     props: {
       labelId:
@@ -30985,15 +30909,17 @@ function create_if_block_2(ctx) {
     }
   });
   return {
-    c: function () {
+    c() {
       create_component(shepherdheader.$$.fragment);
     },
-    m: function (target, anchor) {
+
+    m(target, anchor) {
       mount_component(shepherdheader, target, anchor);
       current = true;
     },
-    p: function (ctx, dirty) {
-      var shepherdheader_changes = {};
+
+    p(ctx, dirty) {
+      const shepherdheader_changes = {};
       if (dirty &
       /*labelId*/
       2) shepherdheader_changes.labelId =
@@ -31006,25 +30932,29 @@ function create_if_block_2(ctx) {
       ctx[2];
       shepherdheader.$set(shepherdheader_changes);
     },
-    i: function (local) {
+
+    i(local) {
       if (current) return;
       transition_in(shepherdheader.$$.fragment, local);
       current = true;
     },
-    o: function (local) {
+
+    o(local) {
       transition_out(shepherdheader.$$.fragment, local);
       current = false;
     },
-    d: function (detaching) {
+
+    d(detaching) {
       destroy_component(shepherdheader, detaching);
     }
+
   };
 } // (28:2) {#if !isUndefined(step.options.text)}
 
 
 function create_if_block_1$1(ctx) {
-  var shepherdtext;
-  var current;
+  let shepherdtext;
+  let current;
   shepherdtext = new Shepherd_text({
     props: {
       descriptionId:
@@ -31036,15 +30966,17 @@ function create_if_block_1$1(ctx) {
     }
   });
   return {
-    c: function () {
+    c() {
       create_component(shepherdtext.$$.fragment);
     },
-    m: function (target, anchor) {
+
+    m(target, anchor) {
       mount_component(shepherdtext, target, anchor);
       current = true;
     },
-    p: function (ctx, dirty) {
-      var shepherdtext_changes = {};
+
+    p(ctx, dirty) {
+      const shepherdtext_changes = {};
       if (dirty &
       /*descriptionId*/
       1) shepherdtext_changes.descriptionId =
@@ -31057,25 +30989,29 @@ function create_if_block_1$1(ctx) {
       ctx[2];
       shepherdtext.$set(shepherdtext_changes);
     },
-    i: function (local) {
+
+    i(local) {
       if (current) return;
       transition_in(shepherdtext.$$.fragment, local);
       current = true;
     },
-    o: function (local) {
+
+    o(local) {
       transition_out(shepherdtext.$$.fragment, local);
       current = false;
     },
-    d: function (detaching) {
+
+    d(detaching) {
       destroy_component(shepherdtext, detaching);
     }
+
   };
 } // (35:2) {#if Array.isArray(step.options.buttons) && step.options.buttons.length}
 
 
 function create_if_block$2(ctx) {
-  var shepherdfooter;
-  var current;
+  let shepherdfooter;
+  let current;
   shepherdfooter = new Shepherd_footer({
     props: {
       step:
@@ -31084,15 +31020,17 @@ function create_if_block$2(ctx) {
     }
   });
   return {
-    c: function () {
+    c() {
       create_component(shepherdfooter.$$.fragment);
     },
-    m: function (target, anchor) {
+
+    m(target, anchor) {
       mount_component(shepherdfooter, target, anchor);
       current = true;
     },
-    p: function (ctx, dirty) {
-      var shepherdfooter_changes = {};
+
+    p(ctx, dirty) {
+      const shepherdfooter_changes = {};
       if (dirty &
       /*step*/
       4) shepherdfooter_changes.step =
@@ -31100,46 +31038,50 @@ function create_if_block$2(ctx) {
       ctx[2];
       shepherdfooter.$set(shepherdfooter_changes);
     },
-    i: function (local) {
+
+    i(local) {
       if (current) return;
       transition_in(shepherdfooter.$$.fragment, local);
       current = true;
     },
-    o: function (local) {
+
+    o(local) {
       transition_out(shepherdfooter.$$.fragment, local);
       current = false;
     },
-    d: function (detaching) {
+
+    d(detaching) {
       destroy_component(shepherdfooter, detaching);
     }
+
   };
 }
 
 function create_fragment$6(ctx) {
-  var div;
-  var show_if_2 = !isUndefined(
+  let div;
+  let show_if_2 = !isUndefined(
   /*step*/
   ctx[2].options.title) ||
   /*step*/
   ctx[2].options.cancelIcon &&
   /*step*/
   ctx[2].options.cancelIcon.enabled;
-  var t0;
-  var show_if_1 = !isUndefined(
+  let t0;
+  let show_if_1 = !isUndefined(
   /*step*/
   ctx[2].options.text);
-  var t1;
-  var show_if = Array.isArray(
+  let t1;
+  let show_if = Array.isArray(
   /*step*/
   ctx[2].options.buttons) &&
   /*step*/
   ctx[2].options.buttons.length;
-  var current;
-  var if_block0 = show_if_2 && create_if_block_2(ctx);
-  var if_block1 = show_if_1 && create_if_block_1$1(ctx);
-  var if_block2 = show_if && create_if_block$2(ctx);
+  let current;
+  let if_block0 = show_if_2 && create_if_block_2(ctx);
+  let if_block1 = show_if_1 && create_if_block_1$1(ctx);
+  let if_block2 = show_if && create_if_block$2(ctx);
   return {
-    c: function () {
+    c() {
       div = element("div");
       if (if_block0) if_block0.c();
       t0 = space();
@@ -31148,7 +31090,8 @@ function create_fragment$6(ctx) {
       if (if_block2) if_block2.c();
       attr(div, "class", "shepherd-content");
     },
-    m: function (target, anchor) {
+
+    m(target, anchor) {
       insert(target, div, anchor);
       if (if_block0) if_block0.m(div, null);
       append(div, t0);
@@ -31157,10 +31100,8 @@ function create_fragment$6(ctx) {
       if (if_block2) if_block2.m(div, null);
       current = true;
     },
-    p: function (ctx, _ref18) {
-      var _ref19 = _slicedToArray(_ref18, 1),
-          dirty = _ref19[0];
 
+    p(ctx, [dirty]) {
       if (dirty &
       /*step*/
       4) show_if_2 = !isUndefined(
@@ -31188,7 +31129,7 @@ function create_fragment$6(ctx) {
         }
       } else if (if_block0) {
         group_outros();
-        transition_out(if_block0, 1, 1, function () {
+        transition_out(if_block0, 1, 1, () => {
           if_block0 = null;
         });
         check_outros();
@@ -31217,7 +31158,7 @@ function create_fragment$6(ctx) {
         }
       } else if (if_block1) {
         group_outros();
-        transition_out(if_block1, 1, 1, function () {
+        transition_out(if_block1, 1, 1, () => {
           if_block1 = null;
         });
         check_outros();
@@ -31248,40 +31189,50 @@ function create_fragment$6(ctx) {
         }
       } else if (if_block2) {
         group_outros();
-        transition_out(if_block2, 1, 1, function () {
+        transition_out(if_block2, 1, 1, () => {
           if_block2 = null;
         });
         check_outros();
       }
     },
-    i: function (local) {
+
+    i(local) {
       if (current) return;
       transition_in(if_block0);
       transition_in(if_block1);
       transition_in(if_block2);
       current = true;
     },
-    o: function (local) {
+
+    o(local) {
       transition_out(if_block0);
       transition_out(if_block1);
       transition_out(if_block2);
       current = false;
     },
-    d: function (detaching) {
+
+    d(detaching) {
       if (detaching) detach(div);
       if (if_block0) if_block0.d();
       if (if_block1) if_block1.d();
       if (if_block2) if_block2.d();
     }
+
   };
 }
 
 function instance$6($$self, $$props, $$invalidate) {
-  var descriptionId = $$props.descriptionId,
-      labelId = $$props.labelId,
-      step = $$props.step;
+  let {
+    descriptionId
+  } = $$props,
+      {
+    labelId
+  } = $$props,
+      {
+    step
+  } = $$props;
 
-  $$self.$$set = function ($$props) {
+  $$self.$$set = $$props => {
     if ("descriptionId" in $$props) $$invalidate(0, descriptionId = $$props.descriptionId);
     if ("labelId" in $$props) $$invalidate(1, labelId = $$props.labelId);
     if ("step" in $$props) $$invalidate(2, step = $$props.step);
@@ -31290,57 +31241,50 @@ function instance$6($$self, $$props, $$invalidate) {
   return [descriptionId, labelId, step];
 }
 
-var Shepherd_content = /*#__PURE__*/function (_SvelteComponent7) {
-  _inherits(Shepherd_content, _SvelteComponent7);
-
-  var _super7 = _createSuper(Shepherd_content);
-
-  function Shepherd_content(options) {
-    var _this9;
-
-    _classCallCheck(this, Shepherd_content);
-
-    _this9 = _super7.call(this);
-    init(_assertThisInitialized(_this9), options, instance$6, create_fragment$6, safe_not_equal, {
+class Shepherd_content extends SvelteComponent {
+  constructor(options) {
+    super();
+    init(this, options, instance$6, create_fragment$6, safe_not_equal, {
       descriptionId: 0,
       labelId: 1,
       step: 2
     });
-    return _this9;
   }
 
-  return Shepherd_content;
-}(SvelteComponent);
+}
 /* src/js/components/shepherd-element.svelte generated by Svelte v3.28.0 */
 
 
 function create_if_block$3(ctx) {
-  var div;
+  let div;
   return {
-    c: function () {
+    c() {
       div = element("div");
       attr(div, "class", "shepherd-arrow");
       attr(div, "data-popper-arrow", "");
     },
-    m: function (target, anchor) {
+
+    m(target, anchor) {
       insert(target, div, anchor);
     },
-    d: function (detaching) {
+
+    d(detaching) {
       if (detaching) detach(div);
     }
+
   };
 }
 
 function create_fragment$7(ctx) {
-  var div;
-  var t;
-  var shepherdcontent;
-  var div_aria_describedby_value;
-  var div_aria_labelledby_value;
-  var current;
-  var mounted;
-  var dispose;
-  var if_block =
+  let div;
+  let t;
+  let shepherdcontent;
+  let div_aria_describedby_value;
+  let div_aria_labelledby_value;
+  let current;
+  let mounted;
+  let dispose;
+  let if_block =
   /*step*/
   ctx[4].options.arrow &&
   /*step*/
@@ -31362,7 +31306,7 @@ function create_fragment$7(ctx) {
       ctx[4]
     }
   });
-  var div_levels = [{
+  let div_levels = [{
     "aria-describedby": div_aria_describedby_value = !isUndefined(
     /*step*/
     ctx[4].options.text) ?
@@ -31381,14 +31325,14 @@ function create_fragment$7(ctx) {
   }, {
     tabindex: "0"
   }];
-  var div_data = {};
+  let div_data = {};
 
-  for (var i = 0; i < div_levels.length; i += 1) {
+  for (let i = 0; i < div_levels.length; i += 1) {
     div_data = assign(div_data, div_levels[i]);
   }
 
   return {
-    c: function () {
+    c() {
       div = element("div");
       if (if_block) if_block.c();
       t = space();
@@ -31402,7 +31346,8 @@ function create_fragment$7(ctx) {
       ctx[6]);
       toggle_class(div, "shepherd-element", true);
     },
-    m: function (target, anchor) {
+
+    m(target, anchor) {
       insert(target, div, anchor);
       if (if_block) if_block.m(div, null);
       append(div, t);
@@ -31419,10 +31364,8 @@ function create_fragment$7(ctx) {
         mounted = true;
       }
     },
-    p: function (ctx, _ref20) {
-      var _ref21 = _slicedToArray(_ref20, 1),
-          dirty = _ref21[0];
 
+    p(ctx, [dirty]) {
       if (
       /*step*/
       ctx[4].options.arrow &&
@@ -31442,7 +31385,7 @@ function create_fragment$7(ctx) {
         if_block = null;
       }
 
-      var shepherdcontent_changes = {};
+      const shepherdcontent_changes = {};
       if (dirty &
       /*descriptionId*/
       4) shepherdcontent_changes.descriptionId =
@@ -31492,16 +31435,19 @@ function create_fragment$7(ctx) {
       ctx[6]);
       toggle_class(div, "shepherd-element", true);
     },
-    i: function (local) {
+
+    i(local) {
       if (current) return;
       transition_in(shepherdcontent.$$.fragment, local);
       current = true;
     },
-    o: function (local) {
+
+    o(local) {
       transition_out(shepherdcontent.$$.fragment, local);
       current = false;
     },
-    d: function (detaching) {
+
+    d(detaching) {
       if (detaching) detach(div);
       if (if_block) if_block.d();
       destroy_component(shepherdcontent);
@@ -31511,44 +31457,61 @@ function create_fragment$7(ctx) {
       mounted = false;
       dispose();
     }
+
   };
 }
 
-var KEY_TAB = 9;
-var KEY_ESC = 27;
-var LEFT_ARROW = 37;
-var RIGHT_ARROW = 39;
+const KEY_TAB = 9;
+const KEY_ESC = 27;
+const LEFT_ARROW = 37;
+const RIGHT_ARROW = 39;
 
 function getClassesArray(classes) {
-  return classes.split(" ").filter(function (className) {
-    return !!className.length;
-  });
+  return classes.split(" ").filter(className => !!className.length);
 }
 
 function instance$7($$self, $$props, $$invalidate) {
-  var classPrefix = $$props.classPrefix,
-      element = $$props.element,
-      descriptionId = $$props.descriptionId,
-      firstFocusableElement = $$props.firstFocusableElement,
-      focusableElements = $$props.focusableElements,
-      labelId = $$props.labelId,
-      lastFocusableElement = $$props.lastFocusableElement,
-      step = $$props.step,
-      dataStepId = $$props.dataStepId;
-  var hasCancelIcon, hasTitle, classes;
+  let {
+    classPrefix
+  } = $$props,
+      {
+    element
+  } = $$props,
+      {
+    descriptionId
+  } = $$props,
+      {
+    firstFocusableElement
+  } = $$props,
+      {
+    focusableElements
+  } = $$props,
+      {
+    labelId
+  } = $$props,
+      {
+    lastFocusableElement
+  } = $$props,
+      {
+    step
+  } = $$props,
+      {
+    dataStepId
+  } = $$props;
+  let hasCancelIcon, hasTitle, classes;
 
-  var getElement = function () {
-    return element;
-  };
+  const getElement = () => element;
 
-  onMount(function () {
+  onMount(() => {
     // Get all elements that are focusable
-    $$invalidate(1, dataStepId = _defineProperty({}, "data-".concat(classPrefix, "shepherd-step-id"), step.id));
+    $$invalidate(1, dataStepId = {
+      ["data-".concat(classPrefix, "shepherd-step-id")]: step.id
+    });
     $$invalidate(9, focusableElements = element.querySelectorAll("a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), [tabindex=\"0\"]"));
     $$invalidate(8, firstFocusableElement = focusableElements[0]);
     $$invalidate(10, lastFocusableElement = focusableElements[focusableElements.length - 1]);
   });
-  afterUpdate(function () {
+  afterUpdate(() => {
     if (classes !== step.options.classes) {
       updateDynamicClasses();
     }
@@ -31562,24 +31525,20 @@ function instance$7($$self, $$props, $$invalidate) {
 
   function removeClasses(classes) {
     if (isString(classes)) {
-      var oldClasses = getClassesArray(classes);
+      const oldClasses = getClassesArray(classes);
 
       if (oldClasses.length) {
-        var _element$classList;
-
-        (_element$classList = element.classList).remove.apply(_element$classList, _toConsumableArray(oldClasses));
+        element.classList.remove(...oldClasses);
       }
     }
   }
 
   function addClasses(classes) {
     if (isString(classes)) {
-      var newClasses = getClassesArray(classes);
+      const newClasses = getClassesArray(classes);
 
       if (newClasses.length) {
-        var _element$classList2;
-
-        (_element$classList2 = element.classList).add.apply(_element$classList2, _toConsumableArray(newClasses));
+        element.classList.add(...newClasses);
       }
     }
   }
@@ -31592,9 +31551,10 @@ function instance$7($$self, $$props, $$invalidate) {
   */
 
 
-  var handleKeyDown = function (e) {
-    var _step = step,
-        tour = _step.tour;
+  const handleKeyDown = e => {
+    const {
+      tour
+    } = step;
 
     switch (e.keyCode) {
       case KEY_TAB:
@@ -31642,13 +31602,13 @@ function instance$7($$self, $$props, $$invalidate) {
   };
 
   function div_binding($$value) {
-    binding_callbacks[$$value ? "unshift" : "push"](function () {
+    binding_callbacks[$$value ? "unshift" : "push"](() => {
       element = $$value;
       $$invalidate(0, element);
     });
   }
 
-  $$self.$$set = function ($$props) {
+  $$self.$$set = $$props => {
     if ("classPrefix" in $$props) $$invalidate(11, classPrefix = $$props.classPrefix);
     if ("element" in $$props) $$invalidate(0, element = $$props.element);
     if ("descriptionId" in $$props) $$invalidate(2, descriptionId = $$props.descriptionId);
@@ -31660,7 +31620,7 @@ function instance$7($$self, $$props, $$invalidate) {
     if ("dataStepId" in $$props) $$invalidate(1, dataStepId = $$props.dataStepId);
   };
 
-  $$self.$$.update = function () {
+  $$self.$$.update = () => {
     if ($$self.$$.dirty &
     /*step*/
     16) {
@@ -31674,18 +31634,10 @@ function instance$7($$self, $$props, $$invalidate) {
   return [element, dataStepId, descriptionId, labelId, step, hasCancelIcon, hasTitle, handleKeyDown, firstFocusableElement, focusableElements, lastFocusableElement, classPrefix, getElement, div_binding];
 }
 
-var Shepherd_element = /*#__PURE__*/function (_SvelteComponent8) {
-  _inherits(Shepherd_element, _SvelteComponent8);
-
-  var _super8 = _createSuper(Shepherd_element);
-
-  function Shepherd_element(options) {
-    var _this10;
-
-    _classCallCheck(this, Shepherd_element);
-
-    _this10 = _super8.call(this);
-    init(_assertThisInitialized(_this10), options, instance$7, create_fragment$7, safe_not_equal, {
+class Shepherd_element extends SvelteComponent {
+  constructor(options) {
+    super();
+    init(this, options, instance$7, create_fragment$7, safe_not_equal, {
       classPrefix: 11,
       element: 0,
       descriptionId: 2,
@@ -31697,18 +31649,13 @@ var Shepherd_element = /*#__PURE__*/function (_SvelteComponent8) {
       dataStepId: 1,
       getElement: 12
     });
-    return _this10;
   }
 
-  _createClass(Shepherd_element, [{
-    key: "getElement",
-    get: function () {
-      return this.$$.ctx[12];
-    }
-  }]);
+  get getElement() {
+    return this.$$.ctx[12];
+  }
 
-  return Shepherd_element;
-}(SvelteComponent);
+}
 
 function createCommonjsModule(fn, module) {
   return module = {
@@ -31791,13 +31738,13 @@ var smoothscroll = createCommonjsModule(function (module, exports) {
 
 
       function shouldBailOut(firstArg) {
-        if (firstArg === null || _typeof(firstArg) !== 'object' || firstArg.behavior === undefined || firstArg.behavior === 'auto' || firstArg.behavior === 'instant') {
+        if (firstArg === null || typeof firstArg !== 'object' || firstArg.behavior === undefined || firstArg.behavior === 'auto' || firstArg.behavior === 'instant') {
           // first argument is not an object/null
           // or behavior is auto, instant or undefined
           return true;
         }
 
-        if (_typeof(firstArg) === 'object' && firstArg.behavior === 'smooth') {
+        if (typeof firstArg === 'object' && firstArg.behavior === 'smooth') {
           // first argument is an object and behavior is smooth
           return false;
         } // throw error when behavior is not supported
@@ -31942,7 +31889,7 @@ var smoothscroll = createCommonjsModule(function (module, exports) {
 
 
         if (shouldBailOut(arguments[0]) === true) {
-          original.scroll.call(w, arguments[0].left !== undefined ? arguments[0].left : _typeof(arguments[0]) !== 'object' ? arguments[0] : w.scrollX || w.pageXOffset, // use top prop, second argument if present or fallback to scrollY
+          original.scroll.call(w, arguments[0].left !== undefined ? arguments[0].left : typeof arguments[0] !== 'object' ? arguments[0] : w.scrollX || w.pageXOffset, // use top prop, second argument if present or fallback to scrollY
           arguments[0].top !== undefined ? arguments[0].top : arguments[1] !== undefined ? arguments[1] : w.scrollY || w.pageYOffset);
           return;
         } // LET THE SMOOTHNESS BEGIN!
@@ -31960,7 +31907,7 @@ var smoothscroll = createCommonjsModule(function (module, exports) {
 
 
         if (shouldBailOut(arguments[0])) {
-          original.scrollBy.call(w, arguments[0].left !== undefined ? arguments[0].left : _typeof(arguments[0]) !== 'object' ? arguments[0] : 0, arguments[0].top !== undefined ? arguments[0].top : arguments[1] !== undefined ? arguments[1] : 0);
+          original.scrollBy.call(w, arguments[0].left !== undefined ? arguments[0].left : typeof arguments[0] !== 'object' ? arguments[0] : 0, arguments[0].top !== undefined ? arguments[0].top : arguments[1] !== undefined ? arguments[1] : 0);
           return;
         } // LET THE SMOOTHNESS BEGIN!
 
@@ -31983,7 +31930,7 @@ var smoothscroll = createCommonjsModule(function (module, exports) {
           }
 
           original.elementScroll.call(this, // use left prop, first number argument or fallback to scrollLeft
-          arguments[0].left !== undefined ? ~~arguments[0].left : _typeof(arguments[0]) !== 'object' ? ~~arguments[0] : this.scrollLeft, // use top prop, second argument or fallback to scrollTop
+          arguments[0].left !== undefined ? ~~arguments[0].left : typeof arguments[0] !== 'object' ? ~~arguments[0] : this.scrollLeft, // use top prop, second argument or fallback to scrollTop
           arguments[0].top !== undefined ? ~~arguments[0].top : arguments[1] !== undefined ? ~~arguments[1] : this.scrollTop);
           return;
         }
@@ -32064,11 +32011,7 @@ smoothscroll.polyfill();
  * @extends {Evented}
  */
 
-var Step = /*#__PURE__*/function (_Evented) {
-  _inherits(Step, _Evented);
-
-  var _super9 = _createSuper(Step);
-
+class Step extends Evented {
   /**
    * Create a step
    * @param {Tour} tour The tour for the step
@@ -32156,22 +32099,16 @@ var Step = /*#__PURE__*/function (_Evented) {
    * ```
    * @return {Step} The newly created Step instance
    */
-  function Step(tour) {
-    var _this11;
+  constructor(tour, options = {}) {
+    super(tour, options);
+    this.tour = tour;
+    this.classPrefix = this.tour.options ? normalizePrefix(this.tour.options.classPrefix) : '';
+    this.styles = tour.styles;
+    autoBind(this);
 
-    var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+    this._setOptions(options);
 
-    _classCallCheck(this, Step);
-
-    _this11 = _super9.call(this, tour, options);
-    _this11.tour = tour;
-    _this11.classPrefix = _this11.tour.options ? normalizePrefix(_this11.tour.options.classPrefix) : '';
-    _this11.styles = tour.styles;
-    autoBind(_assertThisInitialized(_this11));
-
-    _this11._setOptions(options);
-
-    return _possibleConstructorReturn(_this11, _assertThisInitialized(_this11));
+    return this;
   }
   /**
    * Cancel the tour
@@ -32179,348 +32116,320 @@ var Step = /*#__PURE__*/function (_Evented) {
    */
 
 
-  _createClass(Step, [{
-    key: "cancel",
-    value: function cancel() {
-      this.tour.cancel();
-      this.trigger('cancel');
+  cancel() {
+    this.tour.cancel();
+    this.trigger('cancel');
+  }
+  /**
+   * Complete the tour
+   * Triggers the `complete` event
+   */
+
+
+  complete() {
+    this.tour.complete();
+    this.trigger('complete');
+  }
+  /**
+   * Remove the step, delete the step's element, and destroy the Popper instance for the step.
+   * Triggers `destroy` event
+   */
+
+
+  destroy() {
+    if (this.tooltip) {
+      this.tooltip.destroy();
+      this.tooltip = null;
     }
-    /**
-     * Complete the tour
-     * Triggers the `complete` event
-     */
 
-  }, {
-    key: "complete",
-    value: function complete() {
-      this.tour.complete();
-      this.trigger('complete');
+    if (isHTMLElement(this.el) && this.el.parentNode) {
+      this.el.parentNode.removeChild(this.el);
+      this.el = null;
     }
-    /**
-     * Remove the step, delete the step's element, and destroy the Popper instance for the step.
-     * Triggers `destroy` event
-     */
 
-  }, {
-    key: "destroy",
-    value: function destroy() {
-      if (this.tooltip) {
-        this.tooltip.destroy();
-        this.tooltip = null;
-      }
+    this._updateStepTargetOnHide();
 
-      if (isHTMLElement(this.el) && this.el.parentNode) {
-        this.el.parentNode.removeChild(this.el);
-        this.el = null;
-      }
+    this.trigger('destroy');
+  }
+  /**
+   * Returns the tour for the step
+   * @return {Tour} The tour instance
+   */
 
-      this._updateStepTargetOnHide();
 
-      this.trigger('destroy');
+  getTour() {
+    return this.tour;
+  }
+  /**
+   * Hide the step
+   */
+
+
+  hide() {
+    this.tour.modal.hide();
+    this.trigger('before-hide');
+
+    if (this.el) {
+      this.el.hidden = true;
     }
-    /**
-     * Returns the tour for the step
-     * @return {Tour} The tour instance
-     */
 
-  }, {
-    key: "getTour",
-    value: function getTour() {
-      return this.tour;
-    }
-    /**
-     * Hide the step
-     */
+    this._updateStepTargetOnHide();
 
-  }, {
-    key: "hide",
-    value: function hide() {
-      this.tour.modal.hide();
-      this.trigger('before-hide');
+    this.trigger('hide');
+  }
+  /**
+   * Checks if the step should be centered or not
+   * @return {boolean} True if the step is centered
+   */
 
-      if (this.el) {
-        this.el.hidden = true;
-      }
 
-      this._updateStepTargetOnHide();
+  isCentered() {
+    const attachToOptions = parseAttachTo(this);
+    return !attachToOptions.element || !attachToOptions.on;
+  }
+  /**
+   * Check if the step is open and visible
+   * @return {boolean} True if the step is open and visible
+   */
 
-      this.trigger('hide');
-    }
-    /**
-     * Checks if the step should be centered or not
-     * @return {boolean} True if the step is centered
-     */
 
-  }, {
-    key: "isCentered",
-    value: function isCentered() {
-      var attachToOptions = parseAttachTo(this);
-      return !attachToOptions.element || !attachToOptions.on;
-    }
-    /**
-     * Check if the step is open and visible
-     * @return {boolean} True if the step is open and visible
-     */
+  isOpen() {
+    return Boolean(this.el && !this.el.hidden);
+  }
+  /**
+   * Wraps `_show` and ensures `beforeShowPromise` resolves before calling show
+   * @return {*|Promise}
+   */
 
-  }, {
-    key: "isOpen",
-    value: function isOpen() {
-      return Boolean(this.el && !this.el.hidden);
-    }
-    /**
-     * Wraps `_show` and ensures `beforeShowPromise` resolves before calling show
-     * @return {*|Promise}
-     */
 
-  }, {
-    key: "show",
-    value: function show() {
-      var _this12 = this;
+  show() {
+    if (isFunction(this.options.beforeShowPromise)) {
+      const beforeShowPromise = this.options.beforeShowPromise();
 
-      if (isFunction(this.options.beforeShowPromise)) {
-        var beforeShowPromise = this.options.beforeShowPromise();
-
-        if (!isUndefined(beforeShowPromise)) {
-          return beforeShowPromise.then(function () {
-            return _this12._show();
-          });
-        }
-      }
-
-      this._show();
-    }
-    /**
-     * Updates the options of the step.
-     *
-     * @param {Object} options The options for the step
-     */
-
-  }, {
-    key: "updateStepOptions",
-    value: function updateStepOptions(options) {
-      Object.assign(this.options, options);
-
-      if (this.shepherdElementComponent) {
-        this.shepherdElementComponent.$set({
-          step: this
-        });
+      if (!isUndefined(beforeShowPromise)) {
+        return beforeShowPromise.then(() => this._show());
       }
     }
-    /**
-     * Returns the element for the step
-     * @return {HTMLElement|null|undefined} The element instance. undefined if it has never been shown, null if it has been destroyed
-     */
 
-  }, {
-    key: "getElement",
-    value: function getElement() {
-      return this.el;
-    }
-    /**
-     * Returns the target for the step
-     * @return {HTMLElement|null|undefined} The element instance. undefined if it has never been shown, null if query string has not been found
-     */
+    this._show();
+  }
+  /**
+   * Updates the options of the step.
+   *
+   * @param {Object} options The options for the step
+   */
 
-  }, {
-    key: "getTarget",
-    value: function getTarget() {
-      return this.target;
-    }
-    /**
-     * Creates Shepherd element for step based on options
-     *
-     * @return {Element} The DOM element for the step tooltip
-     * @private
-     */
 
-  }, {
-    key: "_createTooltipContent",
-    value: function _createTooltipContent() {
-      var descriptionId = "".concat(this.id, "-description");
-      var labelId = "".concat(this.id, "-label");
-      this.shepherdElementComponent = new Shepherd_element({
-        target: this.tour.options.stepsContainer || document.body,
-        props: {
-          classPrefix: this.classPrefix,
-          descriptionId: descriptionId,
-          labelId: labelId,
-          step: this,
-          styles: this.styles
-        }
+  updateStepOptions(options) {
+    Object.assign(this.options, options);
+
+    if (this.shepherdElementComponent) {
+      this.shepherdElementComponent.$set({
+        step: this
       });
-      return this.shepherdElementComponent.getElement();
     }
-    /**
-     * If a custom scrollToHandler is defined, call that, otherwise do the generic
-     * scrollIntoView call.
-     *
-     * @param {boolean|Object} scrollToOptions If true, uses the default `scrollIntoView`,
-     * if an object, passes that object as the params to `scrollIntoView` i.e. `{ behavior: 'smooth', block: 'center' }`
-     * @private
-     */
+  }
+  /**
+   * Returns the element for the step
+   * @return {HTMLElement|null|undefined} The element instance. undefined if it has never been shown, null if it has been destroyed
+   */
 
-  }, {
-    key: "_scrollTo",
-    value: function _scrollTo(scrollToOptions) {
-      var _parseAttachTo = parseAttachTo(this),
-          element = _parseAttachTo.element;
 
-      if (isFunction(this.options.scrollToHandler)) {
-        this.options.scrollToHandler(element);
-      } else if (isElement(element) && typeof element.scrollIntoView === 'function') {
-        element.scrollIntoView(scrollToOptions);
+  getElement() {
+    return this.el;
+  }
+  /**
+   * Returns the target for the step
+   * @return {HTMLElement|null|undefined} The element instance. undefined if it has never been shown, null if query string has not been found
+   */
+
+
+  getTarget() {
+    return this.target;
+  }
+  /**
+   * Creates Shepherd element for step based on options
+   *
+   * @return {Element} The DOM element for the step tooltip
+   * @private
+   */
+
+
+  _createTooltipContent() {
+    const descriptionId = "".concat(this.id, "-description");
+    const labelId = "".concat(this.id, "-label");
+    this.shepherdElementComponent = new Shepherd_element({
+      target: this.tour.options.stepsContainer || document.body,
+      props: {
+        classPrefix: this.classPrefix,
+        descriptionId,
+        labelId,
+        step: this,
+        styles: this.styles
       }
+    });
+    return this.shepherdElementComponent.getElement();
+  }
+  /**
+   * If a custom scrollToHandler is defined, call that, otherwise do the generic
+   * scrollIntoView call.
+   *
+   * @param {boolean|Object} scrollToOptions If true, uses the default `scrollIntoView`,
+   * if an object, passes that object as the params to `scrollIntoView` i.e. `{ behavior: 'smooth', block: 'center' }`
+   * @private
+   */
+
+
+  _scrollTo(scrollToOptions) {
+    const {
+      element
+    } = parseAttachTo(this);
+
+    if (isFunction(this.options.scrollToHandler)) {
+      this.options.scrollToHandler(element);
+    } else if (isElement(element) && typeof element.scrollIntoView === 'function') {
+      element.scrollIntoView(scrollToOptions);
     }
-    /**
-     * _getClassOptions gets all possible classes for the step
-     * @param {Object} stepOptions The step specific options
-     * @returns {String} unique string from array of classes
-     * @private
-     */
+  }
+  /**
+   * _getClassOptions gets all possible classes for the step
+   * @param {Object} stepOptions The step specific options
+   * @returns {String} unique string from array of classes
+   * @private
+   */
 
-  }, {
-    key: "_getClassOptions",
-    value: function _getClassOptions(stepOptions) {
-      var defaultStepOptions = this.tour && this.tour.options && this.tour.options.defaultStepOptions;
-      var stepClasses = stepOptions.classes ? stepOptions.classes : '';
-      var defaultStepOptionsClasses = defaultStepOptions && defaultStepOptions.classes ? defaultStepOptions.classes : '';
-      var allClasses = [].concat(_toConsumableArray(stepClasses.split(' ')), _toConsumableArray(defaultStepOptionsClasses.split(' ')));
-      var uniqClasses = new Set(allClasses);
-      return Array.from(uniqClasses).join(' ').trim();
+
+  _getClassOptions(stepOptions) {
+    const defaultStepOptions = this.tour && this.tour.options && this.tour.options.defaultStepOptions;
+    const stepClasses = stepOptions.classes ? stepOptions.classes : '';
+    const defaultStepOptionsClasses = defaultStepOptions && defaultStepOptions.classes ? defaultStepOptions.classes : '';
+    const allClasses = [...stepClasses.split(' '), ...defaultStepOptionsClasses.split(' ')];
+    const uniqClasses = new Set(allClasses);
+    return Array.from(uniqClasses).join(' ').trim();
+  }
+  /**
+   * Sets the options for the step, maps `when` to events, sets up buttons
+   * @param {Object} options The options for the step
+   * @private
+   */
+
+
+  _setOptions(options = {}) {
+    let tourOptions = this.tour && this.tour.options && this.tour.options.defaultStepOptions;
+    tourOptions = cjs({}, tourOptions || {});
+    this.options = Object.assign({
+      arrow: true
+    }, tourOptions, options);
+    const {
+      when
+    } = this.options;
+    this.options.classes = this._getClassOptions(options);
+    this.destroy();
+    this.id = this.options.id || "step-".concat(uuid());
+
+    if (when) {
+      Object.keys(when).forEach(event => {
+        this.on(event, when[event], this);
+      });
     }
-    /**
-     * Sets the options for the step, maps `when` to events, sets up buttons
-     * @param {Object} options The options for the step
-     * @private
-     */
+  }
+  /**
+   * Create the element and set up the Popper instance
+   * @private
+   */
 
-  }, {
-    key: "_setOptions",
-    value: function _setOptions() {
-      var _this13 = this;
 
-      var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-      var tourOptions = this.tour && this.tour.options && this.tour.options.defaultStepOptions;
-      tourOptions = cjs({}, tourOptions || {});
-      this.options = Object.assign({
-        arrow: true
-      }, tourOptions, options);
-      var when = this.options.when;
-      this.options.classes = this._getClassOptions(options);
+  _setupElements() {
+    if (!isUndefined(this.el)) {
       this.destroy();
-      this.id = this.options.id || "step-".concat(uuid());
-
-      if (when) {
-        Object.keys(when).forEach(function (event) {
-          _this13.on(event, when[event], _this13);
-        });
-      }
     }
-    /**
-     * Create the element and set up the Popper instance
-     * @private
-     */
 
-  }, {
-    key: "_setupElements",
-    value: function _setupElements() {
-      if (!isUndefined(this.el)) {
-        this.destroy();
-      }
+    this.el = this._createTooltipContent();
 
-      this.el = this._createTooltipContent();
-
-      if (this.options.advanceOn) {
-        bindAdvance(this);
-      }
-
-      setupTooltip(this);
+    if (this.options.advanceOn) {
+      bindAdvance(this);
     }
-    /**
-     * Triggers `before-show`, generates the tooltip DOM content,
-     * sets up a Popper instance for the tooltip, then triggers `show`.
-     * @private
-     */
 
-  }, {
-    key: "_show",
-    value: function _show() {
-      var _this14 = this;
+    setupTooltip(this);
+  }
+  /**
+   * Triggers `before-show`, generates the tooltip DOM content,
+   * sets up a Popper instance for the tooltip, then triggers `show`.
+   * @private
+   */
 
-      this.trigger('before-show');
 
-      this._setupElements();
+  _show() {
+    this.trigger('before-show');
 
-      if (!this.tour.modal) {
-        this.tour._setupModal();
-      }
+    this._setupElements();
 
-      this.tour.modal.setupForStep(this);
-
-      this._styleTargetElementForStep(this);
-
-      this.el.hidden = false; // start scrolling to target before showing the step
-
-      if (this.options.scrollTo) {
-        setTimeout(function () {
-          _this14._scrollTo(_this14.options.scrollTo);
-        });
-      }
-
-      this.el.hidden = false;
-      var content = this.shepherdElementComponent.getElement();
-      var target = this.target || document.body;
-      target.classList.add("".concat(this.classPrefix, "shepherd-enabled"));
-      target.classList.add("".concat(this.classPrefix, "shepherd-target"));
-      content.classList.add('shepherd-enabled');
-      this.trigger('show');
+    if (!this.tour.modal) {
+      this.tour._setupModal();
     }
-    /**
-     * Modulates the styles of the passed step's target element, based on the step's options and
-     * the tour's `modal` option, to visually emphasize the element
-     *
-     * @param step The step object that attaches to the element
-     * @private
-     */
 
-  }, {
-    key: "_styleTargetElementForStep",
-    value: function _styleTargetElementForStep(step) {
-      var targetElement = step.target;
+    this.tour.modal.setupForStep(this);
 
-      if (!targetElement) {
-        return;
-      }
+    this._styleTargetElementForStep(this);
 
-      if (step.options.highlightClass) {
-        targetElement.classList.add(step.options.highlightClass);
-      }
+    this.el.hidden = false; // start scrolling to target before showing the step
 
-      if (step.options.canClickTarget === false) {
-        targetElement.classList.add('shepherd-target-click-disabled');
-      }
+    if (this.options.scrollTo) {
+      setTimeout(() => {
+        this._scrollTo(this.options.scrollTo);
+      });
     }
-    /**
-     * When a step is hidden, remove the highlightClass and 'shepherd-enabled'
-     * and 'shepherd-target' classes
-     * @private
-     */
 
-  }, {
-    key: "_updateStepTargetOnHide",
-    value: function _updateStepTargetOnHide() {
-      var target = this.target || document.body;
+    this.el.hidden = false;
+    const content = this.shepherdElementComponent.getElement();
+    const target = this.target || document.body;
+    target.classList.add("".concat(this.classPrefix, "shepherd-enabled"));
+    target.classList.add("".concat(this.classPrefix, "shepherd-target"));
+    content.classList.add('shepherd-enabled');
+    this.trigger('show');
+  }
+  /**
+   * Modulates the styles of the passed step's target element, based on the step's options and
+   * the tour's `modal` option, to visually emphasize the element
+   *
+   * @param step The step object that attaches to the element
+   * @private
+   */
 
-      if (this.options.highlightClass) {
-        target.classList.remove(this.options.highlightClass);
-      }
 
-      target.classList.remove("".concat(this.classPrefix, "shepherd-enabled"), "".concat(this.classPrefix, "shepherd-target"));
+  _styleTargetElementForStep(step) {
+    const targetElement = step.target;
+
+    if (!targetElement) {
+      return;
     }
-  }]);
 
-  return Step;
-}(Evented);
+    if (step.options.highlightClass) {
+      targetElement.classList.add(step.options.highlightClass);
+    }
+
+    if (step.options.canClickTarget === false) {
+      targetElement.classList.add('shepherd-target-click-disabled');
+    }
+  }
+  /**
+   * When a step is hidden, remove the highlightClass and 'shepherd-enabled'
+   * and 'shepherd-target' classes
+   * @private
+   */
+
+
+  _updateStepTargetOnHide() {
+    const target = this.target || document.body;
+
+    if (this.options.highlightClass) {
+      target.classList.remove(this.options.highlightClass);
+    }
+
+    target.classList.remove("".concat(this.classPrefix, "shepherd-enabled"), "".concat(this.classPrefix, "shepherd-target"));
+  }
+
+}
 /**
  * Cleanup the steps and set pointerEvents back to 'auto'
  * @param tour The tour object
@@ -32529,8 +32438,10 @@ var Step = /*#__PURE__*/function (_Evented) {
 
 function cleanupSteps(tour) {
   if (tour) {
-    var steps = tour.steps;
-    steps.forEach(function (step) {
+    const {
+      steps
+    } = tour;
+    steps.forEach(step => {
       if (step.options && step.options.canClickTarget === false && step.options.attachTo) {
         if (step.target instanceof HTMLElement) {
           step.target.classList.remove('shepherd-target-click-disabled');
@@ -32551,31 +32462,30 @@ function cleanupSteps(tour) {
  */
 
 
-function makeOverlayPath(_ref22) {
-  var width = _ref22.width,
-      height = _ref22.height,
-      _ref22$x = _ref22.x,
-      x = _ref22$x === void 0 ? 0 : _ref22$x,
-      _ref22$y = _ref22.y,
-      y = _ref22$y === void 0 ? 0 : _ref22$y,
-      _ref22$r = _ref22.r,
-      r = _ref22$r === void 0 ? 0 : _ref22$r;
-  var _window = window,
-      w = _window.innerWidth,
-      h = _window.innerHeight;
+function makeOverlayPath({
+  width,
+  height,
+  x = 0,
+  y = 0,
+  r = 0
+}) {
+  const {
+    innerWidth: w,
+    innerHeight: h
+  } = window;
   return "M".concat(w, ",").concat(h, "H0V0H").concat(w, "V").concat(h, "ZM").concat(x + r, ",").concat(y, "a").concat(r, ",").concat(r, ",0,0,0-").concat(r, ",").concat(r, "V").concat(height + y - r, "a").concat(r, ",").concat(r, ",0,0,0,").concat(r, ",").concat(r, "H").concat(width + x - r, "a").concat(r, ",").concat(r, ",0,0,0,").concat(r, "-").concat(r, "V").concat(y + r, "a").concat(r, ",").concat(r, ",0,0,0-").concat(r, "-").concat(r, "Z");
 }
 /* src/js/components/shepherd-modal.svelte generated by Svelte v3.28.0 */
 
 
 function create_fragment$8(ctx) {
-  var svg;
-  var path;
-  var svg_class_value;
-  var mounted;
-  var dispose;
+  let svg;
+  let path;
+  let svg_class_value;
+  let mounted;
+  let dispose;
   return {
-    c: function () {
+    c() {
       svg = svg_element("svg");
       path = svg_element("path");
       attr(path, "d",
@@ -32585,7 +32495,8 @@ function create_fragment$8(ctx) {
       /*modalIsVisible*/
       ctx[1] ? "shepherd-modal-is-visible" : "", " shepherd-modal-overlay-container"));
     },
-    m: function (target, anchor) {
+
+    m(target, anchor) {
       insert(target, svg, anchor);
       append(svg, path);
       /*svg_binding*/
@@ -32599,10 +32510,8 @@ function create_fragment$8(ctx) {
         mounted = true;
       }
     },
-    p: function (ctx, _ref23) {
-      var _ref24 = _slicedToArray(_ref23, 1),
-          dirty = _ref24[0];
 
+    p(ctx, [dirty]) {
       if (dirty &
       /*pathDefinition*/
       4) {
@@ -32619,9 +32528,11 @@ function create_fragment$8(ctx) {
         attr(svg, "class", svg_class_value);
       }
     },
+
     i: noop,
     o: noop,
-    d: function (detaching) {
+
+    d(detaching) {
       if (detaching) detach(svg);
       /*svg_binding*/
 
@@ -32629,6 +32540,7 @@ function create_fragment$8(ctx) {
       mounted = false;
       dispose();
     }
+
   };
 }
 
@@ -32637,9 +32549,9 @@ function _getScrollParent(element) {
     return null;
   }
 
-  var isHtmlElement = element instanceof HTMLElement;
-  var overflowY = isHtmlElement && window.getComputedStyle(element).overflowY;
-  var isScrollable = overflowY !== "hidden" && overflowY !== "visible";
+  const isHtmlElement = element instanceof HTMLElement;
+  const overflowY = isHtmlElement && window.getComputedStyle(element).overflowY;
+  const isScrollable = overflowY !== "hidden" && overflowY !== "visible";
 
   if (isScrollable && element.scrollHeight >= element.clientHeight) {
     return element;
@@ -32659,38 +32571,40 @@ function _getScrollParent(element) {
 
 
 function _getVisibleHeight(element, scrollParent) {
-  var elementRect = element.getBoundingClientRect();
-  var top = elementRect.y || elementRect.top;
-  var bottom = elementRect.bottom || top + elementRect.height;
+  const elementRect = element.getBoundingClientRect();
+  let top = elementRect.y || elementRect.top;
+  let bottom = elementRect.bottom || top + elementRect.height;
 
   if (scrollParent) {
-    var scrollRect = scrollParent.getBoundingClientRect();
-    var scrollTop = scrollRect.y || scrollRect.top;
-    var scrollBottom = scrollRect.bottom || scrollTop + scrollRect.height;
+    const scrollRect = scrollParent.getBoundingClientRect();
+    const scrollTop = scrollRect.y || scrollRect.top;
+    const scrollBottom = scrollRect.bottom || scrollTop + scrollRect.height;
     top = Math.max(top, scrollTop);
     bottom = Math.min(bottom, scrollBottom);
   }
 
-  var height = Math.max(bottom - top, 0); // Default to 0 if height is negative
+  const height = Math.max(bottom - top, 0); // Default to 0 if height is negative
 
   return {
     y: top,
-    height: height
+    height
   };
 }
 
 function instance$8($$self, $$props, $$invalidate) {
-  var element = $$props.element,
-      openingProperties = $$props.openingProperties;
-  var guid = uuid();
-  var modalIsVisible = false;
-  var rafId = undefined;
-  var pathDefinition;
+  let {
+    element
+  } = $$props,
+      {
+    openingProperties
+  } = $$props;
+  const guid = uuid();
+  let modalIsVisible = false;
+  let rafId = undefined;
+  let pathDefinition;
   closeModalOpening();
 
-  var getElement = function () {
-    return element;
-  };
+  const getElement = () => element;
 
   function closeModalOpening() {
     $$invalidate(4, openingProperties = {
@@ -32708,25 +32622,23 @@ function instance$8($$self, $$props, $$invalidate) {
     _cleanupStepEventListeners();
   }
 
-  function positionModalOpening(targetElement, scrollParent) {
-    var modalOverlayOpeningPadding = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0;
-    var modalOverlayOpeningRadius = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 0;
-
+  function positionModalOpening(targetElement, scrollParent, modalOverlayOpeningPadding = 0, modalOverlayOpeningRadius = 0) {
     if (targetElement.getBoundingClientRect) {
-      var _getVisibleHeight2 = _getVisibleHeight(targetElement, scrollParent),
-          y = _getVisibleHeight2.y,
-          height = _getVisibleHeight2.height;
+      const {
+        y,
+        height
+      } = _getVisibleHeight(targetElement, scrollParent);
 
-      var _targetElement$getBou = targetElement.getBoundingClientRect(),
-          x = _targetElement$getBou.x,
-          width = _targetElement$getBou.width,
-          _left = _targetElement$getBou.left; // getBoundingClientRect is not consistent. Some browsers use x and y, while others use left and top
-
+      const {
+        x,
+        width,
+        left
+      } = targetElement.getBoundingClientRect(); // getBoundingClientRect is not consistent. Some browsers use x and y, while others use left and top
 
       $$invalidate(4, openingProperties = {
         width: width + modalOverlayOpeningPadding * 2,
         height: height + modalOverlayOpeningPadding * 2,
-        x: (x || _left) - modalOverlayOpeningPadding,
+        x: (x || left) - modalOverlayOpeningPadding,
         y: y - modalOverlayOpeningPadding,
         r: modalOverlayOpeningRadius
       });
@@ -32750,11 +32662,11 @@ function instance$8($$self, $$props, $$invalidate) {
     $$invalidate(1, modalIsVisible = true);
   }
 
-  var _preventModalBodyTouch = function (e) {
+  const _preventModalBodyTouch = e => {
     e.preventDefault();
   };
 
-  var _preventModalOverlayTouch = function (e) {
+  const _preventModalOverlayTouch = e => {
     e.stopPropagation();
   };
   /**
@@ -32793,15 +32705,16 @@ function instance$8($$self, $$props, $$invalidate) {
 
 
   function _styleForStep(step) {
-    var _step$options = step.options,
-        modalOverlayOpeningPadding = _step$options.modalOverlayOpeningPadding,
-        modalOverlayOpeningRadius = _step$options.modalOverlayOpeningRadius;
+    const {
+      modalOverlayOpeningPadding,
+      modalOverlayOpeningRadius
+    } = step.options;
 
     if (step.target) {
-      var scrollParent = _getScrollParent(step.target); // Setup recursive function to call requestAnimationFrame to update the modal opening position
+      const scrollParent = _getScrollParent(step.target); // Setup recursive function to call requestAnimationFrame to update the modal opening position
 
 
-      var rafLoop = function () {
+      const rafLoop = () => {
         rafId = undefined;
         positionModalOpening(step.target, scrollParent, modalOverlayOpeningPadding, modalOverlayOpeningRadius);
         rafId = requestAnimationFrame(rafLoop);
@@ -32816,18 +32729,18 @@ function instance$8($$self, $$props, $$invalidate) {
   }
 
   function svg_binding($$value) {
-    binding_callbacks[$$value ? "unshift" : "push"](function () {
+    binding_callbacks[$$value ? "unshift" : "push"](() => {
       element = $$value;
       $$invalidate(0, element);
     });
   }
 
-  $$self.$$set = function ($$props) {
+  $$self.$$set = $$props => {
     if ("element" in $$props) $$invalidate(0, element = $$props.element);
     if ("openingProperties" in $$props) $$invalidate(4, openingProperties = $$props.openingProperties);
   };
 
-  $$self.$$.update = function () {
+  $$self.$$.update = () => {
     if ($$self.$$.dirty &
     /*openingProperties*/
     16) {
@@ -32838,18 +32751,10 @@ function instance$8($$self, $$props, $$invalidate) {
   return [element, modalIsVisible, pathDefinition, _preventModalOverlayTouch, openingProperties, getElement, closeModalOpening, hide, positionModalOpening, setupForStep, show, svg_binding];
 }
 
-var Shepherd_modal = /*#__PURE__*/function (_SvelteComponent9) {
-  _inherits(Shepherd_modal, _SvelteComponent9);
-
-  var _super10 = _createSuper(Shepherd_modal);
-
-  function Shepherd_modal(options) {
-    var _this15;
-
-    _classCallCheck(this, Shepherd_modal);
-
-    _this15 = _super10.call(this);
-    init(_assertThisInitialized(_this15), options, instance$8, create_fragment$8, safe_not_equal, {
+class Shepherd_modal extends SvelteComponent {
+  constructor(options) {
+    super();
+    init(this, options, instance$8, create_fragment$8, safe_not_equal, {
       element: 0,
       openingProperties: 4,
       getElement: 5,
@@ -32859,55 +32764,41 @@ var Shepherd_modal = /*#__PURE__*/function (_SvelteComponent9) {
       setupForStep: 9,
       show: 10
     });
-    return _this15;
   }
 
-  _createClass(Shepherd_modal, [{
-    key: "getElement",
-    get: function () {
-      return this.$$.ctx[5];
-    }
-  }, {
-    key: "closeModalOpening",
-    get: function () {
-      return this.$$.ctx[6];
-    }
-  }, {
-    key: "hide",
-    get: function () {
-      return this.$$.ctx[7];
-    }
-  }, {
-    key: "positionModalOpening",
-    get: function () {
-      return this.$$.ctx[8];
-    }
-  }, {
-    key: "setupForStep",
-    get: function () {
-      return this.$$.ctx[9];
-    }
-  }, {
-    key: "show",
-    get: function () {
-      return this.$$.ctx[10];
-    }
-  }]);
+  get getElement() {
+    return this.$$.ctx[5];
+  }
 
-  return Shepherd_modal;
-}(SvelteComponent);
+  get closeModalOpening() {
+    return this.$$.ctx[6];
+  }
 
-var Shepherd = new Evented();
+  get hide() {
+    return this.$$.ctx[7];
+  }
+
+  get positionModalOpening() {
+    return this.$$.ctx[8];
+  }
+
+  get setupForStep() {
+    return this.$$.ctx[9];
+  }
+
+  get show() {
+    return this.$$.ctx[10];
+  }
+
+}
+
+const Shepherd = new Evented();
 /**
  * Class representing the site tour
  * @extends {Evented}
  */
 
-var Tour = /*#__PURE__*/function (_Evented2) {
-  _inherits(Tour, _Evented2);
-
-  var _super11 = _createSuper(Tour);
-
+class Tour extends Evented {
   /**
    * @param {Object} options The options for the tour
    * @param {boolean} options.confirmCancel If true, will issue a `window.confirm` before cancelling
@@ -32931,40 +32822,32 @@ var Tour = /*#__PURE__*/function (_Evented2) {
    * can remain interactive
    * @returns {Tour}
    */
-  function Tour() {
-    var _this16;
-
-    var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-
-    _classCallCheck(this, Tour);
-
-    _this16 = _super11.call(this, options);
-    autoBind(_assertThisInitialized(_this16));
-    var defaultTourOptions = {
+  constructor(options = {}) {
+    super(options);
+    autoBind(this);
+    const defaultTourOptions = {
       exitOnEsc: true,
       keyboardNavigation: true
     };
-    _this16.options = Object.assign({}, defaultTourOptions, options);
-    _this16.classPrefix = normalizePrefix(_this16.options.classPrefix);
-    _this16.steps = [];
+    this.options = Object.assign({}, defaultTourOptions, options);
+    this.classPrefix = normalizePrefix(this.options.classPrefix);
+    this.steps = [];
+    this.addSteps(this.options.steps); // Pass these events onto the global Shepherd object
 
-    _this16.addSteps(_this16.options.steps); // Pass these events onto the global Shepherd object
-
-
-    var events = ['active', 'cancel', 'complete', 'inactive', 'show', 'start'];
-    events.map(function (event) {
-      (function (e) {
-        _this16.on(e, function (opts) {
+    const events = ['active', 'cancel', 'complete', 'inactive', 'show', 'start'];
+    events.map(event => {
+      (e => {
+        this.on(e, opts => {
           opts = opts || {};
-          opts.tour = _assertThisInitialized(_this16);
+          opts.tour = this;
           Shepherd.trigger(e, opts);
         });
       })(event);
     });
 
-    _this16._setTourID();
+    this._setTourID();
 
-    return _possibleConstructorReturn(_this16, _assertThisInitialized(_this16));
+    return this;
   }
   /**
    * Adds a new step to the tour
@@ -32975,347 +32858,315 @@ var Tour = /*#__PURE__*/function (_Evented2) {
    */
 
 
-  _createClass(Tour, [{
-    key: "addStep",
-    value: function addStep(options, index) {
-      var step = options;
+  addStep(options, index) {
+    let step = options;
 
-      if (!(step instanceof Step)) {
-        step = new Step(this, step);
-      } else {
-        step.tour = this;
-      }
-
-      if (!isUndefined(index)) {
-        this.steps.splice(index, 0, step);
-      } else {
-        this.steps.push(step);
-      }
-
-      return step;
+    if (!(step instanceof Step)) {
+      step = new Step(this, step);
+    } else {
+      step.tour = this;
     }
-    /**
-     * Add multiple steps to the tour
-     * @param {Array<object> | Array<Step>} steps The steps to add to the tour
-     */
 
-  }, {
-    key: "addSteps",
-    value: function addSteps(steps) {
-      var _this17 = this;
-
-      if (Array.isArray(steps)) {
-        steps.forEach(function (step) {
-          _this17.addStep(step);
-        });
-      }
-
-      return this;
+    if (!isUndefined(index)) {
+      this.steps.splice(index, 0, step);
+    } else {
+      this.steps.push(step);
     }
-    /**
-     * Go to the previous step in the tour
-     */
 
-  }, {
-    key: "back",
-    value: function back() {
-      var index = this.steps.indexOf(this.currentStep);
-      this.show(index - 1, false);
+    return step;
+  }
+  /**
+   * Add multiple steps to the tour
+   * @param {Array<object> | Array<Step>} steps The steps to add to the tour
+   */
+
+
+  addSteps(steps) {
+    if (Array.isArray(steps)) {
+      steps.forEach(step => {
+        this.addStep(step);
+      });
     }
-    /**
-     * Calls _done() triggering the 'cancel' event
-     * If `confirmCancel` is true, will show a window.confirm before cancelling
-     */
 
-  }, {
-    key: "cancel",
-    value: function cancel() {
-      if (this.options.confirmCancel) {
-        var cancelMessage = this.options.confirmCancelMessage || 'Are you sure you want to stop the tour?';
-        var stopTour = window.confirm(cancelMessage);
+    return this;
+  }
+  /**
+   * Go to the previous step in the tour
+   */
 
-        if (stopTour) {
-          this._done('cancel');
-        }
-      } else {
+
+  back() {
+    const index = this.steps.indexOf(this.currentStep);
+    this.show(index - 1, false);
+  }
+  /**
+   * Calls _done() triggering the 'cancel' event
+   * If `confirmCancel` is true, will show a window.confirm before cancelling
+   */
+
+
+  cancel() {
+    if (this.options.confirmCancel) {
+      const cancelMessage = this.options.confirmCancelMessage || 'Are you sure you want to stop the tour?';
+      const stopTour = window.confirm(cancelMessage);
+
+      if (stopTour) {
         this._done('cancel');
       }
+    } else {
+      this._done('cancel');
     }
-    /**
-     * Calls _done() triggering the `complete` event
-     */
+  }
+  /**
+   * Calls _done() triggering the `complete` event
+   */
 
-  }, {
-    key: "complete",
-    value: function complete() {
-      this._done('complete');
+
+  complete() {
+    this._done('complete');
+  }
+  /**
+   * Gets the step from a given id
+   * @param {Number|String} id The id of the step to retrieve
+   * @return {Step} The step corresponding to the `id`
+   */
+
+
+  getById(id) {
+    return this.steps.find(step => {
+      return step.id === id;
+    });
+  }
+  /**
+   * Gets the current step
+   * @returns {Step|null}
+   */
+
+
+  getCurrentStep() {
+    return this.currentStep;
+  }
+  /**
+   * Hide the current step
+   */
+
+
+  hide() {
+    const currentStep = this.getCurrentStep();
+
+    if (currentStep) {
+      return currentStep.hide();
     }
-    /**
-     * Gets the step from a given id
-     * @param {Number|String} id The id of the step to retrieve
-     * @return {Step} The step corresponding to the `id`
-     */
+  }
+  /**
+   * Check if the tour is active
+   * @return {boolean}
+   */
 
-  }, {
-    key: "getById",
-    value: function getById(id) {
-      return this.steps.find(function (step) {
-        return step.id === id;
-      });
+
+  isActive() {
+    return Shepherd.activeTour === this;
+  }
+  /**
+   * Go to the next step in the tour
+   * If we are at the end, call `complete`
+   */
+
+
+  next() {
+    const index = this.steps.indexOf(this.currentStep);
+
+    if (index === this.steps.length - 1) {
+      this.complete();
+    } else {
+      this.show(index + 1, true);
     }
-    /**
-     * Gets the current step
-     * @returns {Step|null}
-     */
+  }
+  /**
+   * Removes the step from the tour
+   * @param {String} name The id for the step to remove
+   */
 
-  }, {
-    key: "getCurrentStep",
-    value: function getCurrentStep() {
-      return this.currentStep;
-    }
-    /**
-     * Hide the current step
-     */
 
-  }, {
-    key: "hide",
-    value: function hide() {
-      var currentStep = this.getCurrentStep();
+  removeStep(name) {
+    const current = this.getCurrentStep(); // Find the step, destroy it and remove it from this.steps
 
-      if (currentStep) {
-        return currentStep.hide();
+    this.steps.some((step, i) => {
+      if (step.id === name) {
+        if (step.isOpen()) {
+          step.hide();
+        }
+
+        step.destroy();
+        this.steps.splice(i, 1);
+        return true;
       }
+    });
+
+    if (current && current.id === name) {
+      this.currentStep = undefined; // If we have steps left, show the first one, otherwise just cancel the tour
+
+      this.steps.length ? this.show(0) : this.cancel();
     }
-    /**
-     * Check if the tour is active
-     * @return {boolean}
-     */
+  }
+  /**
+   * Show a specific step in the tour
+   * @param {Number|String} key The key to look up the step by
+   * @param {Boolean} forward True if we are going forward, false if backward
+   */
 
-  }, {
-    key: "isActive",
-    value: function isActive() {
-      return Shepherd.activeTour === this;
-    }
-    /**
-     * Go to the next step in the tour
-     * If we are at the end, call `complete`
-     */
 
-  }, {
-    key: "next",
-    value: function next() {
-      var index = this.steps.indexOf(this.currentStep);
+  show(key = 0, forward = true) {
+    const step = isString(key) ? this.getById(key) : this.steps[key];
 
-      if (index === this.steps.length - 1) {
-        this.complete();
+    if (step) {
+      this._updateStateBeforeShow();
+
+      const shouldSkipStep = isFunction(step.options.showOn) && !step.options.showOn(); // If `showOn` returns false, we want to skip the step, otherwise, show the step like normal
+
+      if (shouldSkipStep) {
+        this._skipStep(step, forward);
       } else {
-        this.show(index + 1, true);
-      }
-    }
-    /**
-     * Removes the step from the tour
-     * @param {String} name The id for the step to remove
-     */
-
-  }, {
-    key: "removeStep",
-    value: function removeStep(name) {
-      var _this18 = this;
-
-      var current = this.getCurrentStep(); // Find the step, destroy it and remove it from this.steps
-
-      this.steps.some(function (step, i) {
-        if (step.id === name) {
-          if (step.isOpen()) {
-            step.hide();
-          }
-
-          step.destroy();
-
-          _this18.steps.splice(i, 1);
-
-          return true;
-        }
-      });
-
-      if (current && current.id === name) {
-        this.currentStep = undefined; // If we have steps left, show the first one, otherwise just cancel the tour
-
-        this.steps.length ? this.show(0) : this.cancel();
-      }
-    }
-    /**
-     * Show a specific step in the tour
-     * @param {Number|String} key The key to look up the step by
-     * @param {Boolean} forward True if we are going forward, false if backward
-     */
-
-  }, {
-    key: "show",
-    value: function show() {
-      var key = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
-      var forward = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
-      var step = isString(key) ? this.getById(key) : this.steps[key];
-
-      if (step) {
-        this._updateStateBeforeShow();
-
-        var shouldSkipStep = isFunction(step.options.showOn) && !step.options.showOn(); // If `showOn` returns false, we want to skip the step, otherwise, show the step like normal
-
-        if (shouldSkipStep) {
-          this._skipStep(step, forward);
-        } else {
-          this.trigger('show', {
-            step: step,
-            previous: this.currentStep
-          });
-          this.currentStep = step;
-          step.show();
-        }
-      }
-    }
-    /**
-     * Start the tour
-     */
-
-  }, {
-    key: "start",
-    value: function start() {
-      this.trigger('start'); // Save the focused element before the tour opens
-
-      this.focusedElBeforeOpen = document.activeElement;
-      this.currentStep = null;
-
-      this._setupModal();
-
-      this._setupActiveTour();
-
-      this.next();
-    }
-    /**
-     * Called whenever the tour is cancelled or completed, basically anytime we exit the tour
-     * @param {String} event The event name to trigger
-     * @private
-     */
-
-  }, {
-    key: "_done",
-    value: function _done(event) {
-      var index = this.steps.indexOf(this.currentStep);
-
-      if (Array.isArray(this.steps)) {
-        this.steps.forEach(function (step) {
-          return step.destroy();
+        this.trigger('show', {
+          step,
+          previous: this.currentStep
         });
+        this.currentStep = step;
+        step.show();
       }
+    }
+  }
+  /**
+   * Start the tour
+   */
 
-      cleanupSteps(this);
-      this.trigger(event, {
-        index: index
-      });
-      Shepherd.activeTour = null;
-      this.trigger('inactive', {
-        tour: this
-      });
 
+  start() {
+    this.trigger('start'); // Save the focused element before the tour opens
+
+    this.focusedElBeforeOpen = document.activeElement;
+    this.currentStep = null;
+
+    this._setupModal();
+
+    this._setupActiveTour();
+
+    this.next();
+  }
+  /**
+   * Called whenever the tour is cancelled or completed, basically anytime we exit the tour
+   * @param {String} event The event name to trigger
+   * @private
+   */
+
+
+  _done(event) {
+    const index = this.steps.indexOf(this.currentStep);
+
+    if (Array.isArray(this.steps)) {
+      this.steps.forEach(step => step.destroy());
+    }
+
+    cleanupSteps(this);
+    this.trigger(event, {
+      index
+    });
+    Shepherd.activeTour = null;
+    this.trigger('inactive', {
+      tour: this
+    });
+
+    if (this.modal) {
+      this.modal.hide();
+    }
+
+    if (event === 'cancel' || event === 'complete') {
       if (this.modal) {
-        this.modal.hide();
-      }
+        const modalContainer = document.querySelector('.shepherd-modal-overlay-container');
 
-      if (event === 'cancel' || event === 'complete') {
-        if (this.modal) {
-          var modalContainer = document.querySelector('.shepherd-modal-overlay-container');
-
-          if (modalContainer) {
-            modalContainer.remove();
-          }
+        if (modalContainer) {
+          modalContainer.remove();
         }
-      } // Focus the element that was focused before the tour started
-
-
-      if (isHTMLElement(this.focusedElBeforeOpen)) {
-        this.focusedElBeforeOpen.focus();
       }
-    }
-    /**
-     * Make this tour "active"
-     * @private
-     */
+    } // Focus the element that was focused before the tour started
 
-  }, {
-    key: "_setupActiveTour",
-    value: function _setupActiveTour() {
-      this.trigger('active', {
-        tour: this
-      });
-      Shepherd.activeTour = this;
-    }
-    /**
-     * _setupModal create the modal container and instance
-     * @private
-     */
 
-  }, {
-    key: "_setupModal",
-    value: function _setupModal() {
-      this.modal = new Shepherd_modal({
-        target: this.options.modalContainer || document.body,
-        props: {
-          classPrefix: this.classPrefix,
-          styles: this.styles
-        }
-      });
+    if (isHTMLElement(this.focusedElBeforeOpen)) {
+      this.focusedElBeforeOpen.focus();
     }
-    /**
-     * Called when `showOn` evaluates to false, to skip the step
-     * @param {Step} step The step to skip
-     * @param {Boolean} forward True if we are going forward, false if backward
-     * @private
-     */
+  }
+  /**
+   * Make this tour "active"
+   * @private
+   */
 
-  }, {
-    key: "_skipStep",
-    value: function _skipStep(step, forward) {
-      var index = this.steps.indexOf(step);
-      var nextIndex = forward ? index + 1 : index - 1;
-      this.show(nextIndex, forward);
-    }
-    /**
-     * Before showing, hide the current step and if the tour is not
-     * already active, call `this._setupActiveTour`.
-     * @private
-     */
 
-  }, {
-    key: "_updateStateBeforeShow",
-    value: function _updateStateBeforeShow() {
-      if (this.currentStep) {
-        this.currentStep.hide();
+  _setupActiveTour() {
+    this.trigger('active', {
+      tour: this
+    });
+    Shepherd.activeTour = this;
+  }
+  /**
+   * _setupModal create the modal container and instance
+   * @private
+   */
+
+
+  _setupModal() {
+    this.modal = new Shepherd_modal({
+      target: this.options.modalContainer || document.body,
+      props: {
+        classPrefix: this.classPrefix,
+        styles: this.styles
       }
+    });
+  }
+  /**
+   * Called when `showOn` evaluates to false, to skip the step
+   * @param {Step} step The step to skip
+   * @param {Boolean} forward True if we are going forward, false if backward
+   * @private
+   */
 
-      if (!this.isActive()) {
-        this._setupActiveTour();
-      }
+
+  _skipStep(step, forward) {
+    const index = this.steps.indexOf(step);
+    const nextIndex = forward ? index + 1 : index - 1;
+    this.show(nextIndex, forward);
+  }
+  /**
+   * Before showing, hide the current step and if the tour is not
+   * already active, call `this._setupActiveTour`.
+   * @private
+   */
+
+
+  _updateStateBeforeShow() {
+    if (this.currentStep) {
+      this.currentStep.hide();
     }
-    /**
-     * Sets this.id to `${tourName}--${uuid}`
-     * @private
-     */
 
-  }, {
-    key: "_setTourID",
-    value: function _setTourID() {
-      var tourName = this.options.tourName || 'tour';
-      this.id = "".concat(tourName, "--").concat(uuid());
+    if (!this.isActive()) {
+      this._setupActiveTour();
     }
-  }]);
+  }
+  /**
+   * Sets this.id to `${tourName}--${uuid}`
+   * @private
+   */
 
-  return Tour;
-}(Evented);
+
+  _setTourID() {
+    const tourName = this.options.tourName || 'tour';
+    this.id = "".concat(tourName, "--").concat(uuid());
+  }
+
+}
 
 Object.assign(Shepherd, {
-  Tour: Tour,
-  Step: Step
+  Tour,
+  Step
 });
 var _default = Shepherd;
 exports.default = _default;
@@ -33331,7 +33182,7 @@ var _shepherd = _interopRequireDefault(require("shepherd.js"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var tour_infoHotspots = new _shepherd.default.Tour();
+const tour_infoHotspots = new _shepherd.default.Tour();
 exports.tour_infoHotspots = tour_infoHotspots;
 tour_infoHotspots.addStep({
   showOn: document.body.classList.contains('tour-accepted'),
@@ -33349,7 +33200,7 @@ tour_infoHotspots.addStep({
     }]
   }
 });
-var tour_modal = new _shepherd.default.Tour({
+const tour_modal = new _shepherd.default.Tour({
   useModalOverlay: true
 });
 exports.tour_modal = tour_modal;
@@ -33494,7 +33345,7 @@ tour_linkHotspots.addStep({
     }]
   }
 });
-var tour_movement = new _shepherd.default.Tour({
+const tour_movement = new _shepherd.default.Tour({
   confirmCancel: true,
   confirmCancelMessage: 'Are you sure you want to cancel the tour?',
   defaultStepOptions: {
@@ -33526,7 +33377,7 @@ tour_movement.addStep({
     }]
   }
 });
-var tour_final = new _shepherd.default.Tour({
+const tour_final = new _shepherd.default.Tour({
   defaultStepOptions: {
     cancelIcon: {
       enabled: true,
@@ -33547,13 +33398,13 @@ tour_final.addStep({
     on: 'auto'
   },
   when: {
-    complete: function complete() {
+    complete: function () {
       document.body.classList.remove('tour-accepted');
     },
-    cancel: function cancel() {
+    cancel: function () {
       document.body.classList.remove('tour-accepted');
     },
-    close: function close() {
+    close: function () {
       document.body.classList.remove('tour-accepted');
     }
   },
@@ -33593,14 +33444,14 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 // var data = window.APP_DATA;
 // var bowser = window.bowser;
 // Grab elements from DOM.
-var panoElement = document.querySelector('#pano');
-var sceneNameElement = document.querySelector('#titleBar .sceneName');
-var sceneElements = document.querySelectorAll('#sceneList .scene');
-var sceneListToggleElement = document.querySelector('#sceneListToggle');
-var fullscreenToggleElement = document.querySelector('#fullscreenToggle'); // Detect desktop or mobile mode.
+const panoElement = document.querySelector('#pano');
+const sceneNameElement = document.querySelector('#titleBar .sceneName');
+const sceneElements = document.querySelectorAll('#sceneList .scene');
+const sceneListToggleElement = document.querySelector('#sceneListToggle');
+const fullscreenToggleElement = document.querySelector('#fullscreenToggle'); // Detect desktop or mobile mode.
 
 if (window.matchMedia) {
-  var setMode = function setMode() {
+  const setMode = function () {
     if (mql.matches) {
       document.body.classList.remove('desktop');
       document.body.classList.add('mobile');
@@ -33610,7 +33461,7 @@ if (window.matchMedia) {
     }
   };
 
-  var mql = matchMedia('(max-width: 500px)');
+  const mql = matchMedia('(max-width: 500px)');
   setMode(); // mql.addEventListener(setMode);
 } else {
   document.body.classList.add('desktop');
@@ -33626,7 +33477,7 @@ window.addEventListener('touchstart', function (e) {
 // 	document.body.classList.add('tooltip-fallback');
 // }
 
-var viewerOpts = {
+const viewerOpts = {
   controls: {
     mouseViewMode: _data.APP_DATA.settings.mouseViewMode,
     scrollZoom: false
@@ -33655,7 +33506,7 @@ var scenes = _data.APP_DATA.scenes.map(function (data) {
   }); // Create link hotspots.
 
   data.linkHotspots.forEach(function (hotspot) {
-    var element = createLinkHotspotElement(hotspot);
+    const element = createLinkHotspotElement(hotspot);
     scene.hotspotContainer().createHotspot(element, {
       yaw: hotspot.yaw,
       pitch: hotspot.pitch
@@ -33663,7 +33514,7 @@ var scenes = _data.APP_DATA.scenes.map(function (data) {
   }); // Create info hotspots.
 
   data.infoHotspots.forEach(function (hotspot) {
-    var element = createInfoHotspotElement(hotspot);
+    const element = createInfoHotspotElement(hotspot);
     scene.hotspotContainer().createHotspot(element, {
       yaw: hotspot.yaw,
       pitch: hotspot.pitch
@@ -33680,23 +33531,23 @@ var scenes = _data.APP_DATA.scenes.map(function (data) {
   };
 });
 
-var exit_tour = document.querySelector('.cancel');
-var start_tour = document.querySelector('.confirm');
-var exit_tour_x = document.querySelector('.intro-header .intro-close');
-var intro_scene = scenes[0].scene;
-var infohotspot = document.querySelector('.info-hotspot-header.intro-starter');
-var introModal = document.querySelector('.info-hotspot-modal.intro-starter');
-var introLH = document.querySelector('.link-hotspot.second-tour-starter');
-var h = window.innerHeight;
-var destinationViewParameters = {
+const exit_tour = document.querySelector('.cancel');
+const start_tour = document.querySelector('.confirm');
+const exit_tour_x = document.querySelector('.intro-header .intro-close');
+const intro_scene = scenes[0].scene;
+const infohotspot = document.querySelector('.info-hotspot-header.intro-starter');
+const introModal = document.querySelector('.info-hotspot-modal.intro-starter');
+const introLH = document.querySelector('.link-hotspot.second-tour-starter');
+let h = window.innerHeight;
+let destinationViewParameters = {
   yaw: -1.1812190708391341,
   pitch: 0.013927065660876536,
   fov: 60 * Math.PI / 180
 };
-var options = {
+let options = {
   transitionDuration: 2000
 };
-var iframeViewParameters = {
+let iframeViewParameters = {
   yaw: -1.1812190708391341,
   pitch: -0.053927065660876536,
   fov: 60 * Math.PI / 180
@@ -33777,7 +33628,7 @@ _tour.tour_final.on('complete', function () {
   viewer.controls().enable();
 });
 
-[exit_tour, exit_tour_x].forEach(function (el) {
+[exit_tour, exit_tour_x].forEach(el => {
   el.addEventListener('click', function () {
     intro.classList.remove('visible');
     infohotspot.classList.remove('intro-starter');
@@ -33790,9 +33641,9 @@ _tour.tour_final.on('complete', function () {
     }, 5000);
   });
 });
-var help = document.querySelector('#footer svg');
-var tooltip = document.querySelector('#tooltip');
-var helpPopper = (0, _core.createPopper)(help, tooltip, {
+const help = document.querySelector('#footer svg');
+const tooltip = document.querySelector('#tooltip');
+const helpPopper = (0, _core.createPopper)(help, tooltip, {
   placement: 'top-start',
   modifiers: [{
     name: 'offset',
@@ -33845,8 +33696,8 @@ function updateSceneName(scene) {
 }
 
 function updateSceneList(scene) {
-  for (var i = 0; i < sceneElements.length; i++) {
-    var el = sceneElements[i];
+  for (let i = 0; i < sceneElements.length; i++) {
+    const el = sceneElements[i];
 
     if (el.getAttribute('data-id') === scene.data.id) {
       el.classList.add('current');
@@ -33868,19 +33719,19 @@ function toggleSceneList() {
 
 function createLinkHotspotElement(hotspot) {
   // Create wrapper element to hold icon and tooltip.
-  var wrapper = document.createElement('div');
+  const wrapper = document.createElement('div');
   wrapper.classList.add('hotspot');
   wrapper.classList.add('link-hotspot');
   hotspot.class ? wrapper.classList.add(hotspot.class) : ''; // Create image element.
 
-  var icon = document.createElement('img');
+  const icon = document.createElement('img');
   icon.src = './SVG/arrow-up-circle-fill.svg';
   icon.classList.add('link-hotspot-icon'); // Set rotation transform.
 
-  var transformProperties = ['-ms-transform', '-webkit-transform', 'transform'];
+  const transformProperties = ['-ms-transform', '-webkit-transform', 'transform'];
 
-  for (var i = 0; i < transformProperties.length; i++) {
-    var property = transformProperties[i];
+  for (let i = 0; i < transformProperties.length; i++) {
+    const property = transformProperties[i];
     icon.style[property] = 'rotate(' + hotspot.rotation + 'rad)';
   } // Add click event handler.
 
@@ -33889,7 +33740,7 @@ function createLinkHotspotElement(hotspot) {
     switchScene(findSceneById(hotspot.target));
   }); // Create tooltip element.
 
-  var tooltip = document.createElement('div');
+  const tooltip = document.createElement('div');
   tooltip.classList.add('hotspot-tooltip');
   tooltip.classList.add('link-hotspot-tooltip');
   tooltip.innerHTML = findSceneDataById(hotspot.target).name;
@@ -33900,31 +33751,31 @@ function createLinkHotspotElement(hotspot) {
 
 function createInfoHotspotElement(hotspot) {
   // Create wrapper element to hold icon and tooltip.
-  var wrapper = document.createElement('div');
+  const wrapper = document.createElement('div');
   wrapper.classList.add('hotspot');
   wrapper.classList.add('info-hotspot'); // Create hotspot/tooltip header.
 
-  var header = document.createElement('div');
+  const header = document.createElement('div');
   header.classList.add('info-hotspot-header');
   hotspot.class ? header.classList.add(hotspot.class) : ''; // Create image element.
 
-  var iconWrapper = document.createElement('div');
+  const iconWrapper = document.createElement('div');
   iconWrapper.classList.add('info-hotspot-icon-wrapper');
-  var icon = document.createElement('img');
+  const icon = document.createElement('img');
   icon.src = './assets/PC-Seal_Solid-white-95black_Registered.png';
   icon.classList.add('info-hotspot-icon');
   iconWrapper.appendChild(icon); // Create title element.
 
-  var titleWrapper = document.createElement('div');
+  const titleWrapper = document.createElement('div');
   titleWrapper.classList.add('info-hotspot-title-wrapper');
-  var title = document.createElement('div');
+  const title = document.createElement('div');
   title.classList.add('info-hotspot-title');
   title.innerHTML = hotspot.title;
   titleWrapper.appendChild(title); // Create close element.
 
-  var closeWrapper = document.createElement('div');
+  const closeWrapper = document.createElement('div');
   closeWrapper.classList.add('info-hotspot-close-wrapper');
-  var closeIcon = document.createElement('img');
+  const closeIcon = document.createElement('img');
   closeIcon.src = './SVG/close-line.svg';
   closeIcon.classList.add('info-hotspot-close-icon');
   closeWrapper.appendChild(closeIcon); // Construct header element.
@@ -33933,40 +33784,40 @@ function createInfoHotspotElement(hotspot) {
   header.appendChild(titleWrapper);
   header.appendChild(closeWrapper); // Create content element.
 
-  var content = document.createElement('div');
+  const content = document.createElement('div');
   content.classList.add('info-hotspot-content'); //text element
 
-  var textContent = document.createElement('div');
+  const textContent = document.createElement('div');
   textContent.classList.add('product-txt-container');
-  var textWrapper = document.createElement('div');
+  const textWrapper = document.createElement('div');
   textWrapper.classList.add('product-txt-wrapper');
-  var subhead = document.createElement('h2');
+  const subhead = document.createElement('h2');
   subhead.classList.add('product-txt-subhead');
   subhead.innerHTML = hotspot.subhead;
-  var text = document.createElement('div');
+  const text = document.createElement('div');
   text.innerHTML = hotspot.text;
   text.classList.add('product-txt');
-  var recipes = document.createElement('div');
+  const recipes = document.createElement('div');
   recipes.classList.add('recipes');
-  var recipesHeader = document.createElement('h2');
+  const recipesHeader = document.createElement('h2');
   recipesHeader.classList.add('recipes-header');
   recipesHeader.textContent = 'Recipes to Try:';
   recipes.appendChild(recipesHeader);
-  var recipesList = document.createElement('div');
+  const recipesList = document.createElement('div');
   recipesList.classList.add('recipes-list');
 
   if (hotspot.recipes != undefined) {
-    for (var i = 0; i < hotspot.recipes.length; i++) {
-      var recipe_el = document.createElement('li');
-      var recipe_link = document.createElement('a');
+    for (let i = 0; i < hotspot.recipes.length; i++) {
+      const recipe_el = document.createElement('li');
+      const recipe_link = document.createElement('a');
       recipe_link.classList.add('recipe-link');
       recipe_link.href = hotspot.recipes[i].link;
       recipe_link.setAttribute('target', '_blank');
-      var recipe_preview_img_wrap = document.createElement('div');
+      const recipe_preview_img_wrap = document.createElement('div');
       recipe_preview_img_wrap.classList.add('recipe-preview-img-wrap');
       recipe_preview_img_wrap.classList.add('.lazy');
       recipe_preview_img_wrap.style.backgroundImage = "url(".concat(hotspot.recipes[i].preview_image, ")");
-      var recipe_title = document.createElement('p');
+      const recipe_title = document.createElement('p');
       recipe_title.classList.add('recipe-title');
       recipe_title.innerHTML = hotspot.recipes[i].id;
       recipe_title.href = hotspot.recipes[i].link;
@@ -33977,76 +33828,46 @@ function createInfoHotspotElement(hotspot) {
       recipesList.appendChild(recipe_el);
     }
   } else if (hotspot.related_content != undefined) {
-    for (var _i = 0; _i < hotspot.related_content.length; _i++) {
-      var _recipe_el = document.createElement('li');
-
-      var _recipe_link = document.createElement('a');
-
-      _recipe_link.classList.add('recipe-link');
-
-      _recipe_link.href = hotspot.related_content[_i].link;
-
-      _recipe_link.setAttribute('target', '_blank');
-
-      var _recipe_preview_img_wrap = document.createElement('div');
-
-      _recipe_preview_img_wrap.classList.add('recipe-preview-img-wrap');
-
-      _recipe_preview_img_wrap.style.backgroundImage = "url(".concat(hotspot.related_content[_i].preview_image, ")");
-
-      var _recipe_title = document.createElement('p');
-
-      _recipe_title.classList.add('recipe-title');
-
-      _recipe_title.innerHTML = hotspot.related_content[_i].id;
-      _recipe_title.href = hotspot.related_content[_i].link;
-
-      _recipe_title.setAttribute('target', '_blank');
-
-      _recipe_link.appendChild(_recipe_preview_img_wrap);
-
-      _recipe_link.appendChild(_recipe_title);
-
-      _recipe_el.appendChild(_recipe_link);
-
-      recipesList.appendChild(_recipe_el);
+    for (let i = 0; i < hotspot.related_content.length; i++) {
+      const recipe_el = document.createElement('li');
+      const recipe_link = document.createElement('a');
+      recipe_link.classList.add('recipe-link');
+      recipe_link.href = hotspot.related_content[i].link;
+      recipe_link.setAttribute('target', '_blank');
+      const recipe_preview_img_wrap = document.createElement('div');
+      recipe_preview_img_wrap.classList.add('recipe-preview-img-wrap');
+      recipe_preview_img_wrap.style.backgroundImage = "url(".concat(hotspot.related_content[i].preview_image, ")");
+      const recipe_title = document.createElement('p');
+      recipe_title.classList.add('recipe-title');
+      recipe_title.innerHTML = hotspot.related_content[i].id;
+      recipe_title.href = hotspot.related_content[i].link;
+      recipe_title.setAttribute('target', '_blank');
+      recipe_link.appendChild(recipe_preview_img_wrap);
+      recipe_link.appendChild(recipe_title);
+      recipe_el.appendChild(recipe_link);
+      recipesList.appendChild(recipe_el);
     }
 
     recipesHeader.textContent = 'Related Content:';
   } else if (hotspot.pdf_links != undefined) {
-    for (var _i2 = 0; _i2 < hotspot.pdf_links.length; _i2++) {
-      var _recipe_el2 = document.createElement('li');
-
-      var _recipe_link2 = document.createElement('a');
-
-      _recipe_link2.classList.add('recipe-link');
-
-      _recipe_link2.href = hotspot.pdf_links[_i2].link;
-
-      _recipe_link2.setAttribute('target', '_blank');
-
-      var _recipe_preview_img_wrap2 = document.createElement('div');
-
-      _recipe_link2.appendChild(_recipe_preview_img_wrap2);
-
-      _recipe_preview_img_wrap2.classList.add('recipe-preview-img-wrap');
-
-      _recipe_preview_img_wrap2.style.backgroundImage = "url(".concat(hotspot.pdf_links[_i2].preview_image, ")");
-
-      var _recipe_title2 = document.createElement('p');
-
-      _recipe_title2.classList.add('recipe-title');
-
-      _recipe_title2.innerHTML = hotspot.pdf_links[_i2].id;
-      _recipe_title2.href = hotspot.pdf_links[_i2].link;
-
-      _recipe_title2.setAttribute('target', '_blank');
-
-      _recipe_link2.appendChild(_recipe_title2);
-
-      _recipe_el2.appendChild(_recipe_link2);
-
-      recipesList.appendChild(_recipe_el2);
+    for (let i = 0; i < hotspot.pdf_links.length; i++) {
+      const recipe_el = document.createElement('li');
+      const recipe_link = document.createElement('a');
+      recipe_link.classList.add('recipe-link');
+      recipe_link.href = hotspot.pdf_links[i].link;
+      recipe_link.setAttribute('target', '_blank');
+      const recipe_preview_img_wrap = document.createElement('div');
+      recipe_link.appendChild(recipe_preview_img_wrap);
+      recipe_preview_img_wrap.classList.add('recipe-preview-img-wrap');
+      recipe_preview_img_wrap.style.backgroundImage = "url(".concat(hotspot.pdf_links[i].preview_image, ")");
+      const recipe_title = document.createElement('p');
+      recipe_title.classList.add('recipe-title');
+      recipe_title.innerHTML = hotspot.pdf_links[i].id;
+      recipe_title.href = hotspot.pdf_links[i].link;
+      recipe_title.setAttribute('target', '_blank');
+      recipe_link.appendChild(recipe_title);
+      recipe_el.appendChild(recipe_link);
+      recipesList.appendChild(recipe_el);
     }
 
     recipesHeader.textContent = 'Downloads';
@@ -34060,46 +33881,46 @@ function createInfoHotspotElement(hotspot) {
   textWrapper.appendChild(recipes);
   textContent.appendChild(textWrapper); //carousel
 
-  var carousel_container = document.createElement('div');
+  const carousel_container = document.createElement('div');
   carousel_container.classList.add('carousel_container');
-  var carousel = document.createElement('div');
+  const carousel = document.createElement('div');
   carousel.classList.add('carousel');
-  var carouselImages = document.createElement('div');
+  const carouselImages = document.createElement('div');
   carouselImages.classList.add('carousel-images');
-  var carouselNav = document.createElement('div');
+  const carouselNav = document.createElement('div');
   carouselNav.classList.add('carousel-nav');
-  var carouselNext = document.createElement('img');
+  const carouselNext = document.createElement('img');
   carouselNext.src = './SVG/chevron-right.svg';
   carouselNext.classList.add('carousel-button');
   carouselNext.classList.add('next');
   carouselNext.setAttribute('id', 'next');
-  var carouselPrev = document.createElement('img');
+  const carouselPrev = document.createElement('img');
   carouselPrev.src = './SVG/chevron-left.svg';
   carouselPrev.classList.add('carousel-button');
   carouselPrev.classList.add('previous');
   carouselPrev.setAttribute('id', 'previous');
-  var carousel_pagination = document.createElement('ul');
+  const carousel_pagination = document.createElement('ul');
   carousel_pagination.classList.add('carousel-pagination');
 
-  for (var _i3 = 0; _i3 < hotspot.images.length; _i3++) {
-    var carousel_bullet = document.createElement('li');
+  for (let i = 0; i < hotspot.images.length; i++) {
+    const carousel_bullet = document.createElement('li');
     carousel_bullet.classList.add('carousel-bullet');
-    var productImage = document.createElement('div');
+    const productImage = document.createElement('div');
 
-    if (hotspot.images[_i3].length === 2) {
-      productImage.style.backgroundImage = "url(".concat(hotspot.images[_i3][1], ")");
-      var influencer_credit_container = document.createElement('div');
+    if (hotspot.images[i].length === 2) {
+      productImage.style.backgroundImage = "url(".concat(hotspot.images[i][1], ")");
+      const influencer_credit_container = document.createElement('div');
       influencer_credit_container.classList.add('influencer_credit_container');
-      var credit_pointer = document.createElement('div');
+      const credit_pointer = document.createElement('div');
       credit_pointer.classList.add('pointer');
       influencer_credit_container.appendChild(credit_pointer);
-      var influencer_credit = document.createElement('span');
+      const influencer_credit = document.createElement('span');
       influencer_credit.classList.add('influencer_credit');
-      influencer_credit.innerHTML = '📷: ' + hotspot.images[_i3][0];
+      influencer_credit.innerHTML = '📷: ' + hotspot.images[i][0];
       influencer_credit_container.appendChild(influencer_credit);
       productImage.appendChild(influencer_credit_container);
     } else {
-      productImage.style.backgroundImage = "url(".concat(hotspot.images[_i3], ")");
+      productImage.style.backgroundImage = "url(".concat(hotspot.images[i], ")");
     }
 
     productImage.setAttribute('id', 'product-image');
@@ -34118,21 +33939,18 @@ function createInfoHotspotElement(hotspot) {
   }
 
   if (hotspot.videos != undefined) {
-    for (var _i4 = 0; _i4 < hotspot.videos.length; _i4++) {
-      var sliderTop = document.createElement('div');
+    for (let i = 0; i < hotspot.videos.length; i++) {
+      const sliderTop = document.createElement('div');
       sliderTop.classList.add('slider-top');
-      var sliderBot = document.createElement('div');
+      const sliderBot = document.createElement('div');
       sliderBot.classList.add('slider-bot');
-
-      var _carousel_bullet = document.createElement('li');
-
-      _carousel_bullet.classList.add('carousel-bullet');
-
-      var iframe_container = document.createElement('div');
+      const carousel_bullet = document.createElement('li');
+      carousel_bullet.classList.add('carousel-bullet');
+      const iframe_container = document.createElement('div');
       iframe_container.classList.add('iframe_container__video');
-      iframe_container.innerHTML = hotspot.videos[_i4];
+      iframe_container.innerHTML = hotspot.videos[i];
       iframe_container.append(sliderTop, sliderBot);
-      carousel_pagination.appendChild(_carousel_bullet);
+      carousel_pagination.appendChild(carousel_bullet);
       carouselImages.appendChild(iframe_container);
     }
   }
@@ -34146,23 +33964,23 @@ function createInfoHotspotElement(hotspot) {
   content.appendChild(carousel_container);
   wrapper.appendChild(header);
   wrapper.appendChild(content);
-  var modal = document.createElement('div');
+  const modal = document.createElement('div');
   modal.innerHTML = wrapper.innerHTML;
   modal.classList.add('info-hotspot-modal');
   hotspot.class ? modal.classList.add(hotspot.class) : '';
   document.body.appendChild(modal); // reset modal content + pause video on close logic
 
-  var pause_video = function pause_video() {
-    var iframes = modal.getElementsByTagName('iframe');
+  const pause_video = function () {
+    let iframes = modal.getElementsByTagName('iframe');
 
     if (iframes != null) {
-      for (var _i5 = 0; _i5 < iframes.length; _i5++) {
-        iframes[_i5].src = iframes[_i5].src;
+      for (let i = 0; i < iframes.length; i++) {
+        iframes[i].src = iframes[i].src;
       }
     }
   };
 
-  var reset_modal = function reset_modal() {
+  const reset_modal = function () {
     setTimeout(function () {
       modal.querySelector('.product-txt-container').scrollTo(0, 0);
       slideTo(0);
@@ -34174,7 +33992,7 @@ function createInfoHotspotElement(hotspot) {
     reset_modal();
   });
 
-  var toggle = function toggle() {
+  const toggle = function () {
     modal.classList.toggle('visible');
     reset_modal();
   };
@@ -34191,16 +34009,16 @@ function createInfoHotspotElement(hotspot) {
       });
     }
   });
-  var nextBtn = modal.querySelector('#next');
-  var prevBtn = modal.querySelector('#previous');
-  var carouselImgs = modal.querySelector('.carousel-images');
-  var numberOfImages = modal.querySelectorAll('.carousel-images > *').length;
-  var pagination = modal.querySelector('.carousel-pagination');
-  var bullets = [].slice.call(modal.querySelectorAll('.carousel-bullet'));
-  var currentIndex = 0;
-  var percentage = 100;
-  var touchstartX = 0;
-  var touchendX = 0;
+  const nextBtn = modal.querySelector('#next');
+  const prevBtn = modal.querySelector('#previous');
+  const carouselImgs = modal.querySelector('.carousel-images');
+  const numberOfImages = modal.querySelectorAll('.carousel-images > *').length;
+  const pagination = modal.querySelector('.carousel-pagination');
+  const bullets = [].slice.call(modal.querySelectorAll('.carousel-bullet'));
+  let currentIndex = 0;
+  let percentage = 100;
+  let touchstartX = 0;
+  let touchendX = 0;
 
   function handleGesture() {
     if (touchendX < touchstartX && currentIndex !== numberOfImages - 1) {
@@ -34212,7 +34030,7 @@ function createInfoHotspotElement(hotspot) {
     }
   }
 
-  document.body.addEventListener('keydown', function (evt) {
+  document.body.addEventListener('keydown', evt => {
     if (evt.key === 'Escape') {
       modal.classList.remove('visible');
     }
@@ -34221,22 +34039,22 @@ function createInfoHotspotElement(hotspot) {
   }, {
     passive: true
   });
-  carouselImgs.addEventListener('touchstart', function (e) {
+  carouselImgs.addEventListener('touchstart', e => {
     touchstartX = e.changedTouches[0].pageX;
   });
-  carouselImgs.addEventListener('touchend', function (e) {
+  carouselImgs.addEventListener('touchend', e => {
     touchendX = e.changedTouches[0].pageX;
     handleGesture();
   });
-  carouselImgs.addEventListener('mousedown', function (e) {
+  carouselImgs.addEventListener('mousedown', e => {
     touchstartX = e.pageX;
   });
-  carouselImgs.addEventListener('mouseup', function (e) {
+  carouselImgs.addEventListener('mouseup', e => {
     touchendX = e.pageX;
     handleGesture();
   });
-  carouselImgs.addEventListener('wheel', function (e) {
-    var wheel_direction = e.deltaY * 1;
+  carouselImgs.addEventListener('wheel', e => {
+    let wheel_direction = e.deltaY * 1;
 
     if (Math.sign(wheel_direction) === -1) {
       if (currentIndex !== 0) prevBtn.click();
@@ -34268,7 +34086,7 @@ function createInfoHotspotElement(hotspot) {
   prevBtn.addEventListener('click', prev, false);
   nextBtn.addEventListener('click', next, false);
   pagination.addEventListener('click', function (e) {
-    var index = bullets.indexOf(e.target);
+    let index = bullets.indexOf(e.target);
 
     if (index !== -1 && index !== currentIndex) {
       slideTo(index);
@@ -34276,16 +34094,13 @@ function createInfoHotspotElement(hotspot) {
   }, false);
 
   if (hotspot.fullWidth) {
-    var modal_content = modal.querySelector('div.info-hotspot-content');
+    let modal_content = modal.querySelector('div.info-hotspot-content');
     modal_content.classList.add('fullwidth_modal');
     removeAllChildNodes(modal_content);
-
-    var _iframe_container = document.createElement('div');
-
-    _iframe_container.classList.add('iframe_container');
-
-    _iframe_container.innerHTML = hotspot.text;
-    modal_content.appendChild(_iframe_container);
+    const iframe_container = document.createElement('div');
+    iframe_container.classList.add('iframe_container');
+    iframe_container.innerHTML = hotspot.text;
+    modal_content.appendChild(iframe_container);
   }
 
   function removeAllChildNodes(parent) {
@@ -34298,7 +34113,7 @@ function createInfoHotspotElement(hotspot) {
 }
 
 function findSceneById(id) {
-  for (var i = 0; i < scenes.length; i++) {
+  for (let i = 0; i < scenes.length; i++) {
     if (scenes[i].data.id === id) {
       return scenes[i];
     }
@@ -34308,7 +34123,7 @@ function findSceneById(id) {
 }
 
 function findSceneDataById(id) {
-  for (var i = 0; i < _data.APP_DATA.scenes.length; i++) {
+  for (let i = 0; i < _data.APP_DATA.scenes.length; i++) {
     if (_data.APP_DATA.scenes[i].id === id) {
       return _data.APP_DATA.scenes[i];
     }
@@ -34319,16 +34134,16 @@ function findSceneDataById(id) {
 
 
 switchScene(scenes[0]);
-var preloader = document.querySelector('.preloader');
-var titleBar = document.getElementById('titleBar');
-var intro = document.getElementById('intro');
-var help_menu = document.getElementById('help-menu');
-var help_menu_btn = document.querySelector('.help-menu-btn');
-var help_menu_opener = document.querySelector('.help-menu-btn svg');
-var help_menu_close = document.querySelector('.help-header #intro-close');
-var controls = document.getElementById('controls');
-var controls_close = document.getElementById('controls-close');
-var introClose = document.getElementById('intro-close');
+const preloader = document.querySelector('.preloader');
+const titleBar = document.getElementById('titleBar');
+const intro = document.getElementById('intro');
+const help_menu = document.getElementById('help-menu');
+const help_menu_btn = document.querySelector('.help-menu-btn');
+const help_menu_opener = document.querySelector('.help-menu-btn svg');
+const help_menu_close = document.querySelector('.help-header #intro-close');
+const controls = document.getElementById('controls');
+const controls_close = document.getElementById('controls-close');
+const introClose = document.getElementById('intro-close');
 introClose.addEventListener('click', function () {
   intro.classList.remove('visible');
 });
@@ -34337,8 +34152,8 @@ controls_close.addEventListener('click', function () {
   intro.style.opacity = 1;
   intro.classList.add('visible');
 });
-var mobile_cta_btn = document.querySelector('.fullscreen-btn');
-var mobile_cta = document.querySelector('.mobile-cta');
+const mobile_cta_btn = document.querySelector('.fullscreen-btn');
+const mobile_cta = document.querySelector('.mobile-cta');
 mobile_cta_btn.addEventListener('click', function () {
   _screenfull.default.toggle();
 
@@ -34368,9 +34183,9 @@ help_menu_opener.addEventListener('click', function () {
 help_menu_close.addEventListener('click', function () {
   help_menu.classList.remove('visible');
 });
-document.body.addEventListener('keydown', function (evt) {
+document.body.addEventListener('keydown', evt => {
   if (evt.key === 'Escape') {
-    [intro, help_menu, controls].forEach(function (open_item) {
+    [intro, help_menu, controls].forEach(open_item => {
       open_item.classList.remove('visible');
     });
   }
