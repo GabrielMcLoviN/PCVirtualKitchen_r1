@@ -23857,8 +23857,8 @@ module.exports = {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.APP_DATA = void 0;
-var APP_DATA = {
+exports.data = void 0;
+var data = {
   scenes: [{
     id: '0-countertop',
     name: 'Countertop',
@@ -24259,7 +24259,7 @@ var APP_DATA = {
     viewControlButtons: false
   }
 };
-exports.APP_DATA = APP_DATA;
+exports.data = data;
 },{}],"node_modules/@popperjs/core/lib/enums.js":[function(require,module,exports) {
 "use strict";
 
@@ -27169,91 +27169,150 @@ var _createPopper = require("./createPopper.js");
 var _popper = require("./popper.js");
 
 var _popperLite = require("./popper-lite.js");
-},{"./enums.js":"node_modules/@popperjs/core/lib/enums.js","./modifiers/index.js":"node_modules/@popperjs/core/lib/modifiers/index.js","./createPopper.js":"node_modules/@popperjs/core/lib/createPopper.js","./popper.js":"node_modules/@popperjs/core/lib/popper.js","./popper-lite.js":"node_modules/@popperjs/core/lib/popper-lite.js"}],"vendor/screenfull.min.js":[function(require,module,exports) {
+},{"./enums.js":"node_modules/@popperjs/core/lib/enums.js","./modifiers/index.js":"node_modules/@popperjs/core/lib/modifiers/index.js","./createPopper.js":"node_modules/@popperjs/core/lib/createPopper.js","./popper.js":"node_modules/@popperjs/core/lib/popper.js","./popper-lite.js":"node_modules/@popperjs/core/lib/popper-lite.js"}],"node_modules/screenfull/dist/screenfull.js":[function(require,module,exports) {
 /*!
 * screenfull
-* v4.0.0 - 2018-12-15
+* v5.1.0 - 2020-12-24
 * (c) Sindre Sorhus; MIT License
 */
-!function () {
-  "use strict";
+(function () {
+  'use strict';
 
-  var u = "undefined" != typeof window && void 0 !== window.document ? window.document : {},
-      e = "undefined" != typeof module && module.exports,
-      t = "undefined" != typeof Element && "ALLOW_KEYBOARD_INPUT" in Element,
-      c = function () {
-    for (var e, n = [["requestFullscreen", "exitFullscreen", "fullscreenElement", "fullscreenEnabled", "fullscreenchange", "fullscreenerror"], ["webkitRequestFullscreen", "webkitExitFullscreen", "webkitFullscreenElement", "webkitFullscreenEnabled", "webkitfullscreenchange", "webkitfullscreenerror"], ["webkitRequestFullScreen", "webkitCancelFullScreen", "webkitCurrentFullScreenElement", "webkitCancelFullScreen", "webkitfullscreenchange", "webkitfullscreenerror"], ["mozRequestFullScreen", "mozCancelFullScreen", "mozFullScreenElement", "mozFullScreenEnabled", "mozfullscreenchange", "mozfullscreenerror"], ["msRequestFullscreen", "msExitFullscreen", "msFullscreenElement", "msFullscreenEnabled", "MSFullscreenChange", "MSFullscreenError"]], r = 0, l = n.length, t = {}; r < l; r++) if ((e = n[r]) && e[1] in u) {
-      for (r = 0; r < e.length; r++) t[n[0][r]] = e[r];
+  var document = typeof window !== 'undefined' && typeof window.document !== 'undefined' ? window.document : {};
+  var isCommonjs = typeof module !== 'undefined' && module.exports;
 
-      return t;
+  var fn = function () {
+    var val;
+    var fnMap = [['requestFullscreen', 'exitFullscreen', 'fullscreenElement', 'fullscreenEnabled', 'fullscreenchange', 'fullscreenerror'], // New WebKit
+    ['webkitRequestFullscreen', 'webkitExitFullscreen', 'webkitFullscreenElement', 'webkitFullscreenEnabled', 'webkitfullscreenchange', 'webkitfullscreenerror'], // Old WebKit
+    ['webkitRequestFullScreen', 'webkitCancelFullScreen', 'webkitCurrentFullScreenElement', 'webkitCancelFullScreen', 'webkitfullscreenchange', 'webkitfullscreenerror'], ['mozRequestFullScreen', 'mozCancelFullScreen', 'mozFullScreenElement', 'mozFullScreenEnabled', 'mozfullscreenchange', 'mozfullscreenerror'], ['msRequestFullscreen', 'msExitFullscreen', 'msFullscreenElement', 'msFullscreenEnabled', 'MSFullscreenChange', 'MSFullscreenError']];
+    var i = 0;
+    var l = fnMap.length;
+    var ret = {};
+
+    for (; i < l; i++) {
+      val = fnMap[i];
+
+      if (val && val[1] in document) {
+        for (i = 0; i < val.length; i++) {
+          ret[fnMap[0][i]] = val[i];
+        }
+
+        return ret;
+      }
     }
 
-    return !1;
-  }(),
-      l = {
-    change: c.fullscreenchange,
-    error: c.fullscreenerror
-  },
-      n = {
-    request: function (l) {
-      return new Promise(function (e) {
-        var n = c.requestFullscreen,
-            r = function () {
-          this.off("change", r), e();
+    return false;
+  }();
+
+  var eventNameMap = {
+    change: fn.fullscreenchange,
+    error: fn.fullscreenerror
+  };
+  var screenfull = {
+    request: function (element, options) {
+      return new Promise(function (resolve, reject) {
+        var onFullScreenEntered = function () {
+          this.off('change', onFullScreenEntered);
+          resolve();
         }.bind(this);
 
-        l = l || u.documentElement, / Version\/5\.1(?:\.\d+)? Safari\//.test(navigator.userAgent) ? l[n]() : l[n](t ? Element.ALLOW_KEYBOARD_INPUT : {}), this.on("change", r);
+        this.on('change', onFullScreenEntered);
+        element = element || document.documentElement;
+        var returnPromise = element[fn.requestFullscreen](options);
+
+        if (returnPromise instanceof Promise) {
+          returnPromise.then(onFullScreenEntered).catch(reject);
+        }
       }.bind(this));
     },
     exit: function () {
-      return new Promise(function (e) {
-        var n = function () {
-          this.off("change", n), e();
+      return new Promise(function (resolve, reject) {
+        if (!this.isFullscreen) {
+          resolve();
+          return;
+        }
+
+        var onFullScreenExit = function () {
+          this.off('change', onFullScreenExit);
+          resolve();
         }.bind(this);
 
-        u[c.exitFullscreen](), this.on("change", n);
+        this.on('change', onFullScreenExit);
+        var returnPromise = document[fn.exitFullscreen]();
+
+        if (returnPromise instanceof Promise) {
+          returnPromise.then(onFullScreenExit).catch(reject);
+        }
       }.bind(this));
     },
-    toggle: function (e) {
-      return this.isFullscreen ? this.exit() : this.request(e);
+    toggle: function (element, options) {
+      return this.isFullscreen ? this.exit() : this.request(element, options);
     },
-    onchange: function (e) {
-      this.on("change", e);
+    onchange: function (callback) {
+      this.on('change', callback);
     },
-    onerror: function (e) {
-      this.on("error", e);
+    onerror: function (callback) {
+      this.on('error', callback);
     },
-    on: function (e, n) {
-      var r = l[e];
-      r && u.addEventListener(r, n, !1);
+    on: function (event, callback) {
+      var eventName = eventNameMap[event];
+
+      if (eventName) {
+        document.addEventListener(eventName, callback, false);
+      }
     },
-    off: function (e, n) {
-      var r = l[e];
-      r && u.removeEventListener(r, n, !1);
+    off: function (event, callback) {
+      var eventName = eventNameMap[event];
+
+      if (eventName) {
+        document.removeEventListener(eventName, callback, false);
+      }
     },
-    raw: c
+    raw: fn
   };
 
-  c ? (Object.defineProperties(n, {
+  if (!fn) {
+    if (isCommonjs) {
+      module.exports = {
+        isEnabled: false
+      };
+    } else {
+      window.screenfull = {
+        isEnabled: false
+      };
+    }
+
+    return;
+  }
+
+  Object.defineProperties(screenfull, {
     isFullscreen: {
       get: function () {
-        return Boolean(u[c.fullscreenElement]);
+        return Boolean(document[fn.fullscreenElement]);
       }
     },
     element: {
-      enumerable: !0,
+      enumerable: true,
       get: function () {
-        return u[c.fullscreenElement];
+        return document[fn.fullscreenElement];
       }
     },
-    enabled: {
-      enumerable: !0,
+    isEnabled: {
+      enumerable: true,
       get: function () {
-        return Boolean(u[c.fullscreenEnabled]);
+        // Coerce to boolean in case of old WebKit
+        return Boolean(document[fn.fullscreenEnabled]);
       }
     }
-  }), e ? module.exports = n : window.screenfull = n) : e ? module.exports = !1 : window.screenfull = !1;
-}();
+  });
+
+  if (isCommonjs) {
+    module.exports = screenfull;
+  } else {
+    window.screenfull = screenfull;
+  }
+})();
 },{}],"node_modules/shepherd.js/dist/js/shepherd.esm.js":[function(require,module,exports) {
 "use strict";
 
@@ -33370,13 +33429,13 @@ var _bowser = _interopRequireDefault(require("bowser"));
 
 var _marzipano = _interopRequireDefault(require("marzipano"));
 
-var _data = require("./data.js");
+var _data = require("/data.js");
 
 var _core = require("@popperjs/core");
 
-var _screenfullMin = _interopRequireDefault(require("./vendor/screenfull.min.js"));
+var _screenfull = _interopRequireDefault(require("screenfull"));
 
-var _tour = require("./tour.js");
+var _tour = require("/tour.js");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -33420,14 +33479,14 @@ window.addEventListener('touchstart', function (e) {
 
 const viewerOpts = {
   controls: {
-    mouseViewMode: _data.APP_DATA.settings.mouseViewMode,
+    mouseViewMode: _data.data.settings.mouseViewMode,
     scrollZoom: false
   }
 }; // Initialize viewer.
 
 var viewer = new _marzipano.default.Viewer(panoElement, viewerOpts); // Create scenes.
 
-var scenes = _data.APP_DATA.scenes.map(function (data) {
+var scenes = _data.data.scenes.map(function (data) {
   var urlPrefix = 'tiles';
 
   var source = _marzipano.default.ImageUrlSource.fromString(urlPrefix + '/' + data.id + '/{z}/{f}/{y}/{x}.jpg', {
@@ -33613,13 +33672,15 @@ if (_bowser.default.parse(window.navigator.userAgent).platform.type === 'mobile'
 
 
 fullscreenToggleElement.addEventListener('click', function () {
-  if (_screenfullMin.default.isEnabled) {
-    _screenfullMin.default.toggle();
+  if (_screenfull.default.isEnabled) {
+    _screenfull.default.toggle();
+  } else {
+    return false;
   }
 });
 
-_screenfullMin.default.on('change', function () {
-  if (_screenfullMin.default.isFullscreen) {
+_screenfull.default.on('change', function () {
+  if (_screenfull.default.isFullscreen) {
     fullscreenToggleElement.classList.add('enabled');
   } else {
     fullscreenToggleElement.classList.remove('enabled');
@@ -34059,9 +34120,9 @@ function findSceneById(id) {
 }
 
 function findSceneDataById(id) {
-  for (let i = 0; i < _data.APP_DATA.scenes.length; i++) {
-    if (_data.APP_DATA.scenes[i].id === id) {
-      return _data.APP_DATA.scenes[i];
+  for (let i = 0; i < _data.data.scenes.length; i++) {
+    if (_data.data.scenes[i].id === id) {
+      return _data.data.scenes[i];
     }
   }
 
@@ -34092,7 +34153,7 @@ controls_close.addEventListener('click', function () {
 const mobile_cta_btn = document.querySelector('.fullscreen-btn');
 const mobile_cta = document.querySelector('.mobile-cta');
 mobile_cta_btn.addEventListener('click', function () {
-  _screenfullMin.default.toggle();
+  _screenfull.default.toggle();
 
   mobile_cta.classList.remove('visible');
   mobile_cta.style.display = 'none';
@@ -34133,7 +34194,7 @@ document.body.addEventListener('keydown', evt => {
 }, {
   passive: true
 });
-},{"bowser":"node_modules/bowser/es5.js","marzipano":"node_modules/marzipano/src/index.js","./data.js":"data.js","@popperjs/core":"node_modules/@popperjs/core/lib/index.js","./vendor/screenfull.min.js":"vendor/screenfull.min.js","./tour.js":"tour.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"bowser":"node_modules/bowser/es5.js","marzipano":"node_modules/marzipano/src/index.js","/data.js":"data.js","@popperjs/core":"node_modules/@popperjs/core/lib/index.js","screenfull":"node_modules/screenfull/dist/screenfull.js","/tour.js":"tour.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -34161,7 +34222,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "5396" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "7348" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

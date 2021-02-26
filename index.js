@@ -1,8 +1,8 @@
 import Bowser from 'bowser';
 import Marzipano from 'marzipano';
-import { APP_DATA as data } from './data.js';
+import { data } from '/data.js';
 import { createPopper } from '@popperjs/core';
-import screenfull from './vendor/screenfull.min.js';
+import screenfull from 'screenfull';
 
 import {
 	tour_infoHotspots,
@@ -10,7 +10,7 @@ import {
 	tour_modal,
 	tour_movement,
 	tour_final,
-} from './tour.js';
+} from '/tour.js';
 
 // var Marzipano = window.Marzipano;
 // var screenfull = window.screenfull;
@@ -277,6 +277,8 @@ if (
 fullscreenToggleElement.addEventListener('click', function () {
 	if (screenfull.isEnabled) {
 		screenfull.toggle();
+	} else {
+		return false;
 	}
 });
 

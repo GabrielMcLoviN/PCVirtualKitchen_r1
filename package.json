@@ -25,11 +25,10 @@
   "dependencies": {
     "@popperjs/core": "^2.8.2",
     "bowser": "^2.11.0",
-    "global": "^4.4.0",
+    "data.js": "^0.12.11",
     "marzipano": "^0.10.1",
     "screenfull": "^5.1.0",
-    "shepherd.js": "^8.1.0",
-    "vendor": "^1.7.0"
+    "shepherd.js": "^8.1.0"
   },
   "devDependencies": {
     "parcel-bundler": "^1.12.4",
