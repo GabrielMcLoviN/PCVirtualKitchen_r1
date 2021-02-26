@@ -146,37 +146,52 @@ body {
   width: 100px;
 }
 
-#tooltip, .link-hotspot-tooltip {
+#tooltip,
+.link-hotspot-tooltip {
   opacity: 0;
   color: #292829;
   padding: 10px;
   border-radius: 4px;
   font-size: 14px;
-  transition: opacity 0.3s linear;
   background: #fff;
 }
 
-#tooltip[data-show], .link-hotspot-tooltip[data-show] {
+#tooltip {
+  transition: opacity 0.3s linear;
+}
+
+.link-hotspot-tooltip {
+  text-align: center;
+  transition: opacity 0.6s linear;
+}
+
+#tooltip[data-show],
+.link-hotspot-tooltip[data-show] {
   opacity: 1;
 }
 
 #arrow,
-#arrow::before, #arrow-LH, #arrow-LH:before {
+#arrow::before,
+#arrow-LH,
+#arrow-LH:before {
   position: absolute;
   width: 8px;
   height: 8px;
   background: inherit;
 }
 
-#arrow {
+#arrow,
+#arrow-LH {
   visibility: hidden;
 }
 
-#arrow::before {
+#arrow::before,
+#arrow-LH:before {
   visibility: visible;
   content: "";
   transform: rotate(45deg);
 }
+
 #tooltip[data-popper-placement^="top"] > #arrow {
   bottom: -4px;
 }
@@ -213,7 +228,7 @@ body {
 
 .shepherd-text {
   padding: 1rem !important;
-  font-size: clamp(0.5rem, 2vw, .75rem)!important;
+  font-size: clamp(0.5rem, 2vw, 0.75rem) !important;
   text-align: center;
 }
 
