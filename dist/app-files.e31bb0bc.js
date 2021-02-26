@@ -33327,7 +33327,7 @@ tour_modal.addStep({
     classes: 'shep-next'
   }]
 });
-var tour_linkHotspots = new _shepherd.default.Tour();
+const tour_linkHotspots = new _shepherd.default.Tour();
 exports.tour_linkHotspots = tour_linkHotspots;
 tour_linkHotspots.addStep({
   showOn: document.body.classList.contains('tour-accepted'),

@@ -168,7 +168,7 @@ tour_modal.addStep({
 	],
 });
 
-export var tour_linkHotspots = new Shepherd.Tour();
+export const tour_linkHotspots = new Shepherd.Tour();
 
 tour_linkHotspots.addStep({
 	showOn: document.body.classList.contains('tour-accepted'),
