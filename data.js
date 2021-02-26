@@ -1,4 +1,4 @@
-export var APP_DATA = {
+var APP_DATA = {
 	scenes: [
 		{
 			id: '0-countertop',
