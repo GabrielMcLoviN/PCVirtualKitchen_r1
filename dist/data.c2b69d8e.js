@@ -394,7 +394,7 @@ var APP_DATA = {
       images: [''],
       subhead: '',
       fullWidth: true,
-      text: "<iframe allowfullscreen='true' style='border:none;width:100%;height:100%;' src='https://issuu.com/embed.html?d=p30530-012021usca-eat-well-ebook&hideIssuuLogo=true&hideShareButton=true&u=pamperedchef'></iframe>"
+      text: "<iframe allowfullscreen='true' style='border:none;width:100%;height:100%;' src='https://e.issuu.com/embed.html?d=p30530-012021usca-eat-well-ebook&hideIssuuLogo=true&hideShareButton=true&u=pamperedchef'></iframe>"
     }, {
       yaw: -0.7416328666204635,
       pitch: 0.3615805204161795,
@@ -554,7 +554,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "8426" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "2274" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
