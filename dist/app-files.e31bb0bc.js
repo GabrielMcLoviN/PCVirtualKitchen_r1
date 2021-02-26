@@ -33447,7 +33447,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 const panoElement = document.querySelector('#pano');
 const sceneNameElement = document.querySelector('#titleBar .sceneName');
 const sceneElements = document.querySelectorAll('#sceneList .scene');
-const sceneListToggleElement = document.querySelector('#sceneListToggle');
 const fullscreenToggleElement = document.querySelector('#fullscreenToggle'); // Detect desktop or mobile mode.
 
 if (window.matchMedia) {
@@ -33660,14 +33659,6 @@ function show() {
 
 function hide() {
   tooltip.removeAttribute('data-show');
-}
-
-document.fullscreenEnabled = document.fullscreenEnabled || document.mozFullScreenEnabled || document.documentElement.webkitRequestFullScreen;
-
-if (_bowser.default.parse(window.navigator.userAgent).platform.type === 'mobile' && _bowser.default.parse(window.navigator.userAgent).browser.name === 'safari') {
-  document.body.classList.add('fullscreen-disabled');
-} else {
-  document.body.classList.add('fullscreen-enabled');
 } // Set up fullscreen mode, if supported.
 
 
@@ -34189,10 +34180,6 @@ document.body.addEventListener('keydown', evt => {
       open_item.classList.remove('visible');
     });
   }
-
-  reset_modal();
-}, {
-  passive: true
 });
 },{"bowser":"node_modules/bowser/es5.js","marzipano":"node_modules/marzipano/src/index.js","/data.js":"data.js","@popperjs/core":"node_modules/@popperjs/core/lib/index.js","screenfull":"node_modules/screenfull/dist/screenfull.js","/tour.js":"tour.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];

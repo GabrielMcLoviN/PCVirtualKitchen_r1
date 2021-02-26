@@ -22,7 +22,6 @@ import {
 const panoElement = document.querySelector('#pano');
 const sceneNameElement = document.querySelector('#titleBar .sceneName');
 const sceneElements = document.querySelectorAll('#sceneList .scene');
-const sceneListToggleElement = document.querySelector('#sceneListToggle');
 const fullscreenToggleElement = document.querySelector('#fullscreenToggle');
 
 // Detect desktop or mobile mode.
@@ -259,19 +258,6 @@ function hide() {
 	tooltip.removeAttribute('data-show');
 }
 
-document.fullscreenEnabled =
-	document.fullscreenEnabled ||
-	document.mozFullScreenEnabled ||
-	document.documentElement.webkitRequestFullScreen;
-
-if (
-	Bowser.parse(window.navigator.userAgent).platform.type === 'mobile' &&
-	Bowser.parse(window.navigator.userAgent).browser.name === 'safari'
-) {
-	document.body.classList.add('fullscreen-disabled');
-} else {
-	document.body.classList.add('fullscreen-enabled');
-}
 
 // Set up fullscreen mode, if supported.
 fullscreenToggleElement.addEventListener('click', function () {
@@ -834,7 +820,5 @@ document.body.addEventListener(
 				open_item.classList.remove('visible');
 			});
 		}
-		reset_modal();
 	},
-	{ passive: true }
 );
