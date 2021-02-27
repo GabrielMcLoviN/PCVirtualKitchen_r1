@@ -7,8 +7,8 @@ import { createPopper } from '@popperjs/core';
 import screenfull from '/vendor/screenfull.min.js';
 import Shepherd from 'shepherd.js';
 
-// tour
 
+// tour
 const tour_infoHotspots = new Shepherd.Tour();
 tour_infoHotspots.addStep({
 	showOn: document.body.classList.contains('tour-accepted'),

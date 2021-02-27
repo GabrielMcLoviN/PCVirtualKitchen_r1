@@ -1,7 +1,4 @@
-**/.vscode
-
-**/node_modules
-
-**/dist
-**/.cache
-
+node_modules
+.vscode
+.cache
+dist
