@@ -12,7 +12,7 @@ import Shepherd from 'shepherd.js';
 const tour_infoHotspots = new Shepherd.Tour();
 tour_infoHotspots.addStep({
 	showOn: document.body.classList.contains('tour-accepted'),
-	text: `Throughout our virtual kitchen, you'll see icons just like this one. These are our product hotspots. Each hotspot is associated with the product closest to it.<br/><br/> Go ahead and click on this one here!👇`,
+	text: `Throughout our virtual kitchen, you'll see icons just like this one. These are our product hotspots. Each hotspot is associated with the product closest to it.<br/><br/> Go ahead and click on this one here! 👇`,
 	attachTo: {
 		element: '.intro-starter',
 		on: 'top',
@@ -147,7 +147,7 @@ const tour_linkHotspots = new Shepherd.Tour();
 
 tour_linkHotspots.addStep({
 	showOn: document.body.classList.contains('tour-accepted'),
-	text: `These arrow icons with a blue outline will take you to a different part of our virtual kitchen.<br/> <br/>Try clicking this one to view the pots & pans located on the stove top.`,
+	text: `These arrow icons with a blue outline will take you to a different part of our virtual kitchen.<br/> <br/>Try clicking this one to view the pots & pans located on the stove top 👇`,
 	attachTo: {
 		element: '.second-tour-starter img',
 		on: 'top',
@@ -324,7 +324,7 @@ var scenes = data.scenes.map(function (data) {
 			.createHotspot(
 				element,
 				{ yaw: hotspot.yaw, pitch: hotspot.pitch },
-				{ perspective: { radius: 375 } }
+				{ perspective: { radius: 350 } }
 			);
 	});
 
@@ -439,6 +439,7 @@ tour_movement.on('complete', function () {
 
 tour_final.on('complete', function () {
 	document.body.classList.remove('tour-accepted');
+	introLH.classList.remove('second-tour-starter');
 	viewer.controls().enable();
 });
 
@@ -447,7 +448,7 @@ tour_final.on('complete', function () {
 		intro.classList.remove('visible');
 		infohotspot.classList.remove('intro-starter');
 		introModal.classList.remove('intro-starter');
-		introLH.classList.remove('intro-starter');
+		introLH.classList.remove('second-tour-starter');
 		show();
 		viewer.controls().enable();
 		setTimeout(function () {
