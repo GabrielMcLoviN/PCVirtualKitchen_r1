@@ -1,10 +1,10 @@
 'use strict';
 
 import Bowser from 'bowser';
-import Marzipano from 'marzipano';
+import Marzipano from '/vendor/marzipano.js';
 import { data } from '/data.js';
 import { createPopper } from '@popperjs/core';
-import screenfull from 'screenfull';
+import screenfull from '/vendor/screenfull.min.js';
 import Shepherd from 'shepherd.js';
 
 // tour
@@ -278,11 +278,6 @@ tour_final.addStep({
 	},
 });
 
-// var Marzipano = window.Marzipano;
-// var screenfull = window.screenfull;
-// var data = window.APP_DATA;
-// var bowser = window.bowser;
-
 // Grab elements from DOM.
 const panoElement = document.querySelector('#pano');
 const sceneNameElement = document.querySelector('#titleBar .sceneName');
@@ -314,11 +309,6 @@ window.addEventListener('touchstart', function (e) {
 	document.body.classList.remove('no-touch');
 	document.body.classList.add('touch');
 });
-
-// Use tooltip fallback mode on IE < 11.
-// if (bowser.msie && parseFloat(bowser.version) < 11) {
-// 	document.body.classList.add('tooltip-fallback');
-// }
 
 const viewerOpts = {
 	controls: {
@@ -367,7 +357,7 @@ var scenes = data.scenes.map(function (data) {
 			.createHotspot(
 				element,
 				{ yaw: hotspot.yaw, pitch: hotspot.pitch },
-				{ perspective: { radius: 400 } }
+				{ perspective: { radius: 375 } }
 			);
 	});
 
@@ -524,7 +514,7 @@ function hide() {
 }
 
 // Set up fullscreen mode, if supported.
-if (screenfull.enabled && data.settings.fullscreenButton) {
+if (screenfull.enabled) {
 	document.body.classList.add('fullscreen-enabled');
 	fullscreenToggleElement.addEventListener('click', function () {
 		screenfull.toggle();
@@ -704,7 +694,7 @@ function createInfoHotspotElement(hotspot) {
 	const recipesList = document.createElement('div');
 	recipesList.classList.add('recipes-list');
 
-	if (hotspot.recipes != undefined) {
+	if (hotspot.recipes) {
 		for (let i = 0; i < hotspot.recipes.length; i++) {
 			const recipe_el = document.createElement('li');
 			const recipe_link = document.createElement('a');
@@ -725,7 +715,7 @@ function createInfoHotspotElement(hotspot) {
 			recipe_el.appendChild(recipe_link);
 			recipesList.appendChild(recipe_el);
 		}
-	} else if (hotspot.related_content != undefined) {
+	} else if (hotspot.related_content) {
 		for (let i = 0; i < hotspot.related_content.length; i++) {
 			const recipe_el = document.createElement('li');
 			const recipe_link = document.createElement('a');
@@ -746,7 +736,7 @@ function createInfoHotspotElement(hotspot) {
 			recipesList.appendChild(recipe_el);
 		}
 		recipesHeader.textContent = 'Related Content:';
-	} else if (hotspot.pdf_links != undefined) {
+	} else if (hotspot.pdf_links) {
 		for (let i = 0; i < hotspot.pdf_links.length; i++) {
 			const recipe_el = document.createElement('li');
 			const recipe_link = document.createElement('a');
@@ -834,7 +824,7 @@ function createInfoHotspotElement(hotspot) {
 		carousel_pagination.appendChild(carousel_bullet);
 		carousel_container.appendChild(carousel_pagination);
 	}
-	if (hotspot.videos != undefined) {
+	if (hotspot.videos) {
 		for (let i = 0; i < hotspot.videos.length; i++) {
 			const sliderTop = document.createElement('div');
 			sliderTop.classList.add('slider-top');
@@ -883,10 +873,10 @@ function createInfoHotspotElement(hotspot) {
 	};
 
 	const reset_modal = function () {
-		setTimeout(function () {
+		if (modal.classList.contains('visible')) {
 			modal.querySelector('.product-txt-container').scrollTo(0, 0);
 			slideTo(0);
-		}, 1000);
+		}
 		pause_video();
 	};
 
@@ -1063,8 +1053,6 @@ const controls = document.getElementById('controls');
 const controls_close = document.getElementById('controls-close');
 const introClose = document.getElementById('intro-close');
 
-const safari = document.getElementById('safariOnly');
-
 introClose.addEventListener('click', function () {
 	intro.classList.remove('visible');
 });
@@ -1086,7 +1074,7 @@ mobile_cta_btn.addEventListener('click', function () {
 	controls.classList.add('visible');
 });
 
-window.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', function () {
 	setTimeout(function () {
 		help_menu.style.opacity = 1;
 		help_menu_btn.style.opacity = 1;
@@ -1120,8 +1108,6 @@ help_menu_close.addEventListener('click', function () {
 
 document.body.addEventListener('keydown', (evt) => {
 	if (evt.key === 'Escape') {
-		[intro, help_menu, controls].forEach((open_item) => {
-			open_item.classList.remove('visible');
-		});
+		help_menu.classList.remove('visible');
 	}
 });

@@ -1,3 +1,5 @@
+
+
 @media only screen and (max-width: 500px) {
   .controls-content {
     flex-direction: column;
@@ -45,7 +47,7 @@
     height: calc(9.5px / 2);
     background: var(--secondary-white);
     -webkit-clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
-            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
   }
 }
 
