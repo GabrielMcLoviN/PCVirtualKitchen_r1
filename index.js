@@ -67,39 +67,6 @@ tour_modal.addStep({
 	],
 });
 
-// tour_modal.addStep({
-// 	arrow: false,
-// 	showOn: document.body.classList.contains('tour-accepted'),
-// 	text: `Below that, you'll find downloadable PDF files for recipes and additional content.`,
-// 	attachTo: {
-// 		element: '.intro-starter .product-txt-wrapper .recipes',
-// 		on: 'top',
-// 	},
-// 	scrollTo: { behavior: 'smooth', block: 'start' },
-// 	popperOptions: {
-// 		modifiers: [
-// 			{
-// 				name: 'offset',
-// 				options: {
-// 					offset: [0, 25],
-// 				},
-// 			},
-// 		],
-// 	},
-// 	buttons: [
-// 		{
-// 			text: 'Back',
-// 			action: tour_modal.back,
-// 			classes: 'shep-back',
-// 		},
-// 		{
-// 			text: 'Next',
-// 			action: tour_modal.next,
-// 			classes: 'shep-next',
-// 		},
-// 	],
-// });
-
 tour_modal.addStep({
 	arrow: false,
 	showOn: document.body.classList.contains('tour-accepted'),
@@ -587,10 +554,6 @@ function createLinkHotspotElement(hotspot) {
 	tooltip.innerHTML = findSceneDataById(hotspot.target).name;
 	tooltip.setAttribute('role', 'tooltip');
 	tooltip.setAttribute('id', 'tooltip-LH');
-	const arrow = document.createElement('div');
-	arrow.setAttribute('id', 'arrow');
-	arrow.setAttribute('data-popper-arrow', '');
-	tooltip.appendChild(arrow);
 
 	const LH_popper = createPopper(wrapper, tooltip, {
 		placement: 'top',
@@ -598,7 +561,7 @@ function createLinkHotspotElement(hotspot) {
 			{
 				name: 'offset',
 				options: {
-					offset: [0, 15],
+					offset: [0, 5],
 				},
 			},
 		],

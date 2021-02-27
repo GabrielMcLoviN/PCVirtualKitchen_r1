@@ -469,7 +469,27 @@ body {
 
 .preload-text::after {
   content: " .";
-  animation: dots 1s steps(5, end) infinite;
+  -webkit-animation: dots 1s steps(5, end) infinite;
+          animation: dots 1s steps(5, end) infinite;
+}
+
+@-webkit-keyframes dots {
+  0%,
+  20% {
+    color: rgba(0, 0, 0, 0);
+    text-shadow: 0.25em 0 0 rgba(0, 0, 0, 0), 0.5em 0 0 rgba(0, 0, 0, 0);
+  }
+  40% {
+    color: white;
+    text-shadow: 0.25em 0 0 rgba(0, 0, 0, 0), 0.5em 0 0 rgba(0, 0, 0, 0);
+  }
+  60% {
+    text-shadow: 0.25em 0 0 white, 0.5em 0 0 rgba(0, 0, 0, 0);
+  }
+  80%,
+  100% {
+    text-shadow: 0.25em 0 0 white, 0.5em 0 0 white;
+  }
 }
 
 @keyframes dots {
@@ -635,31 +655,6 @@ body.fullscreen-enabled #fullscreenToggle {
 }
 
 .link-hotspot-tooltip {
-  /* position: absolute;
-  left: -87.5%;
-  top: 110%;
-
-
-  font-size: 12px;
-
-  width: 100px;
-
-  padding: 8px;
-
-  border-radius: 5px;
-
-  background-color: var(--accent-blue);
-
-  color: var(--secondary-white);
-  text-align: center;
-  white-space: wrap;
-  overflow: hidden;
-
-  cursor: pointer;
-
-  opacity: 0;
-  transform: translateY(-8px);
-  transition: transform 0.3s, opacity 0.3s; */
   display: none;
 }
 
