@@ -5,14 +5,42 @@
 * Browsers: last 4 version
 */
 
-
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v7.0.29,
+* Autoprefixer: v9.7.6
+* Browsers: last 4 version
+*/
 
 @media only screen and (max-width: 500px) {
+  #help-menu .help-content {
+    width: 80%;
+  }
+
+  #help-body .help-list {
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -ms-flex-wrap: nowrap;
+        flex-wrap: nowrap;
+    -webkit-box-pack: space-evenly;
+        -ms-flex-pack: space-evenly;
+            justify-content: space-evenly;
+  }
+
+  #help-body {
+    width: 100%;
+  }
   .controls-content {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
     max-width: 300px;
   }
 
@@ -33,10 +61,10 @@
 
   .info-hotspot-modal .info-hotspot-title-wrapper {
     -ms-grid-column-align: start;
-        justify-self: start;
+    justify-self: start;
     -webkit-box-pack: start;
-        -ms-flex-pack: start;
-            justify-content: start;
+    -ms-flex-pack: start;
+    justify-content: start;
     padding-left: 10px;
   }
 
