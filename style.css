@@ -312,7 +312,6 @@ body {
   -webkit-box-pack: center;
   -ms-flex-pack: center;
   justify-content: center;
-  max-height: 100%;
   border-radius: 0.5rem;
   display: flex;
   margin: 0 auto;
