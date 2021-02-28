@@ -7,7 +7,6 @@ import { createPopper } from '@popperjs/core';
 import screenfull from 'screenfull';
 import Shepherd from 'shepherd.js';
 
-
 // tour
 const tour_infoHotspots = new Shepherd.Tour();
 tour_infoHotspots.addStep({
@@ -324,7 +323,7 @@ var scenes = data.scenes.map(function (data) {
 			.createHotspot(
 				element,
 				{ yaw: hotspot.yaw, pitch: hotspot.pitch },
-				{ perspective: { radius: 350 } }
+				{ perspective: { radius: 400 } }
 			);
 	});
 
@@ -481,7 +480,6 @@ function hide() {
 	tooltip.removeAttribute('data-show');
 }
 
-// Set up fullscreen mode, if supported.
 if (screenfull.isEnabled) {
 	document.body.classList.add('fullscreen-enabled');
 	fullscreenToggleElement.addEventListener('click', function () {
@@ -496,10 +494,8 @@ if (screenfull.isEnabled) {
 	});
 } else {
 	document.body.classList.add('fullscreen-disabled');
-	// fullscreenToggleElement.style.display = 'none';
-	// const redir = document.createElement('a');
-	// redir.classList.add('redir');
-
+	fullscreenToggleElement.setAttribute('href', 'https://pc-virtualparty.netlify.app');
+	fullscreenToggleElement.setAttribute('target', '_blank');
 }
 
 function sanitize(s) {
@@ -1034,7 +1030,6 @@ controls_close.addEventListener('click', function () {
 // const mobile_cta_btn = document.querySelector('.fullscreen-btn');
 // const mobile_cta = document.querySelector('.mobile-cta');
 
-
 // mobile_cta_btn.addEventListener('click', function () {
 // 	screenfull.toggle();
 // 	mobile_cta.classList.remove('visible');
@@ -1062,7 +1057,7 @@ document.addEventListener('DOMContentLoaded', function () {
 		// ) {
 		// 	mobile_cta.classList.add('visible');
 		// } else {
-			controls.classList.add('visible');
+		controls.classList.add('visible');
 		// }
 	}, 6000);
 });
@@ -1080,4 +1075,3 @@ document.body.addEventListener('keydown', (evt) => {
 		help_menu.classList.remove('visible');
 	}
 });
-
