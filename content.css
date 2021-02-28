@@ -129,7 +129,6 @@
   display: -ms-grid;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-  -ms-grid-rows: (1fr) [2];
   grid-template-rows: repeat(2, 1fr);
   /* grid-gap: 1rem; */
   overflow: hidden;

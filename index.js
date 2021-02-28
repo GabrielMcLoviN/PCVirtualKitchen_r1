@@ -1030,6 +1030,7 @@ controls_close.addEventListener('click', function () {
 const mobile_cta_btn = document.querySelector('.fullscreen-btn');
 const mobile_cta = document.querySelector('.mobile-cta');
 
+
 mobile_cta_btn.addEventListener('click', function () {
 	screenfull.toggle();
 	mobile_cta.classList.remove('visible');
@@ -1075,3 +1076,4 @@ document.body.addEventListener('keydown', (evt) => {
 		help_menu.classList.remove('visible');
 	}
 });
+
