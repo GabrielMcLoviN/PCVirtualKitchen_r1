@@ -1027,17 +1027,17 @@ controls_close.addEventListener('click', function () {
 	intro.classList.add('visible');
 });
 
-const mobile_cta_btn = document.querySelector('.fullscreen-btn');
-const mobile_cta = document.querySelector('.mobile-cta');
+// const mobile_cta_btn = document.querySelector('.fullscreen-btn');
+// const mobile_cta = document.querySelector('.mobile-cta');
 
 
-mobile_cta_btn.addEventListener('click', function () {
-	screenfull.toggle();
-	mobile_cta.classList.remove('visible');
-	mobile_cta.style.display = 'none';
-	controls.style.opacity = 1;
-	controls.classList.add('visible');
-});
+// mobile_cta_btn.addEventListener('click', function () {
+// 	screenfull.toggle();
+// 	mobile_cta.classList.remove('visible');
+// 	mobile_cta.style.display = 'none';
+// 	controls.style.opacity = 1;
+// 	controls.classList.add('visible');
+// });
 
 document.addEventListener('DOMContentLoaded', function () {
 	setTimeout(function () {
@@ -1046,20 +1046,20 @@ document.addEventListener('DOMContentLoaded', function () {
 		panoElement.style.opacity = 1;
 		titleBar.style.opacity = 1;
 		preloader.style.display = 'none';
-		if (
-			Bowser.parse(window.navigator.userAgent).platform.type === 'mobile' &&
-			Bowser.parse(window.navigator.userAgent).browser.name === 'Safari' &&
-			h === 389
-		) {
-			safariOnly.classList.add('visible');
-		} else if (
-			Bowser.parse(window.navigator.userAgent).platform.type === 'mobile' &&
-			h === 389
-		) {
-			mobile_cta.classList.add('visible');
-		} else {
+		// if (
+		// 	Bowser.parse(window.navigator.userAgent).platform.type === 'mobile' &&
+		// 	Bowser.parse(window.navigator.userAgent).browser.name === 'Safari' &&
+		// 	h === 389
+		// ) {
+		// 	safariOnly.classList.add('visible');
+		// } else if (
+		// 	Bowser.parse(window.navigator.userAgent).platform.type === 'mobile' &&
+		// 	h === 389
+		// ) {
+		// 	mobile_cta.classList.add('visible');
+		// } else {
 			controls.classList.add('visible');
-		}
+		// }
 	}, 6000);
 });
 
