@@ -496,6 +496,10 @@ if (screenfull.isEnabled) {
 	});
 } else {
 	document.body.classList.add('fullscreen-disabled');
+	// fullscreenToggleElement.style.display = 'none';
+	// const redir = document.createElement('a');
+	// redir.classList.add('redir');
+
 }
 
 function sanitize(s) {
