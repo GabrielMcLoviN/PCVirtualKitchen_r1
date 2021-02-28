@@ -1,16 +1,4 @@
-/*
-* Prefixed by https://autoprefixer.github.io
-* PostCSS: v7.0.29,
-* Autoprefixer: v9.7.6
-* Browsers: last 4 version
-*/
 
-/*
-* Prefixed by https://autoprefixer.github.io
-* PostCSS: v7.0.29,
-* Autoprefixer: v9.7.6
-* Browsers: last 4 version
-*/
 
 @media only screen and (max-width: 500px) {
   #help-menu .help-content {
@@ -150,7 +138,8 @@
     border-radius: 50%;
   }
   .info-hotspot-modal .info-hotspot-close-wrapper > * {
-    filter: invert(1);
+    -webkit-filter: invert(1);
+            filter: invert(1);
   }
   .info-hotspot-modal .info-hotspot-content {
     top: 10px;
@@ -191,7 +180,8 @@
     display: none;
   }
   .info-hotspot-modal .info-hotspot-close-wrapper {
-    filter: invert(0.5);
+    -webkit-filter: invert(0.5);
+            filter: invert(0.5);
     mix-blend-mode:screen;
     margin: 10px 2px 0 0;
   }
