@@ -4,7 +4,7 @@ import Bowser from 'bowser';
 import Marzipano from '/vendor/marzipano.js';
 import { data } from '/data.js';
 import { createPopper } from '@popperjs/core';
-import screenfull from '/vendor/screenfull.min.js';
+import screenfull from 'screenfull';
 import Shepherd from 'shepherd.js';
 
 
@@ -482,7 +482,7 @@ function hide() {
 }
 
 // Set up fullscreen mode, if supported.
-if (screenfull.enabled) {
+if (screenfull.isEnabled) {
 	document.body.classList.add('fullscreen-enabled');
 	fullscreenToggleElement.addEventListener('click', function () {
 		screenfull.toggle();
