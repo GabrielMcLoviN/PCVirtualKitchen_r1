@@ -408,8 +408,7 @@ export var data = {
 					pdf_links: [
 						{
 							id: 'New Consultant Kit',
-							preview_image:
-								'./modals/be_a_consultant/consultant_pack.jpg',
+							preview_image: './modals/be_a_consultant/consultant_pack.jpg',
 							link: './modals/be_a_consultant/flyer-new-consultant-kit-us.pdf',
 						},
 						{
@@ -499,8 +498,8 @@ export var data = {
 			],
 			faceSize: 2048,
 			initialViewParameters: {
-				yaw: -0.1235145795909709,
-				pitch: 0.5635631739337121,
+				yaw: -0.26892060769045756,
+				pitch: 0.5234438282081175,
 				fov: 1.3848081938437478,
 			},
 			linkHotspots: [
