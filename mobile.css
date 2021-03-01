@@ -78,6 +78,10 @@
     -webkit-clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
     clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
   }
+
+  .product-txt-container {
+    padding-bottom: 4rem;
+  }
 }
 
 @media only screen and (max-width: 500px) and (min-height: 500px) {
