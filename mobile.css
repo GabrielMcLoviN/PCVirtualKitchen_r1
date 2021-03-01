@@ -123,7 +123,6 @@
 }
 
 @media only screen and (max-width: 1000px) and (min-height: 400px) {
-
   .carousel_container {
     -ms-grid-row: 1;
     -ms-grid-row-span: 1;
@@ -169,6 +168,8 @@
   }
   .info-hotspot-modal .info-hotspot-content {
     top: 10px;
+    max-width: 100%;
+    max-height: 100%;
   }
   .carousel_container {
     -ms-grid-row: 1;

@@ -409,7 +409,7 @@ export var data = {
 						{
 							id: 'New Consultant Kit',
 							preview_image:
-								'./modals/be_a_consultant/flyer-new-consultant-kit-us_Page_1-min.jpg',
+								'./modals/be_a_consultant/consultant_pack.jpg',
 							link: './modals/be_a_consultant/flyer-new-consultant-kit-us.pdf',
 						},
 						{
