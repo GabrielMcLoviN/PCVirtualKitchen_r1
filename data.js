@@ -454,10 +454,10 @@ export var data = {
 						'<iframe width="840" height="472.5" src="https://www.youtube.com/embed/4Z8xfjQcrq0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>',
 					],
 					images: [
-						'./images_min/hostaparty/01-min.jpg',
 						'./images_min/hostaparty/02-min.jpg',
 						'./images_min/hostaparty/03-min.jpg',
 						'./images_min/hostaparty/04-min.jpg',
+						'./images_min/hostaparty/01-min.jpg',
 					],
 					subhead: 'Host a Party',
 					text:
