@@ -274,7 +274,7 @@ body {
   margin: auto;
 }
 
-#help-menu .help-content,
+#help-menu .controls,
 #intro .intro-content,
 #controls .controls {
   font-size: clamp(0.75rem, 2vw, 1rem);
@@ -299,7 +299,7 @@ body {
 }
 
 #controls .controls,
-#help-menu .help-content {
+#help-menu .controls {
   max-width: 500px;
 }
 
@@ -336,14 +336,19 @@ body {
   flex-direction: row;
 }
 
-.controls-icons .help-list-section {
+.controls-section, .controls-section-top {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin: 1rem;
 }
 
-.controls-icons .help-list-section img {
+.controls-section-top span {
+  max-width: 20ch;
+}
+
+.controls-section img, .controls-section-top img {
   margin-bottom: 1rem;
 }
 
@@ -445,10 +450,6 @@ body {
   justify-content: center;
 }
 
-.help-break.help-device {
-  border-bottom: 1px solid #fff;
-}
-
 .help-list .help-list-section {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -467,6 +468,7 @@ body {
   -ms-flex-pack: center;
   justify-content: center;
   width: 100%;
+  margin: 1rem 2rem;
 }
 
 .help-list .help-list-section > * {

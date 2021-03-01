@@ -162,13 +162,11 @@
         <h1 class="controls-h1">EXPLORE</h1>
       </div>
       <div class="controls-content">
-        <div class="controls-left">
-          <!-- <span class="help-break help-device">MOBILE & TOUCH DEVICES</span> -->
+        <div class="controls-section-top">
           <img src="./static/SVG/swipe-black-48dp.svg" alt="swipe-icon" width="30px" height="30px">
           <span>Drag your finger across the screen</span>
         </div>
-        <div class="controls-right">
-          <!-- <span class="help-break help-device">MOUSE & KEYBOARD</span> -->
+        <div class="controls-section-top">
           <img src="/static/SVG/iconmonstr-cursor-9.svg" alt="hand-icon" width="30px" height="30px">
           <span>Click & drag your mouse</span>
         </div>
@@ -187,6 +185,7 @@
       </div>
     </div>
   </div>
+
 
   <div class="info-hotspot-modal intro" id="intro">
     <div class="intro-content">
@@ -216,7 +215,7 @@
       <img class="icon on" src="static/SVG/fullscreen-exit-line.svg">
     </a>
   </div>
-<!--
+  <!--
   <div class="mobile-cta info-hotspot-modal">
     <div class="mobile-fullscreen-cta">
       <img src="./static/SVG/cook.svg" alt="chef-icon" class="chef-icon">
@@ -256,107 +255,97 @@
     </svg>
   </div>
 
+
+
   <div class="info-hotspot-modal" id="help-menu">
-    <div class="help-content">
-      <div class="help-header">
-        <div class="help-menu-close">
-          <img src="static/SVG/close-line.svg" class="info-hotspot-close-icon" id="intro-close">
-        </div>
+    <div class="controls">
+      <div class="help-list-heading">
+        <img src="/static/SVG/control_camera-black-48dp.svg" alt="camera-controls-icon" width="25px" height="25px">
+        <h4>Movement Controls</h4>
       </div>
-      <div id="help-body">
-        <div class="help-list-heading">
-          <img src="/static/SVG/control_camera-black-48dp.svg" alt="camera-controls-icon" width="25px" height="25px">
-          <h4>Movement Controls</h4>
+      <div class="controls-content">
+        <div class="controls-section-top">
+          <img src="./static/SVG/swipe-black-48dp.svg" alt="swipe-icon" width="30px" height="30px">
+          <span>Drag your finger across the screen</span>
         </div>
-        <div class="help-list device-spec">
-          <div class="help-list-section">
-            <span class="help-break help-device">Mobile & touch devices:</span>
-            <img src="/static/SVG/swipe-black-48dp.svg" alt="hand-icon" width="25px" height="25px">
-            <span>Move around the kitchen by touching anywhere on the screen and dragging your finger across it.</span>
-          </div>
-          <div class="help-list-section">
-            <span class="help-break help-device">Mouse & keyboard:</span>
-            <img src="/static/SVG/iconmonstr-cursor-9.svg" alt="hand-icon" width="25px" height="25px">
-            <span>Move around the kitchen by clicking your mouse cursor, holding it down as you drag across the
-              screen.</span>
-          </div>
-        </div class="help-list-section">
-        <div class="help-list-heading">
-          <h4>Navigation</h4>
+        <div class="controls-section-top">
+          <img src="/static/SVG/iconmonstr-cursor-9.svg" alt="hand-icon" width="30px" height="30px">
+          <span>Click & drag your mouse</span>
         </div>
-        <div class="help-list icon-spec">
-          <div class="help-list-section">
+        <div class="controls-icons">
+          <div class="controls-section">
             <img src="/static/SVG/arrow-up-circle-fill.svg" alt="arrow-icon" width="25px" height="25px"
               style="translate: rotate(8.63937979737193rad)">
-            <span>Arrows will take you to a different part of the kitchen.</span>
+            <span>Click arrows to see products in different parts of the kitchen</span>
           </div>
-          <div class="help-list-section">
+          <div class="controls-section">
             <img src="/static/assets/PC+Seal-Solid_whiteCircle-reverseLogo.png" alt="pampered-chef-icon" width="25px"
               height="25px">
-            <span>Pampered Chef icons will take you to the info panel of the product closest to it.</span>
+            <span>Click PC icons for product information, recipes & more</span>
           </div>
         </div>
       </div>
     </div>
+  </div>
 
 
-    <script src="data.js"></script>
-    <script src="index.js"></script>
+  <script src="data.js"></script>
+  <script src="index.js"></script>
 
-    <script>
-      const iframes = document.querySelectorAll('iframe');
-      iframes.forEach(element => {
-        element.setAttribute('loading', 'lazy');
-      });
+  <script>
+    const iframes = document.querySelectorAll('iframe');
+    iframes.forEach(element => {
+      element.setAttribute('loading', 'lazy');
+    });
 
-      document.addEventListener("DOMContentLoaded", function () {
-        var lazyloadImages;
+    document.addEventListener("DOMContentLoaded", function () {
+      var lazyloadImages;
 
-        if ("IntersectionObserver" in window) {
-          lazyloadImages = document.querySelectorAll(".lazy");
-          var imageObserver = new IntersectionObserver(function (entries, observer) {
-            entries.forEach(function (entry) {
-              if (entry.isIntersecting) {
-                var image = entry.target;
-                image.classList.remove("lazy");
-                imageObserver.unobserve(image);
-              }
-            });
-          });
-          lazyloadImages.forEach(function (image) {
-            imageObserver.observe(image);
-          });
-        } else {
-          var lazyloadThrottleTimeout;
-          lazyloadImages = document.querySelectorAll(".lazy");
-
-          function lazyload() {
-            if (lazyloadThrottleTimeout) {
-              clearTimeout(lazyloadThrottleTimeout);
+      if ("IntersectionObserver" in window) {
+        lazyloadImages = document.querySelectorAll(".lazy");
+        var imageObserver = new IntersectionObserver(function (entries, observer) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              var image = entry.target;
+              image.classList.remove("lazy");
+              imageObserver.unobserve(image);
             }
+          });
+        });
+        lazyloadImages.forEach(function (image) {
+          imageObserver.observe(image);
+        });
+      } else {
+        var lazyloadThrottleTimeout;
+        lazyloadImages = document.querySelectorAll(".lazy");
 
-            lazyloadThrottleTimeout = setTimeout(function () {
-              var scrollTop = window.pageYOffset;
-              lazyloadImages.forEach(function (img) {
-                if (img.offsetTop < (window.innerHeight + scrollTop)) {
-                  img.src = img.dataset.src;
-                  img.classList.remove('lazy');
-                }
-              });
-              if (lazyloadImages.length == 0) {
-                document.removeEventListener("scroll", lazyload);
-                window.removeEventListener("resize", lazyload);
-                window.removeEventListener("orientationChange", lazyload);
-              }
-            }, 20);
+        function lazyload() {
+          if (lazyloadThrottleTimeout) {
+            clearTimeout(lazyloadThrottleTimeout);
           }
 
-          document.addEventListener("scroll", lazyload);
-          window.addEventListener("resize", lazyload);
-          window.addEventListener("orientationChange", lazyload);
+          lazyloadThrottleTimeout = setTimeout(function () {
+            var scrollTop = window.pageYOffset;
+            lazyloadImages.forEach(function (img) {
+              if (img.offsetTop < (window.innerHeight + scrollTop)) {
+                img.src = img.dataset.src;
+                img.classList.remove('lazy');
+              }
+            });
+            if (lazyloadImages.length == 0) {
+              document.removeEventListener("scroll", lazyload);
+              window.removeEventListener("resize", lazyload);
+              window.removeEventListener("orientationChange", lazyload);
+            }
+          }, 20);
         }
-      })
-    </script>
+
+        document.addEventListener("scroll", lazyload);
+        window.addEventListener("resize", lazyload);
+        window.addEventListener("orientationChange", lazyload);
+      }
+    })
+  </script>
 
 
 

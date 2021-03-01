@@ -11,7 +11,7 @@ import Shepherd from 'shepherd.js';
 const tour_infoHotspots = new Shepherd.Tour();
 tour_infoHotspots.addStep({
 	showOn: document.body.classList.contains('tour-accepted'),
-	text: `Click this icon to learn more about the product`,
+	text: `<br/>Click this icon to learn more about the product<br/><br/>`,
 	attachTo: {
 		element: '.intro-starter',
 		on: 'top',
@@ -37,7 +37,7 @@ tour_modal.addStep({
 	arrow: false,
 	showOn: document.body.classList.contains('tour-accepted'),
 	modalOverlayOpeningPadding: 10,
-	text: `Here, you'll find product information, downloadable recipes & related content`,
+	text: `<br/>Here, you'll find product information, downloadable recipes & related content`,
 	attachTo: {
 		element: '.intro-starter .product-txt-wrapper',
 		on: 'auto',
@@ -54,11 +54,6 @@ tour_modal.addStep({
 	},
 	buttons: [
 		{
-			text: 'Back',
-			action: tour_modal.back,
-			classes: 'shep-back',
-		},
-		{
 			text: 'Next',
 			action: tour_modal.next,
 			classes: 'shep-next',
@@ -69,7 +64,7 @@ tour_modal.addStep({
 tour_modal.addStep({
 	arrow: false,
 	showOn: document.body.classList.contains('tour-accepted'),
-	text: `Here you'll find product images & videos, click on the arrows or swipe to see more`,
+	text: `<br/>Here you'll find product images & videos, click on the arrows or swipe to see more<br/>`,
 	attachTo: {
 		element: '.intro-starter .carousel_container',
 		on: 'auto',
@@ -85,7 +80,7 @@ tour_modal.addStep({
 			{
 				name: 'arrow',
 				options: {
-					padding: 25, // 5px from the edges of the popper
+					padding: 25,
 				},
 			},
 		],
@@ -104,49 +99,11 @@ tour_modal.addStep({
 	],
 });
 
-// tour_modal.addStep({
-// 	arrow: false,
-// 	showOn: document.body.classList.contains('tour-accepted'),
-// 	text: `Navigate through the product gallery by clicking the buttons, swiping left or right, or scrolling up or down on your mouse-wheel.`,
-// 	attachTo: {
-// 		element: '.intro-starter .carousel_container',
-// 		on: 'auto',
-// 	},
-// 	popperOptions: {
-// 		modifiers: [
-// 			{
-// 				name: 'offset',
-// 				options: {
-// 					offset: [0, 25],
-// 				},
-// 			},
-// 			{
-// 				name: 'arrow',
-// 				options: {
-// 					padding: 25, // 5px from the edges of the popper
-// 				},
-// 			},
-// 		],
-// 	},
-// 	buttons: [
-// 		{
-// 			text: 'Back',
-// 			action: tour_modal.back,
-// 			classes: 'shep-back',
-// 		},
-// 		{
-// 			text: 'Next',
-// 			action: tour_modal.next,
-// 			classes: 'shep-next',
-// 		},
-// 	],
-// });
-
 const tour_linkHotspots = new Shepherd.Tour();
 
 tour_linkHotspots.addStep({
 	showOn: document.body.classList.contains('tour-accepted'),
-	text: `Click the arrow to see the products in this part of the kitchen`,
+	text: `<br/>Click the arrow to see the products in this part of the kitchen<br/><br/>`,
 	attachTo: {
 		element: '.second-tour-starter img',
 		on: 'top',
@@ -164,8 +121,6 @@ tour_linkHotspots.addStep({
 });
 
 const tour_movement = new Shepherd.Tour({
-	confirmCancel: true,
-	confirmCancelMessage: 'Are you sure you want to cancel the tour?',
 	defaultStepOptions: {
 		scrollTo: { behavior: 'smooth', block: 'center' },
 	},
@@ -173,10 +128,10 @@ const tour_movement = new Shepherd.Tour({
 
 tour_movement.addStep({
 	showOn: document.body.classList.contains('tour-accepted'),
-	text: `Good moves! I think you got the hang of it!<br/><br/>`,
+	text: `<br/>Good moves! I think you got the hang of it!<br/>`,
 	buttons: [
 		{
-			text: 'Start exploring',
+			text: 'Start Exploring',
 			action: tour_movement.next,
 			classes: 'shep-next',
 		},
@@ -201,7 +156,7 @@ const tour_final = new Shepherd.Tour({
 
 tour_final.addStep({
 	showOn: document.body.classList.contains('tour-accepted'),
-	text: `Enjoy the party!<br/>🥳✨🥂<br/><br/>If you need help along the way, click here`,
+	text: `<br/>Enjoy the party!<br/>🥳✨🥂<br/><br/>If you need help along the way, click here`,
 	attachTo: {
 		element: '.help-menu-btn svg',
 		on: 'auto',
