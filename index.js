@@ -270,7 +270,7 @@ var scenes = data.scenes.map(function (data) {
 			.createHotspot(
 				element,
 				{ yaw: hotspot.yaw, pitch: hotspot.pitch },
-				{ perspective: { radius: 400 } }
+				{ perspective: { radius: 500 } }
 			);
 	});
 
@@ -959,7 +959,7 @@ const intro = document.getElementById('intro');
 const help_menu = document.getElementById('help-menu');
 const help_menu_btn = document.querySelector('.help-menu-btn');
 const help_menu_opener = document.querySelector('.help-menu-btn svg');
-const help_menu_close = document.querySelector('.help-header #intro-close');
+const help_menu_close = document.querySelector('#help-list-close');
 const controls = document.getElementById('controls');
 const controls_close = document.getElementById('controls-close');
 const introClose = document.getElementById('intro-close');
