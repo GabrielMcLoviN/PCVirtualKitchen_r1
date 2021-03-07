@@ -140,17 +140,17 @@ export var data = {
 						{
 							id: 'Banana Foster Sandwich',
 							preview_image: './modals/grill/banana_foster-img.jpg',
-							link: './modals/grill/banana_foster_sandwich.pdf',
+							link: './modals/grill/post-bananas-foster-sandwich-steps.pdf',
 						},
 						{
 							id: 'Greek Zucchini Fritters',
 							preview_image: './modals/grill/greek_fritters-img.jpg',
-							link: './modals/grill/greek_fritters.pdf',
+							link: './modals/grill/post-greek-zucchini-fritters-steps.pdf',
 						},
 						{
 							id: 'French Onion Sliders',
 							preview_image: './modals/grill/fr_onion_sliders-img.jpg',
-							link: './modals/grill/fr_onion_sliders.pdf',
+							link: './modals/grill/post-french-onion-sliders-steps.pdf',
 						},
 					],
 				},
