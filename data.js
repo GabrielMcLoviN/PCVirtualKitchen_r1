@@ -398,25 +398,24 @@ export var data = {
 						'<iframe width="840" height="472.5" src="https://www.youtube.com/embed/aat1m2sbIvg" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>',
 					],
 					images: [
-						'./images_min/consultant/01-min.jpg',
-						'./images_min/consultant/02-min.jpg',
+						'./images_min/consultant/img-1.jpg',
+						'./images_min/consultant/img-2.jpg',
+						'./images_min/consultant/img-3.jpg',
 					],
 					containImages: true,
 					subhead: 'Be a Consultant',
 					text:
-						"<span class='addtl_modal_body_1'><h3 style='padding-top:1rem'>What's in It for You?</h3><p style='padding-top:0'>You mean... besides earning commission on every sale?</p><br/><span class='consultant_perks'>Here are more amazing perks!</span><br/><br/><h4 class='modal_block-header'> Work/Life Balance</h4><p>Make your business work around another job or family commitments-and take it wherever you go with your website and online tools.</p><h4 class='modal_block-header'> Free Products & Discounts</h4><p>You'll get 20–50% off products right away, and you'll have the chance to earn products or Pampered Chef logo gear every month.</p><h4 class='modal_block-header'> Fantastic Rewards</h4><p>On top of free products, you can earn cash rewards and even vacations-and you'll earn even more if you promote!</p><h4 class='modal_block-header'> Purpose & Community</h4><p>You'll be part of a strong community of people who share the same passion for helping others by inspiring mealtime wins.</p><br/><span class='modal_block-footer'>Contact your consultant to learn more today!</span></span><br/><br/>",
+						"<span class='addtl_modal_body_2'><h4 class='modal_block-header'>What's in It for You?</h4><p style='padding-top:0; margin-bottom: 0;'>You mean... besides earning commission on every sale?</p><br/><p class='consultant_perks'>Here are more amazing perks!</p><br/><br/><h4 class='modal_block-header'> Work/Life Balance</h4><p>Make your business work around another job or family commitments-and take it wherever you go with your website and online tools.</p><h4 class='modal_block-header'> Free Products & Discounts</h4><p>You'll get 20–50% off products right away, and you'll have the chance to earn products or Pampered Chef logo gear every month.</p><h4 class='modal_block-header'> Fantastic Rewards</h4><p>On top of free products, you can earn cash rewards and even vacations-and you'll earn even more if you promote!</p><h4 class='modal_block-header'> Purpose & Community</h4><p>You'll be part of a strong community of people who share the same passion for helping others by inspiring mealtime wins.</p><br/><span class='modal_block-footer'>Contact your consultant to learn more today!</span></span><br/><br/>",
 					pdf_links: [
 						{
-							id: 'New Consultant Kit',
-							preview_image: './modals/be_a_consultant/consultant_pack.jpg',
-							link: './modals/be_a_consultant/flyer-new-consultant-kit-us.pdf',
+							id: 'New Consultant Kit (US)',
+							preview_image: './modals/be_a_consultant/new_consultant_kit-us.jpg',
+							link: './modals/be_a_consultant/New-Consultant-Kit(US).pdf',
 						},
 						{
-							id: 'Make Your Everyday Better Poster',
-							preview_image:
-								'./modals/be_a_consultant/poster-everyday-better-checklist-20x30-us-min.jpg',
-							link:
-								'./modals/be_a_consultant/poster-everyday-better-checklist-20x30-us.pdf',
+							id: 'New Consultant Kit (CA)',
+							preview_image: './modals/be_a_consultant/new_consultant_kit-ca.jpg',
+							link: './modals/be_a_consultant/New-Consultant-Kit(CA).pdf',
 						},
 					],
 				},
@@ -454,20 +453,24 @@ export var data = {
 						'<iframe width="840" height="472.5" src="https://www.youtube.com/embed/4Z8xfjQcrq0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>',
 					],
 					images: [
-						'./images_min/hostaparty/02-min.jpg',
-						'./images_min/hostaparty/03-min.jpg',
-						'./images_min/hostaparty/04-min.jpg',
-						'./images_min/hostaparty/01-min.jpg',
+						'./images_min/hostaparty/img-01.jpg',
+						'./images_min/hostaparty/img-02.jpg',
+						'./images_min/hostaparty/img-03.jpg',
+						'./images_min/hostaparty/img-04.jpg',
 					],
 					subhead: 'Host a Party',
 					text:
 						"<span class='addtl_modal_body_2'><h4 class='modal_block-header'> Free Product Rewards</h4><p>The higher your party sales, the more free product value you get to spend on the products you want.</p><h4 class='modal_block-header'> Half-Price Products</h4><p>Get up to five, including exclusive host exclusive combos.</p><h4 class='modal_block-header'> Monthly Host Special</h4><p>Get an exclusive offer just for hosting.</p><h4 class='modal_block-header'> Booking Bonuses</h4><p>Get 40% off one item or set at any party booked from yours - and get $50 in free product rewards when three guests book parties!</p><h4 class='modal_block-header'> Discounted Products</h4><p>Save up to 30% at your party, and 10% for one year.</p><br/><span class='modal_block-footer'>Contact your consultant to learn more today!</span></span>",
 					pdf_links: [
 						{
-							id: 'Host Rewards PDF',
-							preview_image:
-								'./modals/host_party/p28619-092020us-host-rewards-min.jpg',
-							link: './modals/host_party/p28619-092020us-host-rewards.pdf',
+							id: 'Host a Party (US)',
+							preview_image: './modals/host_party/host_a_party-us.jpg',
+							link: './modals/host_party/Host-a-Party(US).pdf',
+						},
+						{
+							id: 'Host a Party (CA)',
+							preview_image: './modals/host_party/host_a_party-ca.jpg',
+							link: './modals/host_party/Host-a-Party(CA).pdf',
 						},
 					],
 				},
