@@ -507,6 +507,12 @@ export var data = {
 			},
 			linkHotspots: [
 				{
+					yaw: -0.8101987811746767,
+					pitch: 0.25245930885540346,
+					rotation: 10.210176124166829,
+					target: '0-counter',
+				},
+				{
 					yaw: -2.354654286612135,
 					pitch: 0.1774186200543646,
 					rotation: 5.497787143782138,
