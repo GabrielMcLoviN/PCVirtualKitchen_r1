@@ -441,8 +441,8 @@ if (screenfull.isEnabled) {
 	});
 } else {
 	document.body.classList.add('fullscreen-disabled');
-	// fullscreenToggleElement.setAttribute('href', 'https://pc-virtualparty.netlify.app');
-	// fullscreenToggleElement.setAttribute('target', '_blank');
+	fullscreenToggleElement.setAttribute('href', 'https://pc-virtualparty.netlify.app');
+	fullscreenToggleElement.setAttribute('target', '_blank');
 }
 
 function sanitize(s) {
@@ -986,6 +986,7 @@ controls_close.addEventListener('click', function () {
 // });
 
 document.addEventListener('DOMContentLoaded', function () {
+	setTimeout(function () {
 		help_menu.style.opacity = 1;
 		help_menu_btn.style.opacity = 1;
 		panoElement.style.opacity = 1;
@@ -1005,6 +1006,7 @@ document.addEventListener('DOMContentLoaded', function () {
 		// } else {
 		controls.classList.add('visible');
 		// }
+	}, 3000);
 });
 
 help_menu_opener.addEventListener('click', function () {
