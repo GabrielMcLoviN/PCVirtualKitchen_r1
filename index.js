@@ -1006,7 +1006,7 @@ document.addEventListener('DOMContentLoaded', function () {
 		// } else {
 		controls.classList.add('visible');
 		// }
-	}, 3000);
+	}, 0);
 });
 
 help_menu_opener.addEventListener('click', function () {
