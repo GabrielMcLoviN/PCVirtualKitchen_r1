@@ -722,8 +722,8 @@ function createInfoHotspotElement(hotspot) {
 		} else {
 			productImage.style.backgroundImage = `url(${hotspot.images[i]})`;
 		}
-		productImage.setAttribute('id', 'product-image');
 		productImage.classList.add('lazy');
+		productImage.setAttribute('id', 'product-image');
 
 		if (hotspot.containImages) {
 			productImage.style.backgroundSize = 'contain';
@@ -1022,3 +1022,12 @@ document.body.addEventListener('keydown', (evt) => {
 		help_menu.classList.remove('visible');
 	}
 });
+
+const test = () => {
+	const modals = document.querySelectorAll('.info-hotspot-modal');
+	const imageDivs = document.querySelectorAll('.product-image');
+
+
+	return modals[5].classList.add('visible');
+};
+test();

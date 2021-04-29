@@ -328,10 +328,6 @@
   user-select: text;
 }
 
-.lazy {
-  background-image: none;
-  background-color: #f1f1fa;
-}
 
 .carousel-images #product-image {
   display: -webkit-box;
@@ -348,6 +344,11 @@
   background-repeat: no-repeat;
   min-width: 100%;
   height: 100%;
+}
+
+.lazy {
+  background-image: none;
+  background-color: #f1f1fa;
 }
 
 .carousel-nav {
