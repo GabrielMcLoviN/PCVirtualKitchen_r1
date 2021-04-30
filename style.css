@@ -341,15 +341,16 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin: 1rem;
+  margin: .5rem 1rem;
+  font-size: .7rem;
 }
 
 .controls-section-top span {
-  max-width: 20ch;
+  max-width: 18ch;
 }
 
 .controls-section img, .controls-section-top img {
-  margin-bottom: 1rem;
+  margin-bottom: .5rem;
 }
 
 .controls-explore {
@@ -357,13 +358,13 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 1rem;
 }
+
 .controls-h1 {
   align-self: center;
   justify-self: center;
   font-weight: 500;
-  margin: 0 auto;
+  margin: 0.25rem auto;
 }
 
 .controls-header .controls-menu-close {

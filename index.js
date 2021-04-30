@@ -1,4 +1,4 @@
-'use strict';
+
 
 import Bowser from 'bowser';
 import Marzipano from '/vendor/marzipano.js';
@@ -7,188 +7,312 @@ import { createPopper } from '@popperjs/core';
 import screenfull from 'screenfull';
 import Shepherd from 'shepherd.js';
 
+const preloader = document.querySelector('.preloader');
+const titleBar = document.getElementById('titleBar');
+const intro = document.getElementById('intro');
+const help_menu = document.getElementById('help-menu');
+const help_menu_btn = document.querySelector('.help-menu-btn');
+const help_menu_opener = document.querySelector('.help-menu-btn svg');
+const help_menu_close = document.querySelector('#help-list-close');
+const controls = document.getElementById('controls');
+const controls_close = document.getElementById('controls-close');
+const introClose = document.getElementById('intro-close');
+
+introClose.addEventListener('click', function () {
+	intro.classList.remove('visible');
+});
+
+controls_close.addEventListener('click', function () {
+	controls.classList.remove('visible');
+	intro.style.opacity = 1;
+	intro.classList.add('visible');
+});
+
+window.addEventListener('load', function () {
+	help_menu.style.opacity = 1;
+	help_menu_btn.style.opacity = 1;
+	panoElement.style.opacity = 1;
+	titleBar.style.opacity = 1;
+	preloader.style.display = 'none';
+	controls.classList.add('visible');
+});
+
+help_menu_opener.addEventListener('click', function () {
+	help_menu.classList.add('visible');
+});
+
+help_menu_close.addEventListener('click', function () {
+	help_menu.classList.remove('visible');
+});
+
+document.body.addEventListener('keydown', (evt) => {
+	if (evt.key === 'Escape') {
+		help_menu.classList.remove('visible');
+	}
+});
+
+const iframes = document.querySelectorAll('iframe');
+iframes.forEach((element) => {
+	element.setAttribute('loading', 'lazy');
+});
+
+var lazyloadImages;
+
+if ('IntersectionObserver' in window) {
+	lazyloadImages = document.querySelectorAll('.lazy');
+
+	let options = {
+		root       : document.querySelector('.carousel-container'),
+		rootMargin : '0px',
+		threshold  : 1.0
+	};
+
+	var imageObserver = new IntersectionObserver(function (entries, observer) {
+		entries.forEach(function (entry) {
+			if (entry.isIntersecting) {
+				var image = entry.target;
+				image.classList.remove('lazy');
+				imageObserver.unobserve(image);
+			}
+		});
+	}, options);
+	lazyloadImages.forEach(function (image) {
+		imageObserver.observe(image);
+	});
+}
+else {
+	var lazyloadThrottleTimeout;
+	lazyloadImages = document.querySelectorAll('.lazy');
+
+	function lazyload () {
+		if (lazyloadThrottleTimeout) {
+			clearTimeout(lazyloadThrottleTimeout);
+		}
+
+		lazyloadThrottleTimeout = setTimeout(function () {
+			var scrollTop = window.pageYOffset;
+			lazyloadImages.forEach(function (img) {
+				if (img.offsetTop < window.innerHeight + scrollTop) {
+					img.src = img.dataset.src;
+					img.classList.remove('lazy');
+				}
+			});
+			if (lazyloadImages.length == 0) {
+				document.removeEventListener('scroll', lazyload);
+				window.removeEventListener('resize', lazyload);
+				window.removeEventListener('orientationChange', lazyload);
+			}
+		}, 20);
+	}
+
+	document.addEventListener('scroll', lazyload);
+	window.addEventListener('resize', lazyload);
+	window.addEventListener('orientationChange', lazyload);
+}
+
+
 // tour
 const tour_infoHotspots = new Shepherd.Tour();
 tour_infoHotspots.addStep({
-	showOn: document.body.classList.contains('tour-accepted'),
-	text: `<br/>Click this icon to learn more about the product<br/><br/>`,
-	attachTo: {
-		element: '.intro-starter',
-		on: 'top',
+	showOn        : document.body.classList.contains('tour-accepted'),
+	text          : `<br/>Click this icon to learn more about the product<br/><br/>`,
+	attachTo      : {
+		element : '.intro-starter',
+		on      : 'top'
 	},
 
-	popperOptions: {
-		modifiers: [
+	popperOptions : {
+		modifiers : [
 			{
-				name: 'offset',
-				options: {
-					offset: [0, 25],
-				},
-			},
-		],
-	},
+				name    : 'offset',
+				options : {
+					offset : [
+						0,
+						25
+					]
+				}
+			}
+		]
+	}
 });
 
 const tour_modal = new Shepherd.Tour({
-	useModalOverlay: true,
+	useModalOverlay : true
 });
 
 tour_modal.addStep({
-	arrow: false,
-	showOn: document.body.classList.contains('tour-accepted'),
-	modalOverlayOpeningPadding: 10,
-	text: `<br/>Here, you'll find product information, downloadable recipes & related content`,
-	attachTo: {
-		element: '.intro-starter .product-txt-wrapper',
-		on: 'auto',
+	arrow                      : false,
+	showOn                     : document.body.classList.contains(
+		'tour-accepted'
+	),
+	modalOverlayOpeningPadding : 10,
+	text                       : `<br/>Here, you'll find product information, downloadable recipes & related content`,
+	attachTo                   : {
+		element : '.intro-starter .product-txt-wrapper',
+		on      : 'auto'
 	},
-	popperOptions: {
-		modifiers: [
+	popperOptions              : {
+		modifiers : [
 			{
-				name: 'offset',
-				options: {
-					offset: [0, 80],
-				},
-			},
-		],
+				name    : 'offset',
+				options : {
+					offset : [
+						0,
+						80
+					]
+				}
+			}
+		]
 	},
-	buttons: [
+	buttons                    : [
 		{
-			text: 'Next',
-			action: tour_modal.next,
-			classes: 'shep-next',
-		},
-	],
+			text    : 'Next',
+			action  : tour_modal.next,
+			classes : 'shep-next'
+		}
+	]
 });
 
 tour_modal.addStep({
-	arrow: false,
-	showOn: document.body.classList.contains('tour-accepted'),
-	text: `<br/>Here you'll find product images & videos, click on the arrows or swipe to see more<br/>`,
-	attachTo: {
-		element: '.intro-starter .carousel_container',
-		on: 'auto',
+	arrow         : false,
+	showOn        : document.body.classList.contains('tour-accepted'),
+	text          : `<br/>Here you'll find product images & videos, click on the arrows or swipe to see more<br/>`,
+	attachTo      : {
+		element : '.intro-starter .carousel_container',
+		on      : 'auto'
 	},
-	popperOptions: {
-		modifiers: [
+	popperOptions : {
+		modifiers : [
 			{
-				name: 'offset',
-				options: {
-					offset: [0, 25],
-				},
+				name    : 'offset',
+				options : {
+					offset : [
+						0,
+						25
+					]
+				}
 			},
 			{
-				name: 'arrow',
-				options: {
-					padding: 25,
-				},
-			},
-		],
+				name    : 'arrow',
+				options : {
+					padding : 25
+				}
+			}
+		]
 	},
-	buttons: [
+	buttons       : [
 		{
-			text: 'Back',
-			action: tour_modal.back,
-			classes: 'shep-back',
+			text    : 'Back',
+			action  : tour_modal.back,
+			classes : 'shep-back'
 		},
 		{
-			text: 'Next',
-			action: tour_modal.next,
-			classes: 'shep-next',
-		},
-	],
+			text    : 'Next',
+			action  : tour_modal.next,
+			classes : 'shep-next'
+		}
+	]
 });
 
 const tour_linkHotspots = new Shepherd.Tour();
 
 tour_linkHotspots.addStep({
-	showOn: document.body.classList.contains('tour-accepted'),
-	text: `<br/>Click the arrow to see the products in this part of the kitchen<br/><br/>`,
-	attachTo: {
-		element: '.second-tour-starter img',
-		on: 'top',
+	showOn        : document.body.classList.contains('tour-accepted'),
+	text          : `<br/>Click the arrow to see the products in this part of the kitchen<br/><br/>`,
+	attachTo      : {
+		element : '.second-tour-starter img',
+		on      : 'top'
 	},
-	popperOptions: {
-		modifiers: [
+	popperOptions : {
+		modifiers : [
 			{
-				name: 'offset',
-				options: {
-					offset: [0, 25],
-				},
-			},
-		],
-	},
+				name    : 'offset',
+				options : {
+					offset : [
+						0,
+						25
+					]
+				}
+			}
+		]
+	}
 });
 
 const tour_movement = new Shepherd.Tour({
-	defaultStepOptions: {
-		scrollTo: { behavior: 'smooth', block: 'center' },
-	},
+	defaultStepOptions : {
+		scrollTo : { behavior: 'smooth', block: 'center' }
+	}
 });
 
 tour_movement.addStep({
-	showOn: document.body.classList.contains('tour-accepted'),
-	text: `<br/>Good moves! I think you got the hang of it!<br/>`,
-	buttons: [
+	showOn        : document.body.classList.contains('tour-accepted'),
+	text          : `<br/>Good moves! I think you got the hang of it!<br/>`,
+	buttons       : [
 		{
-			text: 'Start Exploring',
-			action: tour_movement.next,
-			classes: 'shep-next',
-		},
+			text    : 'Start Exploring',
+			action  : tour_movement.next,
+			classes : 'shep-next'
+		}
 	],
-	popperOptions: {
-		modifiers: [
+	popperOptions : {
+		modifiers : [
 			{
-				name: 'offset',
-				options: {
-					offset: [0, 25],
-				},
-			},
-		],
-	},
+				name    : 'offset',
+				options : {
+					offset : [
+						0,
+						25
+					]
+				}
+			}
+		]
+	}
 });
 
 const tour_final = new Shepherd.Tour({
-	defaultStepOptions: {
-		scrollTo: { behavior: 'smooth', block: 'center' },
-	},
+	defaultStepOptions : {
+		scrollTo : { behavior: 'smooth', block: 'center' }
+	}
 });
 
 tour_final.addStep({
-	showOn: document.body.classList.contains('tour-accepted'),
-	text: `<br/>Enjoy the party!<br/>🥳✨🥂<br/><br/>If you need help along the way, click here`,
-	attachTo: {
-		element: '.help-menu-btn svg',
-		on: 'auto',
+	showOn        : document.body.classList.contains('tour-accepted'),
+	text          : `<br/>Enjoy the party!<br/>🥳✨🥂<br/><br/>If you need help along the way, click here`,
+	attachTo      : {
+		element : '.help-menu-btn svg',
+		on      : 'auto'
 	},
-	when: {
-		complete: function () {
+	when          : {
+		complete : function () {
 			document.body.classList.remove('tour-accepted');
 		},
-		cancel: function () {
+		cancel   : function () {
 			document.body.classList.remove('tour-accepted');
 		},
-		close: function () {
+		close    : function () {
 			document.body.classList.remove('tour-accepted');
-		},
+		}
 	},
-	buttons: [
+	buttons       : [
 		{
-			text: 'Dismiss',
-			action: tour_final.next,
-			classes: 'shep-next',
-		},
+			text    : 'Dismiss',
+			action  : tour_final.next,
+			classes : 'shep-next'
+		}
 	],
-	popperOptions: {
-		modifiers: [
+	popperOptions : {
+		modifiers : [
 			{
-				name: 'offset',
-				options: {
-					offset: [0, 25],
-				},
-			},
-		],
-	},
+				name    : 'offset',
+				options : {
+					offset : [
+						0,
+						25
+					]
+				}
+			}
+		]
+	}
 });
 
 // Grab elements from DOM.
@@ -203,7 +327,8 @@ if (window.matchMedia) {
 		if (mql.matches) {
 			document.body.classList.remove('desktop');
 			document.body.classList.add('mobile');
-		} else {
+		}
+		else {
 			document.body.classList.remove('mobile');
 			document.body.classList.add('desktop');
 		}
@@ -211,7 +336,8 @@ if (window.matchMedia) {
 	const mql = matchMedia('(max-width: 500px)');
 	setMode();
 	// mql.addEventListener(setMode);
-} else {
+}
+else {
 	document.body.classList.add('desktop');
 }
 
@@ -224,10 +350,10 @@ window.addEventListener('touchstart', function (e) {
 });
 
 const viewerOpts = {
-	controls: {
-		mouseViewMode: data.settings.mouseViewMode,
-		scrollZoom: false,
-	},
+	controls : {
+		mouseViewMode : data.settings.mouseViewMode,
+		scrollZoom    : false
+	}
 };
 
 // Initialize viewer.
@@ -240,26 +366,33 @@ var scenes = data.scenes.map(function (data) {
 		urlPrefix + '/' + data.id + '/{z}/{f}/{y}/{x}.jpg',
 		{ cubeMapPreviewUrl: urlPrefix + '/' + data.id + '/preview.jpg' }
 	);
+
 	var geometry = new Marzipano.CubeGeometry(data.levels);
 
 	var limiter = Marzipano.RectilinearView.limit.traditional(
 		data.faceSize,
-		(100 * Math.PI) / 180,
-		(120 * Math.PI) / 180
+		100 * Math.PI / 180,
+		100 * Math.PI / 180
 	);
-	var view = new Marzipano.RectilinearView(data.initialViewParameters, limiter);
+
+	var view = new Marzipano.RectilinearView(
+		data.initialViewParameters,
+		limiter
+	);
 
 	var scene = viewer.createScene({
-		source: source,
-		geometry: geometry,
-		view: view,
-		pinFirstLevel: true,
+		source        : source,
+		geometry      : geometry,
+		view          : view,
+		pinFirstLevel : true
 	});
 
 	// Create link hotspots.
 	data.linkHotspots.forEach(function (hotspot) {
 		const element = createLinkHotspotElement(hotspot);
-		scene.hotspotContainer().createHotspot(element, { yaw: hotspot.yaw, pitch: hotspot.pitch });
+		scene
+			.hotspotContainer()
+			.createHotspot(element, { yaw: hotspot.yaw, pitch: hotspot.pitch });
 	});
 
 	// Create info hotspots.
@@ -275,9 +408,9 @@ var scenes = data.scenes.map(function (data) {
 	});
 
 	return {
-		data: data,
-		scene: scene,
-		view: view,
+		data  : data,
+		scene : scene,
+		view  : view
 	};
 });
 
@@ -285,26 +418,28 @@ const exit_tour = document.querySelector('.cancel');
 const start_tour = document.querySelector('.confirm');
 const exit_tour_x = document.querySelector('.intro-header .intro-close');
 const intro_scene = scenes[0].scene;
-const infohotspot = document.querySelector('.info-hotspot-header.intro-starter');
+const infohotspot = document.querySelector(
+	'.info-hotspot-header.intro-starter'
+);
 const introModal = document.querySelector('.info-hotspot-modal.intro-starter');
 const introLH = document.querySelector('.link-hotspot.second-tour-starter');
 
 let h = window.innerHeight;
 
 let destinationViewParameters = {
-	yaw: -1.1815019536187705,
-	pitch: 0.21382602521738114,
-	fov: (60 * Math.PI) / 180,
+	yaw   : -1.1815019536187705,
+	pitch : 0.21382602521738114,
+	fov   : 60 * Math.PI / 180
 };
 
 let options = {
-	transitionDuration: 2000,
+	transitionDuration : 2000
 };
 
 let iframeViewParameters = {
-	yaw: -1.1815019536187705,
-	pitch: 0.21382602521738114,
-	fov: (60 * Math.PI) / 180,
+	yaw   : -1.1815019536187705,
+	pitch : 0.21382602521738114,
+	fov   : 60 * Math.PI / 180
 };
 
 start_tour.addEventListener('click', function () {
@@ -312,17 +447,21 @@ start_tour.addEventListener('click', function () {
 	intro.classList.remove('visible');
 	if (h > 389) {
 		intro_scene.lookTo(destinationViewParameters, options, done);
-	} else if (h === 389) {
+	}
+	else if (h === 389) {
 		intro_scene.lookTo(iframeViewParameters, options, done);
 	}
 	document.body.classList.add('tour-accepted');
 });
 
-function done() {
+function done () {
 	tour_infoHotspots.start();
 }
+
 infohotspot.addEventListener('click', function () {
-	document.body.classList.contains('tour-accepted') ? tour_infoHotspots.next() : '';
+	document.body.classList.contains('tour-accepted')
+		? tour_infoHotspots.next()
+		: '';
 });
 
 tour_infoHotspots.on('complete', function () {
@@ -330,19 +469,19 @@ tour_infoHotspots.on('complete', function () {
 });
 
 var destinationViewParameters_linkHotspot = {
-	yaw: -1.600429731329104,
-	pitch: 0.5002192152175962,
-	fov: (40 * Math.PI) / 180,
+	yaw   : -1.600429731329104,
+	pitch : 0.5002192152175962,
+	fov   : 40 * Math.PI / 180
 };
 
 var iframeViewParameters_linkHotspot = {
-	yaw: -1.600429731329104,
-	pitch: 0.5002192152175962,
-	fov: (40 * Math.PI) / 180,
+	yaw   : -1.600429731329104,
+	pitch : 0.5002192152175962,
+	fov   : 40 * Math.PI / 180
 };
 
 var options_linkHotspot = {
-	transitionDuration: 2000,
+	transitionDuration : 2000
 };
 
 tour_modal.on('complete', function () {
@@ -353,7 +492,8 @@ tour_modal.on('complete', function () {
 			options_linkHotspot,
 			infoHotspotsTour_done
 		);
-	} else if (h === 389) {
+	}
+	else if (h === 389) {
 		intro_scene.lookTo(
 			iframeViewParameters_linkHotspot,
 			options_linkHotspot,
@@ -367,7 +507,7 @@ tour_modal.on('complete', function () {
 		.classList.remove('intro-starter');
 });
 
-function infoHotspotsTour_done() {
+function infoHotspotsTour_done () {
 	tour_linkHotspots.start();
 }
 
@@ -389,7 +529,10 @@ tour_final.on('complete', function () {
 	viewer.controls().enable();
 });
 
-[exit_tour, exit_tour_x].forEach((el) => {
+[
+	exit_tour,
+	exit_tour_x
+].forEach((el) => {
 	el.addEventListener('click', function () {
 		intro.classList.remove('visible');
 		infohotspot.classList.remove('intro-starter');
@@ -407,23 +550,26 @@ const help = document.querySelector('#footer svg');
 const tooltip = document.querySelector('#tooltip');
 
 const helpPopper = createPopper(help, tooltip, {
-	placement: 'top-start',
-	modifiers: [
+	placement : 'top-start',
+	modifiers : [
 		{
-			name: 'offset',
-			options: {
-				offset: [0, 15],
-			},
-		},
-	],
+			name    : 'offset',
+			options : {
+				offset : [
+					0,
+					15
+				]
+			}
+		}
+	]
 });
 
-function show() {
+function show () {
 	tooltip.setAttribute('data-show', '');
 	helpPopper.update();
 }
 
-function hide() {
+function hide () {
 	tooltip.removeAttribute('data-show');
 }
 
@@ -435,67 +581,73 @@ if (screenfull.isEnabled) {
 	screenfull.on('change', function () {
 		if (screenfull.isFullscreen) {
 			fullscreenToggleElement.classList.add('enabled');
-		} else {
+		}
+		else {
 			fullscreenToggleElement.classList.remove('enabled');
 		}
 	});
-} else {
+}
+else {
 	document.body.classList.add('fullscreen-disabled');
-	fullscreenToggleElement.setAttribute('href', 'https://pc-virtualparty.netlify.app');
+	fullscreenToggleElement.setAttribute(
+		'href',
+		'https://pc-virtualparty.netlify.app'
+	);
 	fullscreenToggleElement.setAttribute('target', '_blank');
 }
 
-function sanitize(s) {
+function sanitize (s) {
 	return s.replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;');
 }
 
-function switchScene(scene) {
+function switchScene (scene) {
 	scene.view.setParameters(scene.data.initialViewParameters);
 	scene.scene.switchTo();
 	updateSceneName(scene);
 	updateSceneList(scene);
 }
 
-function updateSceneName(scene) {
+function updateSceneName (scene) {
 	sceneNameElement.innerHTML = sanitize(scene.data.name);
 }
 
-function updateSceneList(scene) {
+function updateSceneList (scene) {
 	for (let i = 0; i < sceneElements.length; i++) {
 		const el = sceneElements[i];
 		if (el.getAttribute('data-id') === scene.data.id) {
 			el.classList.add('current');
-		} else {
+		}
+		else {
 			el.classList.remove('current');
 		}
 	}
 }
 
-function createLinkHotspotElement(hotspot) {
-	// Create wrapper element to hold icon and tooltip.
+function createLinkHotspotElement (hotspot) {
 	const wrapper = document.createElement('div');
 	wrapper.classList.add('hotspot');
 	wrapper.classList.add('link-hotspot');
 	hotspot.class ? wrapper.classList.add(hotspot.class) : '';
 
-	// Create image element.
 	const icon = document.createElement('img');
 	icon.src = './SVG/arrow-up-circle-fill.svg';
 	icon.classList.add('link-hotspot-icon');
 
 	// Set rotation transform.
-	const transformProperties = ['-ms-transform', '-webkit-transform', 'transform'];
+	const transformProperties = [
+		'-ms-transform',
+		'-webkit-transform',
+		'transform'
+	];
 	for (let i = 0; i < transformProperties.length; i++) {
 		const property = transformProperties[i];
 		icon.style[property] = 'rotate(' + hotspot.rotation + 'rad)';
 	}
 
-	// Add click event handler.
 	wrapper.addEventListener('click', function () {
 		switchScene(findSceneById(hotspot.target));
 	});
 
-	// Create tooltip element.
 	const tooltip = document.createElement('div');
 	tooltip.classList.add('hotspot-tooltip');
 	tooltip.classList.add('link-hotspot-tooltip');
@@ -504,28 +656,37 @@ function createLinkHotspotElement(hotspot) {
 	tooltip.setAttribute('id', 'tooltip-LH');
 
 	const LH_popper = createPopper(wrapper, tooltip, {
-		placement: 'top',
-		modifiers: [
+		placement : 'top',
+		modifiers : [
 			{
-				name: 'offset',
-				options: {
-					offset: [0, 5],
-				},
-			},
-		],
+				name    : 'offset',
+				options : {
+					offset : [
+						0,
+						5
+					]
+				}
+			}
+		]
 	});
 
-	function show() {
+	function show () {
 		tooltip.setAttribute('data-show', '');
 		LH_popper.update();
 	}
 
-	function hide() {
+	function hide () {
 		tooltip.removeAttribute('data-show');
 	}
 
-	const showEvents = ['mouseenter', 'focus'];
-	const hideEvents = ['mouseleave', 'blur'];
+	const showEvents = [
+		'mouseenter',
+		'focus'
+	];
+	const hideEvents = [
+		'mouseleave',
+		'blur'
+	];
 
 	showEvents.forEach((event) => {
 		wrapper.addEventListener(event, show);
@@ -541,7 +702,7 @@ function createLinkHotspotElement(hotspot) {
 	return wrapper;
 }
 
-function createInfoHotspotElement(hotspot) {
+function createInfoHotspotElement (hotspot) {
 	// Create wrapper element to hold icon and tooltip.
 	const wrapper = document.createElement('div');
 	wrapper.classList.add('hotspot');
@@ -605,8 +766,8 @@ function createInfoHotspotElement(hotspot) {
 	const recipesList = document.createElement('div');
 	recipesList.classList.add('recipes-list');
 
-	if (hotspot.recipes) {
-		for (let i = 0; i < hotspot.recipes.length; i++) {
+	hotspot.recipes &&
+		hotspot.recipes.map((recipe, i) => {
 			const recipe_el = document.createElement('li');
 			const recipe_link = document.createElement('a');
 			recipe_link.classList.add('recipe-link');
@@ -615,7 +776,8 @@ function createInfoHotspotElement(hotspot) {
 			const recipe_preview_img_wrap = document.createElement('div');
 			recipe_preview_img_wrap.classList.add('recipe-preview-img-wrap');
 			recipe_preview_img_wrap.classList.add('.lazy');
-			recipe_preview_img_wrap.style.backgroundImage = `url(${hotspot.recipes[i].preview_image})`;
+			recipe_preview_img_wrap.style.backgroundImage = `url(${hotspot
+				.recipes[i].preview_image})`;
 			const recipe_title = document.createElement('p');
 			recipe_title.classList.add('recipe-title');
 			recipe_title.innerHTML = hotspot.recipes[i].id;
@@ -625,9 +787,10 @@ function createInfoHotspotElement(hotspot) {
 			recipe_link.appendChild(recipe_title);
 			recipe_el.appendChild(recipe_link);
 			recipesList.appendChild(recipe_el);
-		}
-	} else if (hotspot.related_content) {
-		for (let i = 0; i < hotspot.related_content.length; i++) {
+		});
+
+	hotspot.related_content &&
+		hotspot.related_content.map((content, i) => {
 			const recipe_el = document.createElement('li');
 			const recipe_link = document.createElement('a');
 			recipe_link.classList.add('recipe-link');
@@ -635,7 +798,8 @@ function createInfoHotspotElement(hotspot) {
 			recipe_link.setAttribute('target', '_blank');
 			const recipe_preview_img_wrap = document.createElement('div');
 			recipe_preview_img_wrap.classList.add('recipe-preview-img-wrap');
-			recipe_preview_img_wrap.style.backgroundImage = `url(${hotspot.related_content[i].preview_image})`;
+			recipe_preview_img_wrap.style.backgroundImage = `url(${hotspot
+				.related_content[i].preview_image})`;
 			const recipe_title = document.createElement('p');
 			recipe_title.classList.add('recipe-title');
 			recipe_title.innerHTML = hotspot.related_content[i].id;
@@ -645,10 +809,11 @@ function createInfoHotspotElement(hotspot) {
 			recipe_link.appendChild(recipe_title);
 			recipe_el.appendChild(recipe_link);
 			recipesList.appendChild(recipe_el);
-		}
-		recipesHeader.textContent = 'Related Content:';
-	} else if (hotspot.pdf_links) {
-		for (let i = 0; i < hotspot.pdf_links.length; i++) {
+			recipesHeader.textContent = 'Related Content:';
+		});
+
+	hotspot.pdf_links &&
+		hotspot.pdf_links.map((pdf, i) => {
 			const recipe_el = document.createElement('li');
 			const recipe_link = document.createElement('a');
 			recipe_link.classList.add('recipe-link');
@@ -657,7 +822,8 @@ function createInfoHotspotElement(hotspot) {
 			const recipe_preview_img_wrap = document.createElement('div');
 			recipe_link.appendChild(recipe_preview_img_wrap);
 			recipe_preview_img_wrap.classList.add('recipe-preview-img-wrap');
-			recipe_preview_img_wrap.style.backgroundImage = `url(${hotspot.pdf_links[i].preview_image})`;
+			recipe_preview_img_wrap.style.backgroundImage = `url(${hotspot
+				.pdf_links[i].preview_image})`;
 			const recipe_title = document.createElement('p');
 			recipe_title.classList.add('recipe-title');
 			recipe_title.innerHTML = hotspot.pdf_links[i].id;
@@ -666,11 +832,10 @@ function createInfoHotspotElement(hotspot) {
 			recipe_link.appendChild(recipe_title);
 			recipe_el.appendChild(recipe_link);
 			recipesList.appendChild(recipe_el);
-		}
-		recipesHeader.textContent = 'Downloads';
-	} else {
-		recipesHeader.textContent = '';
-	}
+			recipesHeader.textContent = 'Downloads';
+		});
+
+	recipesHeader.textContent = '';
 
 	recipes.appendChild(recipesList);
 
@@ -707,10 +872,13 @@ function createInfoHotspotElement(hotspot) {
 		const carousel_bullet = document.createElement('li');
 		carousel_bullet.classList.add('carousel-bullet');
 		const productImage = document.createElement('div');
+
 		if (hotspot.images[i].length === 2) {
 			productImage.style.backgroundImage = `url(${hotspot.images[i][1]})`;
 			const influencer_credit_container = document.createElement('div');
-			influencer_credit_container.classList.add('influencer_credit_container');
+			influencer_credit_container.classList.add(
+				'influencer_credit_container'
+			);
 			const credit_pointer = document.createElement('div');
 			credit_pointer.classList.add('pointer');
 			influencer_credit_container.appendChild(credit_pointer);
@@ -719,9 +887,11 @@ function createInfoHotspotElement(hotspot) {
 			influencer_credit.innerHTML = '📷: ' + hotspot.images[i][0];
 			influencer_credit_container.appendChild(influencer_credit);
 			productImage.appendChild(influencer_credit_container);
-		} else {
+		}
+		else {
 			productImage.style.backgroundImage = `url(${hotspot.images[i]})`;
 		}
+
 		productImage.classList.add('lazy');
 		productImage.setAttribute('id', 'product-image');
 
@@ -735,8 +905,9 @@ function createInfoHotspotElement(hotspot) {
 		carousel_pagination.appendChild(carousel_bullet);
 		carousel_container.appendChild(carousel_pagination);
 	}
-	if (hotspot.videos) {
-		for (let i = 0; i < hotspot.videos.length; i++) {
+
+	hotspot.videos &&
+		hotspot.videos.map((video, i) => {
 			const sliderTop = document.createElement('div');
 			sliderTop.classList.add('slider-top');
 			const sliderBot = document.createElement('div');
@@ -750,8 +921,7 @@ function createInfoHotspotElement(hotspot) {
 
 			carousel_pagination.appendChild(carousel_bullet);
 			carouselImages.appendChild(iframe_container);
-		}
-	}
+		});
 
 	carouselNav.appendChild(carouselNext);
 	carousel.appendChild(carouselImages);
@@ -800,9 +970,13 @@ function createInfoHotspotElement(hotspot) {
 		reset_modal();
 	};
 
-	wrapper.querySelector('.info-hotspot-header').addEventListener('click', toggle);
+	wrapper
+		.querySelector('.info-hotspot-header')
+		.addEventListener('click', toggle);
 
-	modal.querySelector('.info-hotspot-close-wrapper').addEventListener('click', toggle);
+	modal
+		.querySelector('.info-hotspot-close-wrapper')
+		.addEventListener('click', toggle);
 
 	modal.addEventListener('mouseover', function (e) {
 		if (e.target === modal && modal.classList.contains('visible')) {
@@ -819,7 +993,8 @@ function createInfoHotspotElement(hotspot) {
 	const prevBtn = modal.querySelector('#previous');
 
 	const carouselImgs = modal.querySelector('.carousel-images');
-	const numberOfImages = modal.querySelectorAll('.carousel-images > *').length;
+	const numberOfImages = modal.querySelectorAll('.carousel-images > *')
+		.length;
 	const pagination = modal.querySelector('.carousel-pagination');
 	const bullets = [].slice.call(modal.querySelectorAll('.carousel-bullet'));
 
@@ -829,7 +1004,7 @@ function createInfoHotspotElement(hotspot) {
 	let touchstartX = 0;
 	let touchendX = 0;
 
-	function handleGesture() {
+	function handleGesture () {
 		if (touchendX < touchstartX && currentIndex !== numberOfImages - 1) {
 			nextBtn.click();
 		}
@@ -873,23 +1048,27 @@ function createInfoHotspotElement(hotspot) {
 			let wheel_direction = e.deltaY * 1;
 			if (Math.sign(wheel_direction) === -1) {
 				if (currentIndex !== 0) prevBtn.click();
-			} else {
+			}
+			else {
 				if (currentIndex !== numberOfImages - 1) nextBtn.click();
 			}
 		},
 		{ passive: true }
 	);
 
-	function next() {
+	function next () {
 		slideTo(currentIndex + 1);
 	}
 
-	function prev() {
+	function prev () {
 		slideTo(currentIndex - 1);
 	}
 
-	function slideTo(index) {
-		index = index < 0 ? numberOfImages - 1 : index >= numberOfImages ? 0 : index;
+	function slideTo (index) {
+		index =
+			index < 0
+				? numberOfImages - 1
+				: index >= numberOfImages ? 0 : index;
 		carouselImgs.style.WebkitTransform = carouselImgs.style.transform =
 			'translate(-' + index * percentage + '%, 0)';
 		bullets[currentIndex].classList.remove('active-bullet');
@@ -923,7 +1102,7 @@ function createInfoHotspotElement(hotspot) {
 		modal_content.appendChild(iframe_container);
 	}
 
-	function removeAllChildNodes(parent) {
+	function removeAllChildNodes (parent) {
 		while (parent.firstChild) {
 			parent.removeChild(parent.firstChild);
 		}
@@ -932,7 +1111,7 @@ function createInfoHotspotElement(hotspot) {
 	return wrapper;
 }
 
-function findSceneById(id) {
+function findSceneById (id) {
 	for (let i = 0; i < scenes.length; i++) {
 		if (scenes[i].data.id === id) {
 			return scenes[i];
@@ -941,7 +1120,7 @@ function findSceneById(id) {
 	return null;
 }
 
-function findSceneDataById(id) {
+function findSceneDataById (id) {
 	for (let i = 0; i < data.scenes.length; i++) {
 		if (data.scenes[i].id === id) {
 			return data.scenes[i];
@@ -952,82 +1131,3 @@ function findSceneDataById(id) {
 
 // Display the initial scene.
 switchScene(scenes[0]);
-
-const preloader = document.querySelector('.preloader');
-const titleBar = document.getElementById('titleBar');
-const intro = document.getElementById('intro');
-const help_menu = document.getElementById('help-menu');
-const help_menu_btn = document.querySelector('.help-menu-btn');
-const help_menu_opener = document.querySelector('.help-menu-btn svg');
-const help_menu_close = document.querySelector('#help-list-close');
-const controls = document.getElementById('controls');
-const controls_close = document.getElementById('controls-close');
-const introClose = document.getElementById('intro-close');
-
-introClose.addEventListener('click', function () {
-	intro.classList.remove('visible');
-});
-
-controls_close.addEventListener('click', function () {
-	controls.classList.remove('visible');
-	intro.style.opacity = 1;
-	intro.classList.add('visible');
-});
-
-// const mobile_cta_btn = document.querySelector('.fullscreen-btn');
-// const mobile_cta = document.querySelector('.mobile-cta');
-
-// mobile_cta_btn.addEventListener('click', function () {
-// 	screenfull.toggle();
-// 	mobile_cta.classList.remove('visible');
-// 	mobile_cta.style.display = 'none';
-// 	controls.style.opacity = 1;
-// 	controls.classList.add('visible');
-// });
-
-document.addEventListener('DOMContentLoaded', function () {
-	setTimeout(function () {
-		help_menu.style.opacity = 1;
-		help_menu_btn.style.opacity = 1;
-		panoElement.style.opacity = 1;
-		titleBar.style.opacity = 1;
-		preloader.style.display = 'none';
-		// if (
-		// 	Bowser.parse(window.navigator.userAgent).platform.type === 'mobile' &&
-		// 	Bowser.parse(window.navigator.userAgent).browser.name === 'Safari' &&
-		// 	h === 389
-		// ) {
-		// 	safariOnly.classList.add('visible');
-		// } else if (
-		// 	Bowser.parse(window.navigator.userAgent).platform.type === 'mobile' &&
-		// 	h === 389
-		// ) {
-		// 	mobile_cta.classList.add('visible');
-		// } else {
-		controls.classList.add('visible');
-		// }
-	}, 0);
-});
-
-help_menu_opener.addEventListener('click', function () {
-	help_menu.classList.add('visible');
-});
-
-help_menu_close.addEventListener('click', function () {
-	help_menu.classList.remove('visible');
-});
-
-document.body.addEventListener('keydown', (evt) => {
-	if (evt.key === 'Escape') {
-		help_menu.classList.remove('visible');
-	}
-});
-
-// const test = () => {
-// 	const modals = document.querySelectorAll('.info-hotspot-modal');
-// 	const imageDivs = document.querySelectorAll('.product-image');
-
-
-// 	return modals[5].classList.add('visible');
-// };
-// test();
