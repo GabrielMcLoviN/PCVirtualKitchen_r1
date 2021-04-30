@@ -1023,11 +1023,11 @@ document.body.addEventListener('keydown', (evt) => {
 	}
 });
 
-const test = () => {
-	const modals = document.querySelectorAll('.info-hotspot-modal');
-	const imageDivs = document.querySelectorAll('.product-image');
+// const test = () => {
+// 	const modals = document.querySelectorAll('.info-hotspot-modal');
+// 	const imageDivs = document.querySelectorAll('.product-image');
 
 
-	return modals[5].classList.add('visible');
-};
-test();
+// 	return modals[5].classList.add('visible');
+// };
+// test();
