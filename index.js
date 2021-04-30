@@ -28,7 +28,7 @@ controls_close.addEventListener('click', function () {
 	intro.classList.add('visible');
 });
 
-window.addEventListener('load', function () {
+document.addEventListener('DOMContentLoaded', function () {
 	help_menu.style.opacity = 1;
 	help_menu_btn.style.opacity = 1;
 	panoElement.style.opacity = 1;
@@ -51,64 +51,6 @@ document.body.addEventListener('keydown', (evt) => {
 	}
 });
 
-const iframes = document.querySelectorAll('iframe');
-iframes.forEach((element) => {
-	element.setAttribute('loading', 'lazy');
-});
-
-var lazyloadImages;
-
-if ('IntersectionObserver' in window) {
-	lazyloadImages = document.querySelectorAll('.lazy');
-
-	let options = {
-		root       : document.querySelector('.carousel-container'),
-		rootMargin : '0px',
-		threshold  : 1.0
-	};
-
-	var imageObserver = new IntersectionObserver(function (entries, observer) {
-		entries.forEach(function (entry) {
-			if (entry.isIntersecting) {
-				var image = entry.target;
-				image.classList.remove('lazy');
-				imageObserver.unobserve(image);
-			}
-		});
-	}, options);
-	lazyloadImages.forEach(function (image) {
-		imageObserver.observe(image);
-	});
-}
-else {
-	var lazyloadThrottleTimeout;
-	lazyloadImages = document.querySelectorAll('.lazy');
-
-	function lazyload () {
-		if (lazyloadThrottleTimeout) {
-			clearTimeout(lazyloadThrottleTimeout);
-		}
-
-		lazyloadThrottleTimeout = setTimeout(function () {
-			var scrollTop = window.pageYOffset;
-			lazyloadImages.forEach(function (img) {
-				if (img.offsetTop < window.innerHeight + scrollTop) {
-					img.src = img.dataset.src;
-					img.classList.remove('lazy');
-				}
-			});
-			if (lazyloadImages.length == 0) {
-				document.removeEventListener('scroll', lazyload);
-				window.removeEventListener('resize', lazyload);
-				window.removeEventListener('orientationChange', lazyload);
-			}
-		}, 20);
-	}
-
-	document.addEventListener('scroll', lazyload);
-	window.addEventListener('resize', lazyload);
-	window.addEventListener('orientationChange', lazyload);
-}
 
 
 // tour
@@ -901,6 +843,7 @@ function createInfoHotspotElement (hotspot) {
 			productImage.style.height = '80%';
 			productImage.style.alignSelf = 'center';
 		}
+
 		carouselImages.appendChild(productImage);
 		carousel_pagination.appendChild(carousel_bullet);
 		carousel_container.appendChild(carousel_pagination);

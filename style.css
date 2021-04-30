@@ -5,21 +5,17 @@
 * Browsers: last 4 version
 */
 
-@font-face {
-  font-family: "Antonio";
-  src: url("static/assets/antonio-desktop/Antonio-Light.ttf") format("truetype");
-  font-weight: lighter;
-  font-style: normal;
-}
+@import url("https://fonts.googleapis.com/css2?family=Antonio:wght@100&display=swap");
+
 @font-face {
   font-family: "Museo Sans";
-  src: url("static/assets/museo-sans-webfont/Museo-Sans-Family/MuseoSans-100.otf") format("opentype");
+  src: url("static/assets/museo-sans-webfont/Museo-Sans-Family/MuseoSans-100.woff") format("woff");
   font-weight: 100;
   font-style: normal;
 }
 @font-face {
   font-family: "Museo Sans";
-  src: url("static/assets/museo-sans-webfont/Museo-Sans-Family/MuseoSans-500.otf") format("opentype");
+  src: url("static/assets/museo-sans-webfont/Museo-Sans-Family/MuseoSans-500.woff") format("woff");
   font-weight: 500;
   font-style: normal;
 }
@@ -336,21 +332,23 @@ body {
   flex-direction: row;
 }
 
-.controls-section, .controls-section-top {
+.controls-section,
+.controls-section-top {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin: .5rem 1rem;
-  font-size: .7rem;
+  margin: 0.5rem 1rem;
+  font-size: 0.7rem;
 }
 
 .controls-section-top span {
   max-width: 18ch;
 }
 
-.controls-section img, .controls-section-top img {
-  margin-bottom: .5rem;
+.controls-section img,
+.controls-section-top img {
+  margin-bottom: 0.5rem;
 }
 
 .controls-explore {
