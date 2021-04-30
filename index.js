@@ -1,7 +1,7 @@
 
 
 import Bowser from 'bowser';
-import Marzipano from '/vendor/marzipano.js';
+const Marzipano = require('marzipano');
 import { data } from '/data.js';
 import { createPopper } from '@popperjs/core';
 import screenfull from 'screenfull';
@@ -286,7 +286,7 @@ else {
 // Detect whether we are on a touch device.
 document.body.classList.add('no-touch');
 
-window.addEventListener('touchstart', function (e) {
+window.addEventListener('touchstart', function (_e) {
 	document.body.classList.remove('no-touch');
 	document.body.classList.add('touch');
 });
@@ -709,7 +709,7 @@ function createInfoHotspotElement (hotspot) {
 	recipesList.classList.add('recipes-list');
 
 	hotspot.recipes &&
-		hotspot.recipes.map((recipe, i) => {
+		hotspot.recipes.map((_recipe, i) => {
 			const recipe_el = document.createElement('li');
 			const recipe_link = document.createElement('a');
 			recipe_link.classList.add('recipe-link');
@@ -732,7 +732,7 @@ function createInfoHotspotElement (hotspot) {
 		});
 
 	hotspot.related_content &&
-		hotspot.related_content.map((content, i) => {
+		hotspot.related_content.map((_content, i) => {
 			const recipe_el = document.createElement('li');
 			const recipe_link = document.createElement('a');
 			recipe_link.classList.add('recipe-link');
@@ -755,7 +755,7 @@ function createInfoHotspotElement (hotspot) {
 		});
 
 	hotspot.pdf_links &&
-		hotspot.pdf_links.map((pdf, i) => {
+		hotspot.pdf_links.map((_pdf, i) => {
 			const recipe_el = document.createElement('li');
 			const recipe_link = document.createElement('a');
 			recipe_link.classList.add('recipe-link');
@@ -790,18 +790,22 @@ function createInfoHotspotElement (hotspot) {
 	//carousel
 	const carousel_container = document.createElement('div');
 	carousel_container.classList.add('carousel_container');
+
 	const carousel = document.createElement('div');
 	carousel.classList.add('carousel');
+
 	const carouselImages = document.createElement('div');
 	carouselImages.classList.add('carousel-images');
 
 	const carouselNav = document.createElement('div');
 	carouselNav.classList.add('carousel-nav');
+
 	const carouselNext = document.createElement('img');
 	carouselNext.src = './SVG/chevron-right.svg';
 	carouselNext.classList.add('carousel-button');
 	carouselNext.classList.add('next');
 	carouselNext.setAttribute('id', 'next');
+
 	const carouselPrev = document.createElement('img');
 	carouselPrev.src = './SVG/chevron-left.svg';
 	carouselPrev.classList.add('carousel-button');
@@ -850,7 +854,7 @@ function createInfoHotspotElement (hotspot) {
 	}
 
 	hotspot.videos &&
-		hotspot.videos.map((video, i) => {
+		hotspot.videos.map((_video, i) => {
 			const sliderTop = document.createElement('div');
 			sliderTop.classList.add('slider-top');
 			const sliderBot = document.createElement('div');
