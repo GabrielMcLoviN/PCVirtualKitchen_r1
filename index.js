@@ -545,8 +545,6 @@ function sanitize (s) {
 function switchScene (scene) {
 	scene.view.setParameters(scene.data.initialViewParameters);
 	scene.scene.switchTo();
-	updateSceneName(scene);
-	updateSceneList(scene);
 }
 
 function updateSceneName (scene) {
