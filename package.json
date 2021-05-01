@@ -23,8 +23,11 @@
   },
   "homepage": "https://github.com/willgreer/pc_pano#readme",
   "dependencies": {
+    "@justinribeiro/lite-youtube": "^0.9.1",
     "@popperjs/core": "^2.8.2",
     "bowser": "^2.11.0",
+    "in": "^0.18.2",
+    "lite-youtube-embed": "^0.2.0",
     "marzipano": "^0.10.1",
     "screenfull": "^5.1.0",
     "shepherd.js": "^8.1.0"
