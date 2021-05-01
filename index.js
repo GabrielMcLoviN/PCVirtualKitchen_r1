@@ -1,5 +1,3 @@
-
-
 import Bowser from 'bowser';
 const Marzipano = require('marzipano');
 import { data } from '/data.js';
@@ -50,8 +48,6 @@ document.body.addEventListener('keydown', (evt) => {
 		help_menu.classList.remove('visible');
 	}
 });
-
-
 
 // tour
 const tour_infoHotspots = new Shepherd.Tour();

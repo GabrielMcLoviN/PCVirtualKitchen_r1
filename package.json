@@ -30,6 +30,9 @@
     "shepherd.js": "^8.1.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.14.0",
+    "@babel/plugin-transform-runtime": "^7.13.15",
+    "@babel/runtime-corejs2": "^7.14.0",
     "parcel-bundler": "^1.12.5",
     "parcel-plugin-bundle-manifest": "^0.2.0",
     "parcel-plugin-bundle-visualiser": "^1.2.0",
