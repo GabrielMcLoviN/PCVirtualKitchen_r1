@@ -1,4 +1,6 @@
-import { pause_video } from './helpers.js';
+import { pause_video, isVideoPlaying } from './helpers.js';
+
+
 
 export function createInfoHotspotElement (hotspot) {
 	// Create wrapper element to hold icon and tooltip.
@@ -246,18 +248,23 @@ export function createInfoHotspotElement (hotspot) {
 
 	document.body.appendChild(modal);
 
-	const toggle = function () {
-		modal.classList.toggle('visible');
+	const openModal = function () {
+		modal.classList.add('visible');
+	}
+
+	const closeModal = function () {
+		modal.classList.remove('visible');
 		reset_modal();
-	};
+		pause_video();
+	}
 
 	wrapper
-		.querySelector('.info-hotspot-header')
-		.addEventListener('click', toggle);
+	.querySelector('.info-hotspot-header')
+	.addEventListener('click', openModal);
 
 	modal
-		.querySelector('.info-hotspot-close-wrapper')
-		.addEventListener('click', toggle);
+	.querySelector('.info-hotspot-close-wrapper')
+	.addEventListener('click', closeModal);
 
 	modal.addEventListener('mouseover', function (e) {
 		if (e.target === modal && modal.classList.contains('visible')) {
@@ -337,21 +344,13 @@ export function createInfoHotspotElement (hotspot) {
 		slideTo(currentIndex + 1);
 	}
 
-	// function pause_video () {
-	// 	let iframes = document.getElementsByClassName('.yt-embed');
-	// 	if (iframes !== null) {
-	// 		for (let i = 0; i < iframes.length; i++) {
-	// 			iframes[i].videoid = iframes[i].videoid;
-	// 		}
-	// 	}
-	// }
-
-	function reset_modal () {
+	function reset_modal() {
 		setTimeout(() => {
 			document.querySelector('.product-txt-container').scrollTo(0, 0);
 			slideTo(0);
-			// pause_video();
 		}, 500);
+
+		pause_video();
 	}
 
 	function prev () {
@@ -368,7 +367,6 @@ export function createInfoHotspotElement (hotspot) {
 		bullets[currentIndex].classList.remove('active-bullet');
 		bullets[index].classList.add('active-bullet');
 		currentIndex = index;
-		// pause_video();
 	}
 
 	bullets[currentIndex].classList.add('active-bullet');
@@ -404,3 +402,6 @@ export function createInfoHotspotElement (hotspot) {
 
 	return wrapper;
 }
+
+
+
