@@ -64,6 +64,6 @@ async function render () {
 	const tour = await import('./tour');
 	const data = await import('./data');
 	const initScene = await switchScene(scenes[0]);
-	return initScene, s, data, lhs, ihs;
+	return initScene;
 }
 render();
