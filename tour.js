@@ -377,6 +377,7 @@ tour_final.on('complete', function () {
 		infohotspot.classList.remove('intro-starter');
 		intro.remove();
 		introModal.remove();
+		controls.remove();
 		introLH.classList.remove('second-tour-starter');
 		show();
 		viewer.controls().enable();
