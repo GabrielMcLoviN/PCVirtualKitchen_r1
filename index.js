@@ -54,16 +54,8 @@ else {
 		'https://pc-devenv2.netlify.app'
 	);
 	fullscreenToggleElement.setAttribute('target', '_blank');
+	fullscreenToggleElement.setAttribute('rel', 'noreferrer');
 }
 
-// Display the initial scene.
-async function render () {
-	const lhs = await import('./linkHotspots');
-	const ihs = await import('./infoHotspots');
-	const s = await import('./loadScenes');
-	const tour = await import('./tour');
-	const data = await import('./data');
-	const initScene = await switchScene(scenes[0]);
-	return initScene;
-}
-render();
+
+switchScene(scenes[0])
