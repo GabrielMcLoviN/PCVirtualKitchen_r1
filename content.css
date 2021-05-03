@@ -709,9 +709,6 @@
   box-shadow: -5px 5px 6px -1px rgba(0, 0, 0, 0.4);
 }
 
-.recipes-list li:hover .recipe-title {
-  font-weight: bold;
-}
 
 .recipe-title {
   padding: 0 1px;
