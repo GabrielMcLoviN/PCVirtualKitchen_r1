@@ -147,7 +147,7 @@ export function createInfoHotspotElement (hotspot) {
 			recipesHeader.textContent = 'Downloads';
 		});
 
-	recipesHeader.textContent = '';
+	// recipesHeader.textContent = '';
 
 	recipes.appendChild(recipesList);
 
