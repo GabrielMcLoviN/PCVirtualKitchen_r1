@@ -444,7 +444,7 @@ tour_final.on('complete', function () {
 		viewer.controls().enable();
 		setTimeout(function () {
 			hide();
-		}, 5000);
+		}, 3000);
 	});
 });
 
