@@ -14,14 +14,15 @@ const controls = document.getElementById('controls');
 const controls_close = document.getElementById('controls-close');
 const introClose = document.getElementById('intro-close');
 
-introClose.addEventListener('click', function () {
-	intro.classList.remove('visible');
-});
 
 controls_close.addEventListener('click', function () {
-	controls.classList.remove('visible');
-	intro.style.opacity = 1;
-	intro.classList.add('visible');
+	document.querySelector('.controls').remove();
+	controls.remove();
+	controls.innerHTML = intro.innerHTML;
+});
+
+introClose.addEventListener('click', function () {
+	intro.classList.remove('visible');
 });
 
 window.addEventListener('load', function () {
@@ -377,11 +378,10 @@ tour_final.on('complete', function () {
 		introModal.classList.remove('intro-starter');
 		infohotspot.classList.remove('intro-starter');
 		introLH.classList.remove('second-tour-starter');
-		show();
-		viewer.controls().enable();
 		intro.remove();
 		introModal.remove();
-		controls.remove();
+		show();
+		viewer.controls().enable();
 		setTimeout(function () {
 			hide();
 		}, 5000);
