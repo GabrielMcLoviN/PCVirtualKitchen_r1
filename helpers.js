@@ -20,8 +20,12 @@ export function findSceneDataById (id) {
 }
 
 export function pause_video () {
-	const yt = document.querySelector('iframe.lite-yt-player');
-	yt.src = yt.src;
+	const yt = document.getElementsByTagName('iframe');
+	if (yt != null) {
+		for (let i = 0; i < yt.length; i++){
+			yt[i].src = yt[i].src;
+		}
+	}
 }
 
 export function switchScene (scene) {

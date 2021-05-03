@@ -15,6 +15,7 @@ const ih = sceneData.map((scene) => {
 
 console.log(ih);
 
+
 console.log(data.scenes[0].id);
 
 export async function matchHotspots (id) {}

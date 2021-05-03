@@ -1,6 +1,4 @@
-import { pause_video, isVideoPlaying } from './helpers.js';
-
-
+import { pause_video } from './helpers.js';
 
 export function createInfoHotspotElement (hotspot) {
 	// Create wrapper element to hold icon and tooltip.
