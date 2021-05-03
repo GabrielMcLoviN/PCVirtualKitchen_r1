@@ -170,6 +170,7 @@
     -ms-grid-row-span: 1;
     grid-row: 2 / span 1;
     display: block;
+    padding: 1rem 0;
   }
   .info-hotspot-modal .info-hotspot-content {
     max-width: 100%;
