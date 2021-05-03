@@ -87,13 +87,15 @@ const controls = document.getElementById('controls');
 const controls_close = document.getElementById('controls-close');
 const introClose = document.getElementById('intro-close');
 
-document.addEventListener('DOMContentLoaded', function () {
+window.addEventListener('load', function () {
 	preloader.style.display = 'none';
 	panoElement.style.opacity = 1;
 	help_menu.style.opacity = 1;
 	help_menu_btn.style.opacity = 1;
 	titleBar.style.opacity = 1;
-	controls.classList.add('visible');
+	setTimeout(() => {
+		controls.classList.add('visible');
+	}, 300);
 });
 
 introClose.addEventListener('click', function () {

@@ -192,6 +192,9 @@ export function createInfoHotspotElement (hotspot) {
 		carousel_bullet.classList.add('carousel-bullet');
 		const productImage = document.createElement('div');
 		const productImageSrc = document.createElement('img');
+		productImageSrc.setAttribute('width', '800px');
+		productImageSrc.setAttribute('height', '800px');
+		productImage.setAttribute('id', 'product-image');
 
 		if (hotspot.images[i].length === 2) {
 			productImageSrc.src = hotspot.images[i][1];
@@ -212,11 +215,8 @@ export function createInfoHotspotElement (hotspot) {
 			productImageSrc.src = hotspot.images[i];
 		}
 
-		productImageSrc.classList.add('lazy');
 		productImageSrc.setAttribute('loading', 'lazy');
-		productImageSrc.setAttribute('width', '800px');
-		productImageSrc.setAttribute('height', '800px');
-		productImage.setAttribute('id', 'product-image');
+
 		productImage.appendChild(productImageSrc);
 
 		if (hotspot.containImages) {

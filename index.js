@@ -58,7 +58,6 @@ else {
 
 // Display the initial scene.
 async function render () {
-	const marzipano = await import('marzipano');
 	const help = await import('./helpers');
 	const lhs = await import('./linkHotspots');
 	const ihs = await import('./infoHotspots');
