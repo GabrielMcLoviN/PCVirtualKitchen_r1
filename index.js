@@ -1,6 +1,9 @@
 import { scenes } from './loadScenes.js';
 import screenfull from 'screenfull';
 import { switchScene } from './helpers.js';
+import('./tour')
+import('./linkHotspots');
+import('./infoHotspots');
 
 // Grab elements from DOM.
 const fullscreenToggleElement = document.querySelector('#fullscreenToggle');
@@ -58,7 +61,6 @@ else {
 
 // Display the initial scene.
 async function render () {
-	const help = await import('./helpers');
 	const lhs = await import('./linkHotspots');
 	const ihs = await import('./infoHotspots');
 	const s = await import('./loadScenes');
@@ -66,6 +68,6 @@ async function render () {
 	const data = await import('./data');
 	const ytembed = await import('./node_modules/lite-youtube-embed/src/lite-yt-embed.js');
 	const initScene = await switchScene(scenes[0]);
-	return initScene, tour, s, data, ytembed, lhs, ihs, help;
+	return initScene, tour, s, data, ytembed, lhs, ihs;
 }
 render();
