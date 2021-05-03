@@ -4,6 +4,7 @@
 <head>
   <title>Pampered Chef - Virtual Host</title>
   <meta charset="utf-8">
+  <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
   <meta name="viewport"
     content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, minimal-ui" />
   <link rel="icon" type="image/png" href="static/assets/PC+Seal-Solid_black.png" width="50px" height="50px">
@@ -552,18 +553,23 @@
     }
   </style>
 
-  <!-- <link rel="preload" href="./style.css" as="style" onload="this.onload=null;this.rel='stylesheet'"> -->
-  <!-- <noscript> -->
+  <link rel="preload" href="./static/assets/museo-sans-webfont/Museo-Sans-Family/MuseoSans-100.woff" as="font"
+    crossorigin="anonymous" />
+  <link rel="preload" href="./static/assets/museo-sans-webfont/Museo-Sans-Family/MuseoSans-500.woff" as="font"
+    crossorigin="anonymous" />
+
+  <link rel="preload" href="./style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript>
     <link rel="stylesheet" href="./style.css">
-  <!-- </noscript> -->
-  <!-- <link rel="preload" href="./content.css" as="style" onload="this.onload=null;this.rel='stylesheet'"> -->
-  <!-- <noscript> -->
+  </noscript>
+  <link rel="preload" href="./content.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript>
     <link rel="stylesheet" href="./content.css">
-  <!-- </noscript> -->
-  <!-- <link rel="preload" href="./mobile.css" as="style" onload="this.onload=null;this.rel='stylesheet'"> -->
-  <!-- <noscript> -->
+  </noscript>
+  <link rel="preload" href="./mobile.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript>
     <link rel="stylesheet" href="./mobile.css">
-  <!-- </noscript> -->
+  </noscript>
 </head>
 
 <body class="multiple-scenes">
@@ -699,7 +705,7 @@
     </div>
   </div>
 
-  <script src="index.js" defer></script>
+  <script src="index.js"></script>
   <script src="node_modules/lite-youtube-embed/src/lite-yt-embed.js" async></script>
 
 </body>
