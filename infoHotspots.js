@@ -73,15 +73,12 @@ export function createInfoHotspotElement (hotspot) {
 			recipe_link.classList.add('recipe-link');
 			recipe_link.href = hotspot.recipes[i].link;
 			recipe_link.setAttribute('target', '_blank');
+			recipe_link.setAttribute('rel', 'noreferrer');
 			const recipe_preview_img_wrap = document.createElement('img');
 			recipe_preview_img_wrap.src = hotspot.recipes[i].preview_image;
 			recipe_preview_img_wrap.classList.add('recipe-preview-img-wrap');
 			recipe_preview_img_wrap.setAttribute('loading', 'lazy');
-			recipe_preview_img_wrap.setAttribute('rel', 'noreferrer');
 			recipe_preview_img_wrap.style.display = 'block';
-			// recipe_preview_img_wrap.classList.add('.lazy');
-			// recipe_preview_img_wrap.style.backgroundImage = `url(${hotspot
-			// 	.recipes[i].preview_image})`;
 			const recipe_title = document.createElement('p');
 			recipe_title.classList.add('recipe-title');
 			recipe_title.innerHTML = hotspot.recipes[i].id;
@@ -100,13 +97,13 @@ export function createInfoHotspotElement (hotspot) {
 			recipe_link.classList.add('recipe-link');
 			recipe_link.href = hotspot.related_content[i].link;
 			recipe_link.setAttribute('target', '_blank');
+			recipe_link.setAttribute('rel', 'noreferrer');
 			const recipe_preview_img_wrap = document.createElement('img');
 			recipe_preview_img_wrap.classList.add('recipe-preview-img-wrap');
 			recipe_preview_img_wrap.src =
 				hotspot.related_content[i].preview_image;
 			recipe_preview_img_wrap.classList.add('recipe-preview-img-wrap');
 			recipe_preview_img_wrap.setAttribute('loading', 'lazy');
-			recipe_preview_img_wrap.setAttribute('rel', 'noreferrer');
 
 			recipe_preview_img_wrap.style.display = 'block';
 			const recipe_title = document.createElement('p');
@@ -127,6 +124,7 @@ export function createInfoHotspotElement (hotspot) {
 			const recipe_link = document.createElement('a');
 			recipe_link.classList.add('recipe-link');
 			recipe_link.href = hotspot.pdf_links[i].link;
+			recipe_link.setAttribute('rel', 'noreferrer');
 			recipe_link.setAttribute('target', '_blank');
 			const recipe_preview_img_wrap = document.createElement('img');
 			recipe_link.appendChild(recipe_preview_img_wrap);
@@ -137,7 +135,6 @@ export function createInfoHotspotElement (hotspot) {
 			recipe_preview_img_wrap.src = hotspot.pdf_links[i].preview_image;
 			recipe_preview_img_wrap.classList.add('recipe-preview-img-wrap');
 			recipe_preview_img_wrap.setAttribute('loading', 'lazy');
-			recipe_preview_img_wrap.setAttribute('rel', 'noreferrer');
 			recipe_preview_img_wrap.style.display = 'block';
 			const recipe_title = document.createElement('p');
 			recipe_title.classList.add('recipe-title');

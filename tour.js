@@ -1,7 +1,7 @@
+import Shepherd from 'shepherd.js';
 import { scenes, viewer } from './loadScenes.js';
 import { createPopper } from '@popperjs/core';
 import { reset_modal, switchScene } from './helpers';
-import Shepherd from 'shepherd.js';
 
 const preloader = document.querySelector('.preloader');
 const titleBar = document.getElementById('titleBar');
@@ -72,7 +72,7 @@ tour_infoHotspots.addStep({
 	}
 });
 
-export const tour_modal = new Shepherd.Tour({
+const tour_modal = new Shepherd.Tour({
 	useModalOverlay : true
 });
 
