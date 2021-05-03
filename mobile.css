@@ -118,10 +118,10 @@
 }
 
 @media only screen and (max-width: 500px) and (min-height: 500px) {
-  /* .carousel_container,
+  .carousel_container,
   .carousel-images .product-image {
     height: 250px;
-  } */
+  }
   .info-hotspot-modal .info-hotspot-content {
     max-width: 100%;
     max-height: 100%;
@@ -132,10 +132,10 @@
 }
 
 @media only screen and (max-width: 500px) and (min-height: 600px) {
-  /* .carousel_container,
+  .carousel_container,
   .carousel-images .product-image {
     height: 300px;
-  } */
+  }
   .info-hotspot-modal .info-hotspot-content {
     max-width: 100%;
     max-height: 100%;
@@ -146,10 +146,10 @@
 }
 
 @media only screen and (max-width: 500px) and (min-height: 800px) {
-  /* .carousel_container,
+  .carousel_container,
   .carousel-images .product-image {
     height: 100%;
-  } */
+  }
   .info-hotspot-modal .info-hotspot-content {
     max-width: 100%;
     max-height: 100%;
