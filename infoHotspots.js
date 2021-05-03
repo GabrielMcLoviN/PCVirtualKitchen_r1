@@ -1,4 +1,4 @@
-import { pause_video } from './helpers.js';
+import { pause_video, reset_modal } from './helpers.js';
 
 export function createInfoHotspotElement (hotspot) {
 	// Create wrapper element to hold icon and tooltip.
@@ -244,25 +244,41 @@ export function createInfoHotspotElement (hotspot) {
 	modal.classList.add('info-hotspot-modal');
 	hotspot.class ? modal.classList.add(hotspot.class) : '';
 
-	document.body.appendChild(modal);
+	if (modal.classList.contains('intro-starter')) {
+		document.body.appendChild(modal);
+	}
+
+	function reset_modal () {
+		setTimeout(() => {
+			document.querySelector('.product-txt-container').scrollTo(0, 0);
+			slideTo(0);
+		}, 500);
+		pause_video();
+	}
 
 	const openModal = function () {
-		modal.classList.add('visible');
-	}
+		reset_modal();
+		document.body.appendChild(modal);
+		setTimeout(() => {
+			modal.classList.add('visible');
+		}, 100);
+	};
 
 	const closeModal = function () {
 		modal.classList.remove('visible');
 		reset_modal();
-		pause_video();
-	}
+		setTimeout(() => {
+			modal.remove();
+		}, 1000);
+	};
 
 	wrapper
-	.querySelector('.info-hotspot-header')
-	.addEventListener('click', openModal);
+		.querySelector('.info-hotspot-header')
+		.addEventListener('click', openModal);
 
 	modal
-	.querySelector('.info-hotspot-close-wrapper')
-	.addEventListener('click', closeModal);
+		.querySelector('.info-hotspot-close-wrapper')
+		.addEventListener('click', closeModal);
 
 	modal.addEventListener('mouseover', function (e) {
 		if (e.target === modal && modal.classList.contains('visible')) {
@@ -301,9 +317,8 @@ export function createInfoHotspotElement (hotspot) {
 
 	document.body.addEventListener('keydown', (evt) => {
 		if (evt.key === 'Escape') {
-			modal.classList.remove('visible');
+			closeModal();
 		}
-		reset_modal();
 	});
 
 	carouselImgs.addEventListener('touchstart', (e) => {
@@ -340,15 +355,6 @@ export function createInfoHotspotElement (hotspot) {
 
 	function next () {
 		slideTo(currentIndex + 1);
-	}
-
-	function reset_modal() {
-		setTimeout(() => {
-			document.querySelector('.product-txt-container').scrollTo(0, 0);
-			slideTo(0);
-		}, 500);
-
-		pause_video();
 	}
 
 	function prev () {
@@ -400,6 +406,3 @@ export function createInfoHotspotElement (hotspot) {
 
 	return wrapper;
 }
-
-
-

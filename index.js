@@ -1,9 +1,9 @@
 import './node_modules/lite-youtube-embed/src/lite-yt-embed.js';
 import { scenes } from './loadScenes.js';
 import screenfull from 'screenfull';
-import { switchScene, reset_modal } from './helpers.js';
-import '/modal'
-import '/tour'
+import { switchScene } from './helpers.js';
+import '/modal';
+import '/tour';
 
 // Grab elements from DOM.
 const fullscreenToggleElement = document.querySelector('#fullscreenToggle');
@@ -58,7 +58,6 @@ else {
 	);
 	fullscreenToggleElement.setAttribute('target', '_blank');
 }
-
 
 // Display the initial scene.
 switchScene(scenes[0]);

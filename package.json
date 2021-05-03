@@ -29,8 +29,10 @@
     "in": "^0.18.2",
     "lite-youtube-embed": "^0.2.0",
     "marzipano": "^0.10.1",
+    "modal.js": "^1.1.7",
     "screenfull": "^5.1.0",
-    "shepherd.js": "^8.1.0"
+    "shepherd.js": "^8.1.0",
+    "tour": "^2.0.3"
   },
   "devDependencies": {
     "@babel/core": "^7.14.0",

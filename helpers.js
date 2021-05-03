@@ -22,7 +22,7 @@ export function findSceneDataById (id) {
 export function pause_video () {
 	const yt = document.getElementsByTagName('iframe');
 	if (yt != null) {
-		for (let i = 0; i < yt.length; i++){
+		for (let i = 0; i < yt.length; i++) {
 			yt[i].src = yt[i].src;
 		}
 	}
@@ -33,8 +33,8 @@ export function switchScene (scene) {
 	scene.scene.switchTo();
 }
 
-export function reset_modal (modal) {
-	setTimeout(() => {
-		modal.querySelector('.product-txt-container').scrollTo(0, 0);
-	}, 500);
+export function reset_modal () {
+	const modal = document.querySelector('.info-hotspot-modal');
+	modal.classList.remove('visible');
+	modal.remove();
 }

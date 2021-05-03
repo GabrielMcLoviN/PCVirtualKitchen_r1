@@ -1,5 +1,6 @@
 import { scenes, viewer } from './loadScenes.js';
 import { createPopper } from '@popperjs/core';
+import { reset_modal, switchScene } from './helpers';
 import Shepherd from 'shepherd.js';
 const preloader = document.querySelector('.preloader');
 const titleBar = document.getElementById('titleBar');
@@ -372,9 +373,10 @@ tour_final.on('complete', function () {
 	exit_tour_x
 ].forEach((el) => {
 	el.addEventListener('click', function () {
-		intro.classList.remove('visible');
-		infohotspot.classList.remove('intro-starter');
 		introModal.classList.remove('intro-starter');
+		infohotspot.classList.remove('intro-starter');
+		intro.remove();
+		introModal.remove();
 		introLH.classList.remove('second-tour-starter');
 		show();
 		viewer.controls().enable();
