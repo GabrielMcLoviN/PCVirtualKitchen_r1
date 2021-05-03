@@ -5,23 +5,7 @@
 * Browsers: last 4 version
 */
 
-@import url("https://fonts.googleapis.com/css2?family=Antonio:wght@100&display=swap");
 
-@font-face {
-  font-family: "Museo Sans";
-  src: url("static/assets/museo-sans-webfont/Museo-Sans-Family/MuseoSans-100.woff") format("woff");
-  font-weight: 100;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Museo Sans";
-  src: url("static/assets/museo-sans-webfont/Museo-Sans-Family/MuseoSans-500.woff") format("woff");
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
 
 :root {
   --primary-blue: rgb(42, 127, 140);
