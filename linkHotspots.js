@@ -40,8 +40,8 @@ export function createLinkHotspotElement (hotspot) {
 				name    : 'offset',
 				options : {
 					offset : [
-						-2,
-						20
+						-3,
+						15
 					]
 				}
 			}

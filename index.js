@@ -15,41 +15,6 @@ const controls = document.getElementById('controls');
 const controls_close = document.getElementById('controls-close');
 const introClose = document.getElementById('intro-close');
 
-window.addEventListener('load', function () {
-	setTimeout(() => {
-		panoElement.style.opacity = 1;
-		help_menu.style.opacity = 1;
-		help_menu_btn.style.opacity = 1;
-		titleBar.style.opacity = 1;
-		preloader.style.display = 'none';
-		controls.classList.add('visible');
-	}, 500);
-});
-
-introClose.addEventListener('click', function () {
-	intro.classList.remove('visible');
-});
-
-controls_close.addEventListener('click', function () {
-	controls.remove();
-	intro.style.opacity = 1;
-	intro.classList.add('visible');
-});
-
-help_menu_opener.addEventListener('click', function () {
-	help_menu.classList.add('visible');
-});
-
-help_menu_close.addEventListener('click', function () {
-	help_menu.classList.remove('visible');
-});
-
-document.body.addEventListener('keydown', (evt) => {
-	if (evt.key === 'Escape') {
-		help_menu.classList.remove('visible');
-	}
-});
-
 // Grab elements from DOM.
 const fullscreenToggleElement = document.querySelector('#fullscreenToggle');
 
@@ -97,10 +62,7 @@ if (screenfull.isEnabled) {
 }
 else {
 	document.body.classList.add('fullscreen-disabled');
-	fullscreenToggleElement.setAttribute(
-		'href',
-		'https://pc-dev2.netlify.app'
-	);
+	fullscreenToggleElement.setAttribute('href', 'https://pc-dev2.netlify.app');
 	fullscreenToggleElement.setAttribute('target', '_blank');
 	fullscreenToggleElement.setAttribute('rel', 'noreferrer');
 }
@@ -475,4 +437,42 @@ function hide () {
 	tooltip.removeAttribute('data-show');
 }
 
+introClose.addEventListener('click', function () {
+	intro.classList.remove('visible');
+	introLH.classList.remove('second-tour-starter');
+	introModal.classList.remove('intro-starter');
+	infohotspot.classList.remove('intro-starter');
+});
+
+controls_close.addEventListener('click', function () {
+	controls.remove();
+	intro.style.opacity = 1;
+	intro.classList.add('visible');
+});
+
+help_menu_opener.addEventListener('click', function () {
+	help_menu.classList.add('visible');
+});
+
+help_menu_close.addEventListener('click', function () {
+	help_menu.classList.remove('visible');
+});
+
+document.body.addEventListener('keydown', (evt) => {
+	if (evt.key === 'Escape') {
+		help_menu.classList.remove('visible');
+	}
+});
+
 switchScene(scenes[0]);
+
+window.addEventListener('load', function () {
+	setTimeout(() => {
+		panoElement.style.opacity = 1;
+		help_menu.style.opacity = 1;
+		help_menu_btn.style.opacity = 1;
+		titleBar.style.opacity = 1;
+		preloader.style.display = 'none';
+		controls.classList.add('visible');
+	}, 500);
+});

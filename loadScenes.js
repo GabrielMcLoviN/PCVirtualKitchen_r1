@@ -1,5 +1,4 @@
-// const Marzipano = require('marzipano');
-import Marzipano from 'marzipano';
+const Marzipano = require('marzipano');
 import { data } from './data.js';
 import { createInfoHotspotElement } from './infoHotspots.js';
 import { createLinkHotspotElement } from './linkHotspots.js';
@@ -8,8 +7,8 @@ const panoElement = document.querySelector('#pano');
 
 const viewerOpts = {
 	controls : {
-		mouseViewMode : data.settings.mouseViewMode,
-		scrollZoom    : false
+		mouseViewMode: data.settings.mouseViewMode,
+		// scrollZoom: false,
 	}
 };
 
