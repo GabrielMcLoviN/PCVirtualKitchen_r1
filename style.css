@@ -12,12 +12,14 @@
   src: url("static/assets/museo-sans-webfont/Museo-Sans-Family/MuseoSans-100.woff") format("woff");
   font-weight: 100;
   font-style: normal;
+  font-display: swap;
 }
 @font-face {
   font-family: "Museo Sans";
   src: url("static/assets/museo-sans-webfont/Museo-Sans-Family/MuseoSans-500.woff") format("woff");
   font-weight: 500;
   font-style: normal;
+  font-display: swap;
 }
 
 :root {
@@ -815,8 +817,8 @@ body.fullscreen-enabled #fullscreenToggle {
   display: -ms-flexbox;
   display: flex;
   /* max-width: 100%; */
-  width: 40px;
-  height: 40px;
+  width: 45px;
+  height: 45px;
   margin-left: -30px;
   margin-top: -30px;
   opacity: 0.9;
@@ -831,7 +833,7 @@ body.fullscreen-enabled #fullscreenToggle {
 
 .link-hotspot-icon {
   border: 2px solid var(--accent-blue);
-  max-width: 100%;
+  max-width: 80%;
   height: 80%;
   padding: 1px;
   border-radius: 50%;
@@ -931,14 +933,14 @@ body.fullscreen-enabled #fullscreenToggle {
 }
 
 .info-hotspot .info-hotspot-icon-wrapper {
-  width: 40px;
-  height: 40px;
+  width: 45px;
+  height: 45px;
 }
 
 .info-hotspot .info-hotspot-icon {
-  max-width: 80%;
-  height: 80%;
-  margin: 1.5px;
+  max-width: 75%;
+  height: 75%;
+  margin: 1px;
 }
 
 .info-hotspot .info-hotspot-title-wrapper {

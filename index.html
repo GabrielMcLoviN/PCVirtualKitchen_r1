@@ -464,8 +464,10 @@
     }
   </style>
 
-  <link rel="stylesheet" href="node_modules/lite-youtube-embed/src/lite-yt-embed.css" async/>
-
+  <link rel="preload" href="node_modules/lite-youtube-embed/src/lite-yt-embed.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript>
+    <link rel="stylesheet" href="node_modules/lite-youtube-embed/src/lite-yt-embed.css">
+  </noscript>
   <link rel="preload" href="./style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript>
     <link rel="stylesheet" href="./style.css">
@@ -556,7 +558,7 @@
 
   <div id="titleBar">
     <div class="logoWrapper">
-      <img class="sceneName" src="static/assets/PC+Logo_black_Registered.png" alt="PC Logo">
+      <img class="sceneName" src="static/assets/PC+Logo_black_Registered.png" width="200px" height="50px" alt="PC Logo">
     </div>
     <a href="javascript:void(0)" id="fullscreenToggle">
       <img class="icon off" src="static/SVG/fullscreen-line.svg">
@@ -613,7 +615,7 @@
     </div>
   </div>
 
-  <script src="index.js" defer></script>
+  <script src="index.js"></script>
 
 </body>
 

@@ -1,4 +1,4 @@
-import { pause_video, reset_modal } from './helpers.js';
+import { pause_video } from './helpers.js';
 
 export function createInfoHotspotElement (hotspot) {
 	// Create wrapper element to hold icon and tooltip.
@@ -17,6 +17,8 @@ export function createInfoHotspotElement (hotspot) {
 	const icon = document.createElement('img');
 	icon.src = './assets/PC-Seal_Solid-white-95black_Registered.png';
 	icon.classList.add('info-hotspot-icon');
+	icon.setAttribute('width', '40px')
+	icon.setAttribute('height', '40px')
 	iconWrapper.appendChild(icon);
 
 	// Create title element.
@@ -71,11 +73,15 @@ export function createInfoHotspotElement (hotspot) {
 			recipe_link.classList.add('recipe-link');
 			recipe_link.href = hotspot.recipes[i].link;
 			recipe_link.setAttribute('target', '_blank');
-			const recipe_preview_img_wrap = document.createElement('div');
+			const recipe_preview_img_wrap = document.createElement('img');
+			recipe_preview_img_wrap.src = hotspot.recipes[i].preview_image;
 			recipe_preview_img_wrap.classList.add('recipe-preview-img-wrap');
-			recipe_preview_img_wrap.classList.add('.lazy');
-			recipe_preview_img_wrap.style.backgroundImage = `url(${hotspot
-				.recipes[i].preview_image})`;
+			recipe_preview_img_wrap.setAttribute('loading', 'lazy');
+			recipe_preview_img_wrap.setAttribute('rel', 'noreferrer');
+			recipe_preview_img_wrap.style.display = 'block';
+			// recipe_preview_img_wrap.classList.add('.lazy');
+			// recipe_preview_img_wrap.style.backgroundImage = `url(${hotspot
+			// 	.recipes[i].preview_image})`;
 			const recipe_title = document.createElement('p');
 			recipe_title.classList.add('recipe-title');
 			recipe_title.innerHTML = hotspot.recipes[i].id;
@@ -94,10 +100,15 @@ export function createInfoHotspotElement (hotspot) {
 			recipe_link.classList.add('recipe-link');
 			recipe_link.href = hotspot.related_content[i].link;
 			recipe_link.setAttribute('target', '_blank');
-			const recipe_preview_img_wrap = document.createElement('div');
+			const recipe_preview_img_wrap = document.createElement('img');
 			recipe_preview_img_wrap.classList.add('recipe-preview-img-wrap');
-			recipe_preview_img_wrap.style.backgroundImage = `url(${hotspot
-				.related_content[i].preview_image})`;
+			recipe_preview_img_wrap.src =
+				hotspot.related_content[i].preview_image;
+			recipe_preview_img_wrap.classList.add('recipe-preview-img-wrap');
+			recipe_preview_img_wrap.setAttribute('loading', 'lazy');
+			recipe_preview_img_wrap.setAttribute('rel', 'noreferrer');
+
+			recipe_preview_img_wrap.style.display = 'block';
 			const recipe_title = document.createElement('p');
 			recipe_title.classList.add('recipe-title');
 			recipe_title.innerHTML = hotspot.related_content[i].id;
@@ -117,11 +128,17 @@ export function createInfoHotspotElement (hotspot) {
 			recipe_link.classList.add('recipe-link');
 			recipe_link.href = hotspot.pdf_links[i].link;
 			recipe_link.setAttribute('target', '_blank');
-			const recipe_preview_img_wrap = document.createElement('div');
+			const recipe_preview_img_wrap = document.createElement('img');
 			recipe_link.appendChild(recipe_preview_img_wrap);
+			// recipe_preview_img_wrap.classList.add('recipe-preview-img-wrap');
+			// recipe_preview_img_wrap.style.backgroundImage = `url(${hotspot
+			// 	.pdf_links[i].preview_image})`;
 			recipe_preview_img_wrap.classList.add('recipe-preview-img-wrap');
-			recipe_preview_img_wrap.style.backgroundImage = `url(${hotspot
-				.pdf_links[i].preview_image})`;
+			recipe_preview_img_wrap.src = hotspot.pdf_links[i].preview_image;
+			recipe_preview_img_wrap.classList.add('recipe-preview-img-wrap');
+			recipe_preview_img_wrap.setAttribute('loading', 'lazy');
+			recipe_preview_img_wrap.setAttribute('rel', 'noreferrer');
+			recipe_preview_img_wrap.style.display = 'block';
 			const recipe_title = document.createElement('p');
 			recipe_title.classList.add('recipe-title');
 			recipe_title.innerHTML = hotspot.pdf_links[i].id;
@@ -174,9 +191,10 @@ export function createInfoHotspotElement (hotspot) {
 		const carousel_bullet = document.createElement('li');
 		carousel_bullet.classList.add('carousel-bullet');
 		const productImage = document.createElement('div');
+		const productImageSrc = document.createElement('img');
 
 		if (hotspot.images[i].length === 2) {
-			productImage.style.backgroundImage = `url(${hotspot.images[i][1]})`;
+			productImageSrc.src = hotspot.images[i][1];
 			const influencer_credit_container = document.createElement('div');
 			influencer_credit_container.classList.add(
 				'influencer_credit_container'
@@ -191,17 +209,18 @@ export function createInfoHotspotElement (hotspot) {
 			productImage.appendChild(influencer_credit_container);
 		}
 		else {
-			productImage.style.backgroundImage = `url(${hotspot.images[i]})`;
+			productImageSrc.src = hotspot.images[i];
 		}
 
-		productImage.classList.add('lazy');
+		productImageSrc.classList.add('lazy');
+		productImageSrc.setAttribute('loading', 'lazy');
+		productImageSrc.setAttribute('width', '800px');
+		productImageSrc.setAttribute('height', '800px');
 		productImage.setAttribute('id', 'product-image');
+		productImage.appendChild(productImageSrc);
 
 		if (hotspot.containImages) {
-			productImage.style.backgroundSize = 'contain';
-			productImage.style.width = '80%';
-			productImage.style.height = '80%';
-			productImage.style.alignSelf = 'center';
+			productImageSrc.classList.add('contain')
 		}
 
 		carouselImages.appendChild(productImage);
@@ -269,7 +288,7 @@ export function createInfoHotspotElement (hotspot) {
 		reset_modal();
 		setTimeout(() => {
 			modal.remove();
-		}, 1000);
+		}, 500);
 	};
 
 	wrapper

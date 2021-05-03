@@ -2,48 +2,7 @@ import { scenes, viewer } from './loadScenes.js';
 import { createPopper } from '@popperjs/core';
 import { reset_modal, switchScene } from './helpers';
 import Shepherd from 'shepherd.js';
-const preloader = document.querySelector('.preloader');
-const titleBar = document.getElementById('titleBar');
-const intro = document.getElementById('intro');
-const help_menu = document.getElementById('help-menu');
-const help_menu_btn = document.querySelector('.help-menu-btn');
-const help_menu_opener = document.querySelector('.help-menu-btn svg');
-const help_menu_close = document.querySelector('#help-list-close');
-const controls = document.getElementById('controls');
-const controls_close = document.getElementById('controls-close');
-const introClose = document.getElementById('intro-close');
 
-introClose.addEventListener('click', function () {
-	intro.classList.remove('visible');
-});
-
-controls_close.addEventListener('click', function () {
-	controls.classList.remove('visible');
-	intro.style.opacity = 1;
-	intro.classList.add('visible');
-});
-
-document.addEventListener('DOMContentLoaded', function () {
-	help_menu.style.opacity = 1;
-	help_menu_btn.style.opacity = 1;
-	titleBar.style.opacity = 1;
-	preloader.style.display = 'none';
-	controls.classList.add('visible');
-});
-
-help_menu_opener.addEventListener('click', function () {
-	help_menu.classList.add('visible');
-});
-
-help_menu_close.addEventListener('click', function () {
-	help_menu.classList.remove('visible');
-});
-
-document.body.addEventListener('keydown', (evt) => {
-	if (evt.key === 'Escape') {
-		help_menu.classList.remove('visible');
-	}
-});
 
 // tour
 const tour_infoHotspots = new Shepherd.Tour();
@@ -412,3 +371,4 @@ function show () {
 function hide () {
 	tooltip.removeAttribute('data-show');
 }
+

@@ -1,9 +1,6 @@
-import './node_modules/lite-youtube-embed/src/lite-yt-embed.js';
 import { scenes } from './loadScenes.js';
 import screenfull from 'screenfull';
 import { switchScene } from './helpers.js';
-import '/modal';
-import '/tour';
 
 // Grab elements from DOM.
 const fullscreenToggleElement = document.querySelector('#fullscreenToggle');
@@ -60,4 +57,16 @@ else {
 }
 
 // Display the initial scene.
-switchScene(scenes[0]);
+async function render () {
+	const marzipano = await import('marzipano');
+	const help = await import('./helpers');
+	const lhs = await import('./linkHotspots');
+	const ihs = await import('./infoHotspots');
+	const s = await import('./loadScenes');
+	const tour = await import('./tour');
+	const data = await import('./data');
+	const ytembed = await import('./node_modules/lite-youtube-embed/src/lite-yt-embed.js');
+	const initScene = await switchScene(scenes[0]);
+	return initScene, tour, s, data, ytembed, lhs, ihs, help;
+}
+render();

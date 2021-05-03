@@ -1,4 +1,4 @@
-export var data = {
+export const data = {
 	scenes   : [
 		{
 			id                    : '0-counter',
