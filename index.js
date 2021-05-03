@@ -1,6 +1,7 @@
 import { scenes } from './loadScenes.js';
 import screenfull from 'screenfull';
 import { switchScene } from './helpers.js';
+import('./tour');
 
 // Grab elements from DOM.
 const fullscreenToggleElement = document.querySelector('#fullscreenToggle');
