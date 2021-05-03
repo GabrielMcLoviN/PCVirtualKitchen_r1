@@ -1,9 +1,6 @@
 import { scenes } from './loadScenes.js';
 import screenfull from 'screenfull';
 import { switchScene } from './helpers.js';
-import('./tour')
-import('./linkHotspots');
-import('./infoHotspots');
 
 // Grab elements from DOM.
 const fullscreenToggleElement = document.querySelector('#fullscreenToggle');
@@ -54,7 +51,7 @@ else {
 	document.body.classList.add('fullscreen-disabled');
 	fullscreenToggleElement.setAttribute(
 		'href',
-		'https://pc-virtualparty.netlify.app'
+		'https://pc-devenv2.netlify.app'
 	);
 	fullscreenToggleElement.setAttribute('target', '_blank');
 }
@@ -66,8 +63,7 @@ async function render () {
 	const s = await import('./loadScenes');
 	const tour = await import('./tour');
 	const data = await import('./data');
-	const ytembed = await import('./node_modules/lite-youtube-embed/src/lite-yt-embed.js');
 	const initScene = await switchScene(scenes[0]);
-	return initScene, tour, s, data, ytembed, lhs, ihs;
+	return initScene, s, data, lhs, ihs;
 }
 render();

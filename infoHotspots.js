@@ -77,7 +77,7 @@ export function createInfoHotspotElement (hotspot) {
 			recipe_preview_img_wrap.src = hotspot.recipes[i].preview_image;
 			recipe_preview_img_wrap.classList.add('recipe-preview-img-wrap');
 			recipe_preview_img_wrap.setAttribute('loading', 'lazy');
-			recipe_preview_img_wrap.setAttribute('rel', 'noreferrer');
+			// recipe_preview_img_wrap.setAttribute('rel', 'noreferrer');
 			recipe_preview_img_wrap.style.display = 'block';
 			// recipe_preview_img_wrap.classList.add('.lazy');
 			// recipe_preview_img_wrap.style.backgroundImage = `url(${hotspot
@@ -106,7 +106,7 @@ export function createInfoHotspotElement (hotspot) {
 				hotspot.related_content[i].preview_image;
 			recipe_preview_img_wrap.classList.add('recipe-preview-img-wrap');
 			recipe_preview_img_wrap.setAttribute('loading', 'lazy');
-			recipe_preview_img_wrap.setAttribute('rel', 'noreferrer');
+			// recipe_preview_img_wrap.setAttribute('rel', 'noreferrer');
 
 			recipe_preview_img_wrap.style.display = 'block';
 			const recipe_title = document.createElement('p');
@@ -137,7 +137,7 @@ export function createInfoHotspotElement (hotspot) {
 			recipe_preview_img_wrap.src = hotspot.pdf_links[i].preview_image;
 			recipe_preview_img_wrap.classList.add('recipe-preview-img-wrap');
 			recipe_preview_img_wrap.setAttribute('loading', 'lazy');
-			recipe_preview_img_wrap.setAttribute('rel', 'noreferrer');
+			// recipe_preview_img_wrap.setAttribute('rel', 'noreferrer');
 			recipe_preview_img_wrap.style.display = 'block';
 			const recipe_title = document.createElement('p');
 			recipe_title.classList.add('recipe-title');
