@@ -99,7 +99,7 @@ else {
 	document.body.classList.add('fullscreen-disabled');
 	fullscreenToggleElement.setAttribute(
 		'href',
-		'https://pc-devenv2.netlify.app'
+		'https://pc-dev2.netlify.app'
 	);
 	fullscreenToggleElement.setAttribute('target', '_blank');
 	fullscreenToggleElement.setAttribute('rel', 'noreferrer');
