@@ -403,11 +403,8 @@ tour_final.on('complete', function () {
 	exit_tour_x
 ].forEach((el) => {
 	el.addEventListener('click', function () {
-		introModal.classList.remove('intro-starter');
-		infohotspot.classList.remove('intro-starter');
 		introLH.classList.remove('second-tour-starter');
 		intro.remove();
-		introModal.remove();
 		show();
 		viewer.controls().enable();
 		setTimeout(function () {
@@ -446,8 +443,6 @@ function hide () {
 introClose.addEventListener('click', function () {
 	intro.classList.remove('visible');
 	introLH.classList.remove('second-tour-starter');
-	introModal.classList.remove('intro-starter');
-	infohotspot.classList.remove('intro-starter');
 });
 
 controls_close.addEventListener('click', function () {
