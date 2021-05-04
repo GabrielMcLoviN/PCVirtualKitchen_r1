@@ -17,8 +17,8 @@ export function createInfoHotspotElement (hotspot) {
 	const icon = document.createElement('img');
 	icon.src = './assets/PC-Seal_Solid-white-95black_Registered.png';
 	icon.classList.add('info-hotspot-icon');
-	icon.setAttribute('width', '40px')
-	icon.setAttribute('height', '40px')
+	icon.setAttribute('width', '40px');
+	icon.setAttribute('height', '40px');
 	iconWrapper.appendChild(icon);
 
 	// Create title element.
@@ -128,9 +128,6 @@ export function createInfoHotspotElement (hotspot) {
 			recipe_link.setAttribute('target', '_blank');
 			const recipe_preview_img_wrap = document.createElement('img');
 			recipe_link.appendChild(recipe_preview_img_wrap);
-			// recipe_preview_img_wrap.classList.add('recipe-preview-img-wrap');
-			// recipe_preview_img_wrap.style.backgroundImage = `url(${hotspot
-			// 	.pdf_links[i].preview_image})`;
 			recipe_preview_img_wrap.classList.add('recipe-preview-img-wrap');
 			recipe_preview_img_wrap.src = hotspot.pdf_links[i].preview_image;
 			recipe_preview_img_wrap.classList.add('recipe-preview-img-wrap');
@@ -217,7 +214,7 @@ export function createInfoHotspotElement (hotspot) {
 		productImage.appendChild(productImageSrc);
 
 		if (hotspot.containImages) {
-			productImageSrc.classList.add('contain')
+			productImageSrc.classList.add('contain');
 		}
 
 		carouselImages.appendChild(productImage);
@@ -256,13 +253,10 @@ export function createInfoHotspotElement (hotspot) {
 	wrapper.appendChild(content);
 
 	const modal = document.createElement('div');
-	modal.innerHTML = wrapper.innerHTML;
 	modal.classList.add('info-hotspot-modal');
-	hotspot.class ? modal.classList.add(hotspot.class) : '';
 
-	if (modal.classList.contains('intro-starter')) {
-		document.body.appendChild(modal);
-	}
+
+	modal.innerHTML = wrapper.innerHTML;
 
 	function reset_modal () {
 		setTimeout(() => {
@@ -273,8 +267,13 @@ export function createInfoHotspotElement (hotspot) {
 	}
 
 	const openModal = function () {
-		reset_modal();
+		if (document.body.classList.contains('tour-init')) {
+			hotspot.class ? modal.classList.add(hotspot.class) : '';
+		} else {
+			modal.classList.remove(hotspot.class);
+		}
 		document.body.appendChild(modal);
+		reset_modal();
 		setTimeout(() => {
 			modal.classList.add('visible');
 		}, 100);
