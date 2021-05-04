@@ -2,11 +2,6 @@ import screenfull from 'screenfull';
 import { scenes } from './loadScenes.js';
 import { switchScene } from './helpers';
 
-const preloader = document.querySelector('.preloader');
-const titleBar = document.getElementById('titleBar');
-const help_menu = document.getElementById('help-menu');
-const help_menu_btn = document.querySelector('.help-menu-btn');
-const controls = document.getElementById('controls');
 
 // Grab elements from DOM.
 const fullscreenToggleElement = document.querySelector('#fullscreenToggle');

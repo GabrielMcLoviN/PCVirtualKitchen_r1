@@ -253,13 +253,12 @@
       background: #fff;
       border-radius: 5px;
       box-shadow: 0 1px 4px rgba(0, 0, 0, .2);
-      max-width: 400px;
+      width: 200px;
       opacity: 0;
       outline: none;
       transition: opacity .3s, visibility .3s;
       visibility: hidden;
-      width: 100%;
-      z-index: 9999
+      z-index: 9999;
     }
 
     .shepherd-enabled.shepherd-element {
@@ -351,7 +350,7 @@
     .shepherd-content {
       border-radius: 5px;
       outline: none;
-      padding: 0
+      padding: 0;
     }
 
     .shepherd-footer {
@@ -378,7 +377,7 @@
 
     .shepherd-has-title .shepherd-content .shepherd-header {
       background: #e6e6e6;
-      padding: 1em
+      padding: 1em;
     }
 
     .shepherd-text {
@@ -661,7 +660,7 @@
   </div>
 
   <div role="tooltip" id="tooltip">
-    <span>Ok, you can always click this button<br />here if you need some help!</span>
+    <span>Ok, you can always click<br />this button here <br /> if you need some help!</span>
     <div id="arrow" data-popper-arrow></div>
   </div>
 
@@ -677,7 +676,7 @@
     <div class="controls">
       <div class="controls-header">
         <div class="controls-menu-close">
-          <img src="static/SVG/close-line.svg" class="info-hotspot-close-icon" id="help-list-close">
+          <img src="/static/SVG/close-line.svg" class="info-hotspot-close-icon" id="help-list-close">
         </div>
       </div>
       <div class="help-list-heading">
@@ -708,6 +707,95 @@
       </div>
     </div>
   </div>
+
+  <!-- <div class="info-hotspot-modal intro-tour-modal">
+    <div class="info-hotspot-header intro-tour-modal">
+      <div class="info-hotspot-icon-wrapper"><img src="./static/assets/PC-Seal_Solid-white-95black_Registered.png"
+          class="info-hotspot-icon" width="40px" height="40px"></div>
+      <div class="info-hotspot-title-wrapper">
+        <div class="info-hotspot-title">MANUAL FOOD PROCESSOR</div>
+      </div>
+      <div class="info-hotspot-close-wrapper"><img src="./static/SVG/close-line.svg" class="info-hotspot-close-icon">
+      </div>
+    </div>
+    <div class="info-hotspot-content">
+      <div class="product-txt-container">
+        <div class="product-txt-wrapper">
+          <h2 class="product-txt-subhead">Manual Food Processor</h2>
+          <div class="product-txt">
+            <p>Our Manual Food Processor can take care of nearly all your chopping and mincing needs, without needing an
+              outlet. Just add your ingredients to the bowl and pump the handle for fast salsa, dip, cookie dough, baby
+              food, tapenade. The more you pump, the finer it cuts! And when you’re done, the handle locks into the lid
+              for easy storage in your cabinets.</p>
+          </div>
+          <div class="recipes">
+            <h2 class="recipes-header">Recipes to Try:</h2>
+            <div class="recipes-list">
+              <li><a class="recipe-link" href="./static/modals/foodprocessor/post-recipe-pico-de-gallo-steps-usca.pdf"
+                  target="_blank" rel="noreferrer"><img
+                    src="./static/modals/foodprocessor/post-recipe-pico-de-gallo-usca-min.jpg"
+                    class="recipe-preview-img-wrap" loading="lazy" style="display: block;">
+                  <p class="recipe-title" target="_blank">Pico De Gallo</p>
+                </a></li>
+              <li><a class="recipe-link"
+                  href="./static/modals/foodprocessor/post-recipe-cucumber-dill-guacamole-steps-usca.pdf"
+                  target="_blank" rel="noreferrer"><img
+                    src="./static/modals/foodprocessor/post-recipe-cucumber-dill-guacamole-usca-min.jpg"
+                    class="recipe-preview-img-wrap" loading="lazy" style="display: block;">
+                  <p class="recipe-title" target="_blank">Cucumber-Dill Guacamole</p>
+                </a></li>
+              <li><a class="recipe-link" href="./static/modals/foodprocessor/post-recipe-cranberry-salsa-steps-usca.pdf"
+                  target="_blank" rel="noreferrer"><img
+                    src="/static/modals/foodprocessor/post-recipe-cranberry-salsa-usca-min.jpg"
+                    class="recipe-preview-img-wrap" loading="lazy" style="display: block;">
+                  <p class="recipe-title" target="_blank">Cranberry Salsa</p>
+                </a></li>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="carousel_container">
+        <ul class="carousel-pagination">
+          <li class="carousel-bullet active-bullet"></li>
+          <li class="carousel-bullet"></li>
+          <li class="carousel-bullet"></li>
+          <li class="carousel-bullet"></li>
+          <li class="carousel-bullet"></li>
+          <li class="carousel-bullet"></li>
+        </ul>
+        <div class="carousel-nav"><img src="./static/SVG/chevron-right.svg" class="carousel-button next" id="next"><img
+            src="./static/SVG/chevron-left.svg" class="carousel-button previous" id="previous"></div>
+        <div class="carousel">
+          <div class="carousel-images" style="transform: translate(0%, 0px);">
+            <div id="product-image"><img width="800px" height="800px" src="./static/images_min/foodprocessor/01-min.jpg"
+                loading="lazy"></div>
+            <div id="product-image"><img width="800px" height="800px" src="./static/images_min/foodprocessor/02-min.jpg"
+                loading="lazy"></div>
+            <div id="product-image"><img width="800px" height="800px" src="./static/images_min/foodprocessor/03-min.jpg"
+                loading="lazy"></div>
+            <div id="product-image">
+              <div class="influencer_credit_container">
+                <div class="pointer"></div><span class="influencer_credit">📷: @erica-ekman</span>
+              </div><img width="800px" height="800px" src="./static/images_min/foodprocessor/04-min.jpg" loading="lazy">
+            </div>
+            <div id="product-image">
+              <div class="influencer_credit_container">
+                <div class="pointer"></div><span class="influencer_credit">📷: @erica-ekman</span>
+              </div><img width="800px" height="800px" src="./static/images_min/foodprocessor/05-min.jpg" loading="lazy">
+            </div>
+            <div class="iframe_container__video">
+              <lite-youtube class="yt-embed" videoid="XdYZOHuvdhU" videotitle="Pampered Chef Manual Food Processor"
+                style="background-image: url(&quot;https://i.ytimg.com/vi/XdYZOHuvdhU/hqdefault.jpg&quot;);"><button
+                  type="button" class="lty-playbtn"><span class="lyt-visually-hidden">Play</span></button>
+              </lite-youtube>
+              <div class="slider-top"></div>
+              <div class="slider-bot"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> -->
 
   <script src="./index.js"></script>
   <script src="node_modules/lite-youtube-embed/src/lite-yt-embed.js" async></script>

@@ -94,7 +94,7 @@ const tour_infoHotspots = new Shepherd.Tour({ useModalOverlay: true });
 tour_infoHotspots.addStep({
 	id            : 'first',
 	showOn        : document.body.classList.contains('tour-accepted'),
-	text          : `<br/>Click this icon to learn more about the product<br/><br/>`,
+	text          : `<br/>Click this icon to learn<br/>more about the product<br/><br/>`,
 	attachTo      : {
 		element : '.info-hotspot-header.intro-starter',
 		on      : 'top'
@@ -161,7 +161,8 @@ tour_infoHotspots.addStep({
 	id                         : 'second',
 	arrow                      : false,
 	modalOverlayOpeningPadding : 0,
-	text                       : `<br/>Here, you'll find product information, downloadable recipes & related content`,
+	text                       : `<br/>Here, you'll find <br/> product information,
+	<br/>downloadable recipes & <br/> related content`,
 	attachTo                   : {
 		element : '.info-hotspot-modal.visible .product-txt-container',
 		on      : 'auto'
@@ -173,7 +174,7 @@ tour_infoHotspots.addStep({
 				options : {
 					offset : [
 						0,
-						80
+						20
 					]
 				}
 			}
@@ -236,7 +237,7 @@ tour_linkHotspots.addStep({
 	text          : `<br/>Click the arrow to see the products in this part of the kitchen<br/><br/>`,
 	attachTo      : {
 		element : '.second-tour-starter',
-		on      : 'top'
+		on      : 'bottom'
 	},
 	popperOptions : {
 		modifiers : [
@@ -244,8 +245,8 @@ tour_linkHotspots.addStep({
 				name    : 'offset',
 				options : {
 					offset : [
-						0,
-						25
+						-10,
+						10
 					]
 				}
 			}
@@ -292,7 +293,7 @@ const tour_final = new Shepherd.Tour({
 
 tour_final.addStep({
 	showOn        : document.body.classList.contains('tour-accepted'),
-	text          : `<br/>Enjoy the party!<br/>🥳✨🥂<br/><br/>If you need help along the way, click here`,
+	text          : `<br/>Enjoy the party! <br/>🥳✨🥂 <br/>If you need help<br/>along the way, click here`,
 	attachTo      : {
 		element : '.help-menu-btn svg',
 		on      : 'auto'
@@ -322,21 +323,18 @@ tour_final.addStep({
 const exit_tour = document.querySelector('.cancel');
 const exit_tour_x = document.querySelector('.intro-header .intro-close');
 const intro_scene = scenes[0].scene;
-const introModal = document.querySelector(
-	'.info-hotspot-modal.visible.intro-starter'
-);
 const introLH = document.querySelector('.link-hotspot.second-tour-starter');
 
 var destinationViewParameters_linkHotspot = {
 	yaw   : -1.600429731329104,
 	pitch : 0.5002192152175962,
-	fov   : 40 * Math.PI / 180
+	fov   : 60 * Math.PI / 180
 };
 
 var iframeViewParameters_linkHotspot = {
 	yaw   : -1.600429731329104,
 	pitch : 0.5002192152175962,
-	fov   : 40 * Math.PI / 180
+	fov   : 60 * Math.PI / 180
 };
 
 var options_linkHotspot = {
@@ -344,7 +342,9 @@ var options_linkHotspot = {
 };
 
 tour_infoHotspots.on('complete', function () {
-	Shepherd.activeTour.steps.forEach(step => {step.destroy()});
+	Shepherd.activeTour.steps.forEach((step) => {
+		step.destroy();
+	});
 	const header = document.querySelector('.intro-starter');
 	const currModal = document.querySelector('.info-hotspot-modal.visible');
 
@@ -381,12 +381,16 @@ introLH.addEventListener('click', function () {
 });
 
 tour_linkHotspots.on('complete', () => {
-	Shepherd.activeTour.steps.forEach(step => {step.destroy()});
-})
+	Shepherd.activeTour.steps.forEach((step) => {
+		step.destroy();
+	});
+});
 
 tour_movement.on('complete', function () {
 	switchScene(scenes[0]);
-	Shepherd.activeTour.steps.forEach(step => {step.destroy()});
+	Shepherd.activeTour.steps.forEach((step) => {
+		step.destroy();
+	});
 
 	tour_final.start();
 });
@@ -395,7 +399,9 @@ tour_final.on('complete', function () {
 	viewer.controls().enable();
 	introLH.classList.remove('second-tour-starter');
 
-	Shepherd.activeTour.steps.forEach(step => {step.destroy()});
+	Shepherd.activeTour.steps.forEach((step) => {
+		step.destroy();
+	});
 });
 
 [

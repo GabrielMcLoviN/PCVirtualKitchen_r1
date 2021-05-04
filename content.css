@@ -115,11 +115,6 @@
   cursor: pointer;
 }
 
-.info-hotspot-modal .info-hotspot-close-icon {
-  min-width: 25px;
-  min-height: 25px;
-}
-
 .info-hotspot-close-icon:hover {
   cursor: pointer;
 }

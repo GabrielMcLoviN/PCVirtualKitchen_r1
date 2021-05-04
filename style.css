@@ -364,8 +364,13 @@ body {
 .controls-h1 {
   align-self: center;
   justify-self: center;
-  font-weight: 500;
-  margin: 0.25rem auto;
+  /* font-weight: 500; */
+  font-size: 1rem;
+  font-family: "antonio", sans-serif;
+  margin: 0 0 0.25rem 0;
+  /* font-weight: bold; */
+  position: relative;
+  bottom: 1rem;
 }
 
 .controls-header .controls-menu-close {
@@ -527,9 +532,10 @@ body {
 }
 
 #intro-heading .intro-h1 {
+  font-family: "Antonio", sans-serif;
+  font-size: 1.5rem;
   margin: 0 1rem;
-  font-size: 1rem;
-  line-height: 1rem;
+  line-height: 1.65rem;
   font-weight: 500;
   max-width: 22ch;
   justify-self: flex-start;
@@ -824,8 +830,8 @@ body.fullscreen-enabled #fullscreenToggle {
   display: flex;
   width: 40px;
   height: 40px;
-  margin-left: -20px;
-  margin-top: -20px;
+  margin-left: -10px;
+  margin-top: -30px;
   opacity: 0.9;
   -webkit-transition: opacity 0.2s;
   -o-transition: opacity 0.2s;
@@ -838,11 +844,13 @@ body.fullscreen-enabled #fullscreenToggle {
 
 .link-hotspot-icon {
   border: 2px solid var(--accent-blue);
-  max-width: 100%;
-  height: 85%;
+  max-width: 30px;
+  height: 30px;
   padding: 2px;
   border-radius: 50%;
-  margin-right: 1;
+  /* margin-right: -1px; */
+  position: relative;
+  left: .2rem;
   cursor: pointer;
 }
 
