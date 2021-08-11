@@ -1,359 +1,908 @@
 <!DOCTYPE html lang="en">
 <html>
+  <head>
+    <title>Pampered Chef - Virtual Host</title>
+    <meta charset="utf-8" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="upgrade-insecure-requests"
+    />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, minimal-ui"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      href="static/assets/PC+Seal-Solid_black.png"
+      width="50px"
+      height="50px"
+    />
 
-<head>
-  <title>Pampered Chef - Virtual Host</title>
-  <meta charset="utf-8">
-  <meta name="viewport"
-    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, minimal-ui" />
-  <link rel="icon" type="image/png" href="static/assets/PC+Seal-Solid_black.png" width="50px" height="50px">
-
-  <style>
-    @-ms-viewport {
-      width: device-width;
-    }
-
-    @-webkit-keyframes ball-spin-fade-loader {
-      50% {
-        opacity: 0.3;
-        -webkit-transform: scale(0.4);
-        transform: scale(0.4);
+    <style>
+      /* Eric Meyer's Reset CSS v2.0 - http://cssreset.com */
+      html,
+      body,
+      div,
+      span,
+      applet,
+      object,
+      iframe,
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      p,
+      blockquote,
+      pre,
+      a,
+      abbr,
+      acronym,
+      address,
+      big,
+      cite,
+      code,
+      del,
+      dfn,
+      em,
+      img,
+      ins,
+      kbd,
+      q,
+      s,
+      samp,
+      small,
+      strike,
+      strong,
+      sub,
+      sup,
+      tt,
+      var,
+      b,
+      u,
+      i,
+      center,
+      dl,
+      dt,
+      dd,
+      ol,
+      ul,
+      li,
+      fieldset,
+      form,
+      label,
+      legend,
+      table,
+      caption,
+      tbody,
+      tfoot,
+      thead,
+      tr,
+      th,
+      td,
+      article,
+      aside,
+      canvas,
+      details,
+      embed,
+      figure,
+      figcaption,
+      footer,
+      header,
+      hgroup,
+      menu,
+      nav,
+      output,
+      ruby,
+      section,
+      summary,
+      time,
+      mark,
+      audio,
+      video {
+        border: 0;
+        font-size: 100%;
+        font: inherit;
+        vertical-align: baseline;
+        margin: 0;
+        padding: 0;
       }
 
-      100% {
+      article,
+      aside,
+      details,
+      figcaption,
+      figure,
+      footer,
+      header,
+      hgroup,
+      menu,
+      nav,
+      section {
+        display: block;
+      }
+
+      body {
+        line-height: 1;
+      }
+
+      ol,
+      ul {
+        list-style: none;
+      }
+
+      blockquote,
+      q {
+        quotes: none;
+      }
+
+      blockquote:before,
+      blockquote:after,
+      q:before,
+      q:after {
+        content: none;
+      }
+
+      table {
+        border-collapse: collapse;
+        border-spacing: 0;
+      }
+
+      @-ms-viewport {
+        width: device-width;
+      }
+
+      @-webkit-keyframes ball-spin-fade-loader {
+        50% {
+          opacity: 0.3;
+          -webkit-transform: scale(0.4);
+          transform: scale(0.4);
+        }
+
+        100% {
+          opacity: 1;
+          -webkit-transform: scale(1);
+          transform: scale(1);
+        }
+      }
+
+      @keyframes ball-spin-fade-loader {
+        50% {
+          opacity: 0.3;
+          -webkit-transform: scale(0.4);
+          transform: scale(0.4);
+        }
+
+        100% {
+          opacity: 1;
+          -webkit-transform: scale(1);
+          transform: scale(1);
+        }
+      }
+
+      .ball-spin-fade-loader {
+        position: relative;
+        top: -10px;
+        left: -10px;
+      }
+
+      .ball-spin-fade-loader > div:nth-child(1) {
+        top: 25px;
+        left: 0;
+        -webkit-animation: ball-spin-fade-loader 1s -0.96s infinite linear;
+        animation: ball-spin-fade-loader 1s -0.96s infinite linear;
+      }
+
+      .ball-spin-fade-loader > div:nth-child(2) {
+        top: 17.05px;
+        left: 17.05px;
+        -webkit-animation: ball-spin-fade-loader 1s -0.84s infinite linear;
+        animation: ball-spin-fade-loader 1s -0.84s infinite linear;
+      }
+
+      .ball-spin-fade-loader > div:nth-child(3) {
+        top: 0;
+        left: 25px;
+        -webkit-animation: ball-spin-fade-loader 1s -0.72s infinite linear;
+        animation: ball-spin-fade-loader 1s -0.72s infinite linear;
+      }
+
+      .ball-spin-fade-loader > div:nth-child(4) {
+        top: -17.05px;
+        left: 17.05px;
+        -webkit-animation: ball-spin-fade-loader 1s -0.6s infinite linear;
+        animation: ball-spin-fade-loader 1s -0.6s infinite linear;
+      }
+
+      .ball-spin-fade-loader > div:nth-child(5) {
+        top: -25px;
+        left: 0;
+        -webkit-animation: ball-spin-fade-loader 1s -0.48s infinite linear;
+        animation: ball-spin-fade-loader 1s -0.48s infinite linear;
+      }
+
+      .ball-spin-fade-loader > div:nth-child(6) {
+        top: -17.05px;
+        left: -17.05px;
+        -webkit-animation: ball-spin-fade-loader 1s -0.36s infinite linear;
+        animation: ball-spin-fade-loader 1s -0.36s infinite linear;
+      }
+
+      .ball-spin-fade-loader > div:nth-child(7) {
+        top: 0;
+        left: -25px;
+        -webkit-animation: ball-spin-fade-loader 1s -0.24s infinite linear;
+        animation: ball-spin-fade-loader 1s -0.24s infinite linear;
+      }
+
+      .ball-spin-fade-loader > div:nth-child(8) {
+        top: 17.05px;
+        left: -17.05px;
+        -webkit-animation: ball-spin-fade-loader 1s -0.12s infinite linear;
+        animation: ball-spin-fade-loader 1s -0.12s infinite linear;
+      }
+
+      .ball-spin-fade-loader > div,
+      .ball-spin-loader > div {
+        -webkit-animation-fill-mode: both;
+        position: absolute;
+        width: 15px;
+        height: 15px;
+        border-radius: 100%;
+      }
+
+      .ball-spin-fade-loader > div {
+        background-color: #fff;
+        margin: 2px;
+        animation-fill-mode: both;
+      }
+
+      .shepherd-element {
+        background: #fff;
+        border-radius: 5px;
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+        width: 200px;
+        opacity: 0;
+        outline: none;
+        transition: opacity 0.3s, visibility 0.3s;
+        visibility: hidden;
+        z-index: 9999;
+      }
+
+      .shepherd-enabled.shepherd-element {
         opacity: 1;
-        -webkit-transform: scale(1);
-        transform: scale(1);
-      }
-    }
-
-    @keyframes ball-spin-fade-loader {
-      50% {
-        opacity: 0.3;
-        -webkit-transform: scale(0.4);
-        transform: scale(0.4);
+        visibility: visible;
       }
 
-      100% {
-        opacity: 1;
-        -webkit-transform: scale(1);
-        transform: scale(1);
+      .shepherd-element[data-popper-reference-hidden]:not(.shepherd-centered) {
+        opacity: 0;
+        pointer-events: none;
+        visibility: hidden;
       }
-    }
 
-    .ball-spin-fade-loader {
-      position: relative;
-      top: -10px;
-      left: -10px;
-    }
+      .shepherd-element,
+      .shepherd-element *,
+      .shepherd-element :after,
+      .shepherd-element :before {
+        box-sizing: border-box;
+      }
 
-    .ball-spin-fade-loader>div:nth-child(1) {
-      top: 25px;
-      left: 0;
-      -webkit-animation: ball-spin-fade-loader 1s -0.96s infinite linear;
-      animation: ball-spin-fade-loader 1s -0.96s infinite linear;
-    }
+      .shepherd-arrow,
+      .shepherd-arrow:before {
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        z-index: -1;
+      }
 
-    .ball-spin-fade-loader>div:nth-child(2) {
-      top: 17.05px;
-      left: 17.05px;
-      -webkit-animation: ball-spin-fade-loader 1s -0.84s infinite linear;
-      animation: ball-spin-fade-loader 1s -0.84s infinite linear;
-    }
+      .shepherd-arrow:before {
+        content: '';
+        transform: rotate(45deg);
+        background: #fff;
+      }
 
-    .ball-spin-fade-loader>div:nth-child(3) {
-      top: 0;
-      left: 25px;
-      -webkit-animation: ball-spin-fade-loader 1s -0.72s infinite linear;
-      animation: ball-spin-fade-loader 1s -0.72s infinite linear;
-    }
+      .shepherd-element[data-popper-placement^='top'] > .shepherd-arrow {
+        bottom: -5px;
+      }
 
-    .ball-spin-fade-loader>div:nth-child(4) {
-      top: -17.05px;
-      left: 17.05px;
-      -webkit-animation: ball-spin-fade-loader 1s -0.6s infinite linear;
-      animation: ball-spin-fade-loader 1s -0.6s infinite linear;
-    }
+      .shepherd-element[data-popper-placement^='bottom'] > .shepherd-arrow {
+        top: -5px;
+      }
 
-    .ball-spin-fade-loader>div:nth-child(5) {
-      top: -25px;
-      left: 0;
-      -webkit-animation: ball-spin-fade-loader 1s -0.48s infinite linear;
-      animation: ball-spin-fade-loader 1s -0.48s infinite linear;
-    }
+      .shepherd-element[data-popper-placement^='left'] > .shepherd-arrow {
+        right: -5px;
+      }
 
-    .ball-spin-fade-loader>div:nth-child(6) {
-      top: -17.05px;
-      left: -17.05px;
-      -webkit-animation: ball-spin-fade-loader 1s -0.36s infinite linear;
-      animation: ball-spin-fade-loader 1s -0.36s infinite linear;
-    }
+      .shepherd-element[data-popper-placement^='right'] > .shepherd-arrow {
+        left: -5px;
+      }
 
-    .ball-spin-fade-loader>div:nth-child(7) {
-      top: 0;
-      left: -25px;
-      -webkit-animation: ball-spin-fade-loader 1s -0.24s infinite linear;
-      animation: ball-spin-fade-loader 1s -0.24s infinite linear;
-    }
+      .shepherd-element.shepherd-centered > .shepherd-arrow {
+        opacity: 0;
+      }
 
-    .ball-spin-fade-loader>div:nth-child(8) {
-      top: 17.05px;
-      left: -17.05px;
-      -webkit-animation: ball-spin-fade-loader 1s -0.12s infinite linear;
-      animation: ball-spin-fade-loader 1s -0.12s infinite linear;
-    }
+      .shepherd-element.shepherd-has-title[data-popper-placement^='bottom']
+        > .shepherd-arrow:before {
+        background-color: #e6e6e6;
+      }
 
-    .ball-spin-fade-loader>div,
-    .ball-spin-loader>div {
-      -webkit-animation-fill-mode: both;
-      position: absolute;
-      width: 15px;
-      height: 15px;
-      border-radius: 100%;
-    }
+      .shepherd-target-click-disabled.shepherd-enabled.shepherd-target,
+      .shepherd-target-click-disabled.shepherd-enabled.shepherd-target * {
+        pointer-events: none;
+      }
 
-    .ball-spin-fade-loader>div {
-      background-color: #fff;
-      margin: 2px;
-      animation-fill-mode: both;
-    }
-  </style>
+      .shepherd-modal-overlay-container {
+        -ms-filter: progid:dximagetransform.microsoft.gradient.alpha(Opacity=50);
+        filter: alpha(opacity=50);
+        height: 0;
+        left: 0;
+        opacity: 0;
+        overflow: hidden;
+        pointer-events: none;
+        position: fixed;
+        top: 0;
+        transition: all 0.3s ease-out, height 0ms 0.3s, opacity 0.3s 0ms;
+        width: 100vw;
+        z-index: 9997;
+      }
 
-  <link rel="preload" href="static/assets/antonio-desktop/Antonio-Light.ttf" as="font" type="font/ttf" crossorigin>
-  <link rel="preload" href="static/assets/museo-sans-webfont/Museo-Sans-Family/MuseoSans-100.otf" as="font"
-    type="font/otf" crossorigin>
-  <link rel="preload" href="static/assets/museo-sans-webfont/Museo-Sans-Family/MuseoSans-500.otf" as="font"
-    type="font/otf" crossorigin>
+      .shepherd-modal-overlay-container.shepherd-modal-is-visible {
+        height: 100vh;
+        opacity: 0.5;
+        transition: all 0.3s ease-out, height 0s 0s, opacity 0.3s 0s;
+      }
 
-  <link rel="stylesheet" href="./reset.min.css">
-  <link rel="stylesheet" href="./style.css">
-  <link rel="stylesheet" href="./shepherd.css">
-  <link rel="stylesheet" href="./content.css">
-  <link rel="stylesheet" href="./mobile.css">
-</head>
+      .shepherd-modal-overlay-container.shepherd-modal-is-visible path {
+        pointer-events: all;
+      }
 
-<body class="multiple-scenes">
-  <div class="preloader">
-    <img class="preloader-img" src="static/assets/PC+Logo_reverse_Registered.png" alt="loading image" width="200px"
-      height="auto">
-    <div class="loader-inner ball-spin-fade-loader">
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
+      .shepherd-content {
+        border-radius: 5px;
+        outline: none;
+        padding: 0;
+      }
+
+      .shepherd-footer {
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+        display: flex;
+        justify-content: flex-end;
+        padding: 0 0.75rem 0.75rem;
+      }
+
+      .shepherd-footer .shepherd-button:last-child {
+        margin-right: 0;
+      }
+
+      .shepherd-header {
+        align-items: center;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+        display: flex;
+        justify-content: flex-end;
+        line-height: 2em;
+        padding: 0.75rem 0.75rem 0;
+      }
+
+      .shepherd-has-title .shepherd-content .shepherd-header {
+        background: #e6e6e6;
+        padding: 1em;
+      }
+
+      .shepherd-text {
+        color: rgba(0, 0, 0, 0.75);
+        font-size: 1rem;
+        line-height: 1.3em;
+        padding: 0.75em;
+      }
+
+      .shepherd-text p {
+        margin-top: 0;
+      }
+
+      .shepherd-text p:last-child {
+        margin-bottom: 0;
+      }
+
+      .shepherd-button {
+        background: #3288e6;
+        border: 0;
+        border-radius: 3px;
+        color: hsla(0, 0%, 100%, 0.75);
+        cursor: pointer;
+        margin-right: 0.5rem;
+        padding: 0.5rem 1.5rem;
+        transition: all 0.5s ease;
+      }
+
+      .shepherd-button:not(:disabled):hover {
+        background: #196fcc;
+        color: hsla(0, 0%, 100%, 0.75);
+      }
+
+      .shepherd-button.shepherd-button-secondary {
+        background: #f1f2f3;
+        color: rgba(0, 0, 0, 0.75);
+      }
+
+      .shepherd-button.shepherd-button-secondary:not(:disabled):hover {
+        background: #d6d9db;
+        color: rgba(0, 0, 0, 0.75);
+      }
+
+      .shepherd-button:disabled {
+        cursor: not-allowed;
+      }
+
+      .shepherd-cancel-icon {
+        background: transparent;
+        border: none;
+        color: hsla(0, 0%, 50.2%, 0.75);
+        font-size: 2em;
+        cursor: pointer;
+        font-weight: 400;
+        margin: 0;
+        padding: 0;
+        transition: color 0.5s ease;
+      }
+
+      .shepherd-cancel-icon:hover {
+        color: rgba(0, 0, 0, 0.75);
+      }
+
+      .shepherd-has-title .shepherd-content .shepherd-cancel-icon {
+        color: hsla(0, 0%, 50.2%, 0.75);
+      }
+
+      .shepherd-has-title .shepherd-content .shepherd-cancel-icon:hover {
+        color: rgba(0, 0, 0, 0.75);
+      }
+
+      .shepherd-title {
+        color: rgba(0, 0, 0, 0.75);
+        display: flex;
+        font-size: 1rem;
+        font-weight: 400;
+        flex: 1 0 auto;
+        margin: 0;
+        padding: 0;
+      }
+
+      .yt-embed {
+        width: 720px;
+      }
+
+      lite-youtube {
+        background-color: #000;
+        position: relative;
+        display: block;
+        contain: content;
+        background-position: center center;
+        background-size: cover;
+        cursor: pointer;
+        max-width: 720px;
+      }
+
+      /* gradient */
+      lite-youtube::before {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 0;
+        background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAADGCAYAAAAT+OqFAAAAdklEQVQoz42QQQ7AIAgEF/T/D+kbq/RWAlnQyyazA4aoAB4FsBSA/bFjuF1EOL7VbrIrBuusmrt4ZZORfb6ehbWdnRHEIiITaEUKa5EJqUakRSaEYBJSCY2dEstQY7AuxahwXFrvZmWl2rh4JZ07z9dLtesfNj5q0FU3A5ObbwAAAABJRU5ErkJggg==);
+        background-position: top;
+        background-repeat: repeat-x;
+        height: 60px;
+        padding-bottom: 50px;
+        width: 100%;
+        transition: all 0.2s cubic-bezier(0, 0, 0.2, 1);
+      }
+
+      /* responsive iframe with a 16:9 aspect ratio
+      thanks https://css-tricks.com/responsive-iframes/
+  */
+      lite-youtube::after {
+        content: '';
+        display: block;
+        padding-bottom: calc(100% / (16 / 9));
+      }
+
+      lite-youtube > iframe {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        border: 0;
+      }
+
+      /* play button */
+      lite-youtube > .lty-playbtn {
+        width: 68px;
+        height: 48px;
+        position: absolute;
+        cursor: pointer;
+        transform: translate3d(-50%, -50%, 0);
+        top: 50%;
+        left: 50%;
+        z-index: 1;
+        background-color: transparent;
+        /* YT's actual play button svg */
+        background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 68 48"><path fill="%23f00" fill-opacity="0.8" d="M66.52,7.74c-0.78-2.93-2.49-5.41-5.42-6.19C55.79,.13,34,0,34,0S12.21,.13,6.9,1.55 C3.97,2.33,2.27,4.81,1.48,7.74C0.06,13.05,0,24,0,24s0.06,10.95,1.48,16.26c0.78,2.93,2.49,5.41,5.42,6.19 C12.21,47.87,34,48,34,48s21.79-0.13,27.1-1.55c2.93-0.78,4.64-3.26,5.42-6.19C67.94,34.95,68,24,68,24S67.94,13.05,66.52,7.74z"></path><path d="M 45,24 27,14 27,34" fill="%23fff"></path></svg>');
+        filter: grayscale(100%);
+        transition: filter 0.1s cubic-bezier(0, 0, 0.2, 1);
+        border: none;
+      }
+
+      lite-youtube:hover > .lty-playbtn,
+      lite-youtube .lty-playbtn:focus {
+        filter: none;
+      }
+
+      /* Post-click styles */
+      lite-youtube.lyt-activated {
+        cursor: unset;
+      }
+
+      lite-youtube.lyt-activated::before,
+      lite-youtube.lyt-activated > .lty-playbtn {
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      .lyt-visually-hidden {
+        clip: rect(0 0 0 0);
+        clip-path: inset(50%);
+        height: 1px;
+        overflow: hidden;
+        position: absolute;
+        white-space: nowrap;
+        width: 1px;
+      }
+    </style>
+
+    <link
+      rel="preload"
+      href="static/assets/museo-sans-webfont/Museo-Sans-Family/MuseoSans-100.woff"
+      as="font"
+      crossorigin="anonymous"
+    />
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Antonio:wght@300&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="./content.css" />
+    <link rel="stylesheet" href="./mobile.css" />
+
+    <!-- <link rel="preload" href="./style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript> -->
+    <!-- </noscript> -->
+    <!-- <link rel="preload" href="./content.css" as="style" onload="this.onload=null;this.rel='stylesheet'"> -->
+    <!-- <noscript> -->
+    <!-- </noscript> -->
+    <!-- <link rel="preload" href="./mobile.css" as="style" onload="this.onload=null;this.rel='stylesheet'"> -->
+    <!-- <noscript> -->
+    <!-- </noscript> -->
+  </head>
+
+  <body class="multiple-scenes">
+    <div class="preloader">
+      <img
+        class="preloader-img"
+        src="static/assets/PC+Logo_reverse_Registered.png"
+        alt="loading image"
+        width="200px"
+        height="auto"
+      />
+      <div class="loader-inner ball-spin-fade-loader">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <p class="preload-text">Setting your table</p>
     </div>
-    <p class="preload-text">Setting your table</p>
-  </div>
 
-  <div id="pano"></div>
+    <div id="pano"></div>
 
-  <div class="info-hotspot-modal" id="controls">
-    <div class="controls">
-      <div class="controls-header">
-        <div class="controls-menu-close">
-          <img src="static/SVG/close-line.svg" class="info-hotspot-close-icon" id="controls-close">
-        </div>
-      </div>
-      <div class="controls-explore">
-        <h1 class="controls-h1">EXPLORE</h1>
-      </div>
-      <div class="controls-content">
-        <div class="controls-section-top">
-          <img src="./static/SVG/swipe-black-48dp.svg" alt="swipe-icon" width="30px" height="30px">
-          <span>Drag your finger across the screen</span>
-        </div>
-        <div class="controls-section-top">
-          <img src="/static/SVG/iconmonstr-cursor-9.svg" alt="hand-icon" width="30px" height="30px">
-          <span>Click & drag your mouse</span>
-        </div>
-        <div class="controls-icons">
-          <div class="controls-section">
-            <img src="/static/SVG/arrow-up-circle-fill.svg" alt="arrow-icon" width="25px" height="25px"
-              style="translate: rotate(8.63937979737193rad)">
-            <span>Click arrows to see products in different parts of the kitchen</span>
+    <div class="info-hotspot-modal" id="controls">
+      <div class="controls">
+        <div class="controls-header">
+          <div class="controls-menu-close">
+            <img
+              src="static/SVG/close-line.svg"
+              class="info-hotspot-close-icon"
+              id="controls-close"
+            />
           </div>
-          <div class="controls-section">
-            <img src="/static/assets/PC+Seal-Solid_whiteCircle-reverseLogo.png" alt="pampered-chef-icon" width="25px"
-              height="25px">
-            <span>Click PC icons for product information, recipes & more</span>
+        </div>
+        <div class="controls-explore">
+          <h1 class="controls-h1">EXPLORE</h1>
+        </div>
+        <div class="controls-content">
+          <div class="controls-section-top">
+            <img
+              src="./static/SVG/swipe-black-48dp.svg"
+              alt="swipe-icon"
+              width="30px"
+              height="30px"
+            />
+            <span>Drag your finger across the screen</span>
+          </div>
+          <div class="controls-section-top">
+            <img
+              src="/static/SVG/iconmonstr-cursor-9.svg"
+              alt="hand-icon"
+              width="30px"
+              height="30px"
+            />
+            <span>Click & drag your mouse</span>
+          </div>
+          <div class="controls-icons">
+            <div class="controls-section">
+              <img
+                src="/static/SVG/arrow-up-circle-fill.svg"
+                alt="arrow-icon"
+                width="25px"
+                height="25px"
+                style="translate: rotate(8.63937979737193rad)"
+              />
+              <span
+                >Click arrows to see products in different parts of the
+                kitchen</span
+              >
+            </div>
+            <div class="controls-section">
+              <img
+                src="/static/assets/PC+Seal-Solid_whiteCircle-reverseLogo.png"
+                alt="pampered-chef-icon"
+                width="25px"
+                height="25px"
+              />
+              <span
+                >Click PC icons for product information, recipes & more</span
+              >
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
 
-
-  <div class="info-hotspot-modal intro" id="intro">
-    <div class="intro-content">
-      <div class="intro-header">
-        <div class="intro-close"><img src="static/SVG/close-line.svg" class="info-hotspot-close-icon" id="intro-close">
+    <div class="info-hotspot-modal intro" id="intro">
+      <div class="intro-content">
+        <div class="intro-header">
+          <div class="intro-close">
+            <img
+              src="static/SVG/close-line.svg"
+              class="info-hotspot-close-icon"
+              id="intro-close"
+            />
+          </div>
+        </div>
+        <div id="intro-heading">
+          <h1 class="intro-h1">Welcome to Our Virtual Reality Kitchen!</h1>
+        </div>
+        <div id="intro-body">
+          <p class="intro-text">Would you like to take a quick tour?</p>
+        </div>
+        <div id="intro-buttons">
+          <span class="tour-btn cancel">No thanks, I got this!</span>
+          <span class="tour-btn confirm">Sure, show me around!</span>
         </div>
       </div>
-      <div id="intro-heading">
-        <h1 class="intro-h1">Welcome to Our Virtual Reality Kitchen!</h1>
-      </div>
-      <div id="intro-body">
-        <p class="intro-text">Would you like to take a quick tour?</p>
-      </div>
-      <div id="intro-buttons">
-        <a href="#" class="tour-btn cancel">No thanks, I got this!</a>
-        <a href="#" class="tour-btn confirm">Sure, show me around!</a>
-      </div>
     </div>
-  </div>
 
-  <div id="titleBar">
-    <div class="logoWrapper">
-      <img class="sceneName" src="static/assets/PC+Logo_black_Registered.png" alt="PC Logo">
+    <div id="titleBar">
+      <div class="logoWrapper">
+        <img
+          class="sceneName"
+          src="static/assets/PC+Logo_black_Registered.png"
+          width="200px"
+          height="50px"
+          alt="PC Logo"
+        />
+      </div>
+      <a href="javascript:void(0)" id="fullscreenToggle">
+        <img class="icon off" src="static/SVG/fullscreen-line.svg" />
+        <img class="icon on" src="static/SVG/fullscreen-exit-line.svg" />
+      </a>
     </div>
-    <a href="javascript:void(0)" id="fullscreenToggle">
-      <img class="icon off" src="static/SVG/fullscreen-line.svg">
-      <img class="icon on" src="static/SVG/fullscreen-exit-line.svg">
-    </a>
-  </div>
-  <!--
-  <div class="mobile-cta info-hotspot-modal">
-    <div class="mobile-fullscreen-cta">
-      <img src="./static/SVG/cook.svg" alt="chef-icon" class="chef-icon">
-      <h1 class="cta-text">
-        Hi! We noticed you're currently viewing this on your mobile device.
-        <br /><br />
-        In order to give you the best viewing experience, please enable fullscreen mode by clicking the button below.
-      </h1>
-      <button class="fullscreen-btn">Enable Fullscreen</button>
-    </div>
-  </div>
 
-  <div class="mobile-cta info-hotspot-modal" id="safariOnly">
-    <div class="mobile-fullscreen-cta">
-      <img src="./static/SVG/cook.svg" alt="chef-icon" class="chef-icon">
-      <h1 class="cta-text">
-        Hi! We noticed you're currently viewing this on your iOS device.
-        <br /><br />
-        Unfortunately, Safari won't allow us to show you this application in fullscreen on mobile devices. Please click
-        on the button below to be directed to the full desktop site. Thank you!
-      </h1>
-      <a href="https://pc-virtualparty.netlify.app" target="_blank" class="fullscreen-btn">Enable Fullscreen</a>
+    <div role="tooltip" id="tooltip">
+      <span
+        >Ok, you can always click<br />this button here <br />
+        if you need some help!</span
+      >
+      <div id="arrow" data-popper-arrow></div>
+    </div>
+
+    <div class="help-menu-btn" id="footer">
+      <svg
+        aria-describedby="tooltip"
+        id="target"
+        xmlns="http://www.w3.org/2000/svg"
+        width="30"
+        height="30"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 22c-5.514 0-10-4.486-10-10s4.486-10 10-10 10 4.486 10 10-4.486 10-10 10zm0-18.8c-4.853 0-8.8 3.947-8.8 8.8s3.947 8.8 8.8 8.8 8.8-3.947 8.8-8.8-3.947-8.8-8.8-8.8zm0 15.05c-.689 0-1.25-.56-1.25-1.25s.561-1.25 1.25-1.25c.691 0 1.25.56 1.25 1.25s-.559 1.25-1.25 1.25zm1.961-5.928c-.904.975-.947 1.514-.935 2.178h-2.005c-.007-1.475.02-2.125 1.432-3.468.572-.544 1.024-.975.962-1.821-.058-.805-.73-1.226-1.364-1.226-.709 0-1.538.527-1.538 2.013h-2.011c0-2.4 1.41-3.95 3.59-3.95 1.036 0 1.942.339 2.551.955.57.578.865 1.372.854 2.298-.018 1.383-.859 2.291-1.536 3.021z"
+        />
+      </svg>
+    </div>
+
+    <div class="info-hotspot-modal" id="help-menu">
+      <div class="controls">
+        <div class="controls-header">
+          <div class="controls-menu-close">
+            <img
+              src="/static/SVG/close-line.svg"
+              class="info-hotspot-close-icon"
+              id="help-list-close"
+            />
+          </div>
+        </div>
+        <div class="help-list-heading">
+          <img
+            src="/static/SVG/control_camera-black-48dp.svg"
+            alt="camera-controls-icon"
+            width="25px"
+            height="25px"
+          />
+          <h4>Movement Controls</h4>
+        </div>
+        <div class="controls-content">
+          <div class="controls-section-top">
+            <img
+              src="./static/SVG/swipe-black-48dp.svg"
+              alt="swipe-icon"
+              width="30px"
+              height="30px"
+            />
+            <span>Drag your finger across the screen</span>
+          </div>
+          <div class="controls-section-top">
+            <img
+              src="/static/SVG/iconmonstr-cursor-9.svg"
+              alt="hand-icon"
+              width="30px"
+              height="30px"
+            />
+            <span>Click & drag your mouse</span>
+          </div>
+          <div class="controls-icons">
+            <div class="controls-section">
+              <img
+                src="/static/SVG/arrow-up-circle-fill.svg"
+                alt="arrow-icon"
+                width="25px"
+                height="25px"
+                style="translate: rotate(8.63937979737193rad)"
+              />
+              <span
+                >Click arrows to see products in different parts of the
+                kitchen</span
+              >
+            </div>
+            <div class="controls-section">
+              <img
+                src="/static/assets/PC+Seal-Solid_whiteCircle-reverseLogo.png"
+                alt="pampered-chef-icon"
+                width="25px"
+                height="25px"
+              />
+              <span
+                >Click PC icons for product information, recipes & more</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- <div class="info-hotspot-modal intro-tour-modal">
+    <div class="info-hotspot-header intro-tour-modal">
+      <div class="info-hotspot-icon-wrapper"><img src="./static/assets/PC-Seal_Solid-white-95black_Registered.png"
+          class="info-hotspot-icon" width="40px" height="40px"></div>
+      <div class="info-hotspot-title-wrapper">
+        <div class="info-hotspot-title">MANUAL FOOD PROCESSOR</div>
+      </div>
+      <div class="info-hotspot-close-wrapper"><img src="./static/SVG/close-line.svg" class="info-hotspot-close-icon">
+      </div>
+    </div>
+    <div class="info-hotspot-content">
+      <div class="product-txt-container">
+        <div class="product-txt-wrapper">
+          <h2 class="product-txt-subhead">Manual Food Processor</h2>
+          <div class="product-txt">
+            <p>Our Manual Food Processor can take care of nearly all your chopping and mincing needs, without needing an
+              outlet. Just add your ingredients to the bowl and pump the handle for fast salsa, dip, cookie dough, baby
+              food, tapenade. The more you pump, the finer it cuts! And when you’re done, the handle locks into the lid
+              for easy storage in your cabinets.</p>
+          </div>
+          <div class="recipes">
+            <h2 class="recipes-header">Recipes to Try:</h2>
+            <div class="recipes-list">
+              <li><a class="recipe-link" href="./static/modals/foodprocessor/post-recipe-pico-de-gallo-steps-usca.pdf"
+                  target="_blank" rel="noreferrer"><img
+                    src="./static/modals/foodprocessor/post-recipe-pico-de-gallo-usca-min.jpg"
+                    class="recipe-preview-img-wrap" loading="lazy" style="display: block;">
+                  <p class="recipe-title" target="_blank">Pico De Gallo</p>
+                </a></li>
+              <li><a class="recipe-link"
+                  href="./static/modals/foodprocessor/post-recipe-cucumber-dill-guacamole-steps-usca.pdf"
+                  target="_blank" rel="noreferrer"><img
+                    src="./static/modals/foodprocessor/post-recipe-cucumber-dill-guacamole-usca-min.jpg"
+                    class="recipe-preview-img-wrap" loading="lazy" style="display: block;">
+                  <p class="recipe-title" target="_blank">Cucumber-Dill Guacamole</p>
+                </a></li>
+              <li><a class="recipe-link" href="./static/modals/foodprocessor/post-recipe-cranberry-salsa-steps-usca.pdf"
+                  target="_blank" rel="noreferrer"><img
+                    src="/static/modals/foodprocessor/post-recipe-cranberry-salsa-usca-min.jpg"
+                    class="recipe-preview-img-wrap" loading="lazy" style="display: block;">
+                  <p class="recipe-title" target="_blank">Cranberry Salsa</p>
+                </a></li>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="carousel_container">
+        <ul class="carousel-pagination">
+          <li class="carousel-bullet active-bullet"></li>
+          <li class="carousel-bullet"></li>
+          <li class="carousel-bullet"></li>
+          <li class="carousel-bullet"></li>
+          <li class="carousel-bullet"></li>
+          <li class="carousel-bullet"></li>
+        </ul>
+        <div class="carousel-nav"><img src="./static/SVG/chevron-right.svg" class="carousel-button next" id="next"><img
+            src="./static/SVG/chevron-left.svg" class="carousel-button previous" id="previous"></div>
+        <div class="carousel">
+          <div class="carousel-images" style="transform: translate(0%, 0px);">
+            <div id="product-image"><img width="800px" height="800px" src="./static/images_min/foodprocessor/01-min.jpg"
+                loading="lazy"></div>
+            <div id="product-image"><img width="800px" height="800px" src="./static/images_min/foodprocessor/02-min.jpg"
+                loading="lazy"></div>
+            <div id="product-image"><img width="800px" height="800px" src="./static/images_min/foodprocessor/03-min.jpg"
+                loading="lazy"></div>
+            <div id="product-image">
+              <div class="influencer_credit_container">
+                <div class="pointer"></div><span class="influencer_credit">📷: @erica-ekman</span>
+              </div><img width="800px" height="800px" src="./static/images_min/foodprocessor/04-min.jpg" loading="lazy">
+            </div>
+            <div id="product-image">
+              <div class="influencer_credit_container">
+                <div class="pointer"></div><span class="influencer_credit">📷: @erica-ekman</span>
+              </div><img width="800px" height="800px" src="./static/images_min/foodprocessor/05-min.jpg" loading="lazy">
+            </div>
+            <div class="iframe_container__video">
+              <lite-youtube class="yt-embed" videoid="XdYZOHuvdhU" videotitle="Pampered Chef Manual Food Processor"
+                style="background-image: url(&quot;https://i.ytimg.com/vi/XdYZOHuvdhU/hqdefault.jpg&quot;);"><button
+                  type="button" class="lty-playbtn"><span class="lyt-visually-hidden">Play</span></button>
+              </lite-youtube>
+              <div class="slider-top"></div>
+              <div class="slider-bot"></div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div> -->
 
-  <div role="tooltip" id="tooltip">
-    <span>Ok, you can always click this button<br />here if you need some help!</span>
-    <div id="arrow" data-popper-arrow></div>
-  </div>
-
-
-  <div class="help-menu-btn" id="footer">
-    <svg aria-describedby="tooltip" id="target" xmlns="http://www.w3.org/2000/svg" width="30" height="30"
-      viewBox="0 0 24 24">
-      <path
-        d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 22c-5.514 0-10-4.486-10-10s4.486-10 10-10 10 4.486 10 10-4.486 10-10 10zm0-18.8c-4.853 0-8.8 3.947-8.8 8.8s3.947 8.8 8.8 8.8 8.8-3.947 8.8-8.8-3.947-8.8-8.8-8.8zm0 15.05c-.689 0-1.25-.56-1.25-1.25s.561-1.25 1.25-1.25c.691 0 1.25.56 1.25 1.25s-.559 1.25-1.25 1.25zm1.961-5.928c-.904.975-.947 1.514-.935 2.178h-2.005c-.007-1.475.02-2.125 1.432-3.468.572-.544 1.024-.975.962-1.821-.058-.805-.73-1.226-1.364-1.226-.709 0-1.538.527-1.538 2.013h-2.011c0-2.4 1.41-3.95 3.59-3.95 1.036 0 1.942.339 2.551.955.57.578.865 1.372.854 2.298-.018 1.383-.859 2.291-1.536 3.021z" />
-    </svg>
-  </div>
-
-
-
-  <div class="info-hotspot-modal" id="help-menu">
-    <div class="controls">
-      <div class="controls-header">
-        <div class="controls-menu-close">
-          <img src="static/SVG/close-line.svg" class="info-hotspot-close-icon" id="help-list-close">
-        </div>
-      </div>
-      <div class="help-list-heading">
-        <img src="/static/SVG/control_camera-black-48dp.svg" alt="camera-controls-icon" width="25px" height="25px">
-        <h4>Movement Controls</h4>
-      </div>
-      <div class="controls-content">
-        <div class="controls-section-top">
-          <img src="./static/SVG/swipe-black-48dp.svg" alt="swipe-icon" width="30px" height="30px">
-          <span>Drag your finger across the screen</span>
-        </div>
-        <div class="controls-section-top">
-          <img src="/static/SVG/iconmonstr-cursor-9.svg" alt="hand-icon" width="30px" height="30px">
-          <span>Click & drag your mouse</span>
-        </div>
-        <div class="controls-icons">
-          <div class="controls-section">
-            <img src="/static/SVG/arrow-up-circle-fill.svg" alt="arrow-icon" width="25px" height="25px"
-              style="translate: rotate(8.63937979737193rad)">
-            <span>Click arrows to see products in different parts of the kitchen</span>
-          </div>
-          <div class="controls-section">
-            <img src="/static/assets/PC+Seal-Solid_whiteCircle-reverseLogo.png" alt="pampered-chef-icon" width="25px"
-              height="25px">
-            <span>Click PC icons for product information, recipes & more</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-
-  <script src="data.js"></script>
-  <script src="index.js"></script>
-
-  <script>
-    const iframes = document.querySelectorAll('iframe');
-    iframes.forEach(element => {
-      element.setAttribute('loading', 'lazy');
-    });
-
-    document.addEventListener("DOMContentLoaded", function () {
-      var lazyloadImages;
-
-      if ("IntersectionObserver" in window) {
-        lazyloadImages = document.querySelectorAll(".lazy");
-        var imageObserver = new IntersectionObserver(function (entries, observer) {
-          entries.forEach(function (entry) {
-            if (entry.isIntersecting) {
-              var image = entry.target;
-              image.classList.remove("lazy");
-              imageObserver.unobserve(image);
-            }
-          });
-        });
-        lazyloadImages.forEach(function (image) {
-          imageObserver.observe(image);
-        });
-      } else {
-        var lazyloadThrottleTimeout;
-        lazyloadImages = document.querySelectorAll(".lazy");
-
-        function lazyload() {
-          if (lazyloadThrottleTimeout) {
-            clearTimeout(lazyloadThrottleTimeout);
-          }
-
-          lazyloadThrottleTimeout = setTimeout(function () {
-            var scrollTop = window.pageYOffset;
-            lazyloadImages.forEach(function (img) {
-              if (img.offsetTop < (window.innerHeight + scrollTop)) {
-                img.src = img.dataset.src;
-                img.classList.remove('lazy');
-              }
-            });
-            if (lazyloadImages.length == 0) {
-              document.removeEventListener("scroll", lazyload);
-              window.removeEventListener("resize", lazyload);
-              window.removeEventListener("orientationChange", lazyload);
-            }
-          }, 20);
-        }
-
-        document.addEventListener("scroll", lazyload);
-        window.addEventListener("resize", lazyload);
-        window.addEventListener("orientationChange", lazyload);
-      }
-    })
-  </script>
-
-
-
-</body>
-
+    <script src="./index.js"></script>
+    <script
+      src="node_modules/lite-youtube-embed/src/lite-yt-embed.js"
+      async
+    ></script>
+  </body>
 </html>
