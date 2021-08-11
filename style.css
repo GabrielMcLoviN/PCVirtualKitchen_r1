@@ -5,7 +5,6 @@
 * Browsers: last 4 version
 */
 
-
 @font-face {
   font-family: 'Museo Sans';
   src: url('static/assets/museo-sans-webfont/Museo-Sans-Family/MuseoSans-100.woff')
@@ -270,7 +269,7 @@ body {
   -webkit-transition: opacity 1s ease-in-out;
   -o-transition: opacity 1s ease-in-out;
   transition: opacity 1s ease-in-out;
-  transition: 0!important;
+  transition: 0 !important;
   margin: auto;
 }
 
@@ -823,17 +822,8 @@ body.fullscreen-enabled #fullscreenToggle {
   display: none;
 }
 
-/* Link hotspot */
-
 .link-hotspot {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  width: 40px;
-  height: 40px;
-  margin-left: -10px;
-  margin-top: -30px;
-  opacity: 0.9;
+  opacity: 0.7;
   -webkit-transition: opacity 0.2s;
   -o-transition: opacity 0.2s;
   transition: opacity 0.2s;
@@ -844,15 +834,14 @@ body.fullscreen-enabled #fullscreenToggle {
 }
 
 .link-hotspot-icon {
+  background-color: var(--secondary-blk);
+  border: 2px solid var(--accent-blue);
   width: 40px;
   height: 40px;
-  border: 2px solid var(--accent-blue);
-  max-width: 30px;
-  height: 30px;
-  padding: 2px;
   border-radius: 50%;
+  /* margin-right: -1px; */
   position: relative;
-  left: .2rem;
+  right: 2rem;
   cursor: pointer;
 }
 
@@ -1024,25 +1013,4 @@ body.fullscreen-enabled #fullscreenToggle {
   user-select: text;
   font-family: 'Antonio', sans-serif;
   font-weight: 100;
-}
-
-/* media queries */
-@media (min-width: 1440px) {
-  .link-hotspot-tooltip {
-    left: -87.5%;
-    font-size: 1rem;
-    width: 170px;
-  }
-  #fullscreenToggle .icon {
-    width: 24px;
-    height: 24px;
-    -webkit-filter: invert(1);
-    filter: invert(1);
-  }
-  #titleBar {
-    height: 70px;
-  }
-  #titleBar .sceneName {
-    max-width: 150px;
-  }
 }

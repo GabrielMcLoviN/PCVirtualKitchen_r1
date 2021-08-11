@@ -30,62 +30,62 @@ export const viewer = new Marzipano.Viewer(panoElement, viewerOpts);
 
 // Create scenes.
 export const scenes = data.scenes.map(function (data) {
-	const urlPrefix = 'tiles';
-	const source = Marzipano.ImageUrlSource.fromString(
-		urlPrefix + '/' + data.id + '/{z}/{f}/{y}/{x}.jpg',
-		{ cubeMapPreviewUrl: urlPrefix + '/' + data.id + '/preview.jpg' }
-	);
+  const urlPrefix = 'tiles';
+  const source = Marzipano.ImageUrlSource.fromString(
+    urlPrefix + '/' + data.id + '/{z}/{f}/{y}/{x}.jpg',
+    { cubeMapPreviewUrl: urlPrefix + '/' + data.id + '/preview.jpg' }
+  );
 
-	const geometry = new Marzipano.CubeGeometry(data.levels);
+  const geometry = new Marzipano.CubeGeometry(data.levels);
 
-	const limiter = Marzipano.RectilinearView.limit.traditional(
-		data.faceSize,
-		100 * Math.PI / 180,
-		100 * Math.PI / 180
-	);
+  const limiter = Marzipano.RectilinearView.limit.traditional(
+    1024,
+    (100 * Math.PI) / 180,
+    (120 * Math.PI) / 180
+  );
 
-	const view = new Marzipano.RectilinearView(
-		data.initialViewParameters,
-		limiter
-	);
+  const view = new Marzipano.RectilinearView(
+    data.initialViewParameters,
+    limiter
+  );
 
-	const scene = viewer.createScene({
-		source        : source,
-		geometry      : geometry,
-		view          : view,
-		pinFirstLevel : true
-	});
+  const scene = viewer.createScene({
+    source: source,
+    geometry: geometry,
+    view: view,
+    pinFirstLevel: true,
+  });
 
-	// Create link hotspots.
-	import('./linkHotspots').then(
-		data.linkHotspots.forEach(function (hotspot) {
-			const element = createLinkHotspotElement(hotspot);
-			scene.hotspotContainer().createHotspot(element, {
-				yaw   : hotspot.yaw,
-				pitch : hotspot.pitch
-			});
-		})
-	);
+  // Create link hotspots.
+  import('./linkHotspots').then(
+    data.linkHotspots.forEach(function (hotspot) {
+      const element = createLinkHotspotElement(hotspot);
+      scene.hotspotContainer().createHotspot(element, {
+        yaw: hotspot.yaw,
+        pitch: hotspot.pitch,
+      });
+    })
+  );
 
-	// Create info hotspots.
-	import('./infoHotspots').then(
-		data.infoHotspots.forEach(async function (hotspot) {
-			const element = await createInfoHotspotElement(hotspot);
-			scene
-				.hotspotContainer()
-				.createHotspot(
-					element,
-					{ yaw: hotspot.yaw, pitch: hotspot.pitch },
-					{ perspective: { radius: 500 } }
-				);
-		})
-	);
+  // Create info hotspots.
+  import('./infoHotspots').then(
+    data.infoHotspots.forEach(async function (hotspot) {
+      const element = await createInfoHotspotElement(hotspot);
+      scene
+        .hotspotContainer()
+        .createHotspot(
+          element,
+          { yaw: hotspot.yaw, pitch: hotspot.pitch },
+          { perspective: { radius: 400 } }
+        );
+    })
+  );
 
-	return {
-		data  : data,
-		scene : scene,
-		view  : view
-	};
+  return {
+    data: data,
+    scene: scene,
+    view: view,
+  };
 });
 
 const start_tour = document.querySelector('.confirm');
@@ -226,7 +226,7 @@ tour_linkHotspots.addStep({
   showOn: document.body.classList.contains('tour-accepted'),
   text: `<br/>Click the arrow to see the products in this part of the kitchen<br/><br/>`,
   attachTo: {
-    element: '.second-tour-starter',
+    element: '.second-tour-starter > img',
     on: 'bottom',
   },
   popperOptions: {
